@@ -79,6 +79,67 @@ options | `string` | options set for a choice question for check_box, select, or
 field_name | `string` | the actual field name
 free_text | `boolean` | ???
 
+# Transactions
+
+## List User's Transactions
+
+This endpoint is designed to list all of a user’s transactions in json format.
+The points transactions will be debits and credits with a description field.
+Each transaction carries with it the points balance for a user as a result of
+this transaction. This means that in order to find a user’s current balance you
+will need to identify the most recent transaction in this list and the balance
+field will be the users current balance.
+
+All transactions listed in the response will be ordered so as to have the most
+recent transaction last in the list.
+
+Please remember that if a user transaction is performed on the MyRewards 2.0
+platform since a request is made over the api – this balance will be out of date.
+
+On the server side a check will be made that the user_id you are requesting is
+
+- a valid user
+- it is a user for the programme that your api key is scoped to. 
+
+That is to say that you can only retrieve transactions for users of your 
+MyRewards Programme.
+
+``` http
+GET /api/v2/users/123/transactions HTTP/1.1
+Authorization: Token token=xxx
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "user_id" : 123,
+    "description" : "transactions",
+    "value" : 100,
+    "balance" : 100,
+    "transaction_type" : "programme points",
+    "created_at" : "date_time"
+  }
+]
+```
+
+### HTTP Request
+
+`GET /api/v2/{user_id}/transactions`
+
+### Attributes
+
+Parameters | Type | Info
+---------- | ---- | ----
+user_id | `integer` | INFO_HERE
+description | `string` | INFO_HERE
+value | `integer` | INFO_HERE
+balance | `integer` | INFO_HERE
+transaction_type | `string` | INFO_HERE
+created_at | `string` | INFO_HERE
+
 # Users
 
 ## Create User
