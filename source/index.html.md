@@ -77,7 +77,7 @@ manadatory | `boolean` | boolean if this question is manadatory for registration
 field_type | `string` | options: [check_box, date_select, radio, select, text, user_group]
 options | `string` | options set for a choice question for check_box, select, or radio
 field_name | `string` | the actual field name
-free_text | `boolean` | ???
+free_text | `boolean` |
 
 # Transactions
 
@@ -133,12 +133,12 @@ Content-Type: application/json
 
 Parameters | Type | Info
 ---------- | ---- | ----
-user_id | `integer` | INFO_HERE
-description | `string` | INFO_HERE
-value | `integer` | INFO_HERE
-balance | `integer` | INFO_HERE
-transaction_type | `string` | INFO_HERE
-created_at | `string` | INFO_HERE
+user_id | `integer` | user id of the user this transaction belongs
+description | `string` | transaction description
+value | `integer` | can be positive or negative. value of points on the transaction
+balance | `integer` | users running balance, at the time of the transaction
+transaction_type | `string` | indicates the event which caused the transaction
+created_at | `string` |
 
 # Users
 
@@ -187,7 +187,10 @@ Content-Type: application/json
   "password" : "IAmBatman",
   "tsandcs" : "true",
   "user_group_id" : "10",
-  "registration_questions" : { }
+  "registration_questions" : {
+    "2" : "Because I'm Batman",
+    "16" : "Alfred"
+  }
 }
 ```
 
@@ -271,8 +274,8 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | `integer` | text
-name | `string` | text
-parent_id | `integer` | text
-default | `boolean` | text
-position | `integer` | text
+id | `integer` | user_group id
+name | `string` | user_group name
+parent_id | `integer` | parent user_group id
+default | `boolean` | indicates if this user_group is the default group for the programme
+position | `integer` | position under the parent user_group, used for ordering
