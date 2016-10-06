@@ -85,10 +85,6 @@ free_text | `boolean` |
 
 This endpoint is designed to list all of a user’s transactions in json format.
 The points transactions will be debits and credits with a description field.
-Each transaction carries with it the points balance for a user as a result of
-this transaction. This means that in order to find a user’s current balance you
-will need to identify the most recent transaction in this list and the balance
-field will be the users current balance.
 
 All transactions listed in the response will be ordered so as to have the most
 recent transaction last in the list.
@@ -99,9 +95,9 @@ platform since a request is made over the api – this balance will be out of da
 On the server side a check will be made that the user_id you are requesting is
 
 - a valid user
-- it is a user for the programme that your api key is scoped to. 
+- it is a user for the programme that your api key is scoped to.
 
-That is to say that you can only retrieve transactions for users of your 
+That is to say that you can only retrieve transactions for users of your
 MyRewards Programme.
 
 ``` http
@@ -128,6 +124,56 @@ Content-Type: application/json
 ### HTTP Request
 
 `GET /api/v2/{user_id}/transactions`
+
+### Attributes
+
+Parameters | Type | Info
+---------- | ---- | ----
+user_id | `integer` | user id of the user this transaction belongs
+description | `string` | transaction description
+value | `integer` | can be positive or negative. value of points on the transaction
+balance | `integer` | users running balance, at the time of the transaction
+transaction_type | `string` | indicates the event which caused the transaction
+created_at | `string` |
+
+## Show User's Last Transaction
+
+This endpoint is designed to show the latest transaction for the given user in
+json format. You can use this endpoint to find the user's current balance.
+
+Please remember that if a user transaction is performed on the MyRewards 2.0
+platform since a request is made over the api – this balance will be out of date.
+
+On the server side a check will be made that the user\_id you are requesting is
+
+- a valid user
+- it is a user for the programme that your api key is scoped to.
+
+That is to say that you can only retrieve the last transaction for users of your
+MyRewards Programme.
+
+``` http
+GET /api/v2/users/123/transactions/last HTTP/1.1
+Authorization: Token token=xxx
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "user_id" : 123,
+  "description" : "transactions",
+  "value" : 100,
+  "balance" : 100,
+  "transaction_type" : "programme points",
+  "created_at" : "date_time"
+}
+```
+
+### HTTP Request
+
+`GET /api/v2/{user_id}/transactions/last`
 
 ### Attributes
 
