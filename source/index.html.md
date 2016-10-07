@@ -346,7 +346,6 @@ Content-Type: application/json
 [
   {
     "id": 196,
-    "programme_id": 72,
     "name": "Superpower",
     "mandatory": true,
     "field_type": "list_values",
@@ -358,7 +357,6 @@ Content-Type: application/json
   },
   {
     "id": 197,
-    "programme_id": 72,
     "name": "Hero name",
     "mandatory": true,
     "field_type": "free_text",
@@ -380,7 +378,6 @@ Content-Type: application/json
 Attribute | Type | Info
 --------- | ---- | ----
 id | `integer` | data\_field id
-programme\_id | `integer` | Programme id to which these data\_field 's belong
 name | `string` | data\_field name
 mandatory | `boolean` | Whether this field is required
 field\_type | `string` | One of: 'free\_text', 'numeric', 'list\_values', 'date'
