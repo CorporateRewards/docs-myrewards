@@ -111,6 +111,7 @@ Content-Type: application/json
 
 [
   {
+    "id": 123,
     "user_id" : 123,
     "description" : "transactions",
     "value" : 100,
@@ -129,6 +130,7 @@ Content-Type: application/json
 
 Parameters | Type | Info
 ---------- | ---- | ----
+id | `integer` | id of this transaction
 user_id | `integer` | user id of the user this transaction belongs
 description | `string` | transaction description
 value | `integer` | can be positive or negative. value of points on the transaction
@@ -162,6 +164,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
+  "id": 123,
   "user_id" : 123,
   "description" : "transactions",
   "value" : 100,
@@ -179,6 +182,7 @@ Content-Type: application/json
 
 Parameters | Type | Info
 ---------- | ---- | ----
+id | `integer` | id of this transaction
 user_id | `integer` | user id of the user this transaction belongs
 description | `string` | transaction description
 value | `integer` | can be positive or negative. value of points on the transaction
