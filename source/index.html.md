@@ -14,7 +14,7 @@ The first thing you will have to find out is the correct API endpoint to use for
 the right environment.
 
 - **Production:** [https://my-rewards.co.uk](https://my-rewards.co.uk)
-- **Staging:** [http://staging.my-rewards.co.uk](http://staging.my-rewards.co.uk)
+- **Staging:** [https://staging.my-rewards.co.uk](https://staging.my-rewards.co.uk)
 
 A programme can have one or more API keys, each of which will be granted
 permission to access different functionality from the API. As a standard, we use
@@ -189,6 +189,58 @@ value | `integer` | can be positive or negative. value of points on the transact
 balance | `integer` | users running balance, at the time of the transaction
 transaction_type | `string` | indicates the event which caused the transaction
 created_at | `string` |
+
+## Create a Points Transaction
+
+**Note this is 'v1' endpoint.** This endpoint is for either crediting or debiting points for a user. Points transactions have a type of either 'Credit' or 'Debit'. A points transaction will also have a variety which will be one of:
+
+Variety | Programme Points affecting? | Permitted Type
+------- | --------------------------- | --------------
+Programme Points | Yes | either
+Points Error | Yes | either
+Programme Budget | Yes | either
+Redemption | No | Debit only
+Person 2 Person Transfer | No | either (credit and debit must both be carried out for each user)
+Order Cancelation | No | Credit only
+Order Adjustment | No | either
+Adjustment | Yes | either
+Account Closure | Programme config dependant | Debit only
+
+``` http
+POST /api/v1/users/123/transactions HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+### HTTP Request
+
+`POST /api/v2/users/123/transactions`
+
+### Parameters
+
+Parameters | Type | Info
+---------- | ---- | ----
+transaction_type | `string` | one of 'Credit' or 'Debit'
+variety | `string` | see above table and ensure validity with transaction_type
+points | `integer` | always greater than 0
+reason | `string` | free text up to 250 characters to describe transaction - appears on user points statement
+
+All parameters are required
+
+### Error responses
+
+Anything other than a 200 will mean that the transaction has failed to go through. It may or may not be appropriate to show only a generic message to indicate failure depending on the use case or level of automation. In either case it is recommended to log the error code and any body/message
+
+*  401 invalid key
+*  402 User does not have enough points
+*  412 Programme does not have enough points
+*  204 User not found
+*  406 Invlalid Transaction
+*  500 Server Error
 
 # Users
 
