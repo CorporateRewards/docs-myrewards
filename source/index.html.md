@@ -192,7 +192,10 @@ created_at | `string` |
 
 ## Create a Points Transaction
 
-**Note this is 'v1' endpoint.** This endpoint is for either crediting or debiting points for a user. Points transactions have a type of either 'Credit' or 'Debit'. A points transaction will also have a variety which will be one of:
+**Note this is 'v1' endpoint.** This endpoint is for either crediting or debiting points for a user.
+This endpoint will respond with the MyRewards transaction id.
+Points transactions have a type of either 'Credit' or 'Debit'.
+A points transaction will also have a variety which will be one of:
 
 Variety | Programme Points affecting? | Permitted Type
 ------- | --------------------------- | --------------
@@ -215,10 +218,14 @@ Content-Type: application/json
 ``` http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
+{
+  "id": 123
+}
 ```
 ### HTTP Request
 
-`POST /api/v2/users/123/transactions`
+`POST /api/v1/users/123/transactions`
 
 ### Parameters
 
