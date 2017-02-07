@@ -100,6 +100,9 @@ On the server side a check will be made that the user_id you are requesting is
 That is to say that you can only retrieve transactions for users of your
 MyRewards Programme.
 
+The remote_transaction_id is documented in the POST endpoint for creating
+transactions, this value is optional, therefore can be `null`
+
 ``` http
 GET /api/v2/users/123/transactions HTTP/1.1
 Authorization: Token token=xxx
@@ -117,6 +120,7 @@ Content-Type: application/json
     "value" : 100,
     "balance" : 100,
     "transaction_type" : "programme points",
+    "remote_transaction_id": "your_id_here",
     "created_at" : "date_time"
   }
 ]
@@ -154,6 +158,9 @@ On the server side a check will be made that the user\_id you are requesting is
 That is to say that you can only retrieve the last transaction for users of your
 MyRewards Programme.
 
+The remote_transaction_id is documented in the POST endpoint for creating
+transactions, this value is optional, therefore can be `null`
+
 ``` http
 GET /api/v2/users/123/transactions/last HTTP/1.1
 Authorization: Token token=xxx
@@ -170,6 +177,7 @@ Content-Type: application/json
   "value" : 100,
   "balance" : 100,
   "transaction_type" : "programme points",
+  "remote_transaction_id": "your_id_here",
   "created_at" : "date_time"
 }
 ```
@@ -188,7 +196,7 @@ description | `string` | transaction description
 value | `integer` | can be positive or negative. value of points on the transaction
 balance | `integer` | users running balance, at the time of the transaction
 transaction_type | `string` | indicates the event which caused the transaction
-created_at | `string` |
+created_at | `string` | datetime indicating when this points transaction was created
 
 ## Create a Points Transaction
 
@@ -232,22 +240,21 @@ Content-Type: application/json
 Parameters | Type | Info
 ---------- | ---- | ----
 transaction_type | `string` | one of 'Credit' or 'Debit'
-variety | `string` | see above table and ensure validity with transaction_type
-points | `integer` | always greater than 0
-reason | `string` | free text up to 250 characters to describe transaction - appears on user points statement
-
-All parameters are required
+variety | `string` | Required - see above table and ensure validity with transaction_type
+points | `integer` | Required - always greater than 0
+reason | `string` | Required - free text up to 250 characters to describe transaction - appears on user points statement
+remote_transaction_id | `string` | Optional - a value that can be used to identify this transaction by the client *Caution - there is no validation or contraints for data supplied under this key/field. This is left to the client system to enforce*
 
 ### Error responses
 
 Anything other than a 200 will mean that the transaction has failed to go through. It may or may not be appropriate to show only a generic message to indicate failure depending on the use case or level of automation. In either case it is recommended to log the error code and any body/message
 
-*  401 invalid key
-*  402 User does not have enough points
-*  412 Programme does not have enough points
-*  204 User not found
-*  406 Invlalid Transaction
-*  500 Server Error
+-  401 invalid key
+-  402 User does not have enough points
+-  412 Programme does not have enough points
+-  204 User not found
+-  406 Invlalid Transaction
+-  500 Server Error
 
 # Users
 
