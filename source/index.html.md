@@ -26,7 +26,8 @@ HTML/HTTP is preferred.
 In order to use our API endpoints, you will need to have an API key created and
 for this key to be granted the relevant permissions. To authenticate requests we
 require you to pass us this key in the form of an HTTP header called
-`Authorization` with the value of `Token token=YOURAPIKEYHERE`.
+`Authorization` with the value set as `Token token=APIKEY` or `TOKEN
+totken=APIKEY:SECRETKEY`.
 
 <aside class="warning">You must set the <strong>Authorization</strong> as detailed above</aside>
 
@@ -128,7 +129,7 @@ Content-Type: application/json
 
 ### HTTP Request
 
-`GET /api/v2/{user_id}/transactions`
+`GET /api/v2/users/{user_id}/transactions`
 
 ### Attributes
 
@@ -184,7 +185,7 @@ Content-Type: application/json
 
 ### HTTP Request
 
-`GET /api/v2/{user_id}/transactions/last`
+`GET /api/v2/users/{user_id}/transactions/last`
 
 ### Attributes
 
@@ -339,10 +340,37 @@ country | `string` | optional
 date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, optional
 telephone | `string` | optional
 mobile | `string` | optional
-password | `string` | minimum length 6 characters, plaintext
+password | `string` | minimum length 6 characters <br> inluding 1 letter, 1 number and one of the following ( @!~<>#$%^&+={}()?£"' )
 tsandcs | `boolean` |
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_questions | `hash` | registration_question_ids and answers in a hash object
+
+## Update User
+
+The update user api is available to update user information. This uses the same
+params as the create user api above. The update user api however does not accept
+the password params.
+
+``` http
+PUT /api/v2/users/123 HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "firstname" : "Joker",
+  "lastname" : "Hahaha"
+}
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+```
+
+### HTTP Request
+`PUT /api/v2/users/{user_id}`
+
+`PATCH /api/v2/users/{user_id}`
 
 # UserGroups
 
