@@ -301,7 +301,6 @@ Content-Type: application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "07876543210",
   "mobile" : "07765432101",
-  "password" : "IAmBatman",
   "tsandcs" : "true",
   "user_group_id" : "10",
   "registration_questions" : {
@@ -340,7 +339,6 @@ country | `string` | optional
 date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, optional
 telephone | `string` | optional
 mobile | `string` | optional
-password | `string` | minimum length 6 characters <br> inluding 1 letter, 1 number and one of the following ( @!~<>#$%^&+={}()?£"' )
 tsandcs | `boolean` |
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_questions | `hash` | registration_question_ids and answers in a hash object
@@ -348,8 +346,7 @@ registration_questions | `hash` | registration_question_ids and answers in a has
 ## Update User
 
 The update user api is available to update user information. This uses the same
-params as the create user api above. The update user api however does not accept
-the password params.
+params as the create user api above.
 
 ``` http
 PUT /api/v2/users/123 HTTP/1.1
