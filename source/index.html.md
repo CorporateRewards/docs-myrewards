@@ -276,6 +276,9 @@ employee data, membership number etc and can be defined as part of your
 programme. These extra data are called registration_questions, for more
 information please see the registration_questions section.
 
+If the user's programme contains pre-existing mandatory questions, their answers
+can be passed in via the registration_answers_attributes key...
+
 Once desired usergroup and any additional registration_questions (and answers)
 for a user are known, a registration request can be processed.
 
@@ -306,7 +309,13 @@ Content-Type: application/json
   "registration_questions" : {
     "2" : "Because I'm Batman",
     "16" : "Alfred"
-  }
+  },
+  "registration_answers_attributes" : [
+    {
+      "registration_question_id" : "10",
+      "answer" : "Batmobile"
+    }
+  ]
 }
 ```
 
@@ -342,6 +351,7 @@ mobile | `string` | optional
 tsandcs | `boolean` |
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_questions | `hash` | registration_question_ids and answers in a hash object
+registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer
 
 ## Update User
 
