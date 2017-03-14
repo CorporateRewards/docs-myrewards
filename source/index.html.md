@@ -26,7 +26,8 @@ HTML/HTTP is preferred.
 In order to use our API endpoints, you will need to have an API key created and
 for this key to be granted the relevant permissions. To authenticate requests we
 require you to pass us this key in the form of an HTTP header called
-`Authorization` with the value of `Token token=YOURAPIKEYHERE`.
+`Authorization` with the value set as `Token token=APIKEY` or `TOKEN
+token=APIKEY:SECRETKEY`.
 
 <aside class="warning">You must set the <strong>Authorization</strong> as detailed above</aside>
 
@@ -128,7 +129,7 @@ Content-Type: application/json
 
 ### HTTP Request
 
-`GET /api/v2/{user_id}/transactions`
+`GET /api/v2/users/{user_id}/transactions`
 
 ### Attributes
 
@@ -184,7 +185,7 @@ Content-Type: application/json
 
 ### HTTP Request
 
-`GET /api/v2/{user_id}/transactions/last`
+`GET /api/v2/users/{user_id}/transactions/last`
 
 ### Attributes
 
@@ -275,6 +276,9 @@ employee data, membership number etc and can be defined as part of your
 programme. These extra data are called registration_questions, for more
 information please see the registration_questions section.
 
+If the user's programme contains pre-existing mandatory questions, their answers
+can be passed in via the registration_answers_attributes key...
+
 Once desired usergroup and any additional registration_questions (and answers)
 for a user are known, a registration request can be processed.
 
@@ -300,13 +304,18 @@ Content-Type: application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "07876543210",
   "mobile" : "07765432101",
-  "password" : "IAmBatman",
   "tsandcs" : "true",
   "user_group_id" : "10",
   "registration_questions" : {
     "2" : "Because I'm Batman",
     "16" : "Alfred"
-  }
+  },
+  "registration_answers_attributes" : [
+    {
+      "registration_question_id" : "10",
+      "answer" : "Batmobile"
+    }
+  ]
 }
 ```
 
@@ -339,10 +348,36 @@ country | `string` | optional
 date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, optional
 telephone | `string` | optional
 mobile | `string` | optional
-password | `string` | minimum length 6 characters, plaintext
 tsandcs | `boolean` |
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_questions | `hash` | registration_question_ids and answers in a hash object
+registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer
+
+## Update User
+
+The update user api is available to update user information. This uses the same
+params as the create user api above.
+
+``` http
+PUT /api/v2/users/123 HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "firstname" : "Joker",
+  "lastname" : "Hahaha"
+}
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+```
+
+### HTTP Request
+`PUT /api/v2/users/{user_id}`
+
+`PATCH /api/v2/users/{user_id}`
 
 # UserGroups
 
