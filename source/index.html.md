@@ -276,11 +276,9 @@ employee data, membership number etc and can be defined as part of your
 programme. These extra data are called registration_questions, for more
 information please see the registration_questions section.
 
-If the user's programme contains pre-existing mandatory questions, their answers
-can be passed in via the registration_answers_attributes key...
-
-Once desired usergroup and any additional registration_questions (and answers)
-for a user are known, a registration request can be processed.
+Answers to the registration questions are provided in an array of objects, nested
+under the key `registration_answers_attributes`. The nested objects themselves must
+have the keys `registration_question_id` and `answer`.
 
 ``` http
 POST /api/v2/users HTTP/1.1
@@ -306,14 +304,14 @@ Content-Type: application/json
   "mobile" : "07765432101",
   "tsandcs" : "true",
   "user_group_id" : "10",
-  "registration_questions" : {
-    "2" : "Because I'm Batman",
-    "16" : "Alfred"
-  },
   "registration_answers_attributes" : [
     {
-      "registration_question_id" : "10",
-      "answer" : "Batmobile"
+      "registration_question_id" : "2",
+      "answer" : "Because I'm Batman"
+    },
+    {
+      "registration_question_id" : "16",
+      "answer" : "Alfred"
     }
   ]
 }
