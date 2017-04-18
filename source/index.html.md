@@ -276,6 +276,8 @@ employee data, membership number etc and can be defined as part of your
 programme. These extra data are called registration_questions, for more
 information please see the registration_questions section.
 
+Telephone and mobile number fields must be supplied in international format, meaning startig with a '+' followed by the international country code (I.e. the UK is 44) followed by at least 8 numeric characters.
+
 Answers to the registration questions are provided in an array of objects, nested
 under the key `registration_answers_attributes`. The nested objects themselves must
 have the keys `registration_question_id` and `answer`.
@@ -300,8 +302,8 @@ Content-Type: application/json
   "county" : "New Jersey",
   "country" : "United States",
   "date_of_birth" : "1980-02-19",
-  "telephone" : "07876543210",
-  "mobile" : "07765432101",
+  "telephone" : "+447876543210",
+  "mobile" : "+447765432101",
   "tsandcs" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
@@ -344,8 +346,8 @@ postcode | `string` |
 county | `string` | optional
 country | `string` | optional
 date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, optional
-telephone | `string` | optional
-mobile | `string` | optional
+telephone | `string` | optional - if supplied must be international format (starting with a '+' followed by international dialing code - UK is 44 - followed by at least 8 numeric characters)
+mobile | `string` | optional - if supplied must be international format (starting with a '+' followed by international dialing code - UK is 44 - followed by at least 8 numeric characters)
 tsandcs | `boolean` |
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_questions | `hash` | registration_question_ids and answers in a hash object
