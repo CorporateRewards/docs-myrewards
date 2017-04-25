@@ -254,7 +254,7 @@ Anything other than a 200 will mean that the transaction has failed to go throug
 -  402 User does not have enough points
 -  412 Programme does not have enough points
 -  204 User not found
--  406 Invlalid Transaction
+-  406 Invalid Transaction
 -  500 Server Error
 
 # Users
