@@ -18,7 +18,7 @@ the right environment.
 
 A programme can have one or more API keys, each of which will be granted
 permission to access different functionality from the API. As a standard, we use
-RESTful json endpoints that will accept either HTML/HTTP form data or json data,
+RESTful json endpoints that will accept eithey r HTML/HTTP form data or json data,
 HTML/HTTP is preferred.
 
 # Authentication
@@ -218,10 +218,21 @@ Order Adjustment | No | either
 Adjustment | Yes | either
 Account Closure | Programme config dependant | Debit only
 
+Example below shows a transaction that will credit 100 points to a user debitted from the programme balance. On the users points statement a reason of 'Employee of the month' will be shown.
+
 ``` http
 POST /api/v1/users/123/transactions HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
+
+{
+  "transaction":  {
+    "transaction_type": "Credit",
+    "variety": "Programme Points",
+    "points": 100,
+    "reason": "Employee of the month"
+  }
+}
 ```
 
 ``` http
@@ -258,6 +269,8 @@ Anything other than a 200 will mean that the transaction has failed to go throug
 -  500 Server Error
 
 # Users
+
+In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate user with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore there will be other fields that have been declared mandatory for your programme and user creation (POST) will fail if these values are not populated or provided.
 
 ## Create User
 
@@ -322,6 +335,38 @@ Content-Type: application/json
 ``` http
 HTTP/1.1 201 CREATED
 Content-Type: Application/json
+
+{
+  "id": 123
+  "username" : "bwayne",
+  "email" : "bruce@wayneinc.com",
+  "title" : "Mr",
+  "firstname" : "Bruce",
+  "lastname" : "Wayne",
+  "company" : "Wayne Inc",
+  "job_title" : "CEO",
+  "address_1" : "Wayne Manor",
+  "address_2" : "1007 Mountain Drive",
+  "town" : "Gotham",
+  "postcode" : "G1 1BM",
+  "county" : "New Jersey",
+  "country" : "United States",
+  "date_of_birth" : "1980-02-19",
+  "telephone" : "+447876543210",
+  "mobile" : "+447765432101",
+  "tsandcs" : "true",
+  "user_group_id" : "10",
+  "registration_answers_attributes" : [
+    {
+      "registration_question_id" : "2",
+      "answer" : "Because I'm Batman"
+    },
+    {
+      "registration_question_id" : "16",
+      "answer" : "Alfred"
+    }
+  ]
+}
 ```
 
 ### HTTP Request
@@ -332,26 +377,25 @@ Content-Type: Application/json
 
 Parameters | Type | Info
 ---------- | ---- | ----
-username | `string` | must be unique to the programme.
-email | `string` | valid email address and unique to the programme.
+username | `string` | may be required, see user identification above, must be unique to the programme if required
+email | `string` | valid email address and may be required, see user identification above, must be unique to the programme if required
 title | `string` | salutation (Mr, Mrs, Ms, etc) no strict validation.
-firstname | `string` |
-lastname | `string` |
-company | `string` |
-job_title | `string` |
-address_1 | `string` |
+firstname | `string` | Required
+lastname | `string` | Required
+company | `string` | Potentially required - see programme data requirements
+job_title | `string` | Potentially required - see programme data requirements
+address_1 | `string` | Potentially required - see programme data requirements
 address_2 | `string` | optional
-town | `string` |
-postcode | `string` |
-county | `string` | optional
-country | `string` | optional
-date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, optional
-telephone | `string` | optional - if supplied must be international format (starting with a '+' followed by international dialing code - UK is 44 - followed by at least 8 numeric characters)
-mobile | `string` | optional - if supplied must be international format (starting with a '+' followed by international dialing code - UK is 44 - followed by at least 8 numeric characters)
-tsandcs | `boolean` |
+town | `string` | Potentially required - see programme data requirements
+postcode | `string` | Potentially required - see programme data requirements
+county | `string` | Potentially required - see programme data requirements
+country | `string` | Potentially required - see programme data requirements
+date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, Potentially required - see programme data requirements
+telephone | `string` | Potentially required - see programme data requirements - if supplied must be international format (starting with a '+' followed by international dialing code - UK is 44 - followed by at least 8 numeric characters)
+mobile | `string` | Potentially required - see programme data requirements - if supplied must be international format (starting with a '+' followed by international dialing code - UK is 44 - followed by at least 8 numeric characters)
+tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
-registration_questions | `hash` | registration_question_ids and answers in a hash object
-registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer
+registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
 
 ## Update User
 
@@ -372,6 +416,38 @@ Content-Type: application/json
 ``` http
 HTTP/1.1 200 OK
 Content-Type: Application/json
+
+{
+  "id": 123
+  "username" : "bwayne",
+  "email" : "bruce@wayneinc.com",
+  "title" : "Mr",
+  "firstname" : "Joker",
+  "lastname" : "Hahaha",
+  "company" : "Wayne Inc",
+  "job_title" : "CEO",
+  "address_1" : "Wayne Manor",
+  "address_2" : "1007 Mountain Drive",
+  "town" : "Gotham",
+  "postcode" : "G1 1BM",
+  "county" : "New Jersey",
+  "country" : "United States",
+  "date_of_birth" : "1980-02-19",
+  "telephone" : "+447876543210",
+  "mobile" : "+447765432101",
+  "tsandcs" : "true",
+  "user_group_id" : "10",
+  "registration_answers_attributes" : [
+    {
+      "registration_question_id" : "2",
+      "answer" : "Because I'm Batman"
+    },
+    {
+      "registration_question_id" : "16",
+      "answer" : "Alfred"
+    }
+  ]
+}
 ```
 
 ### HTTP Request
