@@ -289,7 +289,7 @@ employee data, membership number etc and can be defined as part of your
 programme. These extra data are called registration_questions, for more
 information please see the registration_questions section.
 
-Telephone and mobile number fields must be supplied in international format, meaning startig with a '+' followed by the international country code (I.e. the UK is 44) followed by at least 8 numeric characters.
+Telephone and mobile number fields must be supplied in international format, meaning starting with a '+' followed by the international country code (I.e. the UK is 44) followed by at least 8 numeric characters.
 
 Answers to the registration questions are provided in an array of objects, nested
 under the key `registration_answers_attributes`. The nested objects themselves must
@@ -318,6 +318,7 @@ Content-Type: application/json
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
   "tsandcs" : "true",
+  "consented" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
     {
@@ -355,6 +356,7 @@ Content-Type: Application/json
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
   "tsandcs" : "true",
+  "consented" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
     {
@@ -396,6 +398,7 @@ mobile | `string` | Potentially required - see programme data requirements - if 
 tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
+consented | `boolean` | Potentially required. If the programme has a privacy_policy active, this value will need setting to true.
 
 ## Update User
 
@@ -678,3 +681,56 @@ user\_id | `user_id` | The MyRewards user ID for the user to assign points to
 You will also need to provide any custom data fields as extra keys for
 each piece of claim data. For instance, if 'Venue Code' was a mandatory data field
 you would also need to send that for each claim.
+
+
+
+# Performance - Sales Data - Specifying a Promotion
+
+## Create Sales Data
+
+Endpoint to create claims against specific promotion.
+
+``` http
+POST /api/v2/performance/data HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "promotion_id": 1,
+  "data": [
+    {
+      "date_of_sale": "2016-10-01",
+      "product_or_activity": "Booking type 1",
+      "quantity": 1,
+      "username": "user@example.com",
+      "Custom Data Field Date": "2016-10-01",
+      "Custom Data Field Text": "DV1"
+    }
+  ]
+}
+```
+
+``` http
+HTTP/1.1 201 CREATED
+```
+
+### HTTP Request
+
+`POST /api/v2/performance/promotions/1/data`
+
+### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+date\_of\_sale | `date` | The date when this piece of data was created
+product\_or\_activity | `string` | The SKU for the performance product to claim against
+quantity | `integer` | The quantity of products sold
+username | `string` | The username or email for the user to assign points to
+user\_id | `user_id` | The MyRewards user ID for the user to assign points to
+promotion\_id | `integer` | The ID of a valid promotion to assign the claim to
+
+As above you will also need to provide any custom data fields as extra keys for
+each piece of claim data. For instance, if 'Venue Code' was a mandatory data field
+you would also need to send that for each claim. The Promotion ID will need to
+correspond to an existing & valid promotion
+
