@@ -318,7 +318,7 @@ Content-Type: application/json
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
   "tsandcs" : "true",
-  "consented" : "true",
+  "consented" : "false",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
     {
@@ -356,7 +356,7 @@ Content-Type: Application/json
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
   "tsandcs" : "true",
-  "consented" : "true",
+  "consented" : "false",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
     {
