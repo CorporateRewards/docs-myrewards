@@ -398,7 +398,7 @@ mobile | `string` | Potentially required - see programme data requirements - if 
 tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
-consented | `boolean` | Potentially required. If the programme has a privacy_policy active, this value will need setting to true.
+consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy. 
 
 ## Update User
 
