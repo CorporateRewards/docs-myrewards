@@ -589,7 +589,8 @@ Content-Type: application/json
   {
     "id": 196,
     "promotion_id": 1,
-    "name": "Superpower",
+    "name": "superpower",
+    "label": "Superpower",
     "mandatory": true,
     "field_type": "list_values",
     "answers": "Super-strengh\r\nFlight\r\nOther",
@@ -601,7 +602,8 @@ Content-Type: application/json
   {
     "id": 197,
     "promotion_id": 1,
-    "name": "Hero name",
+    "name": "hero_name",
+    "label": "Hero name",
     "mandatory": true,
     "field_type": "free_text",
     "answers": null,
@@ -623,7 +625,8 @@ Attribute | Type | Info
 --------- | ---- | ----
 id | `integer` | data\_field id
 promotion_id | `integer` | promotion id
-name | `string` | data\_field name
+name | `string` | data\_field name in snake case format.
+label | `string` | data\_field label.
 mandatory | `boolean` | Whether this field is required
 field\_type | `string` | One of: 'free\_text', 'numeric', 'list\_values', 'date'
 answers | `string` | A '\r\n' separated list of allowed answers
@@ -653,8 +656,8 @@ Content-Type: application/json
       "product_or_activity": "Booking type 1",
       "quantity": 1,
       "username": "user@example.com",
-      "Custom Data Field Date": "2016-10-01",
-      "Custom Data Field Text": "DV1"
+      "custom_data_field_date": "2016-10-01",
+      "custom_data_field_text": "DV1"
     }
   ]
 }
@@ -679,7 +682,7 @@ username | `string` | The username or email for the user to assign points to
 user\_id | `user_id` | The MyRewards user ID for the user to assign points to
 
 You will also need to provide any custom data fields as extra keys for
-each piece of claim data. For instance, if 'Venue Code' was a mandatory data field
+each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
 you would also need to send that for each claim.
 
 
@@ -703,8 +706,8 @@ Content-Type: application/json
       "product_or_activity": "Booking type 1",
       "quantity": 1,
       "username": "user@example.com",
-      "Custom Data Field Date": "2016-10-01",
-      "Custom Data Field Text": "DV1"
+      "custom_data_field_date": "2016-10-01",
+      "custom_data_field_text": "DV1"
     }
   ]
 }
