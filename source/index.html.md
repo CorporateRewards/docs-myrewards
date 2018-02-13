@@ -683,7 +683,7 @@ user\_id | `user_id` | The MyRewards user ID for the user to assign points to
 
 You will also need to provide any custom data fields as extra keys for
 each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
-you would also need to send that for each claim.
+you would also need to send that for each claim in the format 'venue_code'.
 
 
 
@@ -733,7 +733,7 @@ user\_id | `user_id` | The MyRewards user ID for the user to assign points to
 promotion\_id | `integer` | The ID of a valid promotion to assign the claim to
 
 As above you will also need to provide any custom data fields as extra keys for
-each piece of claim data. For instance, if 'Venue Code' was a mandatory data field
-you would also need to send that for each claim. The Promotion ID will need to
+each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
+you would also need to send that for each claim in the format 'venue_code'. The Promotion ID will need to
 correspond to an existing & valid promotion
 
