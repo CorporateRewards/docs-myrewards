@@ -647,7 +647,7 @@ Content-Type: application/json
   "data": [
     {
       "date_of_sale": "2016-10-01",
-      "product_or_activity": "Booking type 1",
+      "product_or_activity_ref": "Booking type 1",
       "quantity": 1,
       "username": "user@example.com",
       "custom_data_field_date": "2016-10-01",
@@ -696,7 +696,7 @@ Content-Type: application/json
   "data": [
     {
       "date_of_sale": "2016-10-01",
-      "product_or_activity": "Booking type 1",
+      "product_or_activity_ref": "Booking type 1",
       "quantity": 1,
       "username": "user@example.com",
       "custom_data_field_date": "2016-10-01",
