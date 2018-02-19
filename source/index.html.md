@@ -536,8 +536,7 @@ Content-Type: application/json
     "answers": "Super-strengh\r\nFlight\r\nOther",
     "created_at": "2016-04-14T13:34:03.000+01:00",
     "updated_at": "2016-04-14T13:34:03.000+01:00",
-    "position": 1,
-    "selector": "superpower"
+    "position": 1
   },
   {
     "id": 197,
@@ -547,8 +546,7 @@ Content-Type: application/json
     "answers": null,
     "created_at": "2016-04-14T13:35:03.000+01:00",
     "updated_at": "2016-04-14T13:35:03.000+01:00",
-    "position": 2,
-    "selector": "hero-name"
+    "position": 2
   }
 ]
 ```
@@ -569,7 +567,6 @@ answers | `string` | A '\r\n' separated list of allowed answers
 created\_at | `date` | The time at which this field was created
 updated\_at | `date` | The time at which this field was last updated
 position | `integer` | Position of the data field within the form
-selector | `selector` | The selector given to this data field on the form
 
 ## List Data Fields for a Promotion
 
@@ -596,8 +593,7 @@ Content-Type: application/json
     "answers": "Super-strengh\r\nFlight\r\nOther",
     "created_at": "2016-04-14T13:34:03.000+01:00",
     "updated_at": "2016-04-14T13:34:03.000+01:00",
-    "position": 1,
-    "selector": "superpower"
+    "position": 1
   },
   {
     "id": 197,
@@ -609,8 +605,7 @@ Content-Type: application/json
     "answers": null,
     "created_at": "2016-04-14T13:35:03.000+01:00",
     "updated_at": "2016-04-14T13:35:03.000+01:00",
-    "position": 2,
-    "selector": "hero-name"
+    "position": 2
   }
 ]
 ```
@@ -633,7 +628,6 @@ answers | `string` | A '\r\n' separated list of allowed answers
 created\_at | `date` | The time at which this field was created
 updated\_at | `date` | The time at which this field was last updated
 position | `integer` | Position of the data field within the form
-selector | `selector` | The selector given to this data field on the form
 
 # Performance - Sales Data
 
@@ -675,11 +669,11 @@ HTTP/1.1 201 CREATED
 
 Attribute | Type | Info
 --------- | ---- | ----
-date\_of\_sale | `date` | The date when this piece of data was created
-product\_or\_activity | `string` | The SKU for the performance product to claim against
+sale\_date | `date` | The date when this piece of data was created
+product\_or\_activity\_ref | `string` | The SKU for the performance product to claim against
 quantity | `integer` | The quantity of products sold
-username | `string` | The username or email for the user to assign points to
-user\_id | `user_id` | The MyRewards user ID for the user to assign points to
+username | `string` | The username or email for the user to assign points to (Either this or the `user_id` field needs to be supplied.)
+user\_id | `user_id` | The MyRewards user ID for the user to assign points to (Either this or the `username` field needs to be supplied.)
 
 You will also need to provide any custom data fields as extra keys for
 each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
@@ -699,7 +693,6 @@ Authorization: Token token=xxx
 Content-Type: application/json
 
 {
-  "promotion_id": 1,
   "data": [
     {
       "date_of_sale": "2016-10-01",
@@ -725,12 +718,11 @@ HTTP/1.1 201 CREATED
 
 Attribute | Type | Info
 --------- | ---- | ----
-date\_of\_sale | `date` | The date when this piece of data was created
-product\_or\_activity | `string` | The SKU for the performance product to claim against
+sale\_date | `date` | The date when this piece of data was created
+product\_or\_activity\_ref | `string` | The SKU for the performance product to claim against
 quantity | `integer` | The quantity of products sold
-username | `string` | The username or email for the user to assign points to
-user\_id | `user_id` | The MyRewards user ID for the user to assign points to
-promotion\_id | `integer` | The ID of a valid promotion to assign the claim to
+username | `string` | The username or email for the user to assign points to ( Either this or the `user_id` field needs to be supplied. )
+user\_id | `user_id` | The MyRewards user ID for the user to assign points to ( Either this or the `username` field needs to be supplied. )
 
 As above you will also need to provide any custom data fields as extra keys for
 each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
