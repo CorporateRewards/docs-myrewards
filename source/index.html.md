@@ -319,6 +319,7 @@ Content-Type: application/json
   "mobile" : "+447765432101",
   "tsandcs" : "true",
   "consented" : "false",
+  "marketing_consented" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
     {
@@ -357,6 +358,7 @@ Content-Type: Application/json
   "mobile" : "+447765432101",
   "tsandcs" : "true",
   "consented" : "false",
+  "marketing_consented" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
     {
@@ -399,6 +401,7 @@ tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
 consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy. 
+marketing_consented | `boolean` | Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy. 
 
 ## Update User
 
