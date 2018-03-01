@@ -649,7 +649,7 @@ Content-Type: application/json
 {
   "data": [
     {
-      "date_of_sale": "2016-10-01",
+      "sale_date": "2016-10-01",
       "product_or_activity_ref": "Booking type 1",
       "quantity": 1,
       "username": "user@example.com",
@@ -698,7 +698,7 @@ Content-Type: application/json
 {
   "data": [
     {
-      "date_of_sale": "2016-10-01",
+      "sale_date": "2016-10-01",
       "product_or_activity_ref": "Booking type 1",
       "quantity": 1,
       "username": "user@example.com",
