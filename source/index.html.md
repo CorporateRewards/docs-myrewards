@@ -13,8 +13,8 @@ Welcome to the MyRewards API documentation.
 The first thing you will have to find out is the correct API endpoint to use for
 the right environment.
 
-- **Production:** [https://my-rewards.co.uk](https://my-rewards.co.uk)
 - **Staging:** [https://staging.my-rewards.co.uk](https://staging.my-rewards.co.uk)
+- For production access please ask your Corporate Rewards contact
 
 A programme can have one or more API keys, each of which will be granted
 permission to access different functionality from the API. As a standard, we use
@@ -138,9 +138,10 @@ Parameters | Type | Info
 id | `integer` | id of this transaction
 user_id | `integer` | user id of the user this transaction belongs
 description | `string` | transaction description
-value | `integer` | can be positive or negative. value of points on the transaction
+value | `integer` | can be positive or negative. value of points on the transaction. Credit to the balance will be shown as a positive integer and debits will be negative
 balance | `integer` | users running balance, at the time of the transaction
 transaction_type | `string` | indicates the event which caused the transaction
+remote_transaction_id | `integer` | optional - indicates a remote systems unique identifier for this transaction
 created_at | `string` |
 
 ## Show User's Last Transaction
@@ -197,6 +198,7 @@ description | `string` | transaction description
 value | `integer` | can be positive or negative. value of points on the transaction
 balance | `integer` | users running balance, at the time of the transaction
 transaction_type | `string` | indicates the event which caused the transaction
+remote_transaction_id | `integer` | optional - indicates a remote systems unique identifier for this transaction  |   |
 created_at | `string` | datetime indicating when this points transaction was created
 
 ## Create a Points Transaction
@@ -208,7 +210,7 @@ A points transaction will also have a variety which will be one of:
 
 Variety | Programme Points affecting? | Permitted Type
 ------- | --------------------------- | --------------
-Programme Points | Yes | either
+Programme points | Yes | either
 Points Error | Yes | either
 Programme Budget | Yes | either
 Redemption | No | Debit only
@@ -228,7 +230,7 @@ Content-Type: application/json
 {
   "transaction":  {
     "transaction_type": "Credit",
-    "variety": "Programme Points",
+    "variety": "Programme points",
     "points": 100,
     "reason": "Employee of the month"
   }
@@ -400,8 +402,8 @@ mobile | `string` | Potentially required - see programme data requirements - if 
 tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
-consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy. 
-marketing_consented | `boolean` | Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy. 
+consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
+marketing_consented | `boolean` | Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
 
 ## Update User
 
@@ -731,4 +733,3 @@ As above you will also need to provide any custom data fields as extra keys for
 each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
 you would also need to send that for each claim in the format 'venue_code'. The Promotion ID will need to
 correspond to an existing & valid promotion
-
