@@ -634,57 +634,6 @@ created\_at | `date` | The time at which this field was created
 updated\_at | `date` | The time at which this field was last updated
 position | `integer` | Position of the data field within the form
 
-# Performance - Sales Data
-
-## Create Sales Data
-
-Endpoint to create claims against promotions and performance products.
-
-If the creation of one claim fails, either because it is invalid or because the
-programme does not have enough points, all of the claims will fail to create.
-
-``` http
-POST /api/v2/performance/data HTTP/1.1
-Authorization: Token token=xxx
-Content-Type: application/json
-
-{
-  "data": [
-    {
-      "sale_date": "2016-10-01",
-      "product_or_activity_ref": "Booking type 1",
-      "quantity": 1,
-      "username": "user@example.com",
-      "custom_data_field_date": "2016-10-01",
-      "custom_data_field_text": "DV1"
-    }
-  ]
-}
-```
-
-``` http
-HTTP/1.1 201 CREATED
-```
-
-### HTTP Request
-
-`POST /api/v2/performance/data`
-
-### Attributes
-
-Attribute | Type | Info
---------- | ---- | ----
-sale\_date | `date` | The date when this piece of data was created
-product\_or\_activity\_ref | `string` | The SKU for the performance product to claim against
-quantity | `integer` | The quantity of products sold
-username | `string` | The username or email for the user to assign points to (Either this or the `user_id` field needs to be supplied.)
-user\_id | `user_id` | The MyRewards user ID for the user to assign points to (Either this or the `username` field needs to be supplied.)
-
-You will also need to provide any custom data fields as extra keys for
-each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
-you would also need to send that for each claim in the format 'venue_code'.
-
-
 
 # Performance - Sales Data - Specifying a Promotion
 
