@@ -516,62 +516,7 @@ default | `boolean` | indicates if this user_group is the default group for the 
 position | `integer` | position under the parent user_group, used for ordering
 
 
-# Performance - Data Fields
-
-## List Data Fields for a Programme
-
-A simple endpoint to fetch a list of the data fields for a performance module
-enabled programme. Returns an array of data fields as a flat list.
-
-``` http
-GET /api/v2/performance/data_fields HTTP/1.1
-Authorization: Token token=xxx
-```
-
-``` http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-[
-  {
-    "id": 196,
-    "name": "Superpower",
-    "mandatory": true,
-    "field_type": "list_values",
-    "answers": "Super-strengh\r\nFlight\r\nOther",
-    "created_at": "2016-04-14T13:34:03.000+01:00",
-    "updated_at": "2016-04-14T13:34:03.000+01:00",
-    "position": 1
-  },
-  {
-    "id": 197,
-    "name": "Hero name",
-    "mandatory": true,
-    "field_type": "free_text",
-    "answers": null,
-    "created_at": "2016-04-14T13:35:03.000+01:00",
-    "updated_at": "2016-04-14T13:35:03.000+01:00",
-    "position": 2
-  }
-]
-```
-
-### HTTP Request
-
-`GET /api/v2/performance/data_fields`
-
-### Attributes
-
-Attribute | Type | Info
---------- | ---- | ----
-id | `integer` | data\_field id
-name | `string` | data\_field name
-mandatory | `boolean` | Whether this field is required
-field\_type | `string` | One of: 'free\_text', 'numeric', 'list\_values', 'date'
-answers | `string` | A '\r\n' separated list of allowed answers
-created\_at | `date` | The time at which this field was created
-updated\_at | `date` | The time at which this field was last updated
-position | `integer` | Position of the data field within the form
+# Performance Module
 
 ## List Data Fields for a Promotion
 
@@ -634,8 +579,6 @@ created\_at | `date` | The time at which this field was created
 updated\_at | `date` | The time at which this field was last updated
 position | `integer` | Position of the data field within the form
 
-
-# Performance - Sales Data - Specifying a Promotion
 
 ## Create Sales Data
 
