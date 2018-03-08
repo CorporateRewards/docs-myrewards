@@ -688,10 +688,10 @@ correspond to an existing & valid promotion
 
 ## Creating a Product
 
-Endpoint to create performance products for a programme with the performance module enabled
+Endpoint to create performance products for a programme with the performance module enabled.
 
 ``` http
-POST /api/v2/performance/performance_products HTTP/1.1
+POST /api/v2/performance/performance_product_batches HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -747,7 +747,7 @@ Content-Type: application/json
 
 ### HTTP Request
 
-`POST /api/v2/performance/performance_products`
+`POST /api/v2/performance/performance_product_batches`
 
 ### Attributes
 
