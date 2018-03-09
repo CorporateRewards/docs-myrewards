@@ -625,3 +625,78 @@ As above you will also need to provide any custom data fields as extra keys for
 each piece of claim data in snake case format. For instance, if 'Venue Code' was a mandatory data field
 you would also need to send that for each claim in the format 'venue_code'. The Promotion ID will need to
 correspond to an existing & valid promotion
+
+
+# Performance - Performance Products
+
+## Creating a Product
+
+Endpoint to create performance products for a programme with the performance module enabled.
+
+``` http
+POST /api/v2/performance/performance_product_batches HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+    "performance_products":[
+        {
+            "performance_category_id": 1,
+            "name": "Test Product 1",
+            "ref": "abc1236",
+            "product_type": "product",
+            "value": 10,
+            "description": "some description"
+        },
+        {
+            "performance_category_id": 1,
+            "name": "Test Product 2",
+            "ref": "abc5766",
+            "product_type": "product",
+            "value": 10,
+            "description": "some description"
+        }
+    ]
+}
+```
+
+``` http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+[
+    {
+        "id": 1,
+        "peformance_category_id": 1,
+        "name": "Test Product 1",
+        "ref": "abc1236",
+        "product_type": "product",
+        "value": 10,
+        "description": "some description"
+    },
+    {
+        "id": 2,
+        "peformance_category_id": 1,
+        "name": "Test Product 2",
+        "ref": "abc5766",
+        "product_type": "product",
+        "value": 10,
+        "description": "some description"
+    }
+]
+```
+
+### HTTP Request
+
+`POST /api/v2/performance/performance_product_batches`
+
+### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+performance\_category\_id | `integer` | The id of the category the product will belong to. This must be valid for your programme
+name | `string` | The name of the product. Must be unique
+ref | `string` | The reference for the product. Must be unique
+product\_type | `string` | Must be either 'product' or 'activity'
+value | `integer` | A positive two digit number. Must be the value in RRP or the cost value of the product in your programme's currency. If the product\_type is 'product', this must be provided
+description | `text` | Some text describing the product. Optional
