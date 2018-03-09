@@ -698,7 +698,6 @@ Content-Type: application/json
 {
     "performance_products":[
         {
-            "programme_id": 1,
             "performance_category_id": 1,
             "name": "Test Product 1",
             "ref": "abc1236",
@@ -707,7 +706,6 @@ Content-Type: application/json
             "description": "some description"
         },
         {
-            "programme_id": 1,
             "performance_category_id": 1,
             "name": "Test Product 2",
             "ref": "abc5766",
