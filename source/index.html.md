@@ -623,6 +623,44 @@ user\_id | `user_id` | The MyRewards user ID for the user to assign points to ( 
 
 You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing & valid promotion
 
+# Performance - Performance Categories
+
+## List Performance Categories
+
+Endpoint to fetch a list of the performance categories for a performance module enabled programme
+
+``` http
+GET /api/v2/performance/performance_categories HTTP/1.1
+Authorization: Token token=xxx
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+    {
+        "id": 1,
+        "name": "Category Name 1"
+    },
+    {
+        "id": 2,
+        "name": "Category Name 2"
+    }
+]
+```
+
+### HTTP Request
+
+`GET /api/v2/performance/performance_categories`
+
+### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+id | `integer` | The id of the performance category
+name | `string` | The name of the performance category
+
+
 # Performance - Performance Products
 
 ## Creating a Product
