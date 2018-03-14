@@ -623,7 +623,7 @@ user\_id | `user_id` | The MyRewards user ID for the user to assign points to ( 
 
 You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing & valid promotion
 
-# Performance - Performance Categories
+# Performance Categories
 
 ## List Performance Categories
 
@@ -661,7 +661,7 @@ id | `integer` | The id of the performance category
 name | `string` | The name of the performance category
 
 
-# Performance - Performance Products
+# Performance Products
 
 ## Creating a Product
 
@@ -735,8 +735,6 @@ product\_type | `string` | Must be either 'product' or 'activity'
 value | `integer` | A positive two digit number. Must be the value in RRP or the cost value of the product in your programme's currency. If the product\_type is 'product', this must be provided
 description | `text` | Some text describing the product. Optional
 
-
-# Performance - Performance Products
 
 ## Updating a Product
 
