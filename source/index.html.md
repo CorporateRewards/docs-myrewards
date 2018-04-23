@@ -902,7 +902,7 @@ Attribute | Type | Info
 `value` | `integer` | Required, must be a positive integer. Points value of the IPV
 `description` | `string` | Optional, text field
 `expiry_date` | `date` | Required, must be in the future and in format `YYYY-MM-DD`
-`send_email` | `string` | Optional, valid email address to which the code will be sent. If provided, the response should have `issued` set to `true`
+`send_email` | `string` | Optional, valid email address to which the code will be sent. If provided, the 'Send a code' email messages must be configured. Response will have `issued` set to `true`
 
 ```http
 POST /api/v2/ipvs HTTP/1.1
