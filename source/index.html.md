@@ -102,7 +102,7 @@ HTTP/1.1 201 CREATED
 Content-Type: Application/json
 
 {
-  "id": 123
+  "id": 123,
   "username" : "bwayne",
   "email" : "bruce@wayneinc.com",
   "title" : "Mr",
@@ -187,7 +187,7 @@ HTTP/1.1 200 OK
 Content-Type: Application/json
 
 {
-  "id": 123
+  "id": 123,
   "username" : "bwayne",
   "email" : "bruce@wayneinc.com",
   "title" : "Mr",
@@ -881,3 +881,88 @@ ref | `string` | The reference for the product. Must be unique
 product\_type | `string` | Must be either 'product' or 'activity'
 value | `integer` | A positive two digit number. Must be the value in RRP or the cost value of the product in your programme's currency. If the product\_type is 'product', this must be provided
 description | `text` | Some text describing the product. Optional
+
+
+# Reward Instant Point Vouchers (IPV)
+
+## Create a Reward IPV code
+
+Generate Reward IPV codes for Programmes with the Rewards Module. 
+
+### HTTP Request
+
+```http
+POST /api/v2/ipvs
+```
+
+### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+`value` | `integer` | Required, must be a positive integer. Points value of the IPV
+`description` | `string` | Optional, text field
+`expiry_date` | `date` | Required, must be in the future and in format `YYYY-MM-DD`
+`send_email` | `string` | Optional, valid email address to which the code will be sent. If provided, the response should have `issued` set to `true`
+
+```http
+POST /api/v2/ipvs HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+    "value" : 1000,
+    "description" : "Competition winner.",
+    "expiry_date" : "2025-12-31",
+    "send_email" : "john.doe@noemail.com"
+}
+```
+
+```http
+HTTP/1.1 201 CREATED
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "value" : 1000,
+    "description" : "Competition winner.",
+    "expiry_date" : "2025-12-31",
+    "send_email" : "john.doe@noemail.com",
+    "code_value" : "XXXX-YYYY-ZZZZ",
+    "batch_reference" : "SSSS",
+    "state" : "active",
+    "issued": false,
+    "programme_id" : 123,
+    "user_id" : 25
+}
+```
+
+## Show an IPV
+
+To view the details of an IPV code.
+
+### HTTP Request
+
+```http
+GET /api/v2/ipvs/{id} HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "value" : 1000,
+    "description" : "Competition winner.",
+    "expiry_date" : "2025-12-31",
+    "send_email" : "john.doe@noemail.com",
+    "code_value" : "XXXX-YYYY-ZZZZ",
+    "batch_reference" : "SSSS",
+    "state" : "active",
+    "issued": false,
+    "programme_id" : 123,
+    "user_id" : 25
+}
+```
