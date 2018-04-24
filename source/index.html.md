@@ -930,7 +930,7 @@ Content-Type: application/json
     "code_value" : "XXXX-YYYY-ZZZZ",
     "batch_reference" : "SSSS",
     "state" : "active",
-    "issued": false,
+    "issued": true,
     "programme_id" : 123,
     "user_id" : 25
 }
@@ -961,7 +961,7 @@ Content-Type: application/json
     "code_value" : "XXXX-YYYY-ZZZZ",
     "batch_reference" : "SSSS",
     "state" : "active",
-    "issued": false,
+    "issued": true,
     "programme_id" : 123,
     "user_id" : 25
 }
