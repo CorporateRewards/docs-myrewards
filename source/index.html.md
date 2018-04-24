@@ -892,7 +892,7 @@ Generate Reward IPV codes for Programmes with the Rewards Module.
 ### HTTP Request
 
 ```http
-POST /api/v2/ipvs
+POST /api/v2/codes
 ```
 
 ### Attributes
@@ -905,7 +905,7 @@ Attribute | Type | Info
 `send_email` | `string` | Optional, valid email address to which the code will be sent. If provided, the 'Send a code' email messages must be configured. Response will have `issued` set to `true`
 
 ```http
-POST /api/v2/ipvs HTTP/1.1
+POST /api/v2/codes HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -943,7 +943,7 @@ To view the details of an IPV code.
 ### HTTP Request
 
 ```http
-GET /api/v2/ipvs/{id} HTTP/1.1
+GET /api/v2/codes/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
