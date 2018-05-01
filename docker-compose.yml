@@ -1,7 +1,0 @@
-slate-app:
-  image: createkio/slate:latest
-  volumes:
-    - .:/slate
-  ports:
-    - '4567:4567'
-  command: bundle exec middleman server --force-polling
