@@ -54,7 +54,7 @@ jobs:
           command: |
             export LAST_GIT_MESSAGE=$(git log -1 --pretty=%B)
             cd build
-            git commit -m "CircleCI build ($(CIRCLE_SHA1)): $LAST_GIT_MESSAGE"
+            git commit -m "CircleCI build ($CIRCLE_SHA1): $LAST_GIT_MESSAGE"
 
       - run:
           name: Git push
