@@ -8,7 +8,6 @@ jobs:
     branches:
       only:
         - master
-        - automate_slate
 
     docker:
       - image: createkio/cr-myrewards-docs:latest
