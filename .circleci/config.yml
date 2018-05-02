@@ -31,7 +31,7 @@ jobs:
           name: Prepare build directory
           command: |
             git clone -b gh-pages --depth 1 \
-              git@github.com:CorporateRewards/docs-myrewards.git build
+              $CIRCLE_REPOSITORY_URL build
 
       - run:
           name: Build docs
