@@ -1,0 +1,63 @@
+---
+
+version: 2
+jobs:
+  build:
+    working_directory: /apidocs
+
+    branches:
+      only:
+        - master
+        - automate_slate
+
+    docker:
+      - image: createkio/cr-myrewards-docs:latest
+
+    steps:
+      - checkout
+      - run:
+          name: Bundle Install
+          command: |
+            bundle install \
+            --jobs 20 \
+            --retry 2
+      - run:
+          name: Congifure git
+          command: |
+            git config --global user.email 'ci@createk.io'
+            git config --global user.name 'CreatekCI'
+
+      - run:
+          name: Prepare build directory
+          command: |
+            git clone -b gh-pages --depth 1 \
+              git@github.com:hass-laughingman/docs-myrewards.git build
+
+      - run:
+          name: Build docs
+          command: bundle exec middleman build --clean
+
+      - run:
+          name: Perserve CNAME
+          command: |
+            cd build
+            git checkout CNAME
+
+      - run:
+          name: Git add new build
+          command: |
+            cd build
+            git add .
+
+      - run:
+          name: Git commit new build
+          command: |
+            cd build
+            git commit -m 'something'
+
+      - run:
+          name: Git push
+          command: |
+            cd build
+            git push
+
