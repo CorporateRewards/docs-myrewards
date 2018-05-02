@@ -31,7 +31,7 @@ jobs:
           name: Prepare build directory
           command: |
             git clone -b gh-pages --depth 1 \
-              git@github.com:hass-laughingman/docs-myrewards.git build
+              git@github.com:CorporateRewards/docs-myrewards.git build
 
       - run:
           name: Build docs
@@ -52,8 +52,9 @@ jobs:
       - run:
           name: Git commit new build
           command: |
+            export LAST_GIT_MESSAGE=$(git log -1 --pretty=%B)
             cd build
-            git commit -m 'something'
+            git commit -m "CircleCI build ($(CIRCLE_SHA1)): $LAST_GIT_MESSAGE"
 
       - run:
           name: Git push

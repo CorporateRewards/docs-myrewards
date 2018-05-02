@@ -6,7 +6,7 @@ WORKDIR /apidocs
 
 COPY . ./
 
-RUN apk add --no-cache coreutils git make g++ nodejs && \
+RUN apk add --no-cache coreutils git make g++ nodejs openssh && \
       rm -rf /var/cache/apk/* && \
       bundle install
 
