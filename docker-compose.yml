@@ -1,7 +1,18 @@
-slate-app:
-  image: createkio/slate:latest
-  volumes:
-    - .:/slate
-  ports:
-    - '4567:4567'
-  command: bundle exec middleman server --force-polling
+---
+version: '3'
+services:
+  slate:
+    image: createkio/cr-myrewards-docs:latest
+    volumes:
+      - .:/apidocs
+    ports:
+      - 4567:4567
+    command: sh -c '
+      bundle install &&
+      if [ "$BYEBUG" -eq "1" ];
+        then echo "sleeping";
+        sleep 100d;
+      else
+        bundle exec middleman server;
+      fi
+      '

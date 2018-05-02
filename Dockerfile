@@ -1,24 +1,13 @@
-FROM ruby:2.3.1-slim
+FROM ruby:2.6-rc-alpine
 
 MAINTAINER CreatekIO
 
-RUN apt-get update && \
-    apt-get install -y \
-      git \
-      build-essential \
-      npm \
-        && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    mkdir -p /slate
-
-ENV TERM xterm
-
-WORKDIR /slate
-COPY Gemfile Gemfile.lock ./
-RUN bundle install --jobs 20 --retry 5
+WORKDIR /apidocs
 
 COPY . ./
 
-CMD ["/bin/bash"]
+RUN apk add --no-cache coreutils git make g++ nodejs openssh && \
+      rm -rf /var/cache/apk/* && \
+      bundle install
+
 
