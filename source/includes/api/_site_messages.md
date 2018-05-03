@@ -1,4 +1,3 @@
-# User
 # Site Messages
 
 ## Get All Site Messages
