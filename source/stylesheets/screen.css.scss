@@ -2,7 +2,6 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import 'custom';
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -657,3 +656,5 @@ body {
 .highlight .w {
     background-color: $code-bg;
 }
+
+@import 'custom';
