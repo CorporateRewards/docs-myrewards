@@ -2,6 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
+@import 'custom';
 // @import 'rtl'; // uncomment to switch to RTL format
 
 /*
@@ -363,9 +364,6 @@ body {
     & > h2,
     & > div {
         clear: both;
-    }
-    & > .highlight {
-        clear: left;
     }
 
     h1 {
