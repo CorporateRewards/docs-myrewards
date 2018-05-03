@@ -10,6 +10,7 @@ includes:
 - api/performance_products
 - api/registration_questions
 - api/reward_ipv
+- api/site_messages
 - api/transactions
 - api/user_groups
 - api/users
