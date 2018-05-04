@@ -2,11 +2,91 @@
 
 Explain what a Kitten is and why you would want to create / delete them.
 
-## Get All Kittens
+## Create a Kitten
 
-This endpoint retrieves all kittens.
+> Header:
 
-### HTTP Request
+```http
+POST /api/v2/kittens/ HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
+```
+
+> Body:
+
+```json
+{
+  "name": "Mr Fluffles",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+> Response:
+
+```json 
+{
+  "id": 3,
+  "name": "Mr Fluffles",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+Create a new Kitten.
+
+#### HTTP Request
+
+`POST /api/v2/kittens`
+
+#### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+name | integer | the ID of the user who will receive the message
+breed | string | content of message 
+fluffiness | integer | how fluffy? (1-10)
+cuteness | integer | how cute? (1-10)
+
+## Get a Kitten
+
+> Header:
+
+```http
+GET /api/v2/kittens/{id} HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
+```
+
+> Response:
+
+```json
+{
+  "id": 2,
+  "name": "Max",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+Returns the specific kitten from the {id}
+
+#### HTTP Request
+
+`GET api/v2/kittens/{id}`
+
+#### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+id | integer | The ID of the kitten to retrieve
+
+
+## Get all Kittens
+
 
 > Header:
 
@@ -37,117 +117,37 @@ Content-Type: application/json
 ]
 ```
 
+This endpoint retrieves all kittens.
+
+#### HTTP Request
+
 `GET /api/v2/kittens`
 
-### Query Parameters
+#### Parameters
 
-Parameter | Default | Description
+Parameter | Type | Description
 --------- | ------- | -----------
-include\_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+include\_cats | boolean | If set to true, the result will also include cats.
+available | boolean | If set to false, the result will include kittens that have already been adopted.
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Create a Kitten
-
-Create a new Kitten.
-
-### HTTP Request
-
-> Header:
-
-```http
-POST /api/v2/kittens/ HTTP/1.1
-Authorization: Token token=key:secret
-Content-Type: application/json
-```
 
 
-> Body:
-
-```json
-{
-  "name": "Mr Fluffles",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-
-> Response:
-
-```json 
-{
-  "id": 3,
-  "name": "Mr Fluffles",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-`POST /api/v2/kittens`
-
-### Attributes
-
-Attribute | Type | Description
---------- | ---- | -----------
-name | integer | the ID of the user who will receive the message
-breed | string | content of message 
-fluffiness | integer | how fluffy? (1-10)
-cuteness | integer | how cute? (1-10)
- 
-
-## Get a Specific Kitten
-
-Returns the specific kitten from the {id}
-
-### HTTP Request
-
-> Header:
-
-```http
-GET /api/v2/kittens/{id} HTTP/1.1
-Authorization: Token token=key:secret
-Content-Type: application/json
-```
-
-> Returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-`GET api/v2/kittens/{id}`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-id | The ID of the kitten to retrieve
-
-
-## Delete a Specific Kitten
-
-Deletes the kitten with the given ID
-
-### HTTP Request
+## Delete a Kitten
 
 > Header 
+
 ```http
 GET /api/v2/kittens/{id} HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
+
+> Response: 
+
 ```json
 {
   "id": 2,
@@ -155,13 +155,13 @@ Content-Type: application/json
 }
 ```
 
-This endpoint deletes a specific kitten.
+Deletes the kitten with the given ID
 
-### HTTP Request
+#### HTTP Request
 
 `DELETE /api/v2/kittens/{ID}`
 
-### URL Parameters
+#### Parameters
 
 Parameter | Description
 --------- | -----------
