@@ -1,36 +1,24 @@
 # Kittens
 
+Explain what a Kitten is and why you would want to create / delete them.
+
 ## Get All Kittens
 
-```ruby
-require 'kittn'
+This endpoint retrieves all kittens.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+### HTTP Request
+
+> Header:
+
+```http
+GET /api/v2/kittens HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
 ```
 
-```python
-import kittn
+> Response:
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
+```json 
 [
   {
     "id": 1,
@@ -49,52 +37,85 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
 `GET /api/v2/kittens`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
+include\_cats | false | If set to true, the result will also include cats.
 available | true | If set to false, the result will include kittens that have already been adopted.
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
+## Create a Kitten
+
+Create a new Kitten.
+
+### HTTP Request
+
+> Header:
+
+```http
+POST /api/v2/kittens/ HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
+```
+
+
+> Body:
+
+```json
+{
+  "name": "Mr Fluffles",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+
+> Response:
+
+```json 
+{
+  "id": 3,
+  "name": "Mr Fluffles",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+`POST /api/v2/kittens`
+
+### Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+name | integer | the ID of the user who will receive the message
+breed | string | content of message 
+fluffiness | integer | how fluffy? (1-10)
+cuteness | integer | how cute? (1-10)
+ 
+
 ## Get a Specific Kitten
 
-```ruby
-require 'kittn'
+Returns the specific kitten from the {id}
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+### HTTP Request
+
+> Header:
+
+```http
+GET /api/v2/kittens/{id} HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Returns JSON structured like this:
 
 ```json
 {
@@ -106,12 +127,6 @@ let max = api.kittens.get(2);
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
 `GET api/v2/kittens/{id}`
 
 ### URL Parameters
@@ -120,37 +135,19 @@ Parameter | Description
 --------- | -----------
 id | The ID of the kitten to retrieve
 
+
 ## Delete a Specific Kitten
 
-```ruby
-require 'kittn'
+Deletes the kitten with the given ID
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
+### HTTP Request
+
+> Header 
+```http
+GET /api/v2/kittens/{id} HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
 ```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
 ```json
 {
   "id": 2,
