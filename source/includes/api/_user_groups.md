@@ -36,11 +36,11 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/user_groups`
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----

@@ -4,11 +4,11 @@
 
 Generate Reward IPV codes for Programmes with the Rewards Module. 
 
-### HTTP Request
+#### HTTP Request
 
 `POST /api/v2/reward/codes`
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----
@@ -49,11 +49,11 @@ Content-Type: application/json
 }
 ```
 
-## Get a Specific Reward IPV code
+## Get a Reward IPV Code
 
 To view the details of an IPV code.
 
-### HTTP Request
+#### HTTP Request
 
 ```http
 GET /api/v2/reward/codes/{id} HTTP/1.1

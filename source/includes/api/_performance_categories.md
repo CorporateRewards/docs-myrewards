@@ -24,13 +24,13 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/performance/performance_categories`
 
-### Attributes
+#### Parameters
 
-Attribute | Type | Info
+Parameter | Type | Info
 --------- | ---- | ----
-id | `integer` | The id of the performance category
-name | `string` | The name of the performance category
+id | integer | The id of the performance category
+name | string | The name of the performance category

@@ -45,11 +45,11 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/users/{user_id}/transactions`
 
-### Attributes
+#### Attributes
 
 Parameters | Type | Info
 ---------- | ---- | ----
@@ -102,11 +102,11 @@ Content-Type: application/json
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/users/{user_id}/transactions/last`
 
-### Attributes
+#### Attributes
 
 Parameters | Type | Info
 ---------- | ---- | ----
@@ -164,11 +164,11 @@ Content-Type: application/json
   "id": 123
 }
 ```
-### HTTP Request
+#### HTTP Request
 
 `POST /api/v1/users/123/transactions`
 
-### Parameters
+#### Parameters
 
 Parameters | Type | Info
 ---------- | ---- | ----
@@ -178,7 +178,7 @@ points | `integer` | Required - always greater than 0
 reason | `string` | Required - free text up to 250 characters to describe transaction - appears on user points statement
 remote_transaction_id | `string` | Optional - a value that can be used to identify this transaction by the client *Caution - there is no validation or contraints for data supplied under this key/field. This is left to the client system to enforce*
 
-### Error responses
+#### Error responses
 
 Anything other than a 200 will mean that the transaction has failed to go through. It may or may not be appropriate to show only a generic message to indicate failure depending on the use case or level of automation. In either case it is recommended to log the error code and any body/message
 

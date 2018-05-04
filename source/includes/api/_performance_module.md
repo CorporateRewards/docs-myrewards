@@ -42,7 +42,7 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 ```http
 GET /api/v2/performance/promotions/1/data_fields HTTP/1.1
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----
@@ -172,11 +172,11 @@ Content-Type: application/json
 HTTP/1.1 201 CREATED
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `POST /api/v2/performance/promotions/1/data`
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----

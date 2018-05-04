@@ -57,11 +57,11 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `POST /api/v2/performance/performance_product_batches`
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----
@@ -115,14 +115,14 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 ```
 PUT /api/v2/performance/performance_product_batches
 PATCH /api/v2/performance/performance_product_batches
 ```
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----

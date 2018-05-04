@@ -103,11 +103,11 @@ Content-Type: Application/json
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `POST /api/v2/users`
 
-### Parameters
+#### Parameters
 
 Parameters | Type | Info
 ---------- | ---- | ----
@@ -186,7 +186,7 @@ Content-Type: Application/json
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 `PUT /api/v2/users/{user_id}`
 
 `PATCH /api/v2/users/{user_id}`

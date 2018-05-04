@@ -31,11 +31,11 @@ Content-Type: application/json
 ]
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/registration_questions`
 
-### Attributes
+#### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----

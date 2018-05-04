@@ -74,11 +74,11 @@ Content-Type: application/json
 
 Retrieves a specific site message.
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/users/{user_id}/site_messages/{id}`
 
-### Parameters
+#### Parameters
 
 Parameter | Description
 --------- | -----------
@@ -118,11 +118,11 @@ Content-Type: application/json
 
 Retrieves all site messages for a user.
 
-### HTTP Request
+#### HTTP Request
 
 `GET /api/v2/users/{user_id}/site_messages`
 
-### Parameters
+#### Parameters
 
 Parameter | Description
 --------- | -----------
