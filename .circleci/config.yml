@@ -37,10 +37,11 @@ jobs:
           command: bundle exec middleman build --clean
 
       - run:
-          name: Perserve CNAME
+          name: Perserve config files
           command: |
             cd build
             git checkout CNAME
+            git checkout .circleci/config.yml
 
       - run:
           name: Git add new build

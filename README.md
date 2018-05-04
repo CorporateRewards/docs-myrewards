@@ -1,5 +1,36 @@
 # MyRewards Documentation
 
-## Deploy to Github Pages
+## Adding an end-point
+- create a file in `/includes/api/{module}`
+- use the structure, language and style from `/includes/example/_kittens.md` 
+- add the file to `includes:` section of `index.html.md` (alphabetically)
 
-    ./deploy.sh
+Once the changes have been made, creare a PR to master. When the PR is merged, CircleCI will pickup the changes and deploy.
+
+## Sections
+
+Sections should appear in the following order (think CRUD):
+
+- H1 (#) {Module Name}
+- H2 (##) {Model}
+- General description of the model
+- H3 (###) Create a {Model}
+- H3 (###) Get a {Model}
+- H3 (###) Get all {Model}s
+- H3 (###) Update a {Model}
+- H3 (###) Delete a {Model}
+* the H1s and H2s above would need to be H2s and H3s if the model is nested
+in a module such a `# Performance Module`
+
+
+Each section should contain the following elements in this order:
+
+- `> Header:`
+- `> Body:` (POST only)
+- `> Response:` 
+- Description of the end point
+- H4 (####) HTTP Request
+- GET/POST/DELETE
+- Parameters
+ 
+
