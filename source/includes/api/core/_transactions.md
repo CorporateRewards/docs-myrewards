@@ -1,6 +1,6 @@
-# Transactions
+## Transactions
 
-## List User's Transactions
+### Get all Transactions
 
 This endpoint is designed to list all of a user’s transactions in json format.
 The points transactions will be debits and credits with a description field.
@@ -62,7 +62,7 @@ transaction_type | `string` | indicates the event which caused the transaction
 remote_transaction_id | `integer` | optional - indicates a remote systems unique identifier for this transaction
 created_at | `string` |
 
-## Show User's Last Transaction
+### Get last Transaction
 
 This endpoint is designed to show the latest transaction for the given user in
 json format. You can use this endpoint to find the user's current balance.
@@ -119,7 +119,7 @@ transaction_type | `string` | indicates the event which caused the transaction
 remote_transaction_id | `integer` | optional - indicates a remote systems unique identifier for this transaction  |   |
 created_at | `string` | datetime indicating when this points transaction was created
 
-## Create a Points Transaction
+### Create a Transaction
 
 **Note this is 'v1' endpoint.** This endpoint is for either crediting or debiting points for a user.
 This endpoint will respond with the MyRewards transaction id.

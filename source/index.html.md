@@ -5,16 +5,19 @@ language_tabs:
 
 includes:
 #- example/kittens
-- api/performance_categories
-- api/performance_module
-- api/performance_products
-- api/registration_questions
+- api/core/0_core
+- api/core/registration_questions
+- api/core/site_messages
+- api/core/transactions
+- api/core/user_groups
+- api/core/users
+- api/performance/0_performance
+- api/performance/data_fields
+- api/performance/performance_categories
+- api/performance/performance_products
+- api/performance/sales_data
 - api/reward/0_reward_module
 - api/reward/ipv
-- api/site_messages
-- api/transactions
-- api/user_groups
-- api/users
 
 search: true
 ---

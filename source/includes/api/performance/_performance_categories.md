@@ -1,6 +1,6 @@
-# Performance Categories
+## Performance Categories
 
-## List Performance Categories
+### List Performance Categories
 
 Endpoint to fetch a list of the performance categories for a performance module enabled programme
 

@@ -1,8 +1,8 @@
-# Users
+## Users
 
 In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate user with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore there will be other fields that have been declared mandatory for your programme and user creation (POST) will fail if these values are not populated or provided.
 
-## Create User
+### Create a User
 
 In order to create a user account on the MyRewards 2.0 platform there is often
 some information about the user we are creating that needs to be known before
@@ -133,7 +133,7 @@ registration_answers_attributes | `array` | array of hashes that contain a regis
 consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
 marketing_consented | `boolean` | Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
 
-## Update User
+### Update a User
 
 The update user api is available to update user information. This uses the same
 params as the create user api above.

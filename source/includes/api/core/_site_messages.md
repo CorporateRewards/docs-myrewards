@@ -1,11 +1,11 @@
-# Site Messages
+## Site Messages
 
 Site message are either plain text or HTML messages that appear in a User's message page. When a user 
 logs in they are notified of any unread messages via a pop-up (usually in the bottom right corner)
 
 
  
-## Create a Site Message
+### Create a Site Message
 
 > Headers:
 
@@ -51,7 +51,7 @@ content | string | the content of message
 
 
 
-## Get a Site Message
+### Get a Site Message
 
 > Header: 
 
@@ -87,7 +87,7 @@ id | The ID of the site message to retrieve
 
 
  
-## Get all Site Messages
+### Get all Site Messages
 
 > Header: 
 

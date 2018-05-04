@@ -1,6 +1,6 @@
-# UserGroups
+## User Groups
 
-## List UserGroups
+### Get all User Groups
 
 A simple endpoint to fetch a list of usergroups used for this programme. Only
 accessible if the key has been granted access to users. Returns an array of
@@ -44,9 +44,9 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | `integer` | user_group id
-name | `string` | user_group name
-parent_id | `integer` | parent user_group id
-default | `boolean` | indicates if this user_group is the default group for the programme
-position | `integer` | position under the parent user_group, used for ordering
+id | integer | user_group id
+name | string | user_group name
+parent\_id | integer | parent user_group id
+default | boolean | indicates if this user_group is the default group for the programme
+position | integer | position under the parent user_group, used for ordering
 

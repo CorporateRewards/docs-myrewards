@@ -1,6 +1,6 @@
-# Performance Products
+## Performance Products
 
-## Creating a Product
+### Creating a Product
 
 Endpoint to create performance products for a programme with the performance module enabled.
 
@@ -73,7 +73,7 @@ value | `integer` | A positive two digit number. Must be the value in RRP or the
 description | `text` | Some text describing the product. Optional
 
 
-## Updating a Product
+### Updating a Product
 
 Endpoint to update performance products for a programme with the performance module enabled.
 
