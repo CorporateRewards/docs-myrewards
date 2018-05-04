@@ -4,7 +4,7 @@ title: MyRewards - API Reference
 language_tabs:
 
 includes:
-- api/kittens
+#- example/kittens
 - api/performance_categories
 - api/performance_module
 - api/performance_products
