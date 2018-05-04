@@ -2,7 +2,6 @@
 title: MyRewards - API Reference
 
 language_tabs:
-- http
 
 includes:
 - api/performance_categories
