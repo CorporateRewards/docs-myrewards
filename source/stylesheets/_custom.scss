@@ -3,3 +3,25 @@
         clear: left;
     }
 }
+
+.toc-wrapper {
+    .toc-list-h3 {
+        display: none;
+        background-color: $nav-subitem-bg;
+    }
+
+    .toc-h3 {
+        padding-left: $nav-padding + $nav-padding + $nav-indent;
+        font-size: 12px;
+    }
+}
+
+.content {
+    & > h3 {
+        clear: both;
+    }
+
+    h4 {
+        font-size: 13px;
+    }
+}
