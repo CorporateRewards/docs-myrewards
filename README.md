@@ -7,7 +7,29 @@
 
 Once the changes have been made, creare a PR to master. When the PR is merged, CircleCI will pickup the changes and deploy.
 
-## Standards
+## Sections
 
-- HTTP Requests should just be the path, not the full URL, and use curly brackets for params, e.g.: `GET /api/v2/users/{user_id}/site_messages`
+Sections should appear in the following order (think CRUD):
+
+- H1 (#) {Model}
+- General description of the model
+- H2 (##) Create a {Model}
+- H2 (##) Get a {Model}
+- H2 (##) Get all {Model}s
+- H2 (##) Update a {Model}
+- H2 (##) Delete a {Model}
+* the H1s and H2s above would need to be H2s and H3s if the model is nested
+in a module such a `# Performance Module`
+
+
+Each section should contain the following elements in this order:
+
+- `> Header:`
+- `> Body:` (POST only)
+- `> Response:` 
+- Description of the end point
+- H4 (####) HTTP Request
+- GET/POST/DELETE
+- Parameters
+ 
 
