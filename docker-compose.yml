@@ -2,7 +2,7 @@
 version: '3'
 services:
   slate:
-    image: createkio/cr-myrewards-docs:latest
+    image: createkio/slate:latest
     volumes:
       - .:/apidocs
     ports:
