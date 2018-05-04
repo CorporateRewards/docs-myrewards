@@ -11,13 +11,14 @@ Once the changes have been made, creare a PR to master. When the PR is merged, C
 
 Sections should appear in the following order (think CRUD):
 
-- H1 (#) {Model}
+- H1 (#) {Module Name}
+- H2 (##) {Model}
 - General description of the model
-- H2 (##) Create a {Model}
-- H2 (##) Get a {Model}
-- H2 (##) Get all {Model}s
-- H2 (##) Update a {Model}
-- H2 (##) Delete a {Model}
+- H3 (###) Create a {Model}
+- H3 (###) Get a {Model}
+- H3 (###) Get all {Model}s
+- H3 (###) Update a {Model}
+- H3 (###) Delete a {Model}
 * the H1s and H2s above would need to be H2s and H3s if the model is nested
 in a module such a `# Performance Module`
 
