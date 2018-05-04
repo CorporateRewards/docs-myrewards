@@ -9,7 +9,8 @@ includes:
 - api/performance_module
 - api/performance_products
 - api/registration_questions
-- api/reward_ipv
+- api/reward/0_reward_module
+- api/reward/ipv
 - api/site_messages
 - api/transactions
 - api/user_groups

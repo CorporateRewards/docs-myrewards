@@ -1,6 +1,6 @@
-# Reward Instant Point Vouchers (IPV)
+## Instant Point Vouchers (IPV)
 
-## Create a Reward IPV code
+### Create an IPV 
 
 Generate Reward IPV codes for Programmes with the Rewards Module. 
 
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 ```
 
-## Get a Reward IPV Code
+### Get an IPV 
 
 To view the details of an IPV code.
 
