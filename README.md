@@ -29,7 +29,8 @@ Each section should contain the following elements in this order:
 - H4 (####) HTTP Request
 - GET/POST/DELETE
 - H4 (####) Request Parameters 
-  - H5 (#####) URL Parameters
+  - _if there are URL and Body params, then create two more sections:_
+  - H5 (#####) URL Parameters 
   - H5 (#####) Body Parameters
 - H4 (####) Response Parameters
  
