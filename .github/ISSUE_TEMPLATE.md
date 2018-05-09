@@ -1,9 +1,4 @@
-If this is a question or feature request, make sure to:
-
-- [ ] The title starts with `Question:` or `Feature:`.
-
-If this is an bug report, not a question, make sure to:
-
-- [ ] I'm not running Windows (which is unsupported), or if I am, I can confirm this issue appears on another platform, or Vagrant.
-- [ ] This issue appears in the latest `dev` branch.
-- [ ] I've included my browser and Ruby version in this issue.
+- [ ] Has the end-point been added to the appropiate modulei (Core, Rewards, Recognition, Performance etc) ?
+- [ ] Are the sections in the correct order (Create, Read (1, all), Update, Delete) ?
+- [ ] Are the sub-sections correctly named and ordered as per README.md ?
+ 
