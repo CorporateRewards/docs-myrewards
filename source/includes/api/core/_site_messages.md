@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ```json
 {
-    "content": "Hello Fred. You have <strong>won a prize</string>. Please visit the points area for more details.",
+    "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details."
 }
 ```
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 {
   "id": 2,
   "user_id": 68,
-  "content": "Hello Fred. You have <strong>won a prize</string>. Please visit the points area for more details.",
+  "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details.",
   "created_at": "2016-03-18T02:20:02.000+00:00"
 }
 ```
@@ -42,11 +42,18 @@ This endpoint creates a new site message for a user.
 
 `POST /api/v2/users/{user_id}/site_messages`
 
-#### Parameters
+#### Request Parameters
+
+##### URL Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
 user\_id | integer | the ID of the user who will receive the message
+
+##### Body Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
 content | string | the content of message 
 
 
@@ -67,7 +74,7 @@ Content-Type: application/json
 {
   "id": 2,
   "user_id": 68,
-  "content": "Hello Fred. You have <strong>won a prize</string>. Please visit the points area for more details.",
+  "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details.",
   "created_at": "2016-03-18T02:20:02.000+00:00"
 }
 ```
@@ -78,12 +85,12 @@ Retrieves a specific site message.
 
 `GET /api/v2/users/{user_id}/site_messages/{id}`
 
-#### Parameters
+#### Request Parameters
 
-Parameter | Description
---------- | -----------
-user\_id | The ID of the user
-id | The ID of the site message to retrieve
+Parameter | Type | Description
+--------- | ---- | -----------
+user\_id | integer | The ID of the user
+id | integer | The ID of the site message to retrieve
 
 
  
@@ -104,7 +111,7 @@ Content-Type: application/json
   {
     "id": 1,
     "user_id": 68,
-    "content": "Hello Fred. You have <strong>won a prize</string>. Please visit the points area for more details.",
+    "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details.",
     "created_at": "2016-03-18T02:20:02.000+00:00"
   },
   {
@@ -122,11 +129,11 @@ Retrieves all site messages for a user.
 
 `GET /api/v2/users/{user_id}/site_messages`
 
-#### Parameters
+#### Request Parameters
 
-Parameter | Description
---------- | -----------
-user\_id | The ID of the user
+Parameter | Type | Description
+--------- | ---- | -----------
+user\_id | integer | The ID of the user
 
 
 
