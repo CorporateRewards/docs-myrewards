@@ -19,9 +19,6 @@ Sections should appear in the following order (think CRUD):
 - H3 (###) Get all {Model}s
 - H3 (###) Update a {Model}
 - H3 (###) Delete a {Model}
-* the H1s and H2s above would need to be H2s and H3s if the model is nested
-in a module such a `# Performance Module`
-
 
 Each section should contain the following elements in this order:
 
@@ -31,6 +28,9 @@ Each section should contain the following elements in this order:
 - Description of the end point
 - H4 (####) HTTP Request
 - GET/POST/DELETE
-- Parameters
+- H4 (####) Request Parameters 
+  - H5 (#####) URL Parameters
+  - H5 (#####) Body Parameters
+- H4 (####) Response Parameters
  
 
