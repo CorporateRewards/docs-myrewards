@@ -7,7 +7,7 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
  
 ### Create a Site Message
 
-> Headers:
+> Header:
 
 ```http
 GET /api/v2/user/{user_id}/site_messages/{id} HTTP/1.1
