@@ -10,7 +10,7 @@ jobs:
         - master
 
     docker:
-      - image: createkio/cr-myrewards-docs:latest
+      - image: createkio/slate:latest
 
     steps:
       - checkout
@@ -61,4 +61,3 @@ jobs:
           command: |
             cd build
             git push
-
