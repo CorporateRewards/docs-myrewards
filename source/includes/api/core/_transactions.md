@@ -138,7 +138,7 @@ Order Adjustment | No | either
 Adjustment | Yes | either
 Account Closure | Programme config dependant | Debit only
 
-Example below shows a transaction that will credit 100 points to a user debited from the programme balance. On the users points statement a reason of 'Employee of the month' will be shown.
+Example below shows a transaction that will credit 100 points to a user debited from the programme balance. On the user's points statement a reason of 'Employee of the month' will be shown.
 
 ``` http
 POST /api/v1/users/123/transactions HTTP/1.1
@@ -176,7 +176,7 @@ transaction_type | `string` | one of 'Credit' or 'Debit'
 variety | `string` | Required - see above table and ensure validity with transaction_type
 points | `integer` | Required - always greater than 0
 reason | `string` | Required - free text up to 250 characters to describe transaction - appears on user points statement
-remote_transaction_id | `string` | Optional - a value that can be used to identify this transaction by the client *Caution - there is no validation or contraints for data supplied under this key/field. This is left to the client system to enforce*
+remote_transaction_id | `string` | Optional - a value that can be used to identify this transaction by the client *Caution - there is no validation or constraints for data supplied under this key/field. This is left to the client system to enforce*
 
 #### Error responses
 

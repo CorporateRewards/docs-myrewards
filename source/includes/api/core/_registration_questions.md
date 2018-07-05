@@ -19,7 +19,7 @@ Authorization: Token token=xxx
     "mandatory": "false",
     "field_type": "radio",
     "options": "text_1 text_2 text_3",
-    "field_name" : "field_lavel",
+    "field_name" : "field_level",
     "free_text": "false"
   }
 ]
@@ -42,7 +42,7 @@ Attribute | Type | Info
 --------- | ---- | ----
 id | integer | registration question identifier
 label | string | label displayed on the form to the end user
-manadatory | boolean | boolean if this question is manadatory for registration
+mandatory | boolean | boolean if this question is mandatory for registration
 field_type | string | options: [check_box, date_select, radio, select, text, user_group, linked_user]
 options | string | options set for a choice question for check_box, select, or radio
 field_name | string | the actual field name
