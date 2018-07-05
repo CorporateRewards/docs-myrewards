@@ -21,7 +21,7 @@ Content-Type: application/json
 [
   {
     "id" : "1",
-    "name" : "dc commics",
+    "name" : "dc comics",
     "parent_id" :  null,
     "default" : "false",
     "position" : "1"
