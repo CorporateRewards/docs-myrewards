@@ -28,8 +28,8 @@ Authorization: Token token=xxx
 A simple endpoint will be created to fetch registration_questions for this
 programme (Again scoped by API key). This is potentially optional as a list of
 registration_question_ids could be provided, although this list will have to be
-managed and maintained carefully. Should required fields be added to this list
-it will require development on the client side of the API unless this list can
+managed and maintained carefully. Should any new mandatory fields be added to this list,
+it would require development on the client side of the API unless this list can
 be dynamically consulted via the api.
 
 #### HTTP Request
