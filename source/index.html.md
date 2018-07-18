@@ -11,6 +11,8 @@ includes:
 - api/core/transactions
 - api/core/user_groups
 - api/core/users
+- api/core/data_widgets
+- api/core/user_data_widgets
 - api/performance/0_performance
 - api/performance/data_fields
 - api/performance/performance_categories
