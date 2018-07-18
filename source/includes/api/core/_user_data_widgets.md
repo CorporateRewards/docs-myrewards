@@ -1,51 +1,84 @@
 ## User Data Widgets
 
-### Show a specific User Data Widget belonging to a User 
+A User Data Widget is used to show user specific information or data uploaded into
+the data widgets area. 
 
-To list all user_data_widgets that belong to a user (scoped by api key)
+### Get a User Data Widget
 
 > Header:
 
 ``` http
 GET /api/v2/users/123/user_data_widgets/456 HTTP/1.1
 Authorization: Token token=xxx
+Content-Type: application/json
 ```
+
+> Response
 
 ```json
 {
-  "user_id" => 123,
-  "id" => "456",
-  "data" => "text"
+  "user_id": 123,
+  "id": 456,
+  "data": "text"
 }
 ```
 
-### Update a specific User Data Widget belonging to a User 
+Returns the specific user_data_widget for the user specified { user_id } and the
+{ id } specified.
 
-To update the data of a user_data_widget that belongs to a user (scoped by api key)
+#### HTTP Request
+
+`GET api/v2/users/{user_id}/user_data_widgets/{id}`
+
+#### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+user_id | integer | The ID of the user the user_data_widget belongs to
+id | integer | The ID of the user_data_widget to retrieve
+
+
+### Update a User Data Widget
 
 > Header:
 
 ``` http
 PUT /api/v2/users/123/user_data_widgets/456 HTTP/1.1
 Authorization: Token token=xxx
+Content-Type: application/json
 ```
+
+> Body: 
 
 ```json
 {
-  "user_id" => 123,
-  "id" => "456",
-  "data" => "some new text"
+  "user_id": 123,
+  "id": 456,
+  "data": "some new text"
 }
 ```
 
 > Response:
 
-``` http
-HTTP/1.1 200 OK
-Content-Type: Application/json
+``` json
 {
-  "user_id" => 123,
-  "id" => "456",
-  "data" => "some new text"
+  "user_id": 123,
+  "id": 456,
+  "data": "some new text"
 }
 ```
+
+Update the data of the specific user_data_widget for the user specified { user_id } 
+and the { id } specified.
+
+#### HTTP Request
+
+`PUT api/v2/users/{user_id}/user_data_widgets/{id}`
+
+#### Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+user_id | integer | The ID of the user the user_data_widget belongs to
+id | integer | The ID of the user_data_widget to retrieve
+data | string | The desired string for the user_data_widget data column
