@@ -11,6 +11,8 @@ includes:
 - api/core/transactions
 - api/core/user_groups
 - api/core/users
+- api/extra_features/0_extra_features
+- api/extra_features/data_widgets
 - api/performance/0_performance
 - api/performance/data_fields
 - api/performance/performance_categories
@@ -41,6 +43,6 @@ HTML/HTTP is preferred.
 In order to use our API endpoints, you will need to have an API key created and
 for this key to be granted the relevant permissions. To authenticate requests we
 require you to pass us this key in the form of an HTTP header called
-`Authorization` with the value set as `Token token=APIKEY`
+`Authorization` with the value set as `Token token=APIKEY` or `Token token=APIKEY:SECRETKEY`.
 
 <aside class="warning">You must set the <strong>Authorization</strong> as detailed above</aside>

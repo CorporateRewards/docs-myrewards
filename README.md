@@ -5,7 +5,7 @@
 - use the structure, language and style from `/includes/example/_kittens.md` 
 - add the file to `includes:` section of `index.html.md` (alphabetically)
 
-Once the changes have been made, creare a PR to master. When the PR is merged, CircleCI will pickup the changes and deploy.
+Once the changes have been made, create a PR to master. When the PR is merged, CircleCI will pickup the changes and deploy.
 
 ## Sections
 
