@@ -22,7 +22,7 @@ Content-Type: application/json
     "label": "Superpower",
     "mandatory": true,
     "field_type": "list_values",
-    "answers": "Super-strengh\r\nFlight\r\nOther",
+    "answers": "Super-strength\r\nFlight\r\nOther",
     "created_at": "2016-04-14T13:34:03.000+01:00",
     "updated_at": "2016-04-14T13:34:03.000+01:00",
     "position": 1

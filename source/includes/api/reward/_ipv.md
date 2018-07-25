@@ -52,7 +52,7 @@ Attribute | Type | Info
 value | integer | Required, must be a positive integer. Points value of the IPV
 description | string | Optional, text field
 expiry\_date | date | Required, must be in the future and in the format `YYYY-MM-DD`
-sendi\_email | string | Optional, valid email address to which the code will be sent. If provided, the 'Send a code' email messages must be configured. Response will have `issued` set to `true`
+send\_email | string | Optional, valid email address to which the code will be sent. If provided, the 'Send a code' email messages must be configured. Response will have `issued` set to `true`
 
 
 
