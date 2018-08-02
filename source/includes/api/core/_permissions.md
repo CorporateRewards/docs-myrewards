@@ -20,14 +20,12 @@ Content-Type: application/json
     "id": 1234,
     "name": "text",
     "hint": "some more text",
-    "resource_user_group_id": 4567,
     "resource_user_group_name": "user group name"
   },
   {
     "id": 8910,
     "name": "text",
     "hint": "some more text",
-    "resource_user_group_id": 1234,
     "resource_user_group_name": "another user group name"
   }
 ]
