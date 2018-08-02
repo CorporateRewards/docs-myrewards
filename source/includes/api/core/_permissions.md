@@ -1,5 +1,7 @@
 ## Permissions ( Resources )
 
+Permissions are used to grant access to administrative and reporting areas of the programme.  They are also used to manage user access and ordering rights
+
 ### Get all Permissions
 
 > Header: 
