@@ -6,6 +6,7 @@ language_tabs:
 includes:
 # - example/kittens
 - api/core/0_core
+- api/core/permissions
 - api/core/registration_questions
 - api/core/site_messages
 - api/core/transactions
