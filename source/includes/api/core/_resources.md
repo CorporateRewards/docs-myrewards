@@ -1,4 +1,4 @@
-## Permissions ( Resources )
+## Resources ( Permissions )
 
 Permissions are used to grant access to administrative and reporting areas of the programme.  They are also used to manage user access and ordering rights
 
