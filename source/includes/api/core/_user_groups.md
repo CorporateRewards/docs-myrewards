@@ -20,18 +20,18 @@ Content-Type: application/json
 
 [
   {
-    "id" : "1",
-    "name" : "dc comics",
-    "parent_id" :  null,
-    "default" : "false",
-    "position" : "1"
+    "id": "1",
+    "name": "dc comics",
+    "parent_id":  null,
+    "default": "false",
+    "position": "1"
   },
   {
-    "id" : "2",
-    "name" : "justice league",
-    "parent_id" : "1",
-    "default" : "true",
-    "position" : "1"
+    "id": "2",
+    "name": "justice league",
+    "parent_id": "1",
+    "default": "true",
+    "position": "1"
   }
 ]
 ```
@@ -55,8 +55,8 @@ position | integer | position under the parent user_group, used for ordering
 
 A endpoint to fetch a list of permissions for a given user_group. Returns
 an array of permissions with each permission displaying its parent permission
-group name. This is to help identify different permission's whose names might
-be the same across separate groups. It will also display whether the permission is
+group name. This is to help identify different permissions when names are
+the same across separate groups. It will also display whether the permission is
 active for a given user_group
 
 ``` http
@@ -77,10 +77,10 @@ Content-Type: application/json
       "active" : "false"
     },
     {
-      "id" : "2",
-      "name" : "permission_2 name",
-      "permission_group_name" :  "permission's parent group name",
-      "active" : "true"
+      "id": "2",
+      "name": "permission_2 name",
+      "permission_group_name":  "permission's parent group name",
+      "active": "true"
     }
   ]
 }
