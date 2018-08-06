@@ -1,10 +1,10 @@
-## Resources ( Permissions )
+## Permissions
 
 Permissions are used to grant access to administrative and reporting areas of the programme.  They are also used to manage user access and ordering rights
 
 ### Get all Permissions
 
-> Header: 
+> Header:
 
 ``` http
 GET /api/v2/resources HTTP/1.1
@@ -31,7 +31,7 @@ Content-Type: application/json
 ]
 ```
 
-This endpoint retrieves all permissions ( resources ) for the current stack
+This endpoint retrieves all permissions for the current stack
 
 #### HTTP Request
 
