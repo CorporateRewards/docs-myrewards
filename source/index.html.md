@@ -7,7 +7,7 @@ includes:
 # - example/kittens
 - api/core/0_core
 - api/core/registration_questions
-- api/core/resources
+- api/core/permissions
 - api/core/site_messages
 - api/core/transactions
 - api/core/user_groups

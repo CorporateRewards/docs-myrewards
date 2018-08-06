@@ -20,18 +20,18 @@ Content-Type: application/json
 
 [
   {
-    "id" : "1",
+    "id" : 1,
     "name" : "dc comics",
     "parent_id" :  null,
     "default" : "false",
-    "position" : "1"
+    "position" : 1
   },
   {
-    "id" : "2",
+    "id" : 2,
     "name" : "justice league",
-    "parent_id" : "1",
+    "parent_id" : 1,
     "default" : "true",
-    "position" : "1"
+    "position" : 1
   }
 ]
 ```
@@ -50,3 +50,51 @@ parent\_id | integer | parent user_group id
 default | boolean | indicates if this user_group is the default group for the programme
 position | integer | position under the parent user_group, used for ordering
 
+
+### Get a User Group's Permissions
+
+A endpoint to fetch a list of permissions for a given user_group. Returns
+an array of permissions with each permission displaying its parent permission
+group name. This is to help identify different permissions when names are
+the same across separate groups. It will also display whether the permission is
+active for a given user_group
+
+``` http
+GET /api/v2/user_groups/:user_group_id/permissions HTTP/1.1
+Authorization: Token token=xxx
+```
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "permissions": [
+    {
+      "id" : 1,
+      "name" : "permission name",
+      "permission_group_name" :  "permission's parent group name",
+      "active" : "false"
+    },
+    {
+      "id" : 2,
+      "name" : "permission_2 name",
+      "permission_group_name" :  "permission's parent group name",
+      "active" : "true"
+    }
+  ]
+}
+```
+
+#### HTTP Request
+
+`GET /api/v2/user_groups/:user_group_id/permissions`
+
+#### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+id | integer | permission id
+name | string | permission name
+permission\_group\_name | string | parent permission group name
+active | boolean | indicates if this permission is active for this user_group
