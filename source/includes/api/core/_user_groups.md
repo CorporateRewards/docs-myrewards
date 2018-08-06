@@ -20,18 +20,18 @@ Content-Type: application/json
 
 [
   {
-    "id": "1",
-    "name": "dc comics",
-    "parent_id":  null,
-    "default": "false",
-    "position": "1"
+    "id" : 1,
+    "name" : "dc comics",
+    "parent_id" :  null,
+    "default" : "false",
+    "position" : 1
   },
   {
-    "id": "2",
-    "name": "justice league",
-    "parent_id": "1",
-    "default": "true",
-    "position": "1"
+    "id" : 2,
+    "name" : "justice league",
+    "parent_id" : 1,
+    "default" : "true",
+    "position" : 1
   }
 ]
 ```
@@ -71,16 +71,16 @@ Content-Type: application/json
 {
   "permissions": [
     {
-      "id" : "1",
+      "id" : 1,
       "name" : "permission name",
       "permission_group_name" :  "permission's parent group name",
       "active" : "false"
     },
     {
-      "id": "2",
-      "name": "permission_2 name",
-      "permission_group_name":  "permission's parent group name",
-      "active": "true"
+      "id" : 2,
+      "name" : "permission_2 name",
+      "permission_group_name" :  "permission's parent group name",
+      "active" : "true"
     }
   ]
 }
