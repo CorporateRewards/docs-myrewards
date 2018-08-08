@@ -1,5 +1,7 @@
 ### User > Permissions
 
+### GET User permissions
+
 A endpoint to fetch a list of permissions for a given user. Returns an array of permissions displaying it's parent
 permissions group name. This is to help identify different permissions when names are the same across separate groups.
 It will also display whether the permission is active for the given user and the state of the permission which can

@@ -1,5 +1,7 @@
 ### User Group > Permissions
 
+### GET UserGroup permissions
+
 A endpoint to fetch a list of permissions for a given user_group. Returns
 an array of permissions with each permission displaying its parent permission
 group name. This is to help identify different permissions when names are
