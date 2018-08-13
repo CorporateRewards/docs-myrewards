@@ -58,6 +58,10 @@ permissions group name. This is to help identify different permissions when name
 It will also display whether the permission is active for the given user and the state of the permission which can
 be `Same As User Group` or if the permission has been overridden for that user: `Always Allow` or `Always Deny`.
 
+The only value that this request will change is the `active` field. The other fields are present
+to make it easier to move from the `GET` request to a `POST` without having to reformat
+or delete much of the `GET` request response.
+
 ``` http
 POST /api/v2/users/:user_id/permissions HTTP/1.1
 Authorization: Token token=xxx
