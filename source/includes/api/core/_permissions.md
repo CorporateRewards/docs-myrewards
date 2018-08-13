@@ -36,3 +36,12 @@ This endpoint retrieves all permissions for the current stack
 #### HTTP Request
 
 `GET /api/v2/permissions`
+
+#### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+id | integer | permission id
+name | string | permission name
+hint | string | permission hint
+permission\_group\_name | string | parent permission group name
