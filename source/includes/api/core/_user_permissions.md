@@ -8,7 +8,7 @@ It will also display whether the permission is active for the given user and the
 be `Same As User Group` or if the permission has been overridden for that user: `Always Allow` or `Always Deny`.
 
 ``` http
-GET /api/v2/user/:user_id/permissions HTTP/1.1
+GET /api/v2/users/:user_id/permissions HTTP/1.1
 Authorization: Token token=xxx
 ```
 
@@ -38,7 +38,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`GET /api/v2/user/:user_id/permissions`
+`GET /api/v2/users/:user_id/permissions`
 
 #### Attributes
 
@@ -59,7 +59,7 @@ It will also display whether the permission is active for the given user and the
 be `Same As User Group` or if the permission has been overridden for that user: `Always Allow` or `Always Deny`.
 
 ``` http
-POST /api/v2/user/:user_id/permissions HTTP/1.1
+POST /api/v2/users/:user_id/permissions HTTP/1.1
 Authorization: Token token=xxx
 
 {
@@ -108,7 +108,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`POST /api/v2/user/:user_id/permissions`
+`POST /api/v2/users/:user_id/permissions`
 
 #### Attributes
 
