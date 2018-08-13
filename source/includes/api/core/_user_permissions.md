@@ -22,14 +22,14 @@ Content-Type: application/json
       "id" : 1,
       "name" : "Enable log in",
       "permission_group_name" :  "General",
-      "active" : false
+      "active" : false,
       "state" : "Same As User Group"
     },
     {
       "id" : 2,
       "name" : "Order Rewards",
       "permission_group_name" :  "Rewards module",
-      "active" : true
+      "active" : true,
       "state" : "Always Allow"
     }
   ]
@@ -68,14 +68,14 @@ Authorization: Token token=xxx
       "id" : 1,
       "name" : "Enable log in",
       "permission_group_name" :  "General",
-      "active" : true
+      "active" : true,
       "state" : "Same As User Group"
     },
     {
       "id" : 2,
       "name" : "Order Rewards",
       "permission_group_name" :  "Rewards module",
-      "active" : false
+      "active" : false,
       "state" : "Always Allow"
     }
   ]
@@ -92,14 +92,14 @@ Content-Type: application/json
       "id" : 1,
       "name" : "Enable log in",
       "permission_group_name" :  "General",
-      "active" : true
+      "active" : true,
       "state" : "Always Allow"
     },
     {
       "id" : 2,
       "name" : "Order Rewards",
       "permission_group_name" :  "Rewards module",
-      "active" : false
+      "active" : false,
       "state" : "Same As User Group"
     }
   ]
