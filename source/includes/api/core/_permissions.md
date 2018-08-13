@@ -25,7 +25,7 @@ Content-Type: application/json
   {
     "id" : 11,
     "name" : "Order Rewards",
-    "hint" : "User can order rewards if tehy have sufficient points available",
+    "hint" : "User can order rewards if they have sufficient points available",
     "permission_group_name" : "Rewards module"
   }
 ]
