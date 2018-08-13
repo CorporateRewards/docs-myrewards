@@ -17,16 +17,16 @@ Content-Type: application/json
 ```json
 [
   {
-    "id" : 1234,
-    "name" : "text",
-    "hint" : "some more text",
-    "permission_group_name" : "permission group name"
+    "id" : 6,
+    "name" : "Enable log in",
+    "hint" : "Enable log in",
+    "permission_group_name" : "General"
   },
   {
-    "id" : 8910,
-    "name" : "text",
-    "hint" : "some more text",
-    "permission_group_name" : "another permission group name"
+    "id" : 11,
+    "name" : "Order Rewards",
+    "hint" : "User can order rewards if tehy have sufficient points available",
+    "permission_group_name" : "Rewards module"
   }
 ]
 ```

@@ -20,16 +20,16 @@ Content-Type: application/json
   "permissions" : [
     {
       "id" : 1,
-      "name" : "permission name",
-      "permission_group_name" :  "permission's parent group name",
-      "active" : "false"
+      "name" : "Enable log in",
+      "permission_group_name" :  "General",
+      "active" : false
       "state" : "Always Allow"
     },
     {
       "id" : 2,
-      "name" : "permission_2 name",
-      "permission_group_name" :  "permission's parent group name",
-      "active" : "true"
+      "name" : "Order Rewards",
+      "permission_group_name" :  "Rewards module",
+      "active" : true
       "state" : "Same As User Group"
     }
   ]
