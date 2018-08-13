@@ -1,4 +1,4 @@
-### User Group > Permissions
+## User Group > Permissions
 
 ### GET UserGroup permissions
 
