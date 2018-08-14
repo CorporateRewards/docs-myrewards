@@ -17,16 +17,16 @@ Content-Type: application/json
 ```json
 [
   {
-    "id" : 1234,
-    "name" : "text",
-    "hint" : "some more text",
-    "permission_group_name" : "permission group name"
+    "id" : 6,
+    "name" : "Enable log in",
+    "hint" : "Enable log in",
+    "permission_group_name" : "General"
   },
   {
-    "id" : 8910,
-    "name" : "text",
-    "hint" : "some more text",
-    "permission_group_name" : "another permission group name"
+    "id" : 11,
+    "name" : "Order Rewards",
+    "hint" : "User can order rewards if they have sufficient points available",
+    "permission_group_name" : "Rewards module"
   }
 ]
 ```
@@ -36,3 +36,12 @@ This endpoint retrieves all permissions for the current stack
 #### HTTP Request
 
 `GET /api/v2/permissions`
+
+#### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+id | integer | permission id
+name | string | permission name
+hint | string | permission hint
+permission\_group\_name | string | parent permission group name
