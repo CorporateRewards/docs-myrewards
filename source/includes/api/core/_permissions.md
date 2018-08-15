@@ -20,13 +20,13 @@ Content-Type: application/json
     "id" : 6,
     "name" : "Enable log in",
     "hint" : "Enable log in",
-    "permission_group_name" : "General"
+    "resource_group_name" : "General"
   },
   {
     "id" : 11,
     "name" : "Order Rewards",
     "hint" : "User can order rewards if they have sufficient points available",
-    "permission_group_name" : "Rewards module"
+    "resource_group_name" : "Rewards module"
   }
 ]
 ```
@@ -44,4 +44,4 @@ Attribute | Type | Info
 id | integer | permission id
 name | string | permission name
 hint | string | permission hint
-permission\_group\_name | string | parent permission group name
+resource\_group\_name | string | parent permission group name
