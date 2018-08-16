@@ -6,14 +6,14 @@ language_tabs:
 includes:
 # - example/kittens
 - api/core/0_core
-- api/core/registration_questions
 - api/core/permissions
-- api/core/user_group_permissions
-- api/core/user_permissions
+- api/core/registration_questions
 - api/core/site_messages
 - api/core/transactions
 - api/core/user_groups
+- api/core/user_groups_permissions
 - api/core/users
+- api/core/users_permissions
 - api/extra_features/0_extra_features
 - api/extra_features/data_widgets
 - api/performance/0_performance
