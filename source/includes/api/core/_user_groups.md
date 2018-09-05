@@ -80,6 +80,7 @@ Content-Type: application/json
   "name": "Example User Group",
   "position": 1,
   "parent_id": null,
+  "default": false,
   "image_url": "http://example_hosted_image_url.com/image.png"
 }
 
