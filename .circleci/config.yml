@@ -36,10 +36,7 @@ jobs:
           name: Perserve config files
           command: |
             cd build
-            if [ -f CNAME ]; then
-              echo 'Perserving CNAME'
-              git checkout CNAME
-            fi
+            git checkout CNAME
             git checkout .circleci/config.yml
 
       - run:
