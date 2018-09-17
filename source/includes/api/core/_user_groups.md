@@ -66,7 +66,6 @@ Authorization: Token token=xxx
   "name": "Example User Group",
   "position": 1,
   "parent_id": null,
-  "default": true,
   "image_url": "http://example_website.com/image.png"
 }
 ```
@@ -81,7 +80,7 @@ Content-Type: application/json
   "name": "Example User Group",
   "position": 1,
   "parent_id": null,
-  "default": true,
+  "default": false,
   "image_url": "http://example_hosted_image_url.com/image.png"
 }
 
@@ -97,5 +96,4 @@ Parameters | Type | Info
 name | `string` | Required - name of the user_group to be created
 position | `integer` | position of the user_group in the hierachy
 parent_id | `integer` | an optional id field, used if the this user group should be nested underneath another
-default | `string` | can be true or false depending if the new user group should be the default one that new users are placed within
 image_url | `string` | a url of an image you wish to upload to identify the user group with

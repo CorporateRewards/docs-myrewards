@@ -44,4 +44,4 @@ Attribute | Type | Info
 id | integer | permission id
 name | string | permission name
 hint | string | permission hint
-resource\_group\_name | string | parent permission group name
+resource\_group\_name | string | parent resource group name
