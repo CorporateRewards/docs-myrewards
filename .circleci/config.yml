@@ -5,10 +5,6 @@ jobs:
   build:
     working_directory: /apidocs
 
-    branches:
-      only:
-        - master
-
     docker:
       - image: createkio/slate:latest
 
@@ -40,24 +36,42 @@ jobs:
           name: Perserve config files
           command: |
             cd build
-            git checkout CNAME
+            if [ -f CNAME ]; then
+              echo 'Perserving CNAME'
+              git checkout CNAME
+            fi
             git checkout .circleci/config.yml
-
-      - run:
-          name: Git add new build
-          command: |
-            cd build
-            git add .
 
       - run:
           name: Git commit new build
           command: |
             export LAST_GIT_MESSAGE=$(git log -1 --pretty=%B)
             cd build
-            git commit -m "CircleCI build ($CIRCLE_SHA1): $LAST_GIT_MESSAGE"
+            if [ ! $(git diff-index --quiet HEAD) ]; then
+              echo 'commiting new doc'
+              git add .
+              git commit -m "CircleCI build ($CIRCLE_SHA1): $LAST_GIT_MESSAGE"
+            fi
 
       - run:
           name: Git push
           command: |
             cd build
-            git push
+            if git branch -v | grep -q -e ahead; then
+              echo 'pushing to gh-pages'
+              git push
+            else
+              echo 'nothing to push'
+            fi
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+
+
