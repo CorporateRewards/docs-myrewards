@@ -1,0 +1,2328 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>MyRewards - API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#core" class="toc-h1 toc-link" data-title="core">Core</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#permissions" class="toc-h2 toc-link" data-title="permissions">Permissions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-all-permissions" class="toc-h3 toc-link" data-title="Core">Get all Permissions</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#registration-questions" class="toc-h2 toc-link" data-title="registration-questions">Registration Questions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-all-registration-questions" class="toc-h3 toc-link" data-title="Core">Get all Registration Questions</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#site-messages" class="toc-h2 toc-link" data-title="site-messages">Site Messages</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-a-site-message" class="toc-h3 toc-link" data-title="Core">Create a Site Message</a>
+                          </li>
+                          <li>
+                            <a href="#get-a-site-message" class="toc-h3 toc-link" data-title="Core">Get a Site Message</a>
+                          </li>
+                          <li>
+                            <a href="#get-all-site-messages" class="toc-h3 toc-link" data-title="Core">Get all Site Messages</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#transactions" class="toc-h2 toc-link" data-title="transactions">Transactions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-all-transactions" class="toc-h3 toc-link" data-title="Core">Get all Transactions</a>
+                          </li>
+                          <li>
+                            <a href="#get-last-transaction" class="toc-h3 toc-link" data-title="Core">Get last Transaction</a>
+                          </li>
+                          <li>
+                            <a href="#create-a-transaction" class="toc-h3 toc-link" data-title="Core">Create a Transaction</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#user-groups" class="toc-h2 toc-link" data-title="user-groups">User Groups</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-all-user-groups" class="toc-h3 toc-link" data-title="Core">Get all User Groups</a>
+                          </li>
+                          <li>
+                            <a href="#manage-user-groups" class="toc-h3 toc-link" data-title="Core">Manage User Groups</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#user-group-gt-permissions" class="toc-h2 toc-link" data-title="user-group-gt-permissions">User Group &gt; Permissions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-usergroup-permissions" class="toc-h3 toc-link" data-title="Core">GET UserGroup permissions</a>
+                          </li>
+                          <li>
+                            <a href="#update-a-user-group-39-s-permission-set" class="toc-h3 toc-link" data-title="Core">Update a User Group's Permission set</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#users" class="toc-h2 toc-link" data-title="users">Users</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-a-user" class="toc-h3 toc-link" data-title="Core">Create a User</a>
+                          </li>
+                          <li>
+                            <a href="#update-a-user" class="toc-h3 toc-link" data-title="Core">Update a User</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#user-gt-permissions" class="toc-h2 toc-link" data-title="user-gt-permissions">User &gt; Permissions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-user-permissions" class="toc-h3 toc-link" data-title="Core">GET User permissions</a>
+                          </li>
+                          <li>
+                            <a href="#post-user-permissions" class="toc-h3 toc-link" data-title="Core">POST User permissions</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#extra-features" class="toc-h1 toc-link" data-title="extra-features">Extra Features</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#data-widgets" class="toc-h2 toc-link" data-title="data-widgets">Data Widgets</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-all-data-widgets" class="toc-h3 toc-link" data-title="Extra Features">Get all Data Widgets</a>
+                          </li>
+                          <li>
+                            <a href="#get-a-data-widget-belonging-to-a-user" class="toc-h3 toc-link" data-title="Extra Features">Get a Data Widget belonging to a User</a>
+                          </li>
+                          <li>
+                            <a href="#update-a-data-widget-belonging-to-a-user" class="toc-h3 toc-link" data-title="Extra Features">Update a Data Widget belonging to a User</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#performance-module" class="toc-h1 toc-link" data-title="performance-module">Performance Module</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#data-fields" class="toc-h2 toc-link" data-title="data-fields">Data Fields</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#list-all-data-fields" class="toc-h3 toc-link" data-title="Performance Module">List all Data Fields</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#performance-categories" class="toc-h2 toc-link" data-title="performance-categories">Performance Categories</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#list-performance-categories" class="toc-h3 toc-link" data-title="Performance Module">List Performance Categories</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#performance-products" class="toc-h2 toc-link" data-title="performance-products">Performance Products</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#creating-a-product" class="toc-h3 toc-link" data-title="Performance Module">Creating a Product</a>
+                          </li>
+                          <li>
+                            <a href="#updating-a-product" class="toc-h3 toc-link" data-title="Performance Module">Updating a Product</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#sales-data" class="toc-h2 toc-link" data-title="sales-data">Sales Data</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-sales-data" class="toc-h3 toc-link" data-title="Performance Module">Create Sales Data</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#reward-module" class="toc-h1 toc-link" data-title="reward-module">Reward Module</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#instant-point-vouchers-ipv" class="toc-h2 toc-link" data-title="instant-point-vouchers-ipv">Instant Point Vouchers (IPV)</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#create-an-ipv" class="toc-h3 toc-link" data-title="Reward Module">Create an IPV</a>
+                          </li>
+                          <li>
+                            <a href="#get-an-ipv" class="toc-h3 toc-link" data-title="Reward Module">Get an IPV</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the MyRewards API documentation.</p>
+
+<p>The first thing you will have to find out is the correct API endpoint to use for
+the right environment.</p>
+
+<ul>
+<li><strong>Staging:</strong> <a href="https://staging.my-rewards.co.uk">https://staging.my-rewards.co.uk</a></li>
+<li>For production access please ask your Corporate Rewards contact</li>
+</ul>
+
+<p>A programme can have one or more API keys, each of which will be granted
+permission to access different functionality from the API. As a standard, we use
+RESTful json endpoints that will accept either HTML/HTTP form data or json data,
+HTML/HTTP is preferred.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>In order to use our API endpoints, you will need to have an API key created and
+for this key to be granted the relevant permissions. To authenticate requests we
+require you to pass us this key in the form of an HTTP header called
+<code>Authorization</code> with the value set as <code>Token token=APIKEY</code> or <code>Token token=APIKEY:SECRETKEY</code>.</p>
+
+<aside class="warning">You must set the <strong>Authorization</strong> as detailed above</aside>
+<h1 id='core'>Core</h1><h2 id='permissions'>Permissions</h2>
+<p>Permissions are used to grant access to administrative and reporting areas of the programme.  They are also used to manage user access and ordering rights</p>
+<h3 id='get-all-permissions'>Get all Permissions</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable log in"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hint"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable log in"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"General"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Rewards"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hint"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"User can order rewards if they have sufficient points available"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Rewards module"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all permissions for the current stack</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/permissions</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>permission id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>permission name</td>
+</tr>
+<tr>
+<td>hint</td>
+<td>string</td>
+<td>permission hint</td>
+</tr>
+<tr>
+<td>resource_group_name</td>
+<td>string</td>
+<td>parent resource group name</td>
+</tr>
+</tbody></table>
+<h2 id='registration-questions'>Registration Questions</h2><h3 id='get-all-registration-questions'>Get all Registration Questions</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/registration_questions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"radio"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text_1 text_2 text_3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"field_level"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"free_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>A simple endpoint will be created to fetch registration_questions for this
+programme (Again scoped by API key). This is potentially optional as a list of
+registration_question_ids could be provided, although this list will have to be
+managed and maintained carefully. Should any new mandatory fields be added to this list,
+it would require development on the client side of the API unless this list can
+be dynamically consulted via the api.</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/registration_questions</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>registration question identifier</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>label displayed on the form to the end user</td>
+</tr>
+<tr>
+<td>mandatory</td>
+<td>boolean</td>
+<td>boolean if this question is mandatory for registration</td>
+</tr>
+<tr>
+<td>field_type</td>
+<td>string</td>
+<td>options: [check_box, date_select, radio, select, text, user_group, linked_user]</td>
+</tr>
+<tr>
+<td>options</td>
+<td>string</td>
+<td>options set for a choice question for check_box, select, or radio</td>
+</tr>
+<tr>
+<td>field_name</td>
+<td>string</td>
+<td>the actual field name</td>
+</tr>
+<tr>
+<td>free_text</td>
+<td>boolean</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='site-messages'>Site Messages</h2>
+<p>Site message are either plain text or HTML messages that appear in a User&#39;s message page. When a user 
+logs in they are notified of any unread messages via a pop-up (usually in the bottom right corner)</p>
+<h3 id='create-a-site-message'>Create a Site Message</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user/{user_id}/site_messages/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Body: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T02:20:02.000+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint creates a new site message for a user.</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/users/{user_id}/site_messages</code></p>
+<h4 id='request-parameters'>Request Parameters</h4><h5 id='url-parameters'>URL Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>the ID of the user who will receive the message</td>
+</tr>
+</tbody></table>
+<h5 id='body-parameters'>Body Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>the content of message</td>
+</tr>
+</tbody></table>
+<h3 id='get-a-site-message'>Get a Site Message</h3>
+<blockquote>
+<p>Header: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user/{user_id}/site_messages/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T02:20:02.000+00:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Retrieves a specific site message.</p>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>GET /api/v2/users/{user_id}/site_messages/{id}</code></p>
+<h4 id='request-parameters-2'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>The ID of the user</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The ID of the site message to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='get-all-site-messages'>Get all Site Messages</h3>
+<blockquote>
+<p>Header: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user/{user_id}/site_messages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T02:20:02.000+00:00"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Order is on it's way"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-16T07:58:03.000+01:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Retrieves all site messages for a user.</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>GET /api/v2/users/{user_id}/site_messages</code></p>
+<h4 id='request-parameters-3'>Request Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>The ID of the user</td>
+</tr>
+</tbody></table>
+<h2 id='transactions'>Transactions</h2><h3 id='get-all-transactions'>Get all Transactions</h3>
+<p>This endpoint is designed to list all of a user’s transactions in json format.
+The points transactions will be debits and credits with a description field.</p>
+
+<p>All transactions listed in the response will be ordered so as to have the most
+recent transaction last in the list.</p>
+
+<p>Please remember that if a user transaction is performed on the MyRewards 2.0
+platform since a request is made over the api – this balance will be out of date.</p>
+
+<p>On the server side a check will be made that the user_id you are requesting is</p>
+
+<ul>
+<li>a valid user</li>
+<li>it is a user for the programme that your api key is scoped to.</li>
+</ul>
+
+<p>That is to say that you can only retrieve transactions for users of your
+MyRewards Programme.</p>
+
+<p>The remote_transaction_id is documented in the POST endpoint for creating
+transactions, this value is optional, therefore can be <code>null</code></p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/123/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"transactions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transaction_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"programme points"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remote_transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_id_here"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"date_time"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/users/{user_id}/transactions</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>id of this transaction</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>user id of the user this transaction belongs</td>
+</tr>
+<tr>
+<td>description</td>
+<td><code>string</code></td>
+<td>transaction description</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>integer</code></td>
+<td>can be positive or negative. value of points on the transaction. Credit to the balance will be shown as a positive integer and debits will be negative</td>
+</tr>
+<tr>
+<td>balance</td>
+<td><code>integer</code></td>
+<td>users running balance, at the time of the transaction</td>
+</tr>
+<tr>
+<td>transaction_type</td>
+<td><code>string</code></td>
+<td>indicates the event which caused the transaction</td>
+</tr>
+<tr>
+<td>remote_transaction_id</td>
+<td><code>integer</code></td>
+<td>optional - indicates a remote systems unique identifier for this transaction</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='get-last-transaction'>Get last Transaction</h3>
+<p>This endpoint is designed to show the latest transaction for the given user in
+json format. You can use this endpoint to find the user&#39;s current balance.</p>
+
+<p>Please remember that if a user transaction is performed on the MyRewards 2.0
+platform since a request is made over the api – this balance will be out of date.</p>
+
+<p>On the server side a check will be made that the user_id you are requesting is</p>
+
+<ul>
+<li>a valid user</li>
+<li>it is a user for the programme that your api key is scoped to.</li>
+</ul>
+
+<p>That is to say that you can only retrieve the last transaction for users of your
+MyRewards Programme.</p>
+
+<p>The remote_transaction_id is documented in the POST endpoint for creating
+transactions, this value is optional, therefore can be <code>null</code></p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/123/transactions/last</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"transactions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transaction_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"programme points"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"remote_transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your_id_here"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"date_time"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>GET /api/v2/users/{user_id}/transactions/last</code></p>
+<h4 id='attributes-2'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>id of this transaction</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>user id of the user this transaction belongs</td>
+</tr>
+<tr>
+<td>description</td>
+<td><code>string</code></td>
+<td>transaction description</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>integer</code></td>
+<td>can be positive or negative. value of points on the transaction</td>
+</tr>
+<tr>
+<td>balance</td>
+<td><code>integer</code></td>
+<td>users running balance, at the time of the transaction</td>
+</tr>
+<tr>
+<td>transaction_type</td>
+<td><code>string</code></td>
+<td>indicates the event which caused the transaction</td>
+</tr>
+<tr>
+<td>remote_transaction_id</td>
+<td><code>integer</code></td>
+<td>optional - indicates a remote systems unique identifier for this transaction</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td><code>string</code></td>
+<td>datetime indicating when this points transaction was created</td>
+</tr>
+</tbody></table>
+<h3 id='create-a-transaction'>Create a Transaction</h3>
+<p><strong>Note this is &#39;v1&#39; endpoint.</strong> This endpoint is for either crediting or debiting points for a user.
+This endpoint will respond with the MyRewards transaction id.
+Points transactions have a type of either &#39;Credit&#39; or &#39;Debit&#39;.
+A points transaction will also have a variety which will be one of:</p>
+
+<table><thead>
+<tr>
+<th>Variety</th>
+<th>Programme Points affecting?</th>
+<th>Permitted Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Programme points</td>
+<td>Yes</td>
+<td>either</td>
+</tr>
+<tr>
+<td>Points Error</td>
+<td>Yes</td>
+<td>either</td>
+</tr>
+<tr>
+<td>Programme Budget</td>
+<td>Yes</td>
+<td>either</td>
+</tr>
+<tr>
+<td>Redemption</td>
+<td>No</td>
+<td>Debit only</td>
+</tr>
+<tr>
+<td>Person 2 Person Transfer</td>
+<td>No</td>
+<td>either (credit and debit must both be carried out for each user)</td>
+</tr>
+<tr>
+<td>Order Cancellation</td>
+<td>No</td>
+<td>Credit only</td>
+</tr>
+<tr>
+<td>Order Adjustment</td>
+<td>No</td>
+<td>either</td>
+</tr>
+<tr>
+<td>Adjustment</td>
+<td>Yes</td>
+<td>either</td>
+</tr>
+<tr>
+<td>Account Closure</td>
+<td>Programme config dependant</td>
+<td>Debit only</td>
+</tr>
+</tbody></table>
+
+<p>Example below shows a transaction that will credit 100 points to a user debited from the programme balance. On the user&#39;s points statement a reason of &#39;Employee of the month&#39; will be shown.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v1/users/123/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"variety"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Programme points"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Employee of the month"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remote_transaction_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YOUR_REMOTE_TRANSACTION_ID"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request-3'>HTTP Request</h4>
+<p><code>POST /api/v1/users/123/transactions</code></p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transaction_type</td>
+<td><code>string</code></td>
+<td>one of &#39;Credit&#39; or &#39;Debit&#39;</td>
+</tr>
+<tr>
+<td>variety</td>
+<td><code>string</code></td>
+<td>Required - see above table and ensure validity with transaction_type</td>
+</tr>
+<tr>
+<td>points</td>
+<td><code>integer</code></td>
+<td>Required - always greater than 0</td>
+</tr>
+<tr>
+<td>reason</td>
+<td><code>string</code></td>
+<td>Required - free text up to 250 characters to describe transaction - appears on user points statement</td>
+</tr>
+<tr>
+<td>remote_transaction_id</td>
+<td><code>string</code></td>
+<td>Optional - a value that can be used to identify this transaction by the client <em>Caution - there is no validation or constraints for data supplied under this key/field. This is left to the client system to enforce</em></td>
+</tr>
+</tbody></table>
+<h4 id='error-responses'>Error responses</h4>
+<p>Anything other than a 200 will mean that the transaction has failed to go through. It may or may not be appropriate to show only a generic message to indicate failure depending on the use case or level of automation. In either case it is recommended to log the error code and any body/message</p>
+
+<ul>
+<li> 204 User not found</li>
+<li> 401 invalid key</li>
+<li> 402 User does not have enough points</li>
+<li> 406 Invalid Transaction</li>
+<li> 412 Programme does not have enough points</li>
+<li> 500 Server Error</li>
+</ul>
+<h2 id='user-groups'>User Groups</h2><h3 id='get-all-user-groups'>Get all User Groups</h3>
+<p>A simple endpoint to fetch a list of user groups used for this programme. Only
+accessible if the key has been granted access to users. Returns an array of
+user_groups as a flat list, each user group will indicate it&#39;s parent id
+enabling the client end of the API to re-construct the user group hierarchy. This
+would be required if a registration_question is linked to a tier of user_groups
+with a tier being a vertical &#39;slice&#39; down the hierarchy</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_groups</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"dc comics"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"justice league"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/user_groups</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>user_group id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>user_group name</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td>integer</td>
+<td>parent user_group id</td>
+</tr>
+<tr>
+<td>default</td>
+<td>boolean</td>
+<td>indicates if this user_group is the default group for the programme</td>
+</tr>
+<tr>
+<td>position</td>
+<td>integer</td>
+<td>position under the parent user_group, used for ordering</td>
+</tr>
+</tbody></table>
+<h3 id='manage-user-groups'>Manage User Groups</h3>
+<p>An endpoint to create a user group for this programme. Only accessible if the key
+has been granted access to users. In order to create a usergroup a name is required.
+This usergroup can be nested underneath another user group by passing the parent
+user group id. Images can be uploaded to the user group by passing a publicly accessible image url. If
+no position is passed then it will default to the bottom of the hierachy.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/user_groups</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+
+{
+  "name": "Example User Group",
+  "position": 1,
+  "parent_id": null,
+  "image_url": "http://example_website.com/image.png"
+}
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User Group"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example_hosted_image_url.com/image.png"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST /api/v2/users_groups</code></p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Required - name of the user_group to be created</td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>integer</code></td>
+<td>position of the user_group in the hierachy</td>
+</tr>
+<tr>
+<td>parent_id</td>
+<td><code>integer</code></td>
+<td>an optional id field, used if the this user group should be nested underneath another</td>
+</tr>
+<tr>
+<td>image_url</td>
+<td><code>string</code></td>
+<td>a url of an image you wish to upload to identify the user group with</td>
+</tr>
+</tbody></table>
+<h2 id='user-group-gt-permissions'>User Group &gt; Permissions</h2><h3 id='get-usergroup-permissions'>GET UserGroup permissions</h3>
+<p>A endpoint to fetch a list of permissions for a given user_group. Returns
+an array of permissions with each permission displaying its parent permission
+group name. This is to help identify different permissions when names are
+the same across separate groups. It will also display whether the permission is
+active for a given user_group</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_groups/:user_group_id/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable log in"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"General"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Rewards"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"Rewards module"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/user_groups/:user_group_id/permissions</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>permission id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>permission name</td>
+</tr>
+<tr>
+<td>permission_group_name</td>
+<td>string</td>
+<td>parent permission group name</td>
+</tr>
+<tr>
+<td>active</td>
+<td>string</td>
+<td>indicates if this permission is active for this user_group</td>
+</tr>
+</tbody></table>
+<h3 id='update-a-user-group-39-s-permission-set'>Update a User Group&#39;s Permission set</h3>
+<p>An endpoint to update the permissions associated with a give user_group. After querying
+for the list of permissions associated with a given user_group, you can add or remove
+a permission by simply changing the value associated with the <code>active</code> key from true
+to false or vice-versa. You will be returned the updated list of permissions relative
+to the given user_group</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/user_groups/:user_group_id/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+
+{
+  "permissions" : [
+    {
+      "id" : 1,
+      "name" : "Enable log in",
+      "permission_group_name" :  "General",
+      "active" : false
+    },
+    {
+      "id" : 2,
+      "name" : "Order Rewards",
+      "permission_group_name" :  "Rewards module",
+      "active" : false
+    }
+  ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable log in"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"General"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Rewards"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"Rewards module"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>PATCH /api/v2/user_groups/:user_group_id/permissions</code></p>
+<h4 id='attributes-2'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>permission id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>permission name</td>
+</tr>
+<tr>
+<td>permission_group_name</td>
+<td>string</td>
+<td>parent permission group name</td>
+</tr>
+<tr>
+<td>active</td>
+<td>string</td>
+<td>indicates if this permission is active for this user_group</td>
+</tr>
+</tbody></table>
+<h2 id='users'>Users</h2>
+<p>In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate user with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore, there will be other fields that have been declared mandatory for your programme and user creation (POST) will fail if these values are not populated or provided.</p>
+<h3 id='create-a-user'>Create a User</h3>
+<p>In order to create a user account on the MyRewards 2.0 platform there is often
+some information about the user we are creating that needs to be known before
+the account can be successfully created.</p>
+
+<p>Firstly, the user group that the user will be created as a member of must be
+known, we provide an endpoint to query the usergroups for your programme and if
+necessary to reconstruct the hierarchy for the usergroups see the usergroups
+section.</p>
+
+<p>Additionally, user accounts can have extra data required over and above the
+minimal default fields for a user account. Typically, these take the form of
+employee data, membership number etc and can be defined as part of your
+programme. These extra data are called registration_questions, for more
+information please see the registration_questions section.</p>
+
+<p>Telephone and mobile number fields must be supplied in international format, meaning starting with a &#39;+&#39; followed by the international country code (I.e. the UK is 44) followed by at least 8 numeric characters.</p>
+
+<p>Answers to the registration questions are provided in an array of objects, nested
+under the key <code>registration_answers_attributes</code>. The nested objects themselves must
+have the keys <code>registration_question_id</code> and <code>answer</code>.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"marketing_consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"marketing_consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/users</code></p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td><code>string</code></td>
+<td>may be required, see user identification above, must be unique to the programme if required</td>
+</tr>
+<tr>
+<td>email</td>
+<td><code>string</code></td>
+<td>valid email address and may be required, see user identification above, must be unique to the programme if required</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td>salutation (Mr, Mrs, Ms, etc) no strict validation.</td>
+</tr>
+<tr>
+<td>firstname</td>
+<td><code>string</code></td>
+<td>Required</td>
+</tr>
+<tr>
+<td>lastname</td>
+<td><code>string</code></td>
+<td>Required</td>
+</tr>
+<tr>
+<td>company</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>job_title</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>address_1</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>address_2</td>
+<td><code>string</code></td>
+<td>optional</td>
+</tr>
+<tr>
+<td>town</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>postcode</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>county</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>country</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td><code>date</code></td>
+<td>must be provided in reverse date format <code>YYYY-MM-DD</code>, Potentially required - see programme data requirements</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements - if supplied must be international format (starting with a &#39;+&#39; followed by international dialling code - UK is 44 - followed by at least 8 numeric characters)</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td><code>string</code></td>
+<td>Potentially required - see programme data requirements, if required, must be unique - if supplied must be international format (starting with a &#39;+&#39; followed by international dialling code - UK is 44 - followed by at least 8 numeric characters)</td>
+</tr>
+<tr>
+<td>tsandcs</td>
+<td><code>boolean</code></td>
+<td>Required</td>
+</tr>
+<tr>
+<td>user_group_id</td>
+<td><code>integer</code></td>
+<td>optional, will default to programme&#39;s default user_group, if not provided</td>
+</tr>
+<tr>
+<td>registration_answers_attributes</td>
+<td><code>array</code></td>
+<td>array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation</td>
+</tr>
+<tr>
+<td>consented</td>
+<td><code>boolean</code></td>
+<td>Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn&#39;t have an active privacy policy.</td>
+</tr>
+<tr>
+<td>marketing_consented</td>
+<td><code>boolean</code></td>
+<td>Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn&#39;t have an active privacy policy.</td>
+</tr>
+</tbody></table>
+<h3 id='update-a-user'>Update a User</h3>
+<p>The update user api is available to update user information. This uses the same
+params as the create user api above.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/users/123</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Joker"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hahaha"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Joker"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hahaha"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>PUT /api/v2/users/{user_id}</code></p>
+
+<p><code>PATCH /api/v2/users/{user_id}</code></p>
+<h2 id='user-gt-permissions'>User &gt; Permissions</h2><h3 id='get-user-permissions'>GET User permissions</h3>
+<p>A endpoint to fetch a list of permissions for a given user. Returns an array of permissions displaying it&#39;s parent
+permissions group name. This is to help identify different permissions when names are the same across separate groups.
+It will also display whether the permission is active for the given user and the state of the permission which can
+be <code>Same As User Group</code> or if the permission has been overridden for that user: <code>Always Allow</code> or <code>Always Deny</code>.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/:user_id/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable log in"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"General"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Same As User Group"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Rewards"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"Rewards module"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Always Allow"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/users/:user_id/permissions</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>permission id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>permission name</td>
+</tr>
+<tr>
+<td>permission_group_name</td>
+<td>string</td>
+<td>parent permission group name</td>
+</tr>
+<tr>
+<td>active</td>
+<td>string</td>
+<td>indicates if this permission is active for this user</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>indicates whether the permission is granted or denied specifically for this user or if it is the same as the user_group</td>
+</tr>
+</tbody></table>
+<h3 id='post-user-permissions'>POST User permissions</h3>
+<p>A endpoint to update a list of permissions for a given user. Returns an array of permissions displaying it&#39;s parent
+permissions group name. This is to help identify different permissions when names are the same across separate groups.
+It will also display whether the permission is active for the given user and the state of the permission which can
+be <code>Same As User Group</code> or if the permission has been overridden for that user: <code>Always Allow</code> or <code>Always Deny</code>.</p>
+
+<p>The only value that this request will change is the <code>active</code> field. The other fields are present
+to make it easier to move from the <code>GET</code> request to a <code>POST</code> without having to reformat
+or delete much of the <code>GET</code> request response.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/users/:user_id/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+
+{
+  "permissions" : [
+    {
+      "id" : 1,
+      "name" : "Enable log in",
+      "permission_group_name" :  "General",
+      "active" : true,
+      "state" : "Same As User Group"
+    },
+    {
+      "id" : 2,
+      "name" : "Order Rewards",
+      "permission_group_name" :  "Rewards module",
+      "active" : false,
+      "state" : "Always Allow"
+    }
+  ]
+}
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable log in"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"General"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Always Allow"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Order Rewards"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"permission_group_name"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="s2">"Rewards module"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Same As User Group"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST /api/v2/users/:user_id/permissions</code></p>
+<h4 id='attributes-2'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>permission id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>permission name</td>
+</tr>
+<tr>
+<td>permission_group_name</td>
+<td>string</td>
+<td>parent permission group name</td>
+</tr>
+<tr>
+<td>active</td>
+<td>string</td>
+<td>indicates if this permission is active for this user</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>indicates whether the permission is granted or denied specifically for this user or if it is the same as the user_group</td>
+</tr>
+</tbody></table>
+<h1 id='extra-features'>Extra Features</h1><h2 id='data-widgets'>Data Widgets</h2>
+<p>A Data Widget is used to show user specific information or data uploaded into
+the data widgets area. </p>
+<h3 id='get-all-data-widgets'>Get all Data Widgets</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/data_widgets</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4567</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some other text"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all data_widgets that belong to a programme (scoped by api key)</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/data_widgets</code></p>
+<h3 id='get-a-data-widget-belonging-to-a-user'>Get a Data Widget belonging to a User</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/123/data_widgets/456</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data widget name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_data_widget"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is some text"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Returns the specific data_widget &amp; user_data_widget data for the user specified { user_id } and the
+{ id } specified.</p>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>GET api/v2/users/{user_id}/data_widgets/{id}</code></p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>The ID of the user you want to retrieve data for</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The ID of the data_widget to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='update-a-data-widget-belonging-to-a-user'>Update a Data Widget belonging to a User</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/users/123/data_widgets/456</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Body: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is some new text"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data widget name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_data_widget"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is some new text"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Update the data of the specific user_data_widget for the user specified { user_id } 
+and the { id } specified.</p>
+<h4 id='http-request-3'>HTTP Request</h4>
+<p><code>PUT api/v2/users/{user_id}/data_widgets/{id}</code></p>
+<h4 id='parameters-2'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>The ID of the user you want to update data for</td>
+</tr>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The ID of the data_widget to retrieve</td>
+</tr>
+<tr>
+<td>data</td>
+<td>string</td>
+<td>Your desired data string</td>
+</tr>
+</tbody></table>
+<h1 id='performance-module'>Performance Module</h1><h2 id='data-fields'>Data Fields</h2><h3 id='list-all-data-fields'>List all Data Fields</h3>
+<p>A simple endpoint to fetch a list of the data fields for a performance module
+enabled programme scoped to a Promotion. Returns an array of data fields as a flat list.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/1/data_fields</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superpower"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Superpower"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_values"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super-strength</span><span class="se">\r\n</span><span class="s2">Flight</span><span class="se">\r\n</span><span class="s2">Other"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:34:03.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:34:03.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hero_name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hero name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:35:03.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:35:03.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/1/data_fields</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoice_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value_of_sale"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.35</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"juliet@corporaterewards.co.uk"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>data_field id</td>
+</tr>
+<tr>
+<td>promotion_id</td>
+<td><code>integer</code></td>
+<td>promotion id</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>data_field name in snake case format.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><code>string</code></td>
+<td>data_field label.</td>
+</tr>
+<tr>
+<td>mandatory</td>
+<td><code>boolean</code></td>
+<td>Whether this field is required</td>
+</tr>
+<tr>
+<td>field_type</td>
+<td><code>string</code></td>
+<td>One of: &#39;free_text&#39;, &#39;numeric&#39;, &#39;list_values&#39;, &#39;date&#39;</td>
+</tr>
+<tr>
+<td>answers</td>
+<td><code>string</code></td>
+<td>A &#39;\r\n&#39; separated list of allowed answers</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td><code>date</code></td>
+<td>The time at which this field was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td><code>date</code></td>
+<td>The time at which this field was last updated</td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>integer</code></td>
+<td>Position of the data field within the form</td>
+</tr>
+</tbody></table>
+<h2 id='performance-categories'>Performance Categories</h2><h3 id='list-performance-categories'>List Performance Categories</h3>
+<p>Endpoint to fetch a list of the performance categories for a performance module enabled programme</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/performance_categories</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">[</span>
+<span class="s">    {</span>
+<span class="s">        "id": 1,</span>
+<span class="s">        "name": "Category Name 1"</span>
+<span class="s">    },</span>
+<span class="s">    {</span>
+<span class="s">        "id": 2,</span>
+<span class="s">        "name": "Category Name 2"</span>
+<span class="s">    }</span>
+<span class="s">]</span>
+</code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/performance/performance_categories</code></p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id of the performance category</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the performance category</td>
+</tr>
+</tbody></table>
+<h2 id='performance-products'>Performance Products</h2><h3 id='creating-a-product'>Creating a Product</h3>
+<p>Endpoint to create performance products for a programme with the performance module enabled.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/performance_product_batches</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"performance_products"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"performance_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Product 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc1236"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some description"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"performance_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Product 2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc5766"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some description"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peformance_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Product 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc1236"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some description"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peformance_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Product 2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc5766"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some description"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/performance/performance_product_batches</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>performance_category_id</td>
+<td><code>integer</code></td>
+<td>The id of the category the product will belong to. This must be valid for your programme</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The name of the product. Must be unique</td>
+</tr>
+<tr>
+<td>ref</td>
+<td><code>string</code></td>
+<td>The reference for the product. Must be unique</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td><code>string</code></td>
+<td>Must be either &#39;product&#39; or &#39;activity&#39;</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>integer</code></td>
+<td>A positive two digit number. Must be the value in RRP or the cost value of the product in your programme&#39;s currency. If the product_type is &#39;product&#39;, this must be provided</td>
+</tr>
+<tr>
+<td>description</td>
+<td><code>text</code></td>
+<td>Some text describing the product. Optional</td>
+</tr>
+</tbody></table>
+<h3 id='updating-a-product'>Updating a Product</h3>
+<p>Endpoint to update performance products for a programme with the performance module enabled.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/performance/performance_product_batches</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="s">PATCH /api/v2/performance/performance_product_batches HTTP/1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"performance_products"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"performance_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Update Name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc1236"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated Description"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peformance_category_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc1236"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated description"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4><div class="highlight"><pre class="highlight plaintext"><code>PUT /api/v2/performance/performance_product_batches
+PATCH /api/v2/performance/performance_product_batches
+</code></pre></div><h4 id='attributes-2'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>The id of the performance product to be updated</td>
+</tr>
+<tr>
+<td>performance_category_id</td>
+<td><code>integer</code></td>
+<td>The id of the category the product will belong to. This must be valid for your programme</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The name of the product. Must be unique</td>
+</tr>
+<tr>
+<td>ref</td>
+<td><code>string</code></td>
+<td>The reference for the product. Must be unique</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td><code>string</code></td>
+<td>Must be either &#39;product&#39; or &#39;activity&#39;</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>integer</code></td>
+<td>A positive two digit number. Must be the value in RRP or the cost value of the product in your programme&#39;s currency. If the product_type is &#39;product&#39;, this must be provided</td>
+</tr>
+<tr>
+<td>description</td>
+<td><code>text</code></td>
+<td>Some text describing the product. Optional</td>
+</tr>
+</tbody></table>
+<h2 id='sales-data'>Sales Data</h2><h3 id='create-sales-data'>Create Sales Data</h3>
+<p>Endpoint to create claims against specific promotion. Claims are created by using the data_field names from above as key/value pairs.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/data</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">468</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer_name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer name"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_values"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob</span><span class="se">\r\n</span><span class="s2">Harry</span><span class="se">\r\n</span><span class="s2">Suzy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:50:50.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T12:51:15.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">464</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice_date"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice date"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:51:04.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_or_activity_ref"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product or Activity Ref"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">466</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quantity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">567</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value_of_sale"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value of sale"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T12:52:48.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-07T15:03:41.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">467</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+</code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/performance/promotions/1/data</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sale_date</td>
+<td><code>date</code></td>
+<td>The date when this piece of data was created</td>
+</tr>
+<tr>
+<td>product_or_activity_ref</td>
+<td><code>string</code></td>
+<td>The SKU for the performance product to claim against</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><code>integer</code></td>
+<td>The quantity of products sold</td>
+</tr>
+<tr>
+<td>username</td>
+<td><code>string</code></td>
+<td>The username or email for the user to assign points to ( Either this or the <code>user_id</code> field needs to be supplied. )</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>user_id</code></td>
+<td>The MyRewards user ID for the user to assign points to ( Either this or the <code>username</code> field needs to be supplied. )</td>
+</tr>
+</tbody></table>
+
+<p>You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing &amp; valid promotion</p>
+
+<p>If one record in a set being uploaded fails to be created either by being invalid or through a programme not having enough points - all records in the request will fail to be created</p>
+<h1 id='reward-module'>Reward Module</h1><h2 id='instant-point-vouchers-ipv'>Instant Point Vouchers (IPV)</h2><h3 id='create-an-ipv'>Create an IPV</h3>
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/reward/codes</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Competition winner."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"send_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Competition winner."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"send_email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code_value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-YYYY-ZZZZ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"batch_reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SSSS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"issued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"programme_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Generate Reward IPV codes for Programmes with the Rewards Module. </p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/reward/codes</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>integer</td>
+<td>Required, must be a positive integer. Points value of the IPV</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Optional, text field</td>
+</tr>
+<tr>
+<td>expiry_date</td>
+<td>date</td>
+<td>Required, must be in the future and in the format <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td>send_email</td>
+<td>string</td>
+<td>Optional, valid email address to which the code will be sent. If provided, the &#39;Send a code&#39; email messages must be configured. Response will have <code>issued</code> set to <code>true</code></td>
+</tr>
+</tbody></table>
+<h3 id='get-an-ipv'>Get an IPV</h3>
+<blockquote>
+<p>Header: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/reward/codes/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Competition winner."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiry_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"send_email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code_value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-YYYY-ZZZZ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"batch_reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SSSS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"issued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"programme_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To view the details of an IPV code.</p>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>GET /api/v2/reward/codes/{id}</code></p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
