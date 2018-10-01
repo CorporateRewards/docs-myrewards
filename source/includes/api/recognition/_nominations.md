@@ -9,6 +9,7 @@ You will be returned the updated JSON for the given nomination.
 ``` http
 PATCH /api/v2/campaigns/:campaign_id/nominations HTTP/1.1
 Authorization: Token token=xxx
+Content-Type: application/json
 
 {
   "campaign_id" : 1,

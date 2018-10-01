@@ -6,7 +6,6 @@ language_tabs:
 includes:
 # - example/kittens
 - api/core/0_core
-- api/core/nominations
 - api/core/permissions
 - api/core/registration_questions
 - api/core/site_messages
@@ -22,6 +21,8 @@ includes:
 - api/performance/performance_categories
 - api/performance/performance_products
 - api/performance/sales_data
+- api/recognition/0_recognition
+- api/recognition/nominations
 - api/reward/0_reward_module
 - api/reward/ipv
 
