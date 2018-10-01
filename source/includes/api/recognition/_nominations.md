@@ -30,7 +30,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`PATCH /api/v2/campaigns/:campaign_id/nominations`
+`PATCH /api/v2/campaigns/:campaign_id/nominations/:id`
 
 #### Attributes
 
