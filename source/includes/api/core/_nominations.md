@@ -9,6 +9,13 @@ You will be returned the updated JSON for the given nomination.
 ``` http
 PATCH /api/v2/campaigns/:campaign_id/nominations HTTP/1.1
 Authorization: Token token=xxx
+
+{
+  "campaign_id" : 1,
+  "id" : 1,
+  "status" : "approved_l1",
+  "approver" : "approver@approver-myrewards.co.uk"
+}
 ```
 
 ``` http
@@ -16,9 +23,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "campaign_id" : 1,
-  "id" : 1,
-  "status" : "approved"
+  "id" : "1",
+  "status" : "approved_l1",
+  "approver" : "approver@approver-myrewards.co.uk"
 }
 ```
 
