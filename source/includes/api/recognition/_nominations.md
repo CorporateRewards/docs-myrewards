@@ -12,7 +12,7 @@ Authorization: Token token=xxx
 Content-Type: application/json
 
 {
-  "status" : "approved_l1",
+  "transition" : "approve_l1",
   "approver" : "approver@approver-myrewards.co.uk"
 }
 ```
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
   "id" : "1",
-  "status" : "approved_l1",
+  "state" : "approved_l1",
   "approver" : "approver@approver-myrewards.co.uk"
 }
 ```
@@ -37,10 +37,10 @@ Content-Type: application/json
 Attribute | Type | Info
 --------- | ---- | ----
 id | integer | nomination id
-campaign_id | integer | campaign id
-status | string | a valid status that the nomination can transition to
 approver | string | the approver's identifier (email or username)
+campaign_id | integer | campaign id
 reason | string | an optional string which can be provided when declining a nomination
+transition | string | a valid transition to be performed on the award (see valid transition types below)
 
 ### State Transition Information
 
@@ -49,18 +49,17 @@ status. For example an award with status 'Pending level 1' can transition to
 'Approved level 1' but not to 'Approved level 2'. Below is a list of transitions
 the api can make, depending on current nomination status.
 
-####Programme with level 1 approval
-
+#### approve_l1
 `pending_l1 => approved_l1`
 
+#### decline_l1
 `pending_l1 => declined_l1`
 
-####Programme with level 2 approval
-
+#### override_pending_l2
 `pending_l1 => pending_l2`
 
-`pending_l1 => declined_l1`
-
+#### approve_l2
 `pending_l2 => approved_l2`
 
+#### decline_l2
 `pending_l2 => declined_l2`
