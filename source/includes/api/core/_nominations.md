@@ -3,8 +3,8 @@
 ### Update a Nomination's status
 
 An endpoint to update a status of a nomination for a given campaign. By passing
-a status parameter of 'approved' or 'declined'. You will be returned the updated
-JSON for the given nomination.
+a status parameter of 'approved' or 'declined'. An approver for the nomination
+must also be provided. You will be returned the updated JSON for the given nomination.
 
 ``` http
 PATCH /api/v2/campaigns/:campaign_id/nominations HTTP/1.1
@@ -33,3 +33,5 @@ Attribute | Type | Info
 id | integer | nomination id
 campaign_id | integer | campaign id
 status | string | either 'approved' or 'declined'
+approver | string | the approver's identifier (email or username)
+reason | string | an optional string which can be provided when declining a nomination
