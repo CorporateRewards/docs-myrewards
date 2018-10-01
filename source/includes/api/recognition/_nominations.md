@@ -41,3 +41,26 @@ campaign_id | integer | campaign id
 status | string | a valid status that the nomination can transition to
 approver | string | the approver's identifier (email or username)
 reason | string | an optional string which can be provided when declining a nomination
+
+### State Transition Information
+
+Nominations can only transition to status that are allowed by their current
+status. For example an award with status 'Pending level 1' can transition to
+'Approved level 1' but not to 'Approved level 2'. Below is a list of transitions
+the api can make, depending on current nomination status.
+
+####Programme with level 1 approval
+
+`pending_l1 => approved_l1`
+
+`pending_l1 => declined_l1`
+
+####Programme with level 2 approval
+
+`pending_l1 => pending_l2`
+
+`pending_l1 => declined_l1`
+
+`pending_l2 => approved_l2`
+
+`pending_l2 => declined_l2`
