@@ -7,13 +7,11 @@ a status parameter. An approver for the nomination must also be provided.
 You will be returned the updated JSON for the given nomination.
 
 ``` http
-PATCH /api/v2/campaigns/:campaign_id/nominations HTTP/1.1
+PATCH /api/v2/campaigns/:campaign_id/nominations/:id HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
 {
-  "campaign_id" : 1,
-  "id" : 1,
   "status" : "approved_l1",
   "approver" : "approver@approver-myrewards.co.uk"
 }
