@@ -36,18 +36,28 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | integer | nomination id
-approver | string | the approver's identifier (email or username)
-campaign_id | integer | campaign id
-reason | string | an optional string which can be provided when declining a nomination
-transition | string | a valid transition to be performed on the award (see valid transition types below)
+id | integer | (required) nomination id
+approver | string | (required) the approver's identifier (email or username)
+campaign_id | integer | (required) campaign id
+reason | string | (optional) string which can be provided when declining a nomination
+transition | string | (required) a valid transition to be performed on the award (see valid transition types below)
+
+### Approver Information
+
+The Approver passed into the Api needs to be a valid approver for the
+nomination.
+
+### Reason Information
+
+When declining a nomination an optional string can be provided. This is saved to
+the nomination when it is declined.
 
 ### State Transition Information
 
-Nominations can only transition to status that are allowed by their current
-status. For example an award with status 'Pending level 1' can transition to
-'Approved level 1' but not to 'Approved level 2'. Below is a list of transitions
-the api can make, depending on current nomination status.
+Nominations can only transition to a state that is allowed by it's current
+state. For example an award with state 'pending_l1' can transition to
+'approved_l1' but not to 'approved_l2'. Below is a list of transitions
+the api can make, depending on current nomination state.
 
 #### approve
 `pending_l1 => approved_l1`
