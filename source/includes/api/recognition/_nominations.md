@@ -12,7 +12,7 @@ Authorization: Token token=xxx
 Content-Type: application/json
 
 {
-  "transition" : "approve_l1",
+  "transition" : "approve",
   "approver" : "approver@approver-myrewards.co.uk"
 }
 ```
@@ -49,17 +49,14 @@ status. For example an award with status 'Pending level 1' can transition to
 'Approved level 1' but not to 'Approved level 2'. Below is a list of transitions
 the api can make, depending on current nomination status.
 
-#### approve_l1
+#### approve
 `pending_l1 => approved_l1`
 
-#### decline_l1
+#### decline
 `pending_l1 => declined_l1`
 
-#### override_pending_l2
-`pending_l1 => pending_l2`
-
-#### approve_l2
+#### approve
 `pending_l2 => approved_l2`
 
-#### decline_l2
+#### decline
 `pending_l2 => declined_l2`
