@@ -3,7 +3,7 @@
 ### Update a Nomination's status
 
 An endpoint to update a status of a nomination for a given campaign. By passing
-a status parameter. An approver for the nomination must also be provided. 
+a status parameter. An approver for the nomination must also be provided.
 You will be returned the updated JSON for the given nomination.
 
 ``` http
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
   "transition" : "approve",
-  "approver" : "approver@approver-myrewards.co.uk"
+  "approver" : 123
 }
 ```
 
@@ -24,7 +24,6 @@ Content-Type: application/json
 {
   "id" : "1",
   "state" : "approved_l1",
-  "approver" : "approver@approver-myrewards.co.uk"
 }
 ```
 
@@ -37,15 +36,15 @@ Content-Type: application/json
 Attribute | Type | Info
 --------- | ---- | ----
 id | integer | (required) nomination id
-approver | string | (required) the approver's identifier (email or username)
+approver | integer | (required) the approver's user id
 campaign_id | integer | (required) campaign id
 reason | string | (optional) string which can be provided when declining a nomination
-transition | string | (required) a valid transition to be performed on the award (see valid transition types below)
+transition | string | (required) a valid transition to be performed on the award (approve or decline only)
 
 ### Approver Information
 
-The Approver passed into the Api needs to be a valid approver for the
-nomination.
+The Approver passed into the API needs to be a valid approver for the
+nomination and for the approval level.
 
 ### Reason Information
 
@@ -56,17 +55,4 @@ the nomination when it is declined.
 
 Nominations can only transition to a state that is allowed by it's current
 state. For example an award with state 'pending_l1' can transition to
-'approved_l1' but not to 'approved_l2'. Below is a list of transitions
-the api can make, depending on current nomination state.
-
-#### approve
-`pending_l1 => approved_l1`
-
-#### decline
-`pending_l1 => declined_l1`
-
-#### approve
-`pending_l2 => approved_l2`
-
-#### decline
-`pending_l2 => declined_l2`
+'approved_l1' but not to 'approved_l2'. Only "approve" or "decline" can be provided to the API.
