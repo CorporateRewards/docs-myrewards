@@ -31,20 +31,24 @@ Content-Type: application/json
 
 `PATCH /api/v2/campaigns/:campaign_id/nominations/:id`
 
-#### Attributes
+#### URL Parameters
 
 Attribute | Type | Info
 --------- | ---- | ----
 id | integer | (required) nomination id
-approver | integer | (required) the approver's user id
 campaign_id | integer | (required) campaign id
+
+#### Body Parameters
+
+Attribute | Type | Info
+--------- | ---- | ----
+approver | integer | (required) the approver's user id
 reason | string | (optional) string which can be provided when declining a nomination
-transition | string | (required) a valid transition to be performed on the award (approve or decline only)
+transition | string | (required) a valid transition to be performed on the award (`approve` or `decline` only)
 
 ### Approver Information
 
-The Approver passed into the API needs to be a valid approver for the
-nomination and for the approval level.
+The approver should be a valid approver for the nomination, and for the approver level.
 
 ### Reason Information
 
@@ -53,6 +57,6 @@ the nomination when it is declined.
 
 ### State Transition Information
 
-Nominations can only transition to a state that is allowed by it's current
+Nominations can only transition to a state allowed by its current
 state. For example an award with state 'pending_l1' can transition to
 'approved_l1' but not to 'approved_l2'. Only "approve" or "decline" can be provided to the API.
