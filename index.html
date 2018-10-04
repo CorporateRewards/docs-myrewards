@@ -374,6 +374,28 @@
               </ul>
           </li>
           <li>
+            <a href="#recognition-module" class="toc-h1 toc-link" data-title="recognition-module">Recognition Module</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#nominations" class="toc-h2 toc-link" data-title="nominations">Nominations</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#update-a-nomination-39-s-status" class="toc-h3 toc-link" data-title="Recognition Module">Update a Nomination's status</a>
+                          </li>
+                          <li>
+                            <a href="#approver-information" class="toc-h3 toc-link" data-title="Recognition Module">Approver Information</a>
+                          </li>
+                          <li>
+                            <a href="#reason-information" class="toc-h3 toc-link" data-title="Recognition Module">Reason Information</a>
+                          </li>
+                          <li>
+                            <a href="#state-transition-information" class="toc-h3 toc-link" data-title="Recognition Module">State Transition Information</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#reward-module" class="toc-h1 toc-link" data-title="reward-module">Reward Module</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2224,6 +2246,79 @@ PATCH /api/v2/performance/performance_product_batches
 <p>You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing &amp; valid promotion</p>
 
 <p>If one record in a set being uploaded fails to be created either by being invalid or through a programme not having enough points - all records in the request will fail to be created</p>
+<h1 id='recognition-module'>Recognition Module</h1><h2 id='nominations'>Nominations</h2><h3 id='update-a-nomination-39-s-status'>Update a Nomination&#39;s status</h3>
+<p>An endpoint to update a status of a nomination for a given campaign. By passing
+a status parameter. An approver for the nomination must also be provided.
+You will be returned the updated JSON for the given nomination.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/campaigns/:campaign_id/nominations/:id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"transition"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"approve"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"approver"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"approved_l1"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>PATCH /api/v2/campaigns/:campaign_id/nominations/:id</code></p>
+<h4 id='url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>(required) nomination id</td>
+</tr>
+<tr>
+<td>campaign_id</td>
+<td>integer</td>
+<td>(required) campaign id</td>
+</tr>
+</tbody></table>
+<h4 id='body-parameters'>Body Parameters</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>approver</td>
+<td>integer</td>
+<td>(required) the approver&#39;s user id</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>string</td>
+<td>(optional) string which can be provided when declining a nomination</td>
+</tr>
+<tr>
+<td>transition</td>
+<td>string</td>
+<td>(required) a valid transition to be performed on the award (<code>approve</code> or <code>decline</code> only)</td>
+</tr>
+</tbody></table>
+<h3 id='approver-information'>Approver Information</h3>
+<p>The approver should be a valid approver for the nomination, and for the approver level.</p>
+<h3 id='reason-information'>Reason Information</h3>
+<p>When declining a nomination an optional string can be provided. This is saved to
+the nomination when it is declined.</p>
+<h3 id='state-transition-information'>State Transition Information</h3>
+<p>Nominations can only transition to a state allowed by its current
+state. For example an award with state &#39;pending_l1&#39; can transition to
+&#39;approved_l1&#39; but not to &#39;approved_l2&#39;. Only &quot;approve&quot; or &quot;decline&quot; can be provided to the API.</p>
 <h1 id='reward-module'>Reward Module</h1><h2 id='instant-point-vouchers-ipv'>Instant Point Vouchers (IPV)</h2><h3 id='create-an-ipv'>Create an IPV</h3>
 <blockquote>
 <p>Header:</p>
