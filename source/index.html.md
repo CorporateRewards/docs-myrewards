@@ -21,6 +21,8 @@ includes:
 - api/performance/performance_categories
 - api/performance/performance_products
 - api/performance/sales_data
+- api/recognition/0_recognition
+- api/recognition/nominations
 - api/reward/0_reward_module
 - api/reward/ipv
 

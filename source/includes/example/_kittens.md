@@ -25,7 +25,7 @@ Content-Type: application/json
 
 > Response:
 
-```json 
+```json
 {
   "id": 3,
   "name": "Mr Fluffles",
@@ -41,12 +41,12 @@ Create a new Kitten.
 
 `POST /api/v2/kittens`
 
-#### Parameters
+#### Body Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
 name | integer | the ID of the user who will receive the message
-breed | string | content of message 
+breed | string | content of message
 fluffiness | integer | how fluffy? (1-10)
 cuteness | integer | how cute? (1-10)
 
@@ -55,7 +55,7 @@ cuteness | integer | how cute? (1-10)
 > Header:
 
 ```http
-GET /api/v2/kittens/{id} HTTP/1.1
+GET /api/v2/kittens/:id HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
@@ -72,13 +72,13 @@ Content-Type: application/json
 }
 ```
 
-Returns the specific kitten from the {id}
+Returns the specific kitten from the :id
 
 #### HTTP Request
 
-`GET api/v2/kittens/{id}`
+`GET api/v2/kittens/:id`
 
-#### Parameters
+#### URL Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -98,7 +98,7 @@ Content-Type: application/json
 
 > Response:
 
-```json 
+```json
 [
   {
     "id": 1,
@@ -123,7 +123,7 @@ This endpoint retrieves all kittens.
 
 `GET /api/v2/kittens`
 
-#### Parameters
+#### Body Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
@@ -138,15 +138,15 @@ Remember — a happy kitten is an authenticated kitten!
 
 ## Delete a Kitten
 
-> Header 
+> Header
 
 ```http
-GET /api/v2/kittens/{id} HTTP/1.1
+GET /api/v2/kittens/:id HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
 
-> Response: 
+> Response:
 
 ```json
 {
@@ -155,15 +155,14 @@ Content-Type: application/json
 }
 ```
 
-Deletes the kitten with the given ID
+Deletes the kitten with the given :id
 
 #### HTTP Request
 
-`DELETE /api/v2/kittens/{ID}`
+`DELETE /api/v2/kittens/:id`
 
-#### Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 id | The ID of the kitten to delete
-
