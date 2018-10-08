@@ -46,6 +46,7 @@ Content-Type: application/json
 {
   "id" : "1",
   "state" : "declined_l1",
+  "declined_reason" : "Already nominated"
 }
 ```
 
