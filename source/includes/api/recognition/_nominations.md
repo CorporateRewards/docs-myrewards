@@ -58,7 +58,7 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | `integer` | (required) nomination id
+id | `integer` | (required) campaign_award_request id
 campaign_id | `integer` | (required) campaign id
 
 #### Body Parameters
