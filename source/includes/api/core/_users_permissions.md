@@ -2,7 +2,7 @@
 
 ### GET User permissions
 
-A endpoint to fetch a list of permissions for a given user. Returns an array of permissions displaying it's parent
+An endpoint to fetch a list of permissions for a given user. Returns an array of permissions displaying it's parent
 permissions group name. This is to help identify different permissions when names are the same across separate groups.
 It will also display whether the permission is active for the given user and the state of the permission which can
 be `Same As User Group` or if the permission has been overridden for that user: `Always Allow` or `Always Deny`.
@@ -44,11 +44,11 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | integer | permission id
-name | string | permission name
-permission\_group\_name | string | parent permission group name
-active | string | indicates if this permission is active for this user
-state | string | indicates whether the permission is granted or denied specifically for this user or if it is the same as the user_group
+id | integer | Required permission id
+name | string | Required permission name
+permission\_group\_name | string | Required parent permission group name
+active | string | Required indicates if this permission is active for this user
+state | string | Required indicates whether the permission is granted or denied specifically for this user or if it is the same as the user_group
 
 
 ### POST User permissions
@@ -62,8 +62,11 @@ The only value that this request will change is the `active` field. The other fi
 to make it easier to move from the `GET` request to a `POST` without having to reformat
 or delete much of the `GET` request response.
 
+N.B. When specifying active = true this will set the permission to "Always allow"
+setting to false will have the effect of "Always deny"
+
 ``` http
-POST /api/v2/users/:user_id/permissions HTTP/1.1
+PATCH /api/v2/users/:user_id/permissions HTTP/1.1
 Authorization: Token token=xxx
 
 {
@@ -72,15 +75,13 @@ Authorization: Token token=xxx
       "id" : 1,
       "name" : "Enable log in",
       "permission_group_name" :  "General",
-      "active" : true,
-      "state" : "Same As User Group"
+      "active" : true
     },
     {
       "id" : 2,
       "name" : "Order Rewards",
       "permission_group_name" :  "Rewards module",
-      "active" : false,
-      "state" : "Always Allow"
+      "active" : false
     }
   ]
 }
@@ -96,15 +97,13 @@ Content-Type: application/json
       "id" : 1,
       "name" : "Enable log in",
       "permission_group_name" :  "General",
-      "active" : true,
-      "state" : "Always Allow"
+      "active" : true
     },
     {
       "id" : 2,
       "name" : "Order Rewards",
       "permission_group_name" :  "Rewards module",
-      "active" : false,
-      "state" : "Same As User Group"
+      "active" : false
     }
   ]
 }
@@ -112,14 +111,13 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`POST /api/v2/users/:user_id/permissions`
+`PATCH /api/v2/users/:user_id/permissions`
 
 #### Attributes
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | integer | permission id
-name | string | permission name
-permission\_group\_name | string | parent permission group name
-active | string | indicates if this permission is active for this user
-state | string | indicates whether the permission is granted or denied specifically for this user or if it is the same as the user_group
+id | integer | Required permission id
+name | string | Required permission name
+permission\_group\_name | string | Required parent permission group name
+active | string | Required indicates if this permission is active for this user

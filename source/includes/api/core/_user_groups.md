@@ -95,5 +95,5 @@ Parameters | Type | Info
 ---------- | ---- | ----
 name | `string` | Required - name of the user_group to be created
 position | `integer` | position of the user_group in the hierachy
-parent_id | `integer` | an optional id field, used if the this user group should be nested underneath another
-image_url | `string` | a url of an image you wish to upload to identify the user group with
+parent_id | `integer` | an optional id field, used if this user group should be nested underneath another
+image_url | `string` | a url of user group image
