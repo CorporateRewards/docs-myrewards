@@ -73,12 +73,14 @@ Below is an example of a typical SAML assertion
 ```
 
 The Assertion is passed via a HTTPS post to the MyRewards Assertion consumer service:
-<pre>
+
+```html
 <form method="post" action="https://programme-name.com/saml/consume">
  <input type="hidden" name="SAMLResponse" value="response" />
  <input type="submit" value="Submit" />
 </form>
-</pre>
+```
+
 The value of the SAMLResponse parameter is the base64 encoding of a <samlp:Response>
 element above, which is transmitted to the service provider (client-company.com) via the browser, in this case.
 
