@@ -2521,14 +2521,13 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
  <span class="nt">&lt;/Assertion&gt;</span>
 <span class="nt">&lt;/samlp:Response&gt;</span>
 </code></pre></div>
-<p>The Assertion is passed via a HTTPS post to the MyRewards Assertion consumer service:
-<pre>
-<form method="post" action="https://programme-name.com/saml/consume">
- <input type="hidden" name="SAMLResponse" value="response" />
- <input type="submit" value="Submit" />
-</form>
-</pre>
-The value of the SAMLResponse parameter is the base64 encoding of a <a href="samlp:Response">samlp:Response</a>
+<p>The Assertion is passed via a HTTPS post to the MyRewards Assertion consumer service:</p>
+<div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"https://programme-name.com/saml/consume"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"SAMLResponse"</span> <span class="na">value=</span><span class="s">"response"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Submit"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div>
+<p>The value of the SAMLResponse parameter is the base64 encoding of a <a href="samlp:Response">samlp:Response</a>
 element above, which is transmitted to the service provider (client-company.com) via the browser, in this case.</p>
 
 <p>The assertion <strong>must</strong> have the following sub elements (shown with name spaces from example assetion above):</p>
