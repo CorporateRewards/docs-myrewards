@@ -51,13 +51,13 @@ Content-Type: application/json
   "name": "Team",
   "target_tracker_users": {
     "user_id": 123,
-    "target_value": "2000"
+    "target_value": "2000",
     "current_value": "1000"
    }
 }
 ```
 
-Returns the specific target_tracker & target_tracker_user data for the specified { user_id } and the
+Returns the specific target_tracker & target_tracker_user data for the { user_id } and
 { id } specified.
 
 #### HTTP Request
