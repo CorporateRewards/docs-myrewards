@@ -98,14 +98,14 @@ Content-Type: application/json
   "name": "Team",
   "target_tracker_users": {
     "user_id": 123,
-    "target_value": "2000"
+    "target_value": "2000",
     "current_value": "1000"
   }
 }
 ```
 
-Update the attributes of the specific target_tracker_user for the user specified { user_id } 
-and the { id } specified.
+Update the attributes of the specific target_tracker_user for the specified { user_id } 
+and the { id }.
 
 #### HTTP Request
 
