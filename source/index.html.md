@@ -16,6 +16,7 @@ includes:
 - api/core/users_permissions
 - api/extra_features/0_extra_features
 - api/extra_features/data_widgets
+- api/extra_features/target_trackers
 - api/performance/0_performance
 - api/performance/data_fields
 - api/performance/performance_categories
