@@ -130,7 +130,6 @@ Variety | Programme Points affecting? | Permitted Type
 ------- | --------------------------- | --------------
 Programme points | Yes | either
 Points Error | Yes | either
-Programme Budget | Yes | either
 Redemption | No | Debit only
 Person 2 Person Transfer | No | either (credit and debit must both be carried out for each user)
 Order Cancellation | No | Credit only
