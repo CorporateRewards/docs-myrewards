@@ -47,7 +47,7 @@ HTML/HTTP is preferred.
 
 # Authentication
 
-##Token
+## Token
 In order to use our API endpoints, you will need to have an API key created and
 for this key to be granted the relevant permissions. To authenticate requests we
 require you to pass us this key in the form of an HTTP header called
@@ -55,7 +55,7 @@ require you to pass us this key in the form of an HTTP header called
 
 
 ## Authentication
-An api key now requires permissions to be assigned in order make any requests to the api. The issuer of your key will set permissions for endpoints you expect to access. If you need to access more of the API or you believe your permissions are not correct (unexpected 403 responses) then contact your key issuer.
+An API key now requires permissions to be assigned in order make any requests to the API. The issuer of your key will set permissions for endpoints you expect to access. If you need to access more of the API or you believe your permissions are not correct (unexpected 403 responses) then contact your key issuer.
 
 Getting read access (GET) to an API endpoint does not mean that you will also have any kind of write access (PUT, PATCH, POST) and vice versa - these are separate permissions.
 
