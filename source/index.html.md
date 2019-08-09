@@ -27,6 +27,7 @@ includes:
 - api/reward/0_reward_module
 - api/reward/ipv
 - sso/index
+- faqs/index
 
 search: true
 ---
@@ -38,7 +39,7 @@ The first thing you will have to find out is the correct API endpoint to use for
 the right environment.
 
 - **Staging:** [https://staging.my-rewards.co.uk](https://staging.my-rewards.co.uk)
-- For production access please ask your Corporate Rewards contact
+- For production access please ask your MyRewards contact
 
 A programme can have one or more API keys, each of which will be granted
 permission to access different functionality from the API. As a standard, we use

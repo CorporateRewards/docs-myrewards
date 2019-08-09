@@ -51,8 +51,8 @@ Content-Type: application/json
   "name": "Team",
   "target_tracker_users": {
     "user_id": 123,
-    "target_value": "2000",
-    "current_value": "1000"
+    "target_value": 2000.00,
+    "current_value": 1000.00
    }
 }
 ```
@@ -85,8 +85,8 @@ Content-Type: application/json
 
 ```json
 {
-  "target_value": "2000",
-  "current_value": "1000"
+  "target_value": 2000.00,
+  "current_value": 1000.00
 }
 ```
 
@@ -98,8 +98,8 @@ Content-Type: application/json
   "name": "Team",
   "target_tracker_users": {
     "user_id": 123,
-    "target_value": "2000",
-    "current_value": "1000"
+    "target_value": 2000.00,
+    "current_value": 1000.00
   }
 }
 ```
@@ -109,7 +109,7 @@ and the { id }.
 
 #### HTTP Request
 
-`PUT api/v2/users/{user_id}/target_tracker/{id}`
+`PUT api/v2/users/{user_id}/target_trackers/{id}`
 
 #### Parameters
 

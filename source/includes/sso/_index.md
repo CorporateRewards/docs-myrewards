@@ -114,7 +114,7 @@ Which value is used will be determined by Programme configuration
 
 ## Next steps
 
-Corporate Rewards will require the following information to set up SAML SSO on the MyRewards
+The following information is required to set up SAML SSO on the MyRewards
 system
 * URL of the identify provider
 * Thumbprint of x509 certificate – this can be extracted from the public key
@@ -122,7 +122,7 @@ system
 * Failed log in redirect (if not included in the assertion)
 * User identifier
 
-In response, Corporate Rewards will provide a metadata file back to the IdP - this can often be useful for automatically configuring some IdP systems such as Active Directory Federated Services
+In response, you will be provided with a metadata file back to the IdP - this can often be useful for automatically configuring some IdP systems such as Active Directory Federated Services
 
 ## Further information
 For further information on SAML2.0 please go to the official SAML2.0 websites:
