@@ -27,7 +27,7 @@ includes:
 - api/reward/0_reward_module
 - api/reward/ipv
 - sso/index
-- faqs/index
+
 
 search: true
 ---
