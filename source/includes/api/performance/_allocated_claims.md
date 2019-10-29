@@ -71,13 +71,10 @@ quantity | `integer` | The quantity of products sold. Mandatory.
 user\_group\_id | `integer` | ID of the user group claim relates to (either this or company_id needs to be supplied)
 company\_id | `integer` | ID of the MyRewards company claim related to (either this or user_group_id needs to be supplied)
 
-You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion.
+You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the [GET List Data Fields](#list-all-data-fields) for a Promotion.
 
 Eg:
 
 Attribute | Type | Info
 --------- | ---- | ----
 some\_custom\_field | `custom field type` | A custom answer for this field
-
-These data fields can be obtained from the following endpoint...
-[`GET /api/v2/performance/promotions/1/data_fields`](/#list-all-data-fields)
