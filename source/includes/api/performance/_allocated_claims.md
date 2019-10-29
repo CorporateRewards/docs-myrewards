@@ -5,7 +5,7 @@
 Endpoint to create allocated claims against specific promotion. Claims are created by using the `data_field` names from above as key/value pairs. Your request must include `user_group_id` or `company_id,` depending on the promotion configuration.
 
 ``` http
-POST /api/v3/performance/promotions/1/allocated_claims HTTP/1.1
+POST /api/v2/performance/promotions/1/allocated_claims HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -58,7 +58,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`POST /api/v3/performance/promotions/1/allocated_claims`
+`POST /api/v2/performance/promotions/1/allocated_claims`
 
 #### Attributes
 
