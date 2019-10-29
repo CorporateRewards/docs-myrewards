@@ -18,6 +18,7 @@ includes:
 - api/extra_features/data_widgets
 - api/extra_features/target_trackers
 - api/performance/0_performance
+- api/performance/allocated_claims
 - api/performance/data_fields
 - api/performance/performance_categories
 - api/performance/performance_products
