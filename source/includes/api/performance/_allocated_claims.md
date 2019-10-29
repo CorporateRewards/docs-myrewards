@@ -2,7 +2,7 @@
 
 ### Create Allocated Claims
 
-Endpoint to create allocated claims against specific promotion. Claims are created by using the `data_field` names from above as key/value pairs. Your request must include user group name or company name, depending on the promotion configuration.
+Endpoint to create allocated claims against specific promotion. Claims are created by using the `data_field` names from above as key/value pairs. Your request must include `user_group_id` or `company_id,` depending on the promotion configuration.
 
 ``` http
 POST /api/v3/performance/promotions/1/allocated_claims HTTP/1.1
@@ -78,3 +78,6 @@ Eg:
 Attribute | Type | Info
 --------- | ---- | ----
 some\_custom\_field | `custom field type` | A custom answer for this field
+
+These data fields can be obtained from the following endpoint...
+[`GET /api/v2/performance/promotions/1/data_fields`](/#list-all-data-fields)
