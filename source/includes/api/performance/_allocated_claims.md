@@ -9,50 +9,56 @@ POST /api/v2/performance/promotions/1/allocated_claims HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
-[
-    {
-        "sale_date": "01/02/2018",
-        "product_or_activity_ref": "AAA1234",
-        "quantity": 2,
-        "user_group_id": 2,
-        "company_id": 5,
-        "some_custom_field": "some custom answer"
-    },
-    {
-        "sale_date": "03/12/2017",
-        "product_or_activity_ref": "BBB4567",
-        "quantity": 1,
-        "user_group_id": 5,
-        "company_id": 3,
-        "some_other_custom_field": "some other custom answer"
-    }
-]
+{
+  "allocated_claims":
+    [
+        {
+            "sale_date": "01/02/2018",
+            "product_or_activity_ref": "AAA1234",
+            "quantity": 2,
+            "user_group_id": 2,
+            "company_id": 5,
+            "some_custom_field": "some custom answer"
+        },
+        {
+            "sale_date": "03/12/2017",
+            "product_or_activity_ref": "BBB4567",
+            "quantity": 1,
+            "user_group_id": 5,
+            "company_id": 3,
+            "some_other_custom_field": "some other custom answer"
+        }
+    ]
+}
 ```
 
 ``` http
 HTTP/1.1 201 Created
 Content-Type: application/json
 
-[
-    {
-        "id": 1,
-        "sale_date": "01/02/2018",
-        "product_or_activity_ref": "AAA1234",
-        "quantity": 2,
-        "user_group_id": 2,
-        "company_id": 5,
-        "some_custom_field": "some custom answer"
-    },
-    {
-        "id": 2,
-        "sale_date": "03/12/2017",
-        "product_or_activity_ref": "BBB4567",
-        "quantity": 1,
-        "user_group_id": 5,
-        "company_id": 3,
-        "some_other_custom_field": "some other custom answer"
-    }
-]
+{
+  "allocated_claims":
+    [
+        {
+            "id": 1,
+            "sale_date": "01/02/2018",
+            "product_or_activity_ref": "AAA1234",
+            "quantity": 2,
+            "user_group_id": 2,
+            "company_id": 5,
+            "some_custom_field": "some custom answer"
+        },
+        {
+            "id": 2,
+            "sale_date": "03/12/2017",
+            "product_or_activity_ref": "BBB4567",
+            "quantity": 1,
+            "user_group_id": 5,
+            "company_id": 3,
+            "some_other_custom_field": "some other custom answer"
+        }
+    ]
+}
 
 ```
 
