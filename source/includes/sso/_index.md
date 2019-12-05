@@ -131,13 +131,13 @@ For example, if the date/time was `Tuesday 9th October, 2018 15:09 (BST)` then w
 
 #### `saml:AttributeStatement`
 
-The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one `<saml:Attribute>` with a `Name` of `uid` and the value will be one of:
+The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one `<saml:Attribute>` with a `Name` specified by the programme configuration (`uid` by default) and expect the value to be one of:
 
 * user's email address - as recorded on MyRewards Programme
 * username - as recorded on MyRewards Programme
 * unique identifier/primary key for the user as recorded in MyRewards Programme
 
-Which value is used will be determined by the configuration on the programme.
+The value we expect is determined by the programme configuration.
 
 ### Next steps
 
