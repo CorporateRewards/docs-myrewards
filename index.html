@@ -440,23 +440,6 @@
                   </li>
                   <li>
                     <a href="#the-assertion" class="toc-h2 toc-link" data-title="the-assertion">The Assertion</a>
-                      <ul class="toc-list-h3">
-                          <li>
-                            <a href="#saml-issuer" class="toc-h3 toc-link" data-title="Simple Single Sign on">saml:Issuer</a>
-                          </li>
-                          <li>
-                            <a href="#ds-signature" class="toc-h3 toc-link" data-title="Simple Single Sign on">ds:Signature</a>
-                          </li>
-                          <li>
-                            <a href="#saml-subject" class="toc-h3 toc-link" data-title="Simple Single Sign on">saml:Subject</a>
-                          </li>
-                          <li>
-                            <a href="#saml-conditions" class="toc-h3 toc-link" data-title="Simple Single Sign on">saml:Conditions</a>
-                          </li>
-                          <li>
-                            <a href="#saml-attributestatement" class="toc-h3 toc-link" data-title="Simple Single Sign on">saml:AttributeStatement</a>
-                          </li>
-                      </ul>
                   </li>
                   <li>
                     <a href="#next-steps" class="toc-h2 toc-link" data-title="next-steps">Next steps</a>
@@ -2729,118 +2712,150 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <h4 id='http-request-2'>HTTP Request</h4>
 <p><code>GET /api/v2/reward/codes/{id}</code></p>
 <h1 id='simple-single-sign-on'>Simple Single Sign on</h1>
-<p>Our SSO uses <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML 2.0</a> to facilitate IdP initiated Single Sign On to a MyRewards Programme</p>
+<p>Our SSO uses <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML 2.0</a> to facilitate IdP-initiated Single Sign On to a MyRewards Programme</p>
 
-<p>In this case MyRewards 2.0 acts as a Service Provider (SP) for a given programme</p>
+<p>In this case MyRewards acts as a Service Provider (SP) for a given programme</p>
 
 <p>The client platform is acting as an Identity Provider (IdP)</p>
-<h2 id='process-flow'>Process flow</h2>
+<h3 id='process-flow'>Process flow</h3>
 <ol>
 <li>User is challenged to authenticate at the IdP side</li>
 <li>User Logs in to the IdP</li>
 <li>User selects access to SP</li>
-<li>IdP Responds with assertion to User</li>
-<li>User browser POSTs this assertion to MyRewards Programme</li>
+<li>IdP Responds with assertion to user</li>
+<li>User&#39;s browser <code>POST</code>s this assertion to the MyRewards programme</li>
 <li>Session established on MyRewards and user is granted access</li>
 </ol>
-<h2 id='the-assertion'>The Assertion</h2>
-<p>Below is an example of a typical SAML assertion</p>
-<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;samlp:Response</span> <span class="na">ID=</span><span class="s">"_UNIQUE ID"</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">IssueInstant=</span><span class="s">"2015-07-07T11:24:46.676007Z"</span> <span class="na">Destination=</span><span class="s">"https://www.myrewards.co.uk/SAML20SingleSignOn.aspx"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:protocol"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>https://www.client-company.com<span class="nt">&lt;/Issuer&gt;</span>
- <span class="nt">&lt;Signature</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;SignedInfo&gt;</span>
-   <span class="nt">&lt;CanonicalizationMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xmlexc-c14n#"</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;SignatureMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#rsasha1"</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;Reference</span> <span class="na">URI=</span><span class="s">"#_ UNIQUE ID"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Transforms&gt;</span>
-     <span class="nt">&lt;Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#enveloped-signature"</span> <span class="nt">/&gt;</span>
-     <span class="nt">&lt;Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xml-excc14n#"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/Transforms&gt;</span>
-    <span class="nt">&lt;DigestMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#sha1"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;DigestValue&gt;</span>...digestValue<span class="nt">&lt;/DigestValue&gt;</span>
-   <span class="nt">&lt;/Reference&gt;</span>
-  <span class="nt">&lt;/SignedInfo&gt;</span>
-  <span class="nt">&lt;SignatureValue&gt;</span>...signatureVlue<span class="nt">&lt;/SignatureValue&gt;</span>
-  <span class="nt">&lt;KeyInfo&gt;</span>
-   <span class="nt">&lt;X509Data&gt;</span>
-    <span class="nt">&lt;X509Certificate&gt;</span>......Certificate
-    <span class="nt">&lt;/X509Certificate&gt;</span>
-   <span class="nt">&lt;/X509Data&gt;</span>
-  <span class="nt">&lt;/KeyInfo&gt;</span>
- <span class="nt">&lt;/Signature&gt;</span>
- <span class="nt">&lt;Status&gt;</span>
-  <span class="nt">&lt;StatusCode</span> <span class="na">Value=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:status:Success"</span> <span class="nt">/&gt;</span>
- <span class="nt">&lt;/Status&gt;</span>
- <span class="nt">&lt;Assertion</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">ID=</span><span class="s">"_8dfde5d9-afb8-48d1-8733-7f51584697df"</span> <span class="na">IssueInstant=</span><span class="s">"2015-07-07T11:24:47.285382Z"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span><span class="nt">&gt;</span>https://www.client-company.com/<span class="nt">&lt;/Issuer&gt;</span>
-  <span class="nt">&lt;Subject&gt;</span>
-   <span class="nt">&lt;NameID</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"</span><span class="nt">&gt;</span>Principal ID<span class="nt">&lt;/NameID&gt;</span>
-  <span class="nt">&lt;/Subject&gt;</span>
-  <span class="nt">&lt;Conditions</span> <span class="na">NotBefore=</span><span class="s">"2015-07-07T11:22:47.285382Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2015-07-07T11:26:47.285382Z"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;AudienceRestriction&gt;</span>
-    <span class="nt">&lt;Audience&gt;</span>my-rewards.co.uk<span class="nt">&lt;/Audience&gt;</span>
-   <span class="nt">&lt;/AudienceRestriction&gt;</span>
-  <span class="nt">&lt;/Conditions&gt;</span>
-  <span class="nt">&lt;AuthnStatement</span> <span class="na">AuthnInstant=</span><span class="s">"2010-07-07T11:24:47.285382Z"</span><span class="nt">&gt;</span>
-   <span class="nt">&lt;AuthnContext&gt;</span>
-    <span class="nt">&lt;AuthnContextClassRef&gt;</span>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport<span class="nt">&lt;/AuthnContextClassRef&gt;</span>
-   <span class="nt">&lt;/AuthnContext&gt;</span>
-  <span class="nt">&lt;/AuthnStatement&gt;</span>
-  <span class="nt">&lt;AttributeStatement&gt;</span>
-   <span class="nt">&lt;Attribute</span> <span class="na">Name=</span><span class="s">"uid"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;AttributeValue</span> <span class="na">xmlns:q1=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">p6:type=</span><span class="s">"q1:string"</span> <span class="na">xmlns:p6=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
-     CompanyNumber
-    <span class="nt">&lt;/AttributeValue&gt;</span>
-   <span class="nt">&lt;/Attribute&gt;</span>
-  <span class="nt">&lt;/AttributeStatement&gt;</span>
- <span class="nt">&lt;/Assertion&gt;</span>
+<h3 id='the-assertion'>The Assertion</h3>
+<blockquote>
+<p>Example SAML assertion:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;samlp:Response</span> <span class="na">ID=</span><span class="s">"_UNIQUE ID"</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">IssueInstant=</span><span class="s">"2015-07-07T11:24:46.676007Z"</span> <span class="na">Destination=</span><span class="s">"https://programme-name.com/saml/consume"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:protocol"</span><span class="nt">&gt;</span>
+ <span class="c">&lt;!-- [1] --&gt;</span>
+ <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
+  https://www.client-company.com
+ <span class="nt">&lt;/saml:Issuer&gt;</span>
+
+ <span class="c">&lt;!-- [2] --&gt;</span>
+ <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ds:SignedInfo&gt;</span>
+   <span class="nt">&lt;ds:CanonicalizationMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xmlexc-c14n#"</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;ds:SignatureMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#rsasha1"</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;ds:Reference</span> <span class="na">URI=</span><span class="s">"#_ UNIQUE ID"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Transforms&gt;</span>
+     <span class="nt">&lt;ds:Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#enveloped-signature"</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;ds:Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xml-excc14n#"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ds:Transforms&gt;</span>
+    <span class="nt">&lt;ds:DigestMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#sha1"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;ds:DigestValue&gt;</span>...digestValue...<span class="nt">&lt;/ds:DigestValue&gt;</span>
+   <span class="nt">&lt;/ds:Reference&gt;</span>
+  <span class="nt">&lt;/ds:SignedInfo&gt;</span>
+  <span class="nt">&lt;ds:SignatureValue&gt;</span>...signatureValue...<span class="nt">&lt;/ds:SignatureValue&gt;</span>
+  <span class="nt">&lt;ds:KeyInfo&gt;</span>
+   <span class="nt">&lt;ds:X509Data&gt;</span>
+    <span class="nt">&lt;ds:X509Certificate&gt;</span>...Certificate...<span class="nt">&lt;/ds:X509Certificate&gt;</span>
+   <span class="nt">&lt;/ds:X509Data&gt;</span>
+  <span class="nt">&lt;/ds:KeyInfo&gt;</span>
+ <span class="nt">&lt;/ds:Signature&gt;</span>
+
+ <span class="nt">&lt;samlp:Status&gt;</span>
+  <span class="nt">&lt;samlp:StatusCode</span> <span class="na">Value=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:status:Success"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/samlp:Status&gt;</span>
+
+ <span class="nt">&lt;saml:Assertion</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">ID=</span><span class="s">"_8dfde5d9-afb8-48d1-8733-7f51584697df"</span> <span class="na">IssueInstant=</span><span class="s">"2015-07-07T11:24:47.285382Z"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- [1] --&gt;</span>
+  <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span><span class="nt">&gt;</span>
+   https://www.client-company.com
+  <span class="nt">&lt;/saml:Issuer&gt;</span>
+
+  <span class="c">&lt;!-- [3] --&gt;</span>
+  <span class="nt">&lt;saml:Subject&gt;</span>
+   <span class="nt">&lt;saml:NameID</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"</span><span class="nt">&gt;</span>Principal ID<span class="nt">&lt;/saml:NameID&gt;</span>
+  <span class="nt">&lt;/saml:Subject&gt;</span>
+
+  <span class="c">&lt;!-- [4] --&gt;</span>
+  <span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2015-07-07T11:22:47.285382Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2015-07-07T11:26:47.285382Z"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;saml:AudienceRestriction&gt;</span>
+    <span class="nt">&lt;saml:Audience&gt;</span>my-rewards.co.uk<span class="nt">&lt;/saml:Audience&gt;</span>
+   <span class="nt">&lt;/saml:AudienceRestriction&gt;</span>
+  <span class="nt">&lt;/saml:Conditions&gt;</span>
+
+  <span class="nt">&lt;saml:AuthnStatement</span> <span class="na">AuthnInstant=</span><span class="s">"2010-07-07T11:24:47.285382Z"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;saml:AuthnContext&gt;</span>
+    <span class="nt">&lt;saml:AuthnContextClassRef&gt;</span>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport<span class="nt">&lt;/saml:AuthnContextClassRef&gt;</span>
+   <span class="nt">&lt;/saml:AuthnContext&gt;</span>
+  <span class="nt">&lt;/saml:AuthnStatement&gt;</span>
+
+  <span class="nt">&lt;saml:AttributeStatement&gt;</span>
+   <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"uid"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xmlns:q1=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">p6:type=</span><span class="s">"q1:string"</span> <span class="na">xmlns:p6=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
+     user@client-company.com
+    <span class="nt">&lt;/saml:AttributeValue&gt;</span>
+   <span class="nt">&lt;/saml:Attribute&gt;</span>
+  <span class="nt">&lt;/saml:AttributeStatement&gt;</span>
+ <span class="nt">&lt;/saml:Assertion&gt;</span>
 <span class="nt">&lt;/samlp:Response&gt;</span>
 </code></pre></div>
-<p>The Assertion is passed via a HTTPS post to the MyRewards Assertion consumer service:</p>
+<blockquote>
+<p>Example form:</p>
+</blockquote>
 <div class="highlight"><pre class="highlight html tab-html"><code><span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"https://programme-name.com/saml/consume"</span><span class="nt">&gt;</span>
- <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"SAMLResponse"</span> <span class="na">value=</span><span class="s">"response"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"SAMLResponse"</span> <span class="na">value=</span><span class="s">"AbCdefgh..."</span> <span class="nt">/&gt;</span>
  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Submit"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/form&gt;</span>
 </code></pre></div>
-<p>The value of the SAMLResponse parameter is the base64 encoding of a <a href="samlp:Response">samlp:Response</a>
-element above, which is transmitted to the service provider (client-company.com) via the browser, in this case.</p>
+<blockquote>
+<p>Example conditions:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2018-10-09T14:07:47.285382Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2018-10-09T16:11:47.285382Z"</span><span class="nt">&gt;</span>
+ ...
+<span class="nt">&lt;/saml:Conditions&gt;</span>
+</code></pre></div>
+<p>The value of the <code>SAMLResponse</code> parameter is a Base64-encoded <code>&lt;samlp:Response&gt;</code> element, which is transmitted to the service provider via the browser (see &quot;Example form&quot; for an example).</p>
 
-<p>The assertion <strong>must</strong> have the following sub elements (shown with name spaces from example assetion above):</p>
-<h3 id='saml-issuer'>saml:Issuer</h3>
-<p>Name of the IdP in the form of a url i.e. https://client-company.com</p>
-<h3 id='ds-signature'>ds:Signature</h3>
-<p>All SAML 2.0 Assertions are signed by default. The client company (Identity provider) will be required
-to include the X509 Certificate public key in the assertion itself. MyRewards (service provider) will use this to verify the signature.</p>
-<h3 id='saml-subject'>saml:Subject</h3>
-<p>The subject NameID is always the unique identifier of the user - by default this set as transient, we require this to be persistent - this is as understood by the IdP</p>
-<h3 id='saml-conditions'>saml:Conditions</h3>
-<p>This is the timeframe within which the assertion is valid - our preference is to be set to allow for 2 minutes either side to account for clockdrift between servers. MyRewards will verify the validity of an assertion with respect to these conditions after validating the signature.</p>
+<p>The assertion <strong>must</strong> have the following sub-elements (shown with namespaces from &quot;Example SAML assertion&quot;):</p>
+<h4 id='saml-issuer-1'><code>saml:Issuer</code> [1]</h4>
+<p>Name of the IdP in the form of a url e.g. <code>https://client-company.com</code>.</p>
+<h4 id='ds-signature-2'><code>ds:Signature</code> [2]</h4>
+<p>All SAML 2.0 Assertions are signed by default. The client company (identity provider) will be required
+to include the X.509 Certificate public key in the assertion itself. MyRewards (service provider) will use this to verify the signature.</p>
+<h4 id='saml-subject-3'><code>saml:Subject</code> [3]</h4>
+<p>The subject <code>&lt;saml:NameID&gt;</code> is always the unique identifier of the user - by default this set as transient, we require this to be persistent - this is as understood by the IdP.</p>
+<h4 id='saml-conditions-4'><code>saml:Conditions</code> [4]</h4>
+<p>This is the timeframe within which the assertion is valid - our preference is to be set to allow for 2 minutes either side to account for clock drift between servers. MyRewards will verify the validity of an assertion with respect to these conditions after validating the signature.</p>
 
-<p>Our servers are syncronized daily to Europe/London timezone - this will change with Daylight Savings time. We expect the IdP has their server clocks similarly syncronsied. The timestamp used will use Coordinanted Universal Time (UTC) and we strongly recommend adding a window of 1 hour plus 2 minutes to account for both clockdrift and Daylight Savings time.</p>
+<p>Our servers are synchronised daily to Europe/London timezone - this will change with Daylight Saving Time. We expect the IdP has their server clocks similarly synchronised. The timestamp used will be in Coordinated Universal Time (UTC) and we strongly recommend adding a window of 1 hour plus 2 minutes to account for both clock drift and Daylight Saving Time.</p>
 
-<p>For example, if the date time was Tuesday the 9th of October, 2018 15:09 (BST) then we would expect to see the Conditions element look like:
-<Conditions NotBefore="2018-10-09T14:07:47.285382Z" NotOnOrAfter="2018-10-09T16:11:47.285382Z"></p>
-<h3 id='saml-attributestatement'>saml:AttributeStatement</h3>
-<p>The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one attribute with a name of uid and the value will be one of:
-* users email address - as recorded on MyRewards Programme
-* username - as recorded on MyRewards Programme
-* unique identifier/primary key for the user as recorded in MyRewards Programme</p>
+<p>For example, if the date/time was <code>Tuesday 9th October, 2018 15:09 (BST)</code> then we would expect to see the <code>&lt;saml:Conditions&gt;</code> element look like the snippet shown in &quot;Example conditions&quot;.</p>
+<h4 id='saml-attributestatement'><code>saml:AttributeStatement</code></h4>
+<p>The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one <code>&lt;saml:Attribute&gt;</code> with a <code>Name</code> specified by the programme configuration (<code>uid</code> by default) and expect the value to be one of:</p>
 
-<p>Which value is used will be determined by Programme configuration</p>
-<h2 id='next-steps'>Next steps</h2>
-<p>The following information is required to set up SAML SSO on the MyRewards
-system
-* URL of the identify provider
-* Thumbprint of x509 certificate – this can be extracted from the public key
-* URL access redirect
-* Failed log in redirect (if not included in the assertion)
-* User identifier</p>
+<ul>
+<li>user&#39;s email address - as recorded on MyRewards Programme</li>
+<li>username - as recorded on MyRewards Programme</li>
+<li>unique identifier/primary key for the user as recorded in MyRewards Programme</li>
+</ul>
 
-<p>In response, you will be provided with a metadata file back to the IdP - this can often be useful for automatically configuring some IdP systems such as Active Directory Federated Services</p>
-<h2 id='further-information'>Further information</h2>
-<p>For further information on SAML2.0 please go to the official SAML2.0 websites:
-http://www.oasis-open.org/home/index.php
-http://saml.xml.org</p>
+<p>The value we expect is determined by the programme configuration.</p>
+<h3 id='next-steps'>Next steps</h3>
+<p>The following information is required to set up SAML SSO on the MyRewards system:</p>
+
+<ul>
+<li>URL of the identify provider</li>
+<li>Fingerprint of X.509 certificate – this can be extracted from the public key</li>
+<li>URL access redirect</li>
+<li>Failed log in redirect (if not included in the assertion)</li>
+<li>User identifier (id, email or username)</li>
+</ul>
+
+<p>In response, you will be provided with a metadata file - this can often be useful for automatically configuring some IdP systems such as Active Directory Federated Services.</p>
+<h3 id='further-information'>Further information</h3>
+<p>For further information on SAML 2.0 please go to the official SAML 2.0 websites:</p>
+
+<ul>
+<li><a href="http://www.oasis-open.org/home/index.php">http://www.oasis-open.org/home/index.php</a></li>
+<li><a href="http://saml.xml.org">http://saml.xml.org</a></li>
+</ul>
 
       </div>
       <div class="dark-box">
