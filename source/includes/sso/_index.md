@@ -105,12 +105,12 @@ For example, if the date time was Tuesday the 9th of October, 2018 15:09 (BST) t
 <Conditions NotBefore="2018-10-09T14:07:47.285382Z" NotOnOrAfter="2018-10-09T16:11:47.285382Z">
 
 ### saml:AttributeStatement
-The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one attribute with a name of uid and the value will be one of:
+The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one attribute the name of which is now configurable but defaults to 'uid':
 * users email address - as recorded on MyRewards Programme
 * username - as recorded on MyRewards Programme
 * unique identifier/primary key for the user as recorded in MyRewards Programme
 
-Which value is used will be determined by Programme configuration
+Which value is used for the user matching as well as the name of the attribute to check will be determined by Programme configuration
 
 ## Next steps
 
