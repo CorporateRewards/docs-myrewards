@@ -20,7 +20,7 @@ The client platform is acting as an Identity Provider (IdP)
 > Example SAML assertion:
 
 ```xml
-<samlp:Response ID="_UNIQUE-ID" Version="2.0" IssueInstant="1970-01-01T00:00:00.000000Z" Destination="https://programme-name.com/saml/consume" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
+<samlp:Response ID="_UNIQUE-ID" Version="2.0" IssueInstant="2020-01-01T00:00:00.000000Z" Destination="https://programme-name.com/saml/consume" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
  <!-- [1] -->
  <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
   https://www.client-company.com
@@ -52,7 +52,7 @@ The client platform is acting as an Identity Provider (IdP)
   <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
  </samlp:Status>
 
- <saml:Assertion Version="2.0" ID="_UNIQUE-ID" IssueInstant="1970-01-01T00:00:00.000000Z" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+ <saml:Assertion Version="2.0" ID="_UNIQUE-ID" IssueInstant="2020-01-01T00:00:00.000000Z" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
   <!-- [1] -->
   <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">
    https://www.client-company.com
@@ -64,13 +64,13 @@ The client platform is acting as an Identity Provider (IdP)
   </saml:Subject>
 
   <!-- [4] -->
-  <saml:Conditions NotBefore="1970-01-01T00:00:00.000000Z" NotOnOrAfter="1970-01-01T00:05:00.000000Z">
+  <saml:Conditions NotBefore="2020-01-01T00:00:00.000000Z" NotOnOrAfter="2020-01-01T02:00:00.000000Z">
    <saml:AudienceRestriction>
-    <saml:Audience>https://www.my-rewards.co.uk/saml/metadata</saml:Audience>
+    <saml:Audience>https://programme-name.com/saml/metadata</saml:Audience>
    </saml:AudienceRestriction>
   </saml:Conditions>
 
-  <saml:AuthnStatement AuthnInstant="1970-01-01T00:00:00.000000Z">
+  <saml:AuthnStatement AuthnInstant="2020-01-01T00:00:00.000000Z">
    <saml:AuthnContext>
     <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef>
    </saml:AuthnContext>
@@ -99,7 +99,7 @@ The client platform is acting as an Identity Provider (IdP)
 > Example conditions:
 
 ```xml
-<saml:Conditions NotBefore="1970-01-01T00:00:00.000000Z" NotOnOrAfter="1970-01-01T00:05:00.000000Z">
+<saml:Conditions NotBefore="2020-01-01T00:00:00.000000Z" NotOnOrAfter="2020-01-01T02:00:00.000000Z">
  ...
 </saml:Conditions>
 ```
