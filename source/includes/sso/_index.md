@@ -20,7 +20,7 @@ The client platform is acting as an Identity Provider (IdP)
 > Example SAML assertion:
 
 ```xml
-<samlp:Response ID="_UNIQUE ID" Version="2.0" IssueInstant="2015-07-07T11:24:46.676007Z" Destination="https://programme-name.com/saml/consume" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
+<samlp:Response ID="_UNIQUE-ID" Version="2.0" IssueInstant="2020-01-01T00:00:00.000000Z" Destination="https://programme-name.com/saml/consume" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
  <!-- [1] -->
  <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
   https://www.client-company.com
@@ -31,7 +31,7 @@ The client platform is acting as an Identity Provider (IdP)
   <ds:SignedInfo>
    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xmlexc-c14n#" />
    <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsasha1" />
-   <ds:Reference URI="#_ UNIQUE ID">
+   <ds:Reference URI="#_UNIQUE-ID">
     <ds:Transforms>
      <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
      <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-excc14n#" />
@@ -52,7 +52,7 @@ The client platform is acting as an Identity Provider (IdP)
   <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
  </samlp:Status>
 
- <saml:Assertion Version="2.0" ID="_8dfde5d9-afb8-48d1-8733-7f51584697df" IssueInstant="2015-07-07T11:24:47.285382Z" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+ <saml:Assertion Version="2.0" ID="_UNIQUE-ID" IssueInstant="2020-01-01T00:00:00.000000Z" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
   <!-- [1] -->
   <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">
    https://www.client-company.com
@@ -64,13 +64,13 @@ The client platform is acting as an Identity Provider (IdP)
   </saml:Subject>
 
   <!-- [4] -->
-  <saml:Conditions NotBefore="2015-07-07T11:22:47.285382Z" NotOnOrAfter="2015-07-07T11:26:47.285382Z">
+  <saml:Conditions NotBefore="2020-01-01T00:00:00.000000Z" NotOnOrAfter="2020-01-01T02:00:00.000000Z">
    <saml:AudienceRestriction>
-    <saml:Audience>my-rewards.co.uk</saml:Audience>
+    <saml:Audience>https://programme-name.com/saml/metadata</saml:Audience>
    </saml:AudienceRestriction>
   </saml:Conditions>
 
-  <saml:AuthnStatement AuthnInstant="2010-07-07T11:24:47.285382Z">
+  <saml:AuthnStatement AuthnInstant="2020-01-01T00:00:00.000000Z">
    <saml:AuthnContext>
     <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef>
    </saml:AuthnContext>
@@ -99,7 +99,7 @@ The client platform is acting as an Identity Provider (IdP)
 > Example conditions:
 
 ```xml
-<saml:Conditions NotBefore="2018-10-09T14:07:47.285382Z" NotOnOrAfter="2018-10-09T16:11:47.285382Z">
+<saml:Conditions NotBefore="2020-01-01T00:00:00.000000Z" NotOnOrAfter="2020-01-01T02:00:00.000000Z">
  ...
 </saml:Conditions>
 ```
