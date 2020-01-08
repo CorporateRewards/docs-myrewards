@@ -2730,7 +2730,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <blockquote>
 <p>Example SAML assertion:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;samlp:Response</span> <span class="na">ID=</span><span class="s">"_UNIQUE ID"</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">IssueInstant=</span><span class="s">"2015-07-07T11:24:46.676007Z"</span> <span class="na">Destination=</span><span class="s">"https://programme-name.com/saml/consume"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:protocol"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;samlp:Response</span> <span class="na">ID=</span><span class="s">"_UNIQUE-ID"</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">IssueInstant=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">Destination=</span><span class="s">"https://programme-name.com/saml/consume"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:protocol"</span><span class="nt">&gt;</span>
  <span class="c">&lt;!-- [1] --&gt;</span>
  <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
   https://www.client-company.com
@@ -2741,7 +2741,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
   <span class="nt">&lt;ds:SignedInfo&gt;</span>
    <span class="nt">&lt;ds:CanonicalizationMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xmlexc-c14n#"</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;ds:SignatureMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#rsasha1"</span> <span class="nt">/&gt;</span>
-   <span class="nt">&lt;ds:Reference</span> <span class="na">URI=</span><span class="s">"#_ UNIQUE ID"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;ds:Reference</span> <span class="na">URI=</span><span class="s">"#_UNIQUE-ID"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ds:Transforms&gt;</span>
      <span class="nt">&lt;ds:Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#enveloped-signature"</span> <span class="nt">/&gt;</span>
      <span class="nt">&lt;ds:Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xml-excc14n#"</span> <span class="nt">/&gt;</span>
@@ -2762,7 +2762,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
   <span class="nt">&lt;samlp:StatusCode</span> <span class="na">Value=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:status:Success"</span> <span class="nt">/&gt;</span>
  <span class="nt">&lt;/samlp:Status&gt;</span>
 
- <span class="nt">&lt;saml:Assertion</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">ID=</span><span class="s">"_8dfde5d9-afb8-48d1-8733-7f51584697df"</span> <span class="na">IssueInstant=</span><span class="s">"2015-07-07T11:24:47.285382Z"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;saml:Assertion</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">ID=</span><span class="s">"_UNIQUE-ID"</span> <span class="na">IssueInstant=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- [1] --&gt;</span>
   <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span><span class="nt">&gt;</span>
    https://www.client-company.com
@@ -2774,13 +2774,13 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
   <span class="nt">&lt;/saml:Subject&gt;</span>
 
   <span class="c">&lt;!-- [4] --&gt;</span>
-  <span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2015-07-07T11:22:47.285382Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2015-07-07T11:26:47.285382Z"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2020-01-01T02:00:00.000000Z"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;saml:AudienceRestriction&gt;</span>
-    <span class="nt">&lt;saml:Audience&gt;</span>my-rewards.co.uk<span class="nt">&lt;/saml:Audience&gt;</span>
+    <span class="nt">&lt;saml:Audience&gt;</span>https://programme-name.com/saml/metadata<span class="nt">&lt;/saml:Audience&gt;</span>
    <span class="nt">&lt;/saml:AudienceRestriction&gt;</span>
   <span class="nt">&lt;/saml:Conditions&gt;</span>
 
-  <span class="nt">&lt;saml:AuthnStatement</span> <span class="na">AuthnInstant=</span><span class="s">"2010-07-07T11:24:47.285382Z"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;saml:AuthnStatement</span> <span class="na">AuthnInstant=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span><span class="nt">&gt;</span>
    <span class="nt">&lt;saml:AuthnContext&gt;</span>
     <span class="nt">&lt;saml:AuthnContextClassRef&gt;</span>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport<span class="nt">&lt;/saml:AuthnContextClassRef&gt;</span>
    <span class="nt">&lt;/saml:AuthnContext&gt;</span>
@@ -2807,7 +2807,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <blockquote>
 <p>Example conditions:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2018-10-09T14:07:47.285382Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2018-10-09T16:11:47.285382Z"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2020-01-01T02:00:00.000000Z"</span><span class="nt">&gt;</span>
  ...
 <span class="nt">&lt;/saml:Conditions&gt;</span>
 </code></pre></div>
