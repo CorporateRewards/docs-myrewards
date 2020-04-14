@@ -10,7 +10,8 @@ Authorization: Token token=xxx
 Content-Type: application/json
 
 {
-  "reason_for_decline": 'An id or a free text reason'
+  "reason_for_decline_id": "An id for a decline reason",
+  "reason_for_decline_text": "Some reason text string"
 }
 ```
 
@@ -26,4 +27,5 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-reason\_for\_decline | `string` | The ID of a reason belonging to the promotion or a string containing a custom reason for decline.
+reason\_for\_decline\_id | `string` | The ID of a reason belonging to the promotion or a string containing a custom reason for decline. Mandatory if decline reasons enabled on programme.
+reason\_for\_decline\_text | `string` | A text string for a decline reason, can only be provided if the promotion allows free text decline reasons. Optional.

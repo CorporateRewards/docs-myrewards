@@ -13,8 +13,10 @@ Content-Type: application/json
   "user_group_id": 1,
   "company_id": 1,
   "status": "pending",
-  "created_at_date_range": "01/01/2020, 02/02/2020",
-  "date_of_sale_date_range": "01/01/2020, 02/02/2020"
+  "created_at_start_date": "01/01/2020",
+  "created_at_end_date": "02/02/2020",
+  "date_of_sale_start_date": "01/01/2020",
+  "date_of_sale_end_date": "02/02/2020"
 }
 ```
 
@@ -63,8 +65,10 @@ promotion\_id | `integer` | The ID of the promotion claim is for. Mandatory.
 user\_group\_id | `integer` | ID of a user_group that allocated_claims belong to, used for scoping down results. Optional
 company\_id | `integer` | ID of a company that allocated_claims belong to, used for scoping down results. Optional
 status | `string` | Required Status for the allocated_claims that are returned, used for scoping down results. Optional
-created\_at\_date\_range | `string` | A supplied date range that returned allocated_claims are expected to be created within, comma and space seperated. Used for scoping down results. Optional.
-date\_of\_sale\_date\_range | `string` | A supplied date range that returned allocated_claims are expected to have sale_date within. Comma and space seperated. Used for scoping down results. Optional.
+created\_at\_start\_date | `string` | A parameter for scoping allocated_claims that were created from that date onwards. Optional.
+created\_at\_end\_date | `string` | A parameter for scoping allocated_claims that were created before the given date. Optional.
+date\_of\_sale\_start\_date | `string` | A parameter for scoping allocated_claims with a date_of_sale from the given date onwards. Optional.
+date\_of\_sale\_end\_date | `string` | A parameter for scoping allocated_claims with a date_of_sale before the given date. Optional.
 page | `integer` | The requested page number. Defaults to page 1 if not supplied. Optional.
 
 ### Create Allocated Claims
