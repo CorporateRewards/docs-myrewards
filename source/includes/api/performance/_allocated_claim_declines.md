@@ -27,5 +27,5 @@ Content-Type: application/json
 
 Attribute | Type | Info
 --------- | ---- | ----
-reason\_for\_decline\_id | `string` | The ID of a reason belonging to the promotion or a string containing a custom reason for decline. Mandatory if decline reasons enabled on programme.
+reason\_for\_decline\_id | `string` | The ID of a reason belonging to the promotion. Mandatory if decline reasons enabled on programme.
 reason\_for\_decline\_text | `string` | A text string for a decline reason, can only be provided if the promotion allows free text decline reasons. Optional.
