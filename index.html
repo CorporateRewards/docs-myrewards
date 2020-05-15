@@ -249,6 +249,14 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#registration-questions-gt-list-of-values" class="toc-h2 toc-link" data-title="registration-questions-gt-list-of-values">Registration Questions &gt; List of Values</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-list-of-values-associated-with-a-registration-question" class="toc-h3 toc-link" data-title="Core">GET List of Values associated with a registration question</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#site-messages" class="toc-h2 toc-link" data-title="site-messages">Site Messages</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -625,6 +633,50 @@ be dynamically consulted via the api.</p>
 <td>free_text</td>
 <td>boolean</td>
 <td></td>
+</tr>
+</tbody></table>
+<h2 id='registration-questions-gt-list-of-values'>Registration Questions &gt; List of Values</h2><h3 id='get-list-of-values-associated-with-a-registration-question'>GET List of Values associated with a registration question</h3>
+<p>An endpoint to fetch the list of values associated with a registration question. Returns
+an array of values with their name and id.</p>
+
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/registration_questions/:registration_question_id/list_of_values</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List value 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List value 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/registration_questions/:registration_question_id/list_of_values</code></p>
+<h4 id='attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>List value id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>List value name</td>
 </tr>
 </tbody></table>
 <h2 id='site-messages'>Site Messages</h2>
