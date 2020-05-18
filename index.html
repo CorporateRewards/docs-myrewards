@@ -254,6 +254,9 @@
                           <li>
                             <a href="#get-list-of-values-associated-with-a-registration-question" class="toc-h3 toc-link" data-title="Core">GET List of Values associated with a registration question</a>
                           </li>
+                          <li>
+                            <a href="#post-create-a-new-value-on-a-list-of-values-associated-with-a-registration-question" class="toc-h3 toc-link" data-title="Core">POST Create a new value on a list of values associated with a registration question</a>
+                          </li>
                       </ul>
                   </li>
                   <li>
@@ -677,6 +680,57 @@ an array of values with their name and id.</p>
 <td>name</td>
 <td>string</td>
 <td>List value name</td>
+</tr>
+</tbody></table>
+<h3 id='post-create-a-new-value-on-a-list-of-values-associated-with-a-registration-question'>POST Create a new value on a list of values associated with a registration question</h3>
+<p>An endpoint to create a new list value for a registration question. On completion, returns
+an array of all values with their name and id.</p>
+
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/registration_questions/:registration_question_id/list_of_values</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My new list value"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List value 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List value 2"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My new list value"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST /api/v2/registration_questions/:registration_question_id/list_of_values</code></p>
+<h5 id='body-parameters'>Body Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>the name of the new list value</td>
 </tr>
 </tbody></table>
 <h2 id='site-messages'>Site Messages</h2>
