@@ -8,6 +8,7 @@ includes:
 - api/core/0_core
 - api/core/permissions
 - api/core/registration_questions
+- api/core/registration_questions_list_of_values
 - api/core/site_messages
 - api/core/transactions
 - api/core/user_groups
