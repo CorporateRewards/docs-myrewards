@@ -373,10 +373,10 @@
                     <a href="#allocated-claims" class="toc-h2 toc-link" data-title="allocated-claims">Allocated Claims</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#decline-allocated-claims" class="toc-h3 toc-link" data-title="Performance Module">Decline Allocated Claims</a>
+                            <a href="#view-allocated-claims" class="toc-h3 toc-link" data-title="Performance Module">View Allocated Claims</a>
                           </li>
                           <li>
-                            <a href="#view-allocated-claims" class="toc-h3 toc-link" data-title="Performance Module">View Allocated Claims</a>
+                            <a href="#decline-allocated-claims" class="toc-h3 toc-link" data-title="Performance Module">Decline Allocated Claims</a>
                           </li>
                           <li>
                             <a href="#create-allocated-claims" class="toc-h3 toc-link" data-title="Performance Module">Create Allocated Claims</a>
@@ -2087,40 +2087,7 @@ and the { id }.</p>
 <td>Your desired current_value</td>
 </tr>
 </tbody></table>
-<h1 id='performance-module'>Performance Module</h1><h2 id='allocated-claims'>Allocated Claims</h2><h3 id='decline-allocated-claims'>Decline Allocated Claims</h3>
-<p>Endpoint to decline a given allocated claim.</p>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/1/allocated_claims/1/decline</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-
-<span class="p">{</span><span class="w">
-  </span><span class="s2">"reason_for_decline_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An id for a decline reason"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"reason_for_decline_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some reason text string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-</code></pre></div><h4 id='http-request'>HTTP Request</h4>
-<p><code>POST /api/v2/performance/promotions/1/allocated_claims/1/decline</code></p>
-<h4 id='attributes'>Attributes</h4>
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Info</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>reason_for_decline_id</td>
-<td><code>string</code></td>
-<td>The ID of a reason belonging to the promotion. Mandatory if decline reasons enabled on programme.</td>
-</tr>
-<tr>
-<td>reason_for_decline_text</td>
-<td><code>string</code></td>
-<td>A text string for a decline reason, can only be provided if the promotion allows free text decline reasons. Optional.</td>
-</tr>
-</tbody></table>
-<h3 id='view-allocated-claims'>View Allocated Claims</h3>
+<h1 id='performance-module'>Performance Module</h1><h2 id='allocated-claims'>Allocated Claims</h2><h3 id='view-allocated-claims'>View Allocated Claims</h3>
 <p>Endpoint to view allocated claims against a specific promotion. Claims can be scoped down via passed in parameters. Only 100 records are returned at a time.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/1/allocated_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
@@ -2165,9 +2132,9 @@ and the { id }.</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+</span></code></pre></div><h4 id='http-request'>HTTP Request</h4>
 <p><code>GET /api/v2/performance/promotions/1/allocated_claims</code></p>
-<h4 id='attributes-2'>Attributes</h4>
+<h4 id='attributes'>Attributes</h4>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -2219,6 +2186,39 @@ and the { id }.</p>
 <td>page</td>
 <td><code>integer</code></td>
 <td>The requested page number. Defaults to page 1 if not supplied. Optional.</td>
+</tr>
+</tbody></table>
+<h3 id='decline-allocated-claims'>Decline Allocated Claims</h3>
+<p>Endpoint to decline a given allocated claim.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/1/allocated_claims/1/decline</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"reason_for_decline_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An id for a decline reason"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reason_for_decline_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some reason text string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div><h4 id='http-request-2'>HTTP Request</h4>
+<p><code>POST /api/v2/performance/promotions/1/allocated_claims/1/decline</code></p>
+<h4 id='attributes-2'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reason_for_decline_id</td>
+<td><code>string</code></td>
+<td>The ID of a reason belonging to the promotion. Mandatory if decline reasons enabled on programme.</td>
+</tr>
+<tr>
+<td>reason_for_decline_text</td>
+<td><code>string</code></td>
+<td>A text string for a decline reason, can only be provided if the promotion allows free text decline reasons. Optional.</td>
 </tr>
 </tbody></table>
 <h3 id='create-allocated-claims'>Create Allocated Claims</h3>
