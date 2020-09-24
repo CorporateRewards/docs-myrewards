@@ -131,7 +131,7 @@ Variety | Programme Points affecting? | Permitted Type
 Programme points | Yes | Either 
 Points Error | Yes | Either 
 Redemption | No | Debit only
-Person2Person transfer | No | either (credit and debit must both be carried out for each user)
+Person2Person transfer | Yes | either (credit and debit must both be carried out for each user)
 Order Cancellation | No | Credit only
 Order Adjustment | No | either
 Adjustment | Yes | either
