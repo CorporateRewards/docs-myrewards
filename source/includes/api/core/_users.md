@@ -23,7 +23,8 @@ Telephone and mobile number fields must be supplied in international format, mea
 
 Answers to the registration questions are provided in an array of objects, nested
 under the key `registration_answers_attributes`. The nested objects themselves must
-have the keys `registration_question_id` and `answer`.
+have the keys `registration_question_id` and `answer`. If the question allows multiple
+answers, then the value for `answer` should be an array, as show in the example below.
 
 ``` http
 POST /api/v2/users HTTP/1.1
@@ -58,7 +59,7 @@ Content-Type: application/json
     },
     {
       "registration_question_id" : "16",
-      "answer" : "Alfred"
+      "answer" : [ "Alfred", "Bruce" ]
     }
   ]
 }
