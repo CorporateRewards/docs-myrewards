@@ -2,7 +2,7 @@
 
 ### Get Self Claims
 
-Endpoint to get self claims against a specific self claim promotion. Claims can be scoped down via passed in parameters. If no url parameters are provided then all claims against the requested promotion are returned. Results are paginated at 100 records per page.
+Endpoint to get self claims against a specific self-claim promotion. Claims can be filtered down via passed-in parameters. If no URL parameters are provided then all claims against the requested promotion are returned. Results are paginated at 100 records per page.
 
 
 #### HTTP Request
