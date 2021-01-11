@@ -27,15 +27,15 @@ Content-Type: application/json
     "self_claims": [
         {
             "id": 4099,
-            "sale_date": "29/01/2019",
+            "sale_date": "2019-01-29",
             "product_or_activity_ref": "p1",
             "quantity": 150,
             "points_value": 150,
             "user_id": 505,
             "status": "pending",
             "declined_reason": null,
-            "created_at": "30/01/2019",
-            "updated_at": "07/01/2021",
+            "created_at": "2019-01-30T14:15:25.000+00:00",
+            "updated_at": "2021-01-07T16:41:19.000+00:00",
             "questions_answers": {
                 "1174": {
                     "question": "Custom q 1 - free text",
@@ -65,15 +65,15 @@ Content-Type: application/json
         },
         {
             "id": 4104,
-            "sale_date": "02/01/2020",
+            "sale_date": "2020-01-02",
             "product_or_activity_ref": "p1",
             "quantity": 10,
             "points_value": 10,
             "user_id": 505,
             "status": "approved",
             "declined_reason": null,
-            "created_at": "11/01/2020",
-            "updated_at": "11/01/2020",
+            "created_at": "2020-01-11T14:15:32.000+00:00",
+            "updated_at": "2020-01-11T14:15:32.000+00:00",
             "questions_answers": {
                 "1174": {
                     "question": "Custom q 1 - free text",
@@ -103,15 +103,15 @@ Content-Type: application/json
         },
         {
             "id": 4117,
-            "sale_date": "23/01/2020",
+            "sale_date": "2020-01-23",
             "product_or_activity_ref": "p1",
             "quantity": 5,
             "points_value": 2,
             "user_id": 505,
             "status": "declined",
             "declined_reason": "Not good enough",
-            "created_at": "23/01/2020",
-            "updated_at": "28/02/2020",
+            "created_at": "2020-01-23T14:15:32.000+00:00",
+            "updated_at": "2020-01-28T10:41:13.000+00:00",
             "questions_answers": {
                 "1174": {
                     "question": "Custom q 1 - free text",
