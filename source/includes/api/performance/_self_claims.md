@@ -163,14 +163,14 @@ page | `integer` | The requested page number. Defaults to page 1 if not supplied
 
 Attribute | Type | Info
 --------- | ---- | ----
-id | integer | the id of the claim
-sale_date | string | the date of sale as provided on the claim
-product_or_activity_ref | string | the reference of the claimed product or activity
-quantity | integer | the number of items claimed
-points_value | integer |the number of points the claim is worth
-user_id | integer | the id of the user who made the claim
-status | string | the status of the claim - one of: pending, approved, declined
-declined_reason | string | optional - a string indicating the reason for decline if the claim is declined
-created_at | string | the date that the claim was submitted
-updated_at | string | the date that the claim was last updated
-questions_answers | object | an object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question
+id | `integer` | the id of the claim
+sale_date | `string` | the date of sale as provided on the claim
+product_or_activity_ref | `string` | the reference of the claimed product or activity
+quantity | `integer` | the number of items claimed
+points_value | `integer` |the number of points the claim is worth
+user_id | `integer` | the id of the user who made the claim
+status | `string` | the status of the claim - one of: pending, approved, declined
+declined_reason | `string` | optional - a string indicating the reason for decline if the claim is declined
+created_at | `string` | the date that the claim was submitted
+updated_at | `string` | the date that the claim was last updated
+questions_answers | `object` | an object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question
