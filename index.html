@@ -384,6 +384,14 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#self-claims" class="toc-h2 toc-link" data-title="self-claims">Self Claims</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#get-self-claims" class="toc-h3 toc-link" data-title="Performance Module">Get Self Claims</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#data-fields" class="toc-h2 toc-link" data-title="data-fields">Data Fields</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -2332,6 +2340,255 @@ and the { id }.</p>
 <td>some_custom_field</td>
 <td><code>custom field type</code></td>
 <td>A custom answer for this field</td>
+</tr>
+</tbody></table>
+<h2 id='self-claims'>Self Claims</h2><h3 id='get-self-claims'>Get Self Claims</h3>
+<p>Endpoint to get self claims against a specific self-claim promotion. Claims can be filtered down via passed-in parameters. If no URL parameters are provided then all claims against the requested promotion are returned. Results are paginated at 100 records per page.</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/performance/promotions/{promotion_id}/self_claims</code></p>
+
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/1/self_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"self_claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4099</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-29"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-30T14:15:25.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T16:41:19.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"questions_answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"1174"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 1 - free text"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1175"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 2 - lov r"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1176"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 3 - lov c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1177"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 4 - lov s"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1178"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 5 - date"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1179"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 6 - upload"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4104</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-02"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-11T14:15:32.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-11T14:15:32.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"questions_answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"1174"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 1 - free text"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1175"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 2 - lov r"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1176"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 3 - lov c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1177"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 4 - lov s"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1178"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 5 - date"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1179"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 6 - upload"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4117</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-23"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"points_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"declined"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not good enough"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-23T14:15:32.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-28T10:41:13.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"questions_answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"1174"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 1 - free text"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1175"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 2 - lov r"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1176"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 3 - lov c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1177"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 4 - lov s"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1178"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 5 - date"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"1179"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 6 - upload"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='request-parameters'>Request Parameters</h4><h5 id='url-parameters'>URL Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>Status of the claims to be returned. Optional</td>
+</tr>
+<tr>
+<td>product_or_activity_ref</td>
+<td><code>integer</code></td>
+<td>The reference of the product or activity you wish to return claims for. Optional.</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>ID of a user that claims were made by. Optional</td>
+</tr>
+<tr>
+<td>created_at_start_date</td>
+<td><code>string</code></td>
+<td>A parameter for scoping claims that were created from that date onwards. Optional.</td>
+</tr>
+<tr>
+<td>created_at_end_date</td>
+<td><code>string</code></td>
+<td>A parameter for scoping claims that were created on or before the given date. Optional.</td>
+</tr>
+<tr>
+<td>date_of_sale_start_date</td>
+<td><code>string</code></td>
+<td>A parameter for scoping claims with a date_of_sale from the given date onwards. Optional.</td>
+</tr>
+<tr>
+<td>date_of_sale_end_date</td>
+<td><code>string</code></td>
+<td>A parameter for scoping claims with a date_of_sale on or before the given date. Optional.</td>
+</tr>
+<tr>
+<td>page</td>
+<td><code>integer</code></td>
+<td>The requested page number. Defaults to page 1 if not supplied. Optional.</td>
+</tr>
+</tbody></table>
+<h4 id='response-attributes'>Response Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>the id of the claim</td>
+</tr>
+<tr>
+<td>sale_date</td>
+<td><code>string</code></td>
+<td>the date of sale as provided on the claim</td>
+</tr>
+<tr>
+<td>product_or_activity_ref</td>
+<td><code>string</code></td>
+<td>the reference of the claimed product or activity</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><code>integer</code></td>
+<td>the number of items claimed</td>
+</tr>
+<tr>
+<td>points_value</td>
+<td><code>integer</code></td>
+<td>the number of points the claim is worth</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>the id of the user who made the claim</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>the status of the claim - one of: pending, approved, declined</td>
+</tr>
+<tr>
+<td>declined_reason</td>
+<td><code>string</code></td>
+<td>optional - a string indicating the reason for decline if the claim is declined</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td><code>string</code></td>
+<td>the date that the claim was submitted</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td><code>string</code></td>
+<td>the date that the claim was last updated</td>
+</tr>
+<tr>
+<td>questions_answers</td>
+<td><code>object</code></td>
+<td>an object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question</td>
 </tr>
 </tbody></table>
 <h2 id='data-fields'>Data Fields</h2><h3 id='list-all-data-fields'>List all Data Fields</h3>
