@@ -174,3 +174,84 @@ declined_reason | `string` | optional - a string indicating the reason for decli
 created_at | `string` | the date that the claim was submitted
 updated_at | `string` | the date that the claim was last updated
 questions_answers | `object` | an object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question
+
+### Decline Self Claim
+
+Endpoint to decline a specified claim.
+
+
+#### HTTP Request
+
+`POST /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/decline`
+
+
+> Header:
+
+``` http
+POST /api/v2/performance/promotions/1/self_claims/123/decline HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "reason_for_decline_id": 1,
+  "reason_for_decline_text": "Some reason text string"
+}
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 Ok
+Content-Type: application/json
+
+{
+    "id": 4117,
+    "sale_date": "2020-01-23",
+    "product_or_activity_ref": "p1",
+    "quantity": 5,
+    "points_value": 2,
+    "user_id": 505,
+    "status": "declined",
+    "declined_reason": "Not good enough",
+    "created_at": "2020-01-23T14:15:32.000+00:00",
+    "updated_at": "2020-01-28T10:41:13.000+00:00",
+    "questions_answers": {
+        "1174": {
+            "question": "Custom q 1 - free text",
+            "answer": ""
+        },
+        "1175": {
+            "question": "Custom q 2 - lov r",
+            "answer": ""
+        },
+        "1176": {
+            "question": "Custom q 3 - lov c",
+            "answer": ""
+        },
+        "1177": {
+            "question": "Custom q 4 - lov s",
+            "answer": ""
+        },
+        "1178": {
+            "question": "Custom q 5 - date",
+            "answer": ""
+        },
+        "1179": {
+            "question": "Custom q 6 - upload",
+            "answer": ""
+        }
+    }
+}
+
+```
+
+#### Request Parameters
+
+##### Body Parameters
+
+If decline reasons are active on the promotion, then one of `reason_for_decline_id` or `reason_for_decline_text`, but not both, should be provided when declining a claim.
+
+Parameter | Type | Description
+--------- | ---- | ----
+reason_for_decline_id | `integer` | Required conditional - The ID of a reason for decline belonging to the promotion.
+reason_for_decline_text | `string` | Required conditional - A text string of a reason for decline. Can only be provided if the promotion allows free text decline reasons.
