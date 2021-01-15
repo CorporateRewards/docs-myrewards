@@ -331,4 +331,4 @@ Content-Type: application/json
 
 Parameter | Type | Description
 --------- | ---- | ----
-points_value | `integer` | Optional. If provided, the value of points awarded for the claim will be updated to match the value supplied.
+points_value | `integer` | Optional. If provided, the value of points awarded for the claim will be updated to match the value supplied. If the value exceeds the available programme budget, an error will be returned and the claim will not be approved.
