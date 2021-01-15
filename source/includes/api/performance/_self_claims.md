@@ -255,3 +255,80 @@ Parameter | Type | Description
 --------- | ---- | ----
 reason_for_decline_id | `integer` | Required conditional - The ID of a reason for decline belonging to the promotion.
 reason_for_decline_text | `string` | Required conditional - A text string of a reason for decline. Can only be provided if the promotion allows free text decline reasons.
+
+### Approve Self Claim
+
+Endpoint to approve a specified claim.
+
+
+#### HTTP Request
+
+`POST /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/approve`
+
+
+> Header:
+
+``` http
+POST /api/v2/performance/promotions/1/self_claims/123/approve HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "points_value": 100
+}
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 Ok
+Content-Type: application/json
+
+{
+    "id": 4117,
+    "sale_date": "2020-01-23",
+    "product_or_activity_ref": "p1",
+    "quantity": 5,
+    "points_value": 100,
+    "user_id": 505,
+    "status": "approved",
+    "declined_reason": null,
+    "created_at": "2020-01-23T14:15:32.000+00:00",
+    "updated_at": "2020-01-28T10:41:13.000+00:00",
+    "questions_answers": {
+        "1174": {
+            "question": "Custom q 1 - free text",
+            "answer": ""
+        },
+        "1175": {
+            "question": "Custom q 2 - lov r",
+            "answer": ""
+        },
+        "1176": {
+            "question": "Custom q 3 - lov c",
+            "answer": ""
+        },
+        "1177": {
+            "question": "Custom q 4 - lov s",
+            "answer": ""
+        },
+        "1178": {
+            "question": "Custom q 5 - date",
+            "answer": ""
+        },
+        "1179": {
+            "question": "Custom q 6 - upload",
+            "answer": ""
+        }
+    }
+}
+
+```
+
+#### Request Parameters
+
+##### Body Parameters
+
+Parameter | Type | Description
+--------- | ---- | ----
+points_value | `integer` | Optional. If provided, the value of points awarded for the claim will be updated to match the value supplied. If the value exceeds the available programme budget, an error will be returned and the claim will not be approved.
