@@ -29,6 +29,7 @@ includes:
 - api/recognition/nominations
 - api/reward/0_reward_module
 - api/reward/ipv
+- api/reward/points_overrides
 - sso/index
 
 
