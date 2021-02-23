@@ -1461,7 +1461,8 @@ information please see the registration_questions section.</p>
 
 <p>Answers to the registration questions are provided in an array of objects, nested
 under the key <code>registration_answers_attributes</code>. The nested objects themselves must
-have the keys <code>registration_question_id</code> and <code>answer</code>.</p>
+have the keys <code>registration_question_id</code> and <code>answer</code>. If the question allows multiple
+answers, then the value for <code>answer</code> should be an array, as show in the example below.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1494,7 +1495,7 @@ have the keys <code>registration_question_id</code> and <code>answer</code>.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
+      </span><span class="s2">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="w"> </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
