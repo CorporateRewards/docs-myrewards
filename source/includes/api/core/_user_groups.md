@@ -87,7 +87,7 @@ Content-Type: application/json
 ```
 #### HTTP Request
 
-`POST /api/v2/users_groups`
+`POST /api/v2/user_groups`
 
 #### Parameters
 
