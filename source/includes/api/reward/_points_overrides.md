@@ -10,6 +10,8 @@ Note that this endpoint uses IDs from
 and not MyRewards
 </aside>
 
+If MyRewards has already imported the product from GPS, the points override will take effect on your programme immediately. Otherwise, you will need to wait for the daily sync to have run before the override takes effect.
+
 #### HTTP Request
 
 `PUT /api/v2/points_overrides/{gps_product_id}`
