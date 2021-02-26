@@ -58,3 +58,49 @@ gps_product_id | `integer` | The product ID (**from GPS**) whose points you want
 Parameter | Type | Description
 ----------|------|----
 points | `integer` | The points override you want to set. Must be >= 0
+
+### Delete a points override
+
+Remove a points override for a product within your programme.
+
+<aside>
+Note that this endpoint uses IDs from
+<a href="https://docs.gps.my-rewards.co.uk/#products-list-all-products">GPS</a>,
+and not MyRewards
+</aside>
+
+#### HTTP Request
+
+`DELETE /api/v2/points_overrides/{gps_product_id}`
+
+> Header:
+
+```http
+DELETE /api/v2/points_overrides/1 HTTP/1.1
+Authorization: Token token=xxx
+```
+
+> Response (override found for product id):
+
+```http
+HTTP/1.1 204 No Content
+```
+
+> Response (no override found for product id):
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{
+    "errors": ["No override found for product id"]
+}
+```
+
+#### Request Parameters
+
+##### URL Parameters
+
+Parameter | Type | Description
+----------|------|----
+gps_product_id | `integer` | The product ID (**from GPS**) whose points you want to override
