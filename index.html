@@ -461,6 +461,17 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#points-overrides" class="toc-h2 toc-link" data-title="points-overrides">Points Overrides</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#update-a-points-override" class="toc-h3 toc-link" data-title="Reward Module">Update a points override</a>
+                          </li>
+                          <li>
+                            <a href="#delete-a-points-override" class="toc-h3 toc-link" data-title="Reward Module">Delete a points override</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3379,6 +3390,117 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <p>To view the details of an IPV code.</p>
 <h4 id='http-request-2'>HTTP Request</h4>
 <p><code>GET /api/v2/reward/codes/{id}</code></p>
+<h2 id='points-overrides'>Points Overrides</h2><h3 id='update-a-points-override'>Update a points override</h3>
+<p>Set or update a points override for a product within your programme.</p>
+
+<aside>
+Note that this endpoint uses IDs from
+<a href="https://docs.gps.my-rewards.co.uk/#products-list-all-products">GPS</a>,
+and not MyRewards
+</aside>
+
+<p>If MyRewards has already imported the product from GPS, the points override will take effect on your programme immediately. Otherwise, you will need to wait for the daily sync to have run before the override takes effect.</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>PUT /api/v2/points_overrides/{gps_product_id}</code></p>
+
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/points_overrides/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"programme_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gps_product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5678</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='request-parameters'>Request Parameters</h4><h5 id='url-parameters'>URL Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gps_product_id</td>
+<td><code>integer</code></td>
+<td>The product ID (<strong>from GPS</strong>) whose points you want to override</td>
+</tr>
+</tbody></table>
+<h5 id='body-parameters'>Body Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>points</td>
+<td><code>integer</code></td>
+<td>The points override you want to set. Must be &gt;= 0</td>
+</tr>
+</tbody></table>
+<h3 id='delete-a-points-override'>Delete a points override</h3>
+<p>Remove a points override for a product within your programme.</p>
+
+<aside>
+Note that this endpoint uses IDs from
+<a href="https://docs.gps.my-rewards.co.uk/#products-list-all-products">GPS</a>,
+and not MyRewards
+</aside>
+<h4 id='http-request-2'>HTTP Request</h4>
+<p><code>DELETE /api/v2/points_overrides/{gps_product_id}</code></p>
+
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/points_overrides/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+</code></pre></div>
+<blockquote>
+<p>Response (override found for product id):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre></div>
+<blockquote>
+<p>Response (no override found for product id):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"No override found for product id"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='request-parameters-2'>Request Parameters</h4><h5 id='url-parameters-2'>URL Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>gps_product_id</td>
+<td><code>integer</code></td>
+<td>The product ID (<strong>from GPS</strong>) whose points you want to override</td>
+</tr>
+</tbody></table>
 <h1 id='simple-single-sign-on'>Simple Single Sign on</h1>
 <p>Our SSO uses <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML 2.0</a> to facilitate IdP-initiated Single Sign On to a MyRewards Programme</p>
 
