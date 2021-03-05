@@ -294,7 +294,7 @@
                             <a href="#get-all-user-groups" class="toc-h3 toc-link" data-title="Core">Get all User Groups</a>
                           </li>
                           <li>
-                            <a href="#manage-user-groups" class="toc-h3 toc-link" data-title="Core">Manage User Groups</a>
+                            <a href="#create-user-groups" class="toc-h3 toc-link" data-title="Core">Create User Groups</a>
                           </li>
                       </ul>
                   </li>
@@ -1256,7 +1256,7 @@ with a tier being a vertical &#39;slice&#39; down the hierarchy</p>
 <td>position under the parent user_group, used for ordering</td>
 </tr>
 </tbody></table>
-<h3 id='manage-user-groups'>Manage User Groups</h3>
+<h3 id='create-user-groups'>Create User Groups</h3>
 <p>An endpoint to create a user group for this programme. Only accessible if the key
 has been granted access to users. In order to create a usergroup a name is required.
 This usergroup can be nested underneath another user group by passing the parent
@@ -1277,8 +1277,9 @@ no position is passed then it will default to the bottom of the hierachy.</p>
 <span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User Group"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"programme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo Central Perks"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example_hosted_image_url.com/image.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
