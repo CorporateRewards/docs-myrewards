@@ -23,3 +23,8 @@ vendor/bundle
 _yardoc
 doc/
 .idea/
+
+# vim
+*~
+*.swp
+*.swo
