@@ -50,7 +50,7 @@ parent\_id | integer | parent user_group id
 default | boolean | indicates if this user_group is the default group for the programme
 position | integer | position under the parent user_group, used for ordering
 
-### Manage User Groups
+### Create User Groups
 
 An endpoint to create a user group for this programme. Only accessible if the key
 has been granted access to users. In order to create a usergroup a name is required.
@@ -78,8 +78,9 @@ Content-Type: application/json
 {
   "id" : 1,
   "name": "Example User Group",
-  "position": 1,
+  "programme": "Demo Central Perks",
   "parent_id": null,
+  "position": 1,
   "default": false,
   "image_url": "http://example_hosted_image_url.com/image.png"
 }
