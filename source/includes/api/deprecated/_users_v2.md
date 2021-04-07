@@ -1,13 +1,33 @@
-## Users 
+## Users (v2)
 
 In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate user with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore, there will be other fields that have been declared mandatory for your programme and user creation (POST) will fail if these values are not populated or provided.
 
 ### Create a User
 
-> Request: 
+In order to create a user account on the MyRewards 2.0 platform there is often
+some information about the user we are creating that needs to be known before
+the account can be successfully created.
+
+Firstly, the user group that the user will be created as a member of must be
+known, we provide an endpoint to query the usergroups for your programme and if
+necessary to reconstruct the hierarchy for the usergroups see the usergroups
+section.
+
+Additionally, user accounts can have extra data required over and above the
+minimal default fields for a user account. Typically, these take the form of
+employee data, membership number etc and can be defined as part of your
+programme. These extra data are called registration_questions, for more
+information please see the registration_questions section.
+
+Telephone and mobile number fields must be supplied in international format, meaning starting with a '+' followed by the international country code (I.e. the UK is 44) followed by at least 8 numeric characters.
+
+Answers to the registration questions are provided in an array of objects, nested
+under the key `registration_answers_attributes`. The nested objects themselves must
+have the keys `registration_question_id` and `answer`. If the question allows multiple
+answers, then the value for `answer` should be an array, as show in the example below.
 
 ``` http
-POST /api/v3/users HTTP/1.1
+POST /api/v2/users HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -44,8 +64,6 @@ Content-Type: application/json
   ]
 }
 ```
-
-> Response: 
 
 ``` http
 HTTP/1.1 201 CREATED
@@ -86,54 +104,9 @@ Content-Type: Application/json
 }
 ```
 
-In order to create a user account on the MyRewards 2.0 platform there is often
-some information about the user we are creating that needs to be known before
-the account can be successfully created.
-
-#### User group
-The user group that the user will be created as a member of must be
-known, we provide an endpoint to query the usergroups for your programme and if
-necessary to reconstruct the hierarchy for the usergroups see the usergroups
-section.
-
-#### Phone numbers
-Telephone and mobile number fields must be supplied in international format, meaning starting with a '+' followed by the international country code (I.e. the UK is 44) followed by at least 8 numeric characters.
-
-#### Registration questions
-User accounts can have extra data required over and above the
-minimal default fields for a user account. Typically, these take the form of
-employee data, membership number etc and can be defined as part of your
-programme. These extra data are called registration_questions, for more
-information please see the registration_questions section.
-
-Answers to the registration questions are provided in an array of objects, nested
-under the key `registration_answers_attributes`. The nested objects themselves must
-have the keys `registration_question_id` and `answer`. If the question allows multiple
-answers, then the value for `answer` should be an array, as show in the example below.
-
-#### Company
-When providing a user's company, the value must match what is expected by the programme, 
-i.e. if the company is a free-text field, then a `string` should be provided. If, however, the
-programme is using a managed list of companies, the value must be an object containing the
-`name` and `identifier` strings. 
-
-##### Example 1: Company as a free-text field:
-`"company": "Luther Corp"` 
-
-##### Example 2: Company as a manage list:
-
-`"company": { "name": "Luther Corp", "identifier": "lth-18" }`
-
-If the company can not be found, it will be created. Existing companies will have their `name` 
-updated if different.
-
-The response from the API will also differ depending whether the company is free-text or a 
-managed list and will mirror the format sent in the request. The "Update a user" below shows
-an example of the response when the company is a managed list.
-
 #### HTTP Request
 
-`POST /api/v3/users`
+`POST /api/v2/users`
 
 #### Parameters
 
@@ -144,7 +117,7 @@ email | `string` | valid email address and may be required, see user identificat
 title | `string` | salutation (Mr, Mrs, Ms, etc) no strict validation.
 firstname | `string` | Required
 lastname | `string` | Required
-company | `mixed` | Potentially required - see programme data requirements. Should be a `string` or an `object` - see "Company" section above.
+company | `string` | Potentially required - see programme data requirements
 job_title | `string` | Potentially required - see programme data requirements
 address_1 | `string` | Potentially required - see programme data requirements
 address_2 | `string` | optional
@@ -163,24 +136,19 @@ marketing_consented | `boolean` | Can be true or false, not required if programm
 
 ### Update a User
 
-> Request: 
+The update user api is available to update user information. This uses the same
+params as the create user api above.
 
 ``` http
-PUT /api/v3/users/123 HTTP/1.1
+PUT /api/v2/users/123 HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
 {
-  "firstname": "Joker",
-  "lastname": "Hahaha",
-  "company": {
-    "name": "Wayne Inc",
-    "identifier": "wayne-18"
-  }
+  "firstname" : "Joker",
+  "lastname" : "Hahaha"
 }
 ```
-
-> Response: 
 
 ``` http
 HTTP/1.1 200 OK
@@ -193,11 +161,7 @@ Content-Type: Application/json
   "title" : "Mr",
   "firstname" : "Joker",
   "lastname" : "Hahaha",
-  "company": {
-    "id": 4454,
-    "name": "Wayne Inc",
-    "identifier": "wayne-18"
-  },
+  "company" : "Wayne Inc",
   "job_title" : "CEO",
   "address_1" : "Wayne Manor",
   "address_2" : "1007 Mountain Drive",
@@ -223,12 +187,9 @@ Content-Type: Application/json
 }
 ```
 
-The update user api is available to update user information. This uses the same
-params as the create user api above.
-
 #### HTTP Request
-`PUT /api/v3/users/{user_id}`
+`PUT /api/v2/users/{user_id}`
 
-`PATCH /api/v3/users/{user_id}`
+`PATCH /api/v2/users/{user_id}`
 
 

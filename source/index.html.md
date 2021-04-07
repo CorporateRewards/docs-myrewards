@@ -31,6 +31,8 @@ includes:
 - api/reward/ipv
 - api/reward/points_overrides
 - sso/index
+- api/deprecated/0_deprecated
+- api/deprecated/users_v2
 
 
 search: true
