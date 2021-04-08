@@ -21,6 +21,9 @@ jobs:
           command: |
             git config --global user.email 'ci@createk.io'
             git config --global user.name 'CreatekCI'
+      - add_ssh_keys:
+          fingerprints:
+            - "81:64:81:3f:c9:a6:67:fa:0c:d5:7c:05:0a:2a:cf:68"
 
       - run:
           name: Prepare build directory
