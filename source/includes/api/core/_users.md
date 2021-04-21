@@ -131,6 +131,10 @@ The response from the API will also differ depending whether the company is free
 managed list and will mirror the format sent in the request. The "Update a user" below shows
 an example of the response when the company is a managed list.
 
+To unset company, pass `null` as shown below:
+
+`"company": null`
+
 #### HTTP Request
 
 `POST /api/v3/users`
