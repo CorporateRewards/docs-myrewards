@@ -101,7 +101,7 @@ Telephone and mobile number fields must be supplied in international format, mea
 
 #### Registration questions
 User accounts can have extra data required over and above the
-minimal default fields for a user account. Typically, these take the form of
+minimal default fields for a user account. Typically, these take the the form of
 employee data, membership number etc and can be defined as part of your
 programme. These extra data are called registration_questions, for more
 information please see the registration_questions section.
