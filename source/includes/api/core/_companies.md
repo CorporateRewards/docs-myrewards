@@ -2,16 +2,22 @@
 
 ### Get all companies
 
-This endpoint returns all companies associated to an api keys programme.
+This endpoint returns all companies associated to an api keys programme. Results are paginated and return 100 records per page and can be paged through by passing a page query parameter. If no page parameter is passed, then page 1 with the first 100 records will be returned.
 
 #### HTTP Request
 
 `GET /api/v3/companies`
 
+#### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+page | integer | The page number that you wish to view
+
 > Request:
 
 ``` http
-GET /api/v3/companies HTTP/1.1
+GET /api/v3/companies?page=1 HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
@@ -48,7 +54,7 @@ Content-Type: Application/json
 
 This endpoint returns a specific company associated to an api keys programme.
 
-#### URL Parameters
+#### Path Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
