@@ -15,6 +15,7 @@ includes:
 - api/core/user_groups_permissions
 - api/core/users
 - api/core/users_permissions
+- api/core/companies
 - api/extra_features/0_extra_features
 - api/extra_features/data_widgets
 - api/extra_features/target_trackers
