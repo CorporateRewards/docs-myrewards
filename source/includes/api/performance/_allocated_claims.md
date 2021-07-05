@@ -34,6 +34,8 @@ Content-Type: application/json
             "quantity": 2,
             "user_group_id": 2,
             "company_id": 5,
+            "company_name": "Company C",
+            "company_identifier": "company799988",
             "status": "pending",
             "created_at": "01/02/2018",
             "some_custom_field": "some custom answer"
@@ -45,6 +47,8 @@ Content-Type: application/json
             "quantity": 1,
             "user_group_id": 2,
             "company_id": 5,
+            "company_name": "Company C",
+            "company_identifier": "company799988",
             "status": "pending",
             "created_at": "01/02/2018",
             "some_custom_field": "another custom answer"
@@ -149,6 +153,8 @@ Content-Type: application/json
             "quantity": 2,
             "user_group_id": 2,
             "company_id": 5,
+            "company_name": "Company C",
+            "company_identifier": "company799988",
             "some_custom_field": "some custom answer"
         },
         {
@@ -158,6 +164,8 @@ Content-Type: application/json
             "quantity": 1,
             "user_group_id": 5,
             "company_id": 3,
+            "company_name": "Company B",
+            "company_identifier": "company3466563",
             "some_other_custom_field": "some other custom answer"
         }
     ]
