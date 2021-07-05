@@ -103,7 +103,7 @@ reason\_for\_decline\_text | `string` | A text string for a decline reason, can 
 
 ### Create Allocated Claims
 
-Endpoint to create allocated claims against specific promotion. Claims are created by using the `data_field` names from above as key/value pairs. Your request must include `user_group_id` or `company_id,` depending on the promotion configuration.
+Endpoint to create allocated claims against specific promotion. Claims are created by using the `data_field` names from above as key/value pairs. Your request must include exactly one of `user_group_id` or `company_id` or `company_identifier` depending on the promotion configuration.
 
 ``` http
 POST /api/v2/performance/promotions/1/allocated_claims HTTP/1.1
@@ -119,6 +119,7 @@ Content-Type: application/json
             "quantity": 2,
             "user_group_id": 2,
             "company_id": 5,
+            "company_identifier": "company799988",
             "some_custom_field": "some custom answer"
         },
         {
@@ -127,6 +128,7 @@ Content-Type: application/json
             "quantity": 1,
             "user_group_id": 5,
             "company_id": 3,
+            "company_identifier": "company3466563",
             "some_other_custom_field": "some other custom answer"
         }
     ]
@@ -175,8 +177,9 @@ promotion\_id | `integer` | The ID of the promotion claim is for.
 sale\_date | `date` | The date when this piece of data was created. Mandatory. 
 product\_or\_activity\_ref | `string` | The SKU for the performance product to claim against
 quantity | `integer` | The quantity of products sold. Mandatory.
-user\_group\_id | `integer` | ID of the user group claim relates to (either this or company_id needs to be supplied)
-company\_id | `integer` | ID of the MyRewards company claim related to (either this or user_group_id needs to be supplied)
+user\_group\_id | `integer` | ID of the user group claim relates to (exactly one of user_group_id, company_id, or company_identifier needs to be supplied)
+company\_id | `integer` | ID of the MyRewards company claim related to (exactly one of user_group_id, company_id, or company_identifier needs to be supplied)
+company\_identifier | `string` | Identifier of the MyRewards company claim related to (exactly one of user_group_id, company_id, or company_identifier needs to be supplied)
 
 You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the [GET List Data Fields](#list-all-data-fields) for a Promotion.
 
