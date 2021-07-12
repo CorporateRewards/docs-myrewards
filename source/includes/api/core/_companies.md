@@ -88,3 +88,103 @@ Content-Type: Application/json
   "updated_at" : "2021-03-20T13:42:17.000+00:00",
 }
 ```
+
+### Create a company
+
+This endpoint creates a new company associated to an api keys programme.
+
+#### HTTP Request
+
+`POST /api/v3/companies`
+
+> Request:
+
+``` http
+POST /api/v3/companies HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+    "name": "Company name",
+    "identifier": "company-identifier",
+    "disabled": "N",
+    "earning_type": "company"
+}
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+
+{
+  "id": 123,
+  "name": "Company name",
+  "identifier": "company-identifier",
+  "disabled": false,
+  "earning_type": "company",
+  "created_at": "2021-03-18T02:20:06.000+00:00",
+  "updated_at": "2021-03-18T02:20:06.000+00:00"
+}
+```
+
+#### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+name | `string` | Mandatory. The name of the company.
+identifier | `string` | Mandatory. The unique identifier for the company.
+disabled | `string` | Mandatory. The disabled status of the company. One of 'Y' for disabled or 'N' for not disabled.
+earning_type | `string` | Optional. The earning type of the company. Must be one of 'individual' or 'company'. If not provided, company will be set with the 'individual' earning type.
+
+
+### Update a company
+
+This endpoint updates an existing company associated to an api keys programme.
+#### HTTP Request
+
+`PATCH /api/v3/companies/:company_id`
+
+> Request:
+
+``` http
+PATCH /api/v3/companies/123 HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+    "name": "New company name",
+    "identifier": "new-company-identifier",
+    "disabled": "Y",
+    "earning_type": "individual"
+}
+
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+
+{
+  "id": 123,
+  "name": "New company name",
+  "identifier": "new-company-identifier",
+  "disabled": true,
+  "earning_type": "individual",
+  "created_at": "2021-03-18T02:20:06.000+00:00",
+  "updated_at": "2021-03-20T13:42:17.000+00:00",
+}
+```
+
+#### Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+name | `string` | The name of the company.
+identifier | `string` | The unique identifier for the company.
+disabled | `string` | The disabled status of the company. One of 'Y' for disabled or 'N' for not disabled.
+earning_type | `string` | The earning type of the company. Must be one of 'individual' or 'company'.
+
