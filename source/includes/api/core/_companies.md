@@ -188,3 +188,31 @@ identifier | `string` | The unique identifier for the company.
 disabled | `string` | The disabled status of the company. One of 'Y' for disabled or 'N' for not disabled.
 earning_type | `string` | The earning type of the company. Must be one of 'individual' or 'company'.
 
+
+### Delete a company
+
+This endpoint deletes an existing company associated to an api keys programme. You can only delete companies that have no associated users, and any attempt to do so will return an error.
+#### HTTP Request
+
+`DELETE /api/v3/companies/:company_id`
+
+> Request:
+
+``` http
+DELETE /api/v3/companies/123 HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+```
+
+> Response:
+
+``` http
+HTTP/1.1 204 No Content
+Content-Type: Application/json
+```
+#### URL Parameters
+
+Parameter | Description
+--------- | -----------
+company_id | The ID of the company to delete
