@@ -1,6 +1,8 @@
-# Simple Single Sign on
+<a name="simple-single-sign-on" class="legacy-link"></a>
 
-Our SSO uses [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0) to facilitate IdP-initiated Single Sign On to a MyRewards Programme
+## SAML
+
+Our SSO can use [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0) to facilitate IdP-initiated Single Sign On to a MyRewards Programme
 
 In this case MyRewards acts as a Service Provider (SP) for a given programme
 

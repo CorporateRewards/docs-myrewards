@@ -31,7 +31,8 @@ includes:
 - api/reward/0_reward_module
 - api/reward/ipv
 - api/reward/points_overrides
-- sso/index
+- sso/0_sso
+- sso/saml
 - api/deprecated/0_deprecated
 - api/deprecated/users_v2
 
