@@ -33,6 +33,7 @@ includes:
 - api/reward/points_overrides
 - sso/0_sso
 - sso/saml
+- sso/oidc
 - api/deprecated/0_deprecated
 - api/deprecated/users_v2
 
