@@ -1,0 +1,113 @@
+## Submissions
+
+### Get all submissions
+
+An endpoint to get all submissions for a given campaign. Results are paginated and return 100 records per page.
+
+#### HTTP Request
+
+`GET /api/v2/campaigns/{campaign_id}/submissions`
+
+#### Query Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+page | `integer` | The page number that you wish to view. Optional
+status | `string` | Status of the submissions to be returned. Optional
+user_id | `integer` | ID of a sender that submissions were made by. Optional
+created_at_date | `string` | A parameter for scoping submissions that were created from that date onwards. Optional.
+created_at_end_date | `string` | A parameter for scoping submissions that were created on or before the given date. Optional.
+
+> Request:
+
+``` http
+GET /api/v2/campaigns/157/submissions HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+
+[
+    {
+        "id": 157,
+        "award_id": 1317,
+        "status": "approved_l1",
+        "sender_id": 111744,
+        "points_requested": 100,
+        "created_at": "2019-01-30T14:15:25.000+00:00",
+        "updated_at": "2021-01-07T16:41:19.000+00:00",
+        "questions_answers": {
+            "1174": {
+                "question": "Custom q 1 - free text",
+                "answer": ""
+            },
+            "1175": {
+                "question": "Custom q 2 - lov r",
+                "answer": ""
+            },
+            "1176": {
+                "question": "Custom q 3 - lov c",
+                "answer": ""
+            }
+        },
+        "points_approved": 100,
+        "approved_by": {
+            "level_1_id": 505,
+            "level_2_id": null
+        },
+        "declined_by": {
+            "level_1": {
+                "id": null,
+                "reason": null
+            },
+            "level_2": {
+                "id": null,
+                "reason": null
+            }
+        }
+    },
+    {
+        "id": 157,
+        "award_id": 1318,
+        "status": "pending_l1",
+        "sender_id": 111744,
+        "points_requested": 200,
+        "created_at": "2019-01-30T14:15:25.000+00:00",
+        "updated_at": "2021-01-07T16:41:19.000+00:00",
+        "questions_answers": {
+            "1174": {
+                "question": "Custom q 1 - free text",
+                "answer": ""
+            },
+            "1175": {
+                "question": "Custom q 2 - lov r",
+                "answer": ""
+            },
+            "1176": {
+                "question": "Custom q 3 - lov c",
+                "answer": ""
+            },
+        },
+        "points_approved": 0,
+        "approved_by": {
+            "level_1_id": null,
+            "level_2_id": null
+        },
+        "declined_by": {
+            "level_1": {
+                "id": null,
+                "reason": null
+            },
+            "level_2": {
+                "id": null,
+                "reason": null
+            }
+        }
+    }
+]
+```
