@@ -137,7 +137,7 @@ The attribute statement is a list of name/value pairs conveying information abou
 * username - as recorded on MyRewards Programme
 * unique identifier/primary key for the user as recorded in MyRewards Programme
 
-The value we expect is determined by the programme configuration.
+The value we expect, as well as the name of the attribute to check, is determined by the programme configuration.
 
 ### Next steps
 
