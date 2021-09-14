@@ -496,19 +496,44 @@
               </ul>
           </li>
           <li>
-            <a href="#simple-single-sign-on" class="toc-h1 toc-link" data-title="simple-single-sign-on">Simple Single Sign on</a>
+            <a href="#sso-single-sign-on" class="toc-h1 toc-link" data-title="sso-single-sign-on">SSO (Single Sign On)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#simple-single-sign-on-points-overrides-process-flow" class="toc-h2 toc-link" data-title="process-flow">Process flow</a>
+                    <a href="#sso-single-sign-on-saml" class="toc-h2 toc-link" data-title="saml">SAML</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#sso-single-sign-on-saml-process-flow" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Process flow</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-saml-the-assertion" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">The Assertion</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-saml-next-steps" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Next steps</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-saml-further-information" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Further information</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
-                    <a href="#simple-single-sign-on-points-overrides-the-assertion" class="toc-h2 toc-link" data-title="the-assertion">The Assertion</a>
-                  </li>
-                  <li>
-                    <a href="#simple-single-sign-on-points-overrides-next-steps" class="toc-h2 toc-link" data-title="next-steps">Next steps</a>
-                  </li>
-                  <li>
-                    <a href="#simple-single-sign-on-points-overrides-further-information" class="toc-h2 toc-link" data-title="further-information">Further information</a>
+                    <a href="#sso-single-sign-on-openid-connect" class="toc-h2 toc-link" data-title="openid-connect">OpenID Connect</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#sso-single-sign-on-openid-connect-process-flow" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Process flow</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-openid-connect-implementation-notes" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Implementation notes</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-openid-connect-id-token" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">ID token</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-openid-connect-next-steps" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Next steps</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-openid-connect-further-information" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Further information</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -3848,13 +3873,14 @@ and not MyRewards
 <td>The product ID (<strong>from GPS</strong>) whose points you want to override</td>
 </tr>
 </tbody></table>
-<h1 id='simple-single-sign-on'>Simple Single Sign on</h1>
-<p>Our SSO uses <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML 2.0</a> to facilitate IdP-initiated Single Sign On to a MyRewards Programme</p>
+<h1 id='sso-single-sign-on'>SSO (Single Sign On)</h1><p><a name="simple-single-sign-on" class="legacy-link"></a></p>
+<h2 id='sso-single-sign-on-saml'>SAML</h2>
+<p>Our SSO can use <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML 2.0</a> to facilitate IdP-initiated Single Sign On to a MyRewards Programme</p>
 
 <p>In this case MyRewards acts as a Service Provider (SP) for a given programme</p>
 
 <p>The client platform is acting as an Identity Provider (IdP)</p>
-<h3 id='simple-single-sign-on-points-overrides-process-flow'>Process flow</h3>
+<h3 id='sso-single-sign-on-saml-process-flow'>Process flow</h3>
 <ol>
 <li>User is challenged to authenticate at the IdP side</li>
 <li>User Logs in to the IdP</li>
@@ -3863,7 +3889,7 @@ and not MyRewards
 <li>User&#39;s browser <code>POST</code>s this assertion to the MyRewards programme</li>
 <li>Session established on MyRewards and user is granted access</li>
 </ol>
-<h3 id='simple-single-sign-on-points-overrides-the-assertion'>The Assertion</h3>
+<h3 id='sso-single-sign-on-saml-the-assertion'>The Assertion</h3>
 <blockquote>
 <p>Example SAML assertion:</p>
 </blockquote>
@@ -3951,20 +3977,20 @@ and not MyRewards
 <p>The value of the <code>SAMLResponse</code> parameter is a Base64-encoded <code>&lt;samlp:Response&gt;</code> element, which is transmitted to the service provider via the browser (see &quot;Example form&quot; for an example).</p>
 
 <p>The assertion <strong>must</strong> have the following sub-elements (shown with namespaces from &quot;Example SAML assertion&quot;):</p>
-<h4 id='simple-single-sign-on-points-overrides-the-assertion-code-saml-issuer-code-1'><code>saml:Issuer</code> [1]</h4>
+<h4 id='sso-single-sign-on-saml-the-assertion-code-saml-issuer-code-1'><code>saml:Issuer</code> [1]</h4>
 <p>Name of the IdP in the form of a url e.g. <code>https://client-company.com</code>.</p>
-<h4 id='simple-single-sign-on-points-overrides-the-assertion-code-ds-signature-code-2'><code>ds:Signature</code> [2]</h4>
+<h4 id='sso-single-sign-on-saml-the-assertion-code-ds-signature-code-2'><code>ds:Signature</code> [2]</h4>
 <p>All SAML 2.0 Assertions are signed by default. The client company (identity provider) will be required
 to include the X.509 Certificate public key in the assertion itself. MyRewards (service provider) will use this to verify the signature.</p>
-<h4 id='simple-single-sign-on-points-overrides-the-assertion-code-saml-subject-code-3'><code>saml:Subject</code> [3]</h4>
+<h4 id='sso-single-sign-on-saml-the-assertion-code-saml-subject-code-3'><code>saml:Subject</code> [3]</h4>
 <p>The subject <code>&lt;saml:NameID&gt;</code> is always the unique identifier of the user - by default this set as transient, we require this to be persistent - this is as understood by the IdP.</p>
-<h4 id='simple-single-sign-on-points-overrides-the-assertion-code-saml-conditions-code-4'><code>saml:Conditions</code> [4]</h4>
+<h4 id='sso-single-sign-on-saml-the-assertion-code-saml-conditions-code-4'><code>saml:Conditions</code> [4]</h4>
 <p>This is the timeframe within which the assertion is valid - our preference is to be set to allow for 2 minutes either side to account for clock drift between servers. MyRewards will verify the validity of an assertion with respect to these conditions after validating the signature.</p>
 
 <p>Our servers are synchronised daily to Europe/London timezone - this will change with Daylight Saving Time. We expect the IdP has their server clocks similarly synchronised. The timestamp used will be in Coordinated Universal Time (UTC) and we strongly recommend adding a window of 1 hour plus 2 minutes to account for both clock drift and Daylight Saving Time.</p>
 
 <p>For example, if the date/time was <code>Tuesday 9th October, 2018 15:09 (BST)</code> then we would expect to see the <code>&lt;saml:Conditions&gt;</code> element look like the snippet shown in &quot;Example conditions&quot;.</p>
-<h4 id='simple-single-sign-on-points-overrides-the-assertion-code-saml-attributestatement-code'><code>saml:AttributeStatement</code></h4>
+<h4 id='sso-single-sign-on-saml-the-assertion-code-saml-attributestatement-code'><code>saml:AttributeStatement</code></h4>
 <p>The attribute statement is a list of name/value pairs conveying information about the user themselves. We only use one <code>&lt;saml:Attribute&gt;</code> with a <code>Name</code> specified by the programme configuration (<code>uid</code> by default) and expect the value to be one of:</p>
 
 <ul>
@@ -3974,7 +4000,7 @@ to include the X.509 Certificate public key in the assertion itself. MyRewards (
 </ul>
 
 <p>The value we expect, as well as the name of the attribute to check, is determined by the programme configuration.</p>
-<h3 id='simple-single-sign-on-points-overrides-next-steps'>Next steps</h3>
+<h3 id='sso-single-sign-on-saml-next-steps'>Next steps</h3>
 <p>The following information is required to set up SAML SSO on the MyRewards system:</p>
 
 <ul>
@@ -3986,12 +4012,118 @@ to include the X.509 Certificate public key in the assertion itself. MyRewards (
 </ul>
 
 <p>In response, you will be provided with a metadata file - this can often be useful for automatically configuring some IdP systems such as Active Directory Federated Services.</p>
-<h3 id='simple-single-sign-on-points-overrides-further-information'>Further information</h3>
+<h3 id='sso-single-sign-on-saml-further-information'>Further information</h3>
 <p>For further information on SAML 2.0 please go to the official SAML 2.0 websites:</p>
 
 <ul>
 <li><a href="http://www.oasis-open.org/home/index.php">http://www.oasis-open.org/home/index.php</a></li>
 <li><a href="http://saml.xml.org">http://saml.xml.org</a></li>
+</ul>
+<h2 id='sso-single-sign-on-openid-connect'>OpenID Connect</h2>
+<p>MyRewards now supports a limited subset of OpenID Connect for SSO. We currently use the <a href="https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth">&quot;implicit flow&quot;</a>, using the <a href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#id_token">ID token-only response type</a> with the <a href="https://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html"><code>form_post</code> response mode</a>. More features from the OpenID Connect specification may be available in the future - please contact your MyRewards representative.</p>
+<h3 id='sso-single-sign-on-openid-connect-process-flow'>Process flow</h3>
+<ol>
+<li>User initiates a sign-on request from MyRewards.</li>
+<li>MyRewards fetches configuration from the discovery URL provided.</li>
+<li>Using the information from (2), MyRewards redirects the user to the authorization endpoint.</li>
+<li>User is authenticated by the OpenID Connect provider.</li>
+<li>JWT ID token is <code>POST</code>-ed back to MyRewards as a URL-encoded form body.</li>
+<li>MyRewards validates the ID token and redirects the user to a holding page whilst profile provisioning is completed via a back channel.</li>
+<li>Session established on MyRewards and user is granted access.</li>
+</ol>
+
+<blockquote>
+<p>Process flow example requests/responses</p>
+
+<p>(2) Fetch configuration from discovery URL:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/.well-known/openid-configuration</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">openid-connect-provider.example.com</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openid-connect-provider.example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authorization_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openid-connect-provider.example.com/authorize"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openid-connect-provider.example.com/jwks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"response_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"id_token"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"subject_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"public"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id_token_signing_alg_values_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"RS256"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"scopes_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"openid"</span><span class="p">,</span><span class="w"> </span><span class="s2">"email"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"response_modes_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"form_post"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>(3) Redirect to authorization endpoint:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">303</span> <span class="ne">Found</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://openid-connect-provider.com/authorize?response_type=...</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/authorize?
+response_type=id_token
+&amp;response_mode=form_post
+&amp;client_id=client_id_goes_here
+&amp;scope=openid%20email
+&amp;redirect_uri=https%3A%2F%2Fmyrewards-programme.example.com%2Fusers%2Fauth%2Fopenid_connect%2Fcallback
+&amp;state=random-value-from-myrewards
+&amp;nonce=another-random-value-from-myrewards</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">openid-connect-provider.example.com</span>
+</code></pre></div>
+<blockquote>
+<p>(5) <code>POST</code> ID token back to MyRewards:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/users/auth/openid_connect/callback</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">openid-connect-provider.example.com</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+
+id_token=jwt.appears.here
+&amp;state=random-value-from-myrewards
+</code></pre></div>
+<blockquote>
+<p>Second part of JWT:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://server.example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client_id_goes_here"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"another-random-value-from-myrewards"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1311281970</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1311280970</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='sso-single-sign-on-openid-connect-implementation-notes'>Implementation notes</h3><h4 id='sso-single-sign-on-openid-connect-implementation-notes-configuration-discovery'>Configuration discovery</h4>
+<p>For ease of configuration, and to aid in dynamic configuration changes from the OpenID Connect provider, MyRewards relies on discovery to find most of the configuration values for the provider. To that end, you will need to configure your programme with a &quot;discovery URL&quot;, which should be a <a href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig">domain (or domain with a path)</a> that has the path <code>/.well-known/openid-configuration</code>, from which MyRewards will attempt to load the configuration of your OpenID implementation.</p>
+
+<p>This should have the <a href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">following fields</a> as a minimum (these are all marked as &quot;REQUIRED&quot; by the spec so it is likely your implementation will already have them):</p>
+
+<ul>
+<li><code>issuer</code></li>
+<li><code>authorization_endpoint</code></li>
+<li><code>jwks_uri</code></li>
+<li><code>response_types_supported</code> - should include <code>id_token</code></li>
+<li><code>subject_types_supported</code> - should include <code>public</code></li>
+<li><code>id_token_signing_alg_values_supported</code></li>
+</ul>
+
+<p>In addition, if the <code>response_types_supported</code> field is included, it should include <code>form_post</code>.</p>
+
+<p>MyRewards does not currently support using <a href="https://openid.net/specs/openid-connect-discovery-1_0.html#IssuerDiscovery">WebFinger</a> to obtain the discovery endpoint.</p>
+<h3 id='sso-single-sign-on-openid-connect-id-token'>ID token</h3>
+<p>MyRewards uses the <code>sub</code> field from the ID token as the unique user identifier, and populates the &quot;username&quot; registration question with its value. The <code>email</code> field is also extracted and its value used for the &quot;email&quot; registration question. Due to the dynamic nature of user data on MyRewards, other fields will need to be provided via a side channel (e.g. the <a href="#core-users-update-a-user">update user API</a>).</p>
+<h3 id='sso-single-sign-on-openid-connect-next-steps'>Next steps</h3>
+<p>The following information is required to set up OpenID Connect SSO on the MyRewards system:</p>
+
+<ul>
+<li>Discovery URL - as described above</li>
+<li>Client ID</li>
+<li>Client secret</li>
+<li>A URL to redirect users on login failure (this is typically a content page on the MyRewards programme itself)</li>
+</ul>
+<h3 id='sso-single-sign-on-openid-connect-further-information'>Further information</h3>
+<p>For further information on OpenID Connect please refer to the official documentation:</p>
+
+<ul>
+<li><a href="https://openid.net/connect/">https://openid.net/connect</a></li>
+<li><a href="https://openid.net/specs/openid-connect-core-1_0.html">https://openid.net/specs/openid-connect-core-1_0.html</a></li>
 </ul>
 <h1 id='deprecated-end-points'>Deprecated End-points</h1><h2 id='deprecated-end-points-users-v2'>Users (v2)</h2>
 <p>In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate user with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore, there will be other fields that have been declared mandatory for your programme and user creation (POST) will fail if these values are not populated or provided.</p>
