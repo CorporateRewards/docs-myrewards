@@ -15,8 +15,8 @@ Parameter | Type | Description
 page | `integer` | The page number that you wish to view. Optional
 status | `string` | Status of the submissions to be returned. Optional
 user_id | `integer` | ID of a sender that submissions were made by. Optional
-created_at_date | `string` | A parameter for scoping submissions that were created from that date onwards. Optional.
-created_at_end_date | `string` | A parameter for scoping submissions that were created on or before the given date. Optional.
+created_at_date | `date` | A parameter in ISO-8601 format for scoping submissions that were created from that date onwards. Optional.
+created_at_end_date | `date` | A parameter in ISO-8601 format for scoping submissions that were created on or before the given date. Optional.
 
 > Request:
 
@@ -57,16 +57,20 @@ Content-Type: Application/json
         },
         "points_approved": 100,
         "approved_by": {
-            "level_1_id": 505,
-            "level_2_id": null
+            "level_1": {
+                "user_id": 505,
+            },
+            "level_2": {
+                "user_id": null,
+            }
         },
         "declined_by": {
             "level_1": {
-                "id": null,
+                "user_id": null,
                 "reason": null
             },
             "level_2": {
-                "id": null,
+                "user_id": null,
                 "reason": null
             }
         }
@@ -95,16 +99,20 @@ Content-Type: Application/json
         },
         "points_approved": 0,
         "approved_by": {
-            "level_1_id": null,
-            "level_2_id": null
+            "level_1": {
+                "user_id": null,
+            },
+            "level_2": {
+                "user_id": null,
+            }
         },
         "declined_by": {
             "level_1": {
-                "id": null,
+                "user_id": null,
                 "reason": null
             },
             "level_2": {
-                "id": null,
+                "user_id": null,
                 "reason": null
             }
         }
