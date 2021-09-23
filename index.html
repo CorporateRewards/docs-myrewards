@@ -466,6 +466,14 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#recognition-module-submissions" class="toc-h2 toc-link" data-title="submissions">Submissions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#recognition-module-submissions-get-all-submissions" class="toc-h3 toc-link" data-title="Recognition Module">Get all submissions</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3667,7 +3675,145 @@ the nomination when it is declined.</p>
 <p>Nominations can only transition to a state allowed by its current
 state. For example an award with state &#39;pending_l1&#39; can transition to
 &#39;approved_l1&#39; but not to &#39;approved_l2&#39;. Only &quot;approve&quot; or &quot;decline&quot; can be provided to the API.</p>
-<h1 id='reward-module'>Reward Module</h1><h2 id='reward-module-instant-point-vouchers-ipv'>Instant Point Vouchers (IPV)</h2><h3 id='reward-module-instant-point-vouchers-ipv-create-an-ipv'>Create an IPV</h3>
+<h2 id='recognition-module-submissions'>Submissions</h2><h3 id='recognition-module-submissions-get-all-submissions'>Get all submissions</h3>
+<p>An endpoint to get all submissions for a given campaign. Results are paginated and return 100 records per page.</p>
+<h4 id='recognition-module-submissions-get-all-submissions-http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/campaigns/{campaign_id}/submissions</code></p>
+<h4 id='recognition-module-submissions-get-all-submissions-query-parameters'>Query Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td><code>integer</code></td>
+<td>The page number that you wish to view. Optional</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>Status of the submissions to be returned. Optional</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>ID of a sender that submissions were made by. Optional</td>
+</tr>
+<tr>
+<td>created_at_date</td>
+<td><code>date</code></td>
+<td>A parameter in ISO-8601 format for scoping submissions that were created from that date onwards. Optional.</td>
+</tr>
+<tr>
+<td>created_at_end_date</td>
+<td><code>date</code></td>
+<td>A parameter in ISO-8601 format for scoping submissions that were created on or before the given date. Optional.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/campaigns/157/submissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">157</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"award_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1317</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved_l1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111744</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"points_requested"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-30T14:15:25.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T16:41:19.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"questions_answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"1174"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 1 - free text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"1175"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 2 - lov r"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"1176"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 3 - lov c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"points_approved"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"approved_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level_1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"level_2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"declined_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level_1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"level_2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">157</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"award_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1318</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending_l1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">111744</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"points_requested"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-30T14:15:25.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07T16:41:19.000+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"questions_answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"1174"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 1 - free text"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"1175"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 2 - lov r"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"1176"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom q 3 - lov c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"points_approved"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"approved_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level_1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"level_2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"declined_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"level_1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"level_2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h1 id='reward-module'>Reward Module</h1><h2 id='reward-module-instant-point-vouchers-ipv'>Instant Point Vouchers (IPV)</h2><h3 id='reward-module-instant-point-vouchers-ipv-create-an-ipv'>Create an IPV</h3>
 <blockquote>
 <p>Header:</p>
 </blockquote>
