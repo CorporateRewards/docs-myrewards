@@ -119,3 +119,73 @@ Content-Type: Application/json
     }
 ]
 ```
+
+### Decline Submission
+
+Endpoint to decline a given submission.
+
+``` http
+POST /api/v2/campaigns/{campaign_id}/submissions/{id}/decline HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "reason_for_decline_id": "An id for a decline reason",
+  "reason_for_decline_text": "Some reason text string"
+}
+```
+
+``` http
+HTTP/1.1 200 Ok
+Content-Type: application/json
+
+{
+    "id": 162668,
+    "award_id": 2078,
+    "status": "declined_l2",
+    "sender_id": 119742,
+    "points_requested": 0,
+    "created_at": "2021-09-22T15:52:18.000+01:00",
+    "updated_at": "2021-09-22T15:52:18.000+01:00",
+    "questions_answers": {
+        "355": {
+            "question": "Custom q 1 - free text",
+            "answer": ""
+        }
+    },
+    "points_approved": 0,
+    "approved_by": {
+        "level_1": {
+            "user_id": null
+        },
+        "level_2": {
+            "user_id": null
+        }
+    },
+    "declined_by": {
+        "level_1": {
+            "user_id": null,
+            "reason": null
+        },
+        "level_2": {
+            "user_id": null,
+            "reason": "Declined Reason"
+        }
+    }
+}
+```
+#### HTTP Request
+
+`POST /api/v2/campaigns/{campaign_id}/submissions/{id}/decline`
+
+
+#### Request Parameters
+
+##### Body Parameters
+
+If decline reasons are active on the campaign, then one of `reason_for_decline_id` or `reason_for_decline_text`, but not both, should be provided when declining a submission.
+
+Parameter | Type | Description
+--------- | ---- | ----
+reason\_for\_decline\_id | `integer` | The ID of a reason belonging to the campaign. Mandatory if decline reasons enabled on programme.
+reason\_for\_decline\_text | `string` | A text string for a decline reason, can only be provided if the campaign allows free text decline reasons. Optional.
