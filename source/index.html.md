@@ -28,6 +28,7 @@ includes:
 - api/performance/sales_data
 - api/recognition/0_recognition
 - api/recognition/nominations
+- api/recognition/submissions
 - api/reward/0_reward_module
 - api/reward/ipv
 - api/reward/points_overrides
