@@ -50,6 +50,43 @@ parent\_id | integer | parent user_group id
 default | boolean | indicates if this user_group is the default group for the programme
 position | integer | position under the parent user_group, used for ordering
 
+### Get a User Group
+
+This endpoint returns a specific user group associated to an api keys programme.
+
+#### Path Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+user_group_id | `integer` | The ID of the user group you want to return
+
+#### HTTP Request
+
+`GET /api/v2/user_groups/{user_group_id}`
+
+> Request:
+
+``` http
+GET /api/v2/user_groups/299 HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+
+{
+    "id": 299,
+    "name": "Sales",
+    "parent_id": 298,
+    "default": false,
+    "position": 1
+}
+```
+
 ### Create User Groups
 
 An endpoint to create a user group for this programme. Only accessible if the key
