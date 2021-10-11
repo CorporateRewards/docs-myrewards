@@ -120,6 +120,75 @@ Content-Type: Application/json
 ]
 ```
 
+### Update a Submission
+
+An endpoint to update a submission for a given recognition campaign.
+
+#### HTTP Request
+
+`POST /api/v2/campaigns/{campaign_id}/submissions/{submission_id}/approve`
+
+#### Request Parameters
+
+#### Body Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+submission_id | `integer` | The ID of the submission you want to approve
+campaign_id | `integer` | The ID of the campaign that the submission belongs to
+
+> Request:
+
+``` http
+POST /api/v2/campaigns/157/submissions/162561/approve HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+
+[
+    {
+        "id": 157,
+        "award_id": 1940,
+        "status": "approved_l1",
+        "sender_id": 119742,
+        "points_requested": 0,
+        "created_at": "2019-02-21T11:45:35.000+00:00",
+        "updated_at": "2019-02-21T11:45:35.000+00:00",
+        "questions_answers": {
+            "355": {
+                "question": "Please enter your unique reference number:",
+                "answer": "sdsdfsfdsfs"
+            }
+        },
+        "points_approved": 0,
+        "approved_by": {
+            "level_1": {
+                "user_id": null
+            },
+            "level_2": {
+                "user_id": null
+            }
+        },
+        "declined_by": {
+            "level_1": {
+                "user_id": null,
+                "reason": null
+            },
+            "level_2": {
+                "user_id": null,
+                "reason": null
+            }
+        }
+    }
+]
+```
+
 ### Decline Submission
 
 Endpoint to decline a given submission.
