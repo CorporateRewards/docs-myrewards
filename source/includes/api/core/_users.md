@@ -28,6 +28,7 @@ Content-Type: application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
+  "chosen_locale: "en",
   "tsandcs" : "true",
   "consented" : "false",
   "marketing_consented" : "true",
@@ -69,6 +70,7 @@ Content-Type: Application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
+  "chosen_locale: "en",
   "tsandcs" : "true",
   "consented" : "false",
   "marketing_consented" : "true",
@@ -159,6 +161,7 @@ country | `string` | Potentially required - see programme data requirements
 date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, Potentially required - see programme data requirements
 telephone | `string` | Potentially required - see programme data requirements - if supplied must be international format (starting with a '+' followed by international dialling code - UK is 44 - followed by at least 8 numeric characters)
 mobile | `string` | Potentially required - see programme data requirements, if required, must be unique - if supplied must be international format (starting with a '+' followed by international dialling code - UK is 44 - followed by at least 8 numeric characters)
+chosen_locale | `string` | Potentially required - see programme data requirements.
 tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
@@ -212,6 +215,7 @@ Content-Type: Application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
+  "chosen_locale: "en",
   "tsandcs" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
