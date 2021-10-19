@@ -113,6 +113,9 @@ under the key `registration_answers_attributes`. The nested objects themselves m
 have the keys `registration_question_id` and `answer`. If the question allows multiple
 answers, then the value for `answer` should be an array, as show in the example below.
 
+#### Chosen Locale
+When creating or updating a user, if the associated programme has locale marked as mandatory, `chosen_locale` must be provided. Failure to do so will result in an error. When locale is not mandatory and a `chosen_locale` value is not provided, the value will be set to the programme default locale.
+
 #### Company
 When providing a user's company, the value must match what is expected by the programme, 
 i.e. if the company is a free-text field, then a `string` should be provided. If, however, the
