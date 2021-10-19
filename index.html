@@ -295,6 +295,9 @@
                             <a href="#core-user-groups-get-all-user-groups" class="toc-h3 toc-link" data-title="Core">Get all User Groups</a>
                           </li>
                           <li>
+                            <a href="#core-user-groups-get-a-user-group" class="toc-h3 toc-link" data-title="Core">Get a User Group</a>
+                          </li>
+                          <li>
                             <a href="#core-user-groups-create-user-groups" class="toc-h3 toc-link" data-title="Core">Create User Groups</a>
                           </li>
                       </ul>
@@ -1332,7 +1335,46 @@ with a tier being a vertical &#39;slice&#39; down the hierarchy</p>
 <td>position under the parent user_group, used for ordering</td>
 </tr>
 </tbody></table>
-<h3 id='core-user-groups-create-user-groups'>Create User Groups</h3>
+<h3 id='core-user-groups-get-a-user-group'>Get a User Group</h3>
+<p>This endpoint returns a specific user group associated to an api keys programme.</p>
+<h4 id='core-user-groups-get-a-user-group-path-parameters'>Path Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_group_id</td>
+<td><code>integer</code></td>
+<td>The ID of the user group you want to return</td>
+</tr>
+</tbody></table>
+<h4 id='core-user-groups-get-a-user-group-http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/user_groups/{user_group_id}</code></p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_groups/299</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">299</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">298</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='core-user-groups-create-user-groups'>Create User Groups</h3>
 <p>An endpoint to create a user group for this programme. Only accessible if the key
 has been granted access to users. In order to create a usergroup a name is required.
 This usergroup can be nested underneath another user group by passing the parent
