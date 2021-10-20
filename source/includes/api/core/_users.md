@@ -28,6 +28,7 @@ Content-Type: application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
+  "chosen_locale: "en",
   "tsandcs" : "true",
   "consented" : "false",
   "marketing_consented" : "true",
@@ -69,6 +70,7 @@ Content-Type: Application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
+  "chosen_locale: "en",
   "tsandcs" : "true",
   "consented" : "false",
   "marketing_consented" : "true",
@@ -110,6 +112,9 @@ Answers to the registration questions are provided in an array of objects, neste
 under the key `registration_answers_attributes`. The nested objects themselves must
 have the keys `registration_question_id` and `answer`. If the question allows multiple
 answers, then the value for `answer` should be an array, as show in the example below.
+
+#### Chosen Locale
+When creating or updating a user, if the associated programme has locale marked as mandatory, `chosen_locale` must be provided. Failure to do so will result in an error. When locale is not mandatory and a `chosen_locale` value is not provided, the value will be set to the programme default locale.
 
 #### Company
 When providing a user's company, the value must match what is expected by the programme, 
@@ -159,6 +164,7 @@ country | `string` | Potentially required - see programme data requirements
 date_of_birth | `date` | must be provided in reverse date format `YYYY-MM-DD`, Potentially required - see programme data requirements
 telephone | `string` | Potentially required - see programme data requirements - if supplied must be international format (starting with a '+' followed by international dialling code - UK is 44 - followed by at least 8 numeric characters)
 mobile | `string` | Potentially required - see programme data requirements, if required, must be unique - if supplied must be international format (starting with a '+' followed by international dialling code - UK is 44 - followed by at least 8 numeric characters)
+chosen_locale | `string` | Potentially required - see programme data requirements.
 tsandcs | `boolean` | Required
 user_group_id | `integer` | optional, will default to programme's default user_group, if not provided
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
@@ -212,6 +218,7 @@ Content-Type: Application/json
   "date_of_birth" : "1980-02-19",
   "telephone" : "+447876543210",
   "mobile" : "+447765432101",
+  "chosen_locale: "en",
   "tsandcs" : "true",
   "user_group_id" : "10",
   "registration_answers_attributes" : [
