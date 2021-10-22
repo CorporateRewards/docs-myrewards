@@ -171,6 +171,76 @@ registration_answers_attributes | `array` | array of hashes that contain a regis
 consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
 marketing_consented | `boolean` | Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
 
+### Get a User
+
+This endpoint returns a specific user associated to an api keys programme.
+
+#### Path Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+user_id | `integer` | The ID of the user you want to return
+
+#### HTTP Request
+
+`GET /api/v3/users/{user_id}`
+
+> Request:
+
+``` http
+GET /api/v3/users/681 HTTP/1.1
+Authorization: Token token={key}:{secret}
+Content-Type: application/json
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+Content-Type: Application/json
+{
+    "id": 681,
+    "username": "",
+    "email": "crdemo2014+brig.mcwalter@gmail.com",
+    "title": "Mrs",
+    "firstname": "Brig ",
+    "lastname": "McWalter",
+    "company": "",
+    "job_title": "",
+    "address_1": "",
+    "address_2": "",
+    "town": "",
+    "postcode": "",
+    "county": "",
+    "country": "UK",
+    "date_of_birth": "1987-09-11",
+    "telephone": "",
+    "mobile": "",
+    "tsandcs": true,
+    "consented": true,
+    "marketing_consented": null,
+    "user_group_id": 295,
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": 44,
+            "question": {
+                "user_locale": "start date",
+                "stack_locale": "start date"
+            },
+            "answer": "2015-03-11"
+        },
+        {
+            "registration_question_id": 1713,
+            "question": {
+                "user_locale": "Social media preference",
+                "stack_locale": "Social media preference"
+            },
+            "answer": "Twitter"
+        }
+    ]
+}
+```
+
 ### Update a User
 
 > Request: 
