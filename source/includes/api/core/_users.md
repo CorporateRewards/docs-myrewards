@@ -216,6 +216,7 @@ Content-Type: Application/json
     "date_of_birth": "1987-09-11",
     "telephone": "",
     "mobile": "",
+    "chosen_locale": "en",
     "tsandcs": true,
     "consented": true,
     "marketing_consented": null,
