@@ -320,6 +320,9 @@
                             <a href="#core-users-create-a-user" class="toc-h3 toc-link" data-title="Core">Create a User</a>
                           </li>
                           <li>
+                            <a href="#core-users-get-a-user" class="toc-h3 toc-link" data-title="Core">Get a User</a>
+                          </li>
+                          <li>
                             <a href="#core-users-update-a-user" class="toc-h3 toc-link" data-title="Core">Update a User</a>
                           </li>
                       </ul>
@@ -1818,7 +1821,80 @@ an example of the response when the company is a managed list.</p>
 <td>Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn&#39;t have an active privacy policy.</td>
 </tr>
 </tbody></table>
-<h3 id='core-users-update-a-user'>Update a User</h3>
+<h3 id='core-users-get-a-user'>Get a User</h3>
+<p>This endpoint returns a specific user associated to an api keys programme.</p>
+<h4 id='core-users-get-a-user-path-parameters'>Path Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>The ID of the user you want to return</td>
+</tr>
+</tbody></table>
+<h4 id='core-users-get-a-user-http-request'>HTTP Request</h4>
+<p><code>GET /api/v3/users/{user_id}</code></p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v3/users/681</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={key}:{secret}</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+<span class="s">{</span>
+<span class="s">    "id": 681,</span>
+<span class="s">    "username": "",</span>
+<span class="s">    "email": "crdemo2014+brig.mcwalter@gmail.com",</span>
+<span class="s">    "title": "Mrs",</span>
+<span class="s">    "firstname": "Brig ",</span>
+<span class="s">    "lastname": "McWalter",</span>
+<span class="s">    "company": "",</span>
+<span class="s">    "job_title": "",</span>
+<span class="s">    "address_1": "",</span>
+<span class="s">    "address_2": "",</span>
+<span class="s">    "town": "",</span>
+<span class="s">    "postcode": "",</span>
+<span class="s">    "county": "",</span>
+<span class="s">    "country": "UK",</span>
+<span class="s">    "date_of_birth": "1987-09-11",</span>
+<span class="s">    "telephone": "",</span>
+<span class="s">    "mobile": "",</span>
+<span class="s">    "chosen_locale": "en",</span>
+<span class="s">    "tsandcs": true,</span>
+<span class="s">    "consented": true,</span>
+<span class="s">    "marketing_consented": null,</span>
+<span class="s">    "user_group_id": 295,</span>
+<span class="s">    "registration_answers_attributes": [</span>
+<span class="s">        {</span>
+<span class="s">            "registration_question_id": 44,</span>
+<span class="s">            "question": {</span>
+<span class="s">                "user_locale": "start date",</span>
+<span class="s">                "stack_locale": "start date"</span>
+<span class="s">            },</span>
+<span class="s">            "answer": "2015-03-11"</span>
+<span class="s">        },</span>
+<span class="s">        {</span>
+<span class="s">            "registration_question_id": 1713,</span>
+<span class="s">            "question": {</span>
+<span class="s">                "user_locale": "Social media preference",</span>
+<span class="s">                "stack_locale": "Social media preference"</span>
+<span class="s">            },</span>
+<span class="s">            "answer": "Twitter"</span>
+<span class="s">        }</span>
+<span class="s">    ]</span>
+<span class="s">}</span>
+</code></pre></div><h3 id='core-users-update-a-user'>Update a User</h3>
 <blockquote>
 <p>Request: </p>
 </blockquote>
