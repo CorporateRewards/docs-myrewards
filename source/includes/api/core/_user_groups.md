@@ -135,3 +135,47 @@ name | `string` | Required - name of the user_group to be created
 position | `integer` | position of the user_group in the hierachy
 parent_id | `integer` | an optional id field, used if this user group should be nested underneath another
 image_url | `string` | a url of user group image
+### Update a User Group
+
+This endpoint updates a specific user_group associated to an api keys programme. 
+
+#### Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+name | `string` |  Name of the user_group
+position | `integer` | Position of the user_group in the hierachy
+parent_id | `integer` | ID of a user_group that this user_group should be nested underneath. Providing an invalid ID will result in an error.
+image_url | `string` | A url of the user_group image
+
+#### HTTP Request
+
+`PUT /api/v2/user_groups/{user_group_id}`
+
+> Request:
+``` http
+PUT /api/v2/user_groups/{user_group_id} HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+
+{
+  "name": "Example Updated User Group",
+  "position": 2
+}
+
+```
+
+> Response:
+``` http
+HTTP/1.1 200 OK
+
+{
+  "id" : 1,
+  "name": "Example Updated User Group",
+  "programme": "Demo Central Perks",
+  "parent_id": null,
+  "position": 2,
+  "default": false,
+  "image_url": "http://example_hosted_image_url.com/image.png"
+}
+```
