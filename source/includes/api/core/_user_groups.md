@@ -135,6 +135,7 @@ name | `string` | Required - name of the user_group to be created
 position | `integer` | position of the user_group in the hierachy
 parent_id | `integer` | an optional id field, used if this user group should be nested underneath another
 image_url | `string` | a url of user group image
+
 ### Update a User Group
 
 This endpoint updates a specific user_group associated to an api keys programme. Please note that attempting to change a `user_group`'s `default`, will
@@ -180,3 +181,34 @@ HTTP/1.1 200 OK
   "image_url": "http://example_hosted_image_url.com/image.png"
 }
 ```
+
+
+### Delete a User Group
+
+This endpoint deletes a specific user group associated to an api keys programme. You can only delete user groups that have no associated users or user groups, and are not the default user group. Any attempt to do so will result in an error.
+
+#### Path Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+user_group_id | `integer` | The ID of the user group you want to delete
+
+#### HTTP Request
+
+`DELETE /api/v2/user_groups/{user_group_id}`
+
+> Request:
+
+``` http
+DELETE /api/v2/user_groups/{user_group_id} HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json
+```
+
+> Response:
+
+``` http
+HTTP/1.1 200 OK
+No content
+```
+
