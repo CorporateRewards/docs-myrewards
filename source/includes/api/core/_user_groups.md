@@ -137,7 +137,8 @@ parent_id | `integer` | an optional id field, used if this user group should be 
 image_url | `string` | a url of user group image
 ### Update a User Group
 
-This endpoint updates a specific user_group associated to an api keys programme. 
+This endpoint updates a specific user_group associated to an api keys programme. Please note that attempting to change a `user_group`'s `default`, will
+result in an error.
 
 #### Attributes
 
