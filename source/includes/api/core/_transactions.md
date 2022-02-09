@@ -128,13 +128,13 @@ A points transaction will also have a variety which will be one of:
 
 Variety | Programme Points affecting? | Permitted Type
 ------- | --------------------------- | --------------
-Programme points | Yes | Either 
-Points Error | Yes | Either 
+Programme points | Yes | Credit or debit
+Points Error | Yes | Debit only
 Redemption | No | Debit only
-Person2Person transfer | Yes | either (credit and debit must both be carried out for each user)
+Person2Person transfer | Yes | Credit or debit (credit and debit must both be carried out for each user)
 Order Cancellation | No | Credit only
-Order Adjustment | No | either
-Adjustment | Yes | either
+Order Adjustment | No | Credit or debit
+Adjustment | Yes | Credit or Debit
 Account Closure | Programme config dependant | Debit only
 
 Example below shows a transaction that will credit 100 points to a user debited from the programme balance. On the user's points statement a reason of 'Employee of the month' will be shown.
@@ -181,11 +181,13 @@ remote_transaction_id | `string` | Optional - a value that can be used to identi
 
 Anything other than a 200 will mean that the transaction has failed to go through. It may or may not be appropriate to show only a generic message to indicate failure depending on the use case or level of automation. In either case it is recommended to log the error code and any body/message
 
--  204 User not found
--  401 invalid key
--  402 User does not have enough points
--  406 Invalid Transaction
--  412 Programme does not have enough points
--  500 Server Error
+Error Code | Meaning
+---------- | -------
+204 | No Content -- User not found
+401 | Unauthorized -- Your API key is wrong.
+402 | Forbidden -- User does not have enough points
+406 | Not Acceptable -- Invalid Transaction
+412 | Pre condition failed -- Programme does not have enough points and/or you have provided an invalid transaction type and variety combination.
+500 | Internal Server Error -- We had a problem with our server. Try again later.
 
 
