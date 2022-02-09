@@ -135,6 +135,7 @@ name | `string` | Required - name of the user_group to be created
 position | `integer` | position of the user_group in the hierachy
 parent_id | `integer` | an optional id field, used if this user group should be nested underneath another
 image_url | `string` | a url of user group image
+
 ### Update a User Group
 
 This endpoint updates a specific user_group associated to an api keys programme. Please note that attempting to change a `user_group`'s `default`, will
