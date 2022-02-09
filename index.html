@@ -1174,12 +1174,12 @@ A points transaction will also have a variety which will be one of:</p>
 <tr>
 <td>Programme points</td>
 <td>Yes</td>
-<td>Either</td>
+<td>Credit or debit</td>
 </tr>
 <tr>
 <td>Points Error</td>
 <td>Yes</td>
-<td>Either</td>
+<td>Debit only</td>
 </tr>
 <tr>
 <td>Redemption</td>
@@ -1189,7 +1189,7 @@ A points transaction will also have a variety which will be one of:</p>
 <tr>
 <td>Person2Person transfer</td>
 <td>Yes</td>
-<td>either (credit and debit must both be carried out for each user)</td>
+<td>Credit or debit (credit and debit must both be carried out for each user)</td>
 </tr>
 <tr>
 <td>Order Cancellation</td>
@@ -1199,12 +1199,12 @@ A points transaction will also have a variety which will be one of:</p>
 <tr>
 <td>Order Adjustment</td>
 <td>No</td>
-<td>either</td>
+<td>Credit or debit</td>
 </tr>
 <tr>
 <td>Adjustment</td>
 <td>Yes</td>
-<td>either</td>
+<td>Credit or Debit</td>
 </tr>
 <tr>
 <td>Account Closure</td>
@@ -1272,14 +1272,37 @@ A points transaction will also have a variety which will be one of:</p>
 <h4 id='core-transactions-create-a-transaction-error-responses'>Error responses</h4>
 <p>Anything other than a 200 will mean that the transaction has failed to go through. It may or may not be appropriate to show only a generic message to indicate failure depending on the use case or level of automation. In either case it is recommended to log the error code and any body/message</p>
 
-<ul>
-<li> 204 User not found</li>
-<li> 401 invalid key</li>
-<li> 402 User does not have enough points</li>
-<li> 406 Invalid Transaction</li>
-<li> 412 Programme does not have enough points</li>
-<li> 500 Server Error</li>
-</ul>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>204</td>
+<td>No Content -- User not found</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Forbidden -- User does not have enough points</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- Invalid Transaction</td>
+</tr>
+<tr>
+<td>412</td>
+<td>Pre condition failed -- Programme does not have enough points and/or you have provided an invalid transaction type and variety combination.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
 <h2 id='core-user-groups'>User Groups</h2><h3 id='core-user-groups-get-all-user-groups'>Get all User Groups</h3>
 <p>A simple endpoint to fetch a list of user groups used for this programme. Only
 accessible if the key has been granted access to users. Returns an array of
