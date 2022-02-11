@@ -1468,6 +1468,35 @@ no position is passed then it will default to the bottom of the hierachy.</p>
 <h3 id='core-user-groups-update-a-user-group'>Update a User Group</h3>
 <p>This endpoint updates a specific user_group associated to an api keys programme. Please note that attempting to change a <code>user_group</code>&#39;s <code>default</code>, will
 result in an error.</p>
+
+<blockquote>
+<p>Request:
+``` http
+PUT /api/v2/user_groups/{user_group_id} HTTP/1.1
+Authorization: Token token=xxx
+Content-Type: application/json</p>
+</blockquote>
+
+<p>{
+  &quot;name&quot;: &quot;Example Updated User Group&quot;,
+  &quot;position&quot;: 2
+}</p>
+<div class="highlight"><pre class="highlight plaintext"><code>
+&gt; Response:
+``` http
+HTTP/1.1 200 OK
+
+{
+  "id" : 1,
+  "name": "Example Updated User Group",
+  "programme": "Demo Central Perks",
+  "parent_id": null,
+  "position": 2,
+  "default": false,
+  "image_url": "http://example_hosted_image_url.com/image.png"
+}
+</code></pre></div><h4 id='core-user-groups-update-a-user-group-http-request'>HTTP Request</h4>
+<p><code>PUT /api/v2/user_groups/{user_group_id}</code></p>
 <h4 id='core-user-groups-update-a-user-group-attributes'>Attributes</h4>
 <table><thead>
 <tr>
@@ -1497,36 +1526,7 @@ result in an error.</p>
 <td>A url of the user_group image</td>
 </tr>
 </tbody></table>
-<h4 id='core-user-groups-update-a-user-group-http-request'>HTTP Request</h4>
-<p><code>PUT /api/v2/user_groups/{user_group_id}</code></p>
-
-<blockquote>
-<p>Request:
-``` http
-PUT /api/v2/user_groups/{user_group_id} HTTP/1.1
-Authorization: Token token=xxx
-Content-Type: application/json</p>
-</blockquote>
-
-<p>{
-  &quot;name&quot;: &quot;Example Updated User Group&quot;,
-  &quot;position&quot;: 2
-}</p>
-<div class="highlight"><pre class="highlight plaintext"><code>
-&gt; Response:
-``` http
-HTTP/1.1 200 OK
-
-{
-  "id" : 1,
-  "name": "Example Updated User Group",
-  "programme": "Demo Central Perks",
-  "parent_id": null,
-  "position": 2,
-  "default": false,
-  "image_url": "http://example_hosted_image_url.com/image.png"
-}
-</code></pre></div><h3 id='core-user-groups-delete-a-user-group'>Delete a User Group</h3>
+<h3 id='core-user-groups-delete-a-user-group'>Delete a User Group</h3>
 <p>This endpoint deletes a specific user group associated to an api keys programme. You can only delete user groups that have no associated users or user groups, and are not the default user group. Any attempt to do so will result in an error.</p>
 <h4 id='core-user-groups-delete-a-user-group-path-parameters'>Path Parameters</h4>
 <table><thead>
