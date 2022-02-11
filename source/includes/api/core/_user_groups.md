@@ -141,18 +141,6 @@ image_url | `string` | a url of user group image
 This endpoint updates a specific user_group associated to an api keys programme. Please note that attempting to change a `user_group`'s `default`, will
 result in an error.
 
-#### Attributes
-
-Attribute | Type | Description
---------- | ---- | -----------
-name | `string` |  Name of the user_group
-position | `integer` | Position of the user_group in the hierachy
-parent_id | `integer` | ID of a user_group that this user_group should be nested underneath. Providing an invalid ID will result in an error.
-image_url | `string` | A url of the user_group image
-
-#### HTTP Request
-
-`PUT /api/v2/user_groups/{user_group_id}`
 
 > Request:
 ``` http
@@ -181,7 +169,17 @@ HTTP/1.1 200 OK
   "image_url": "http://example_hosted_image_url.com/image.png"
 }
 ```
+#### HTTP Request
 
+`PUT /api/v2/user_groups/{user_group_id}`
+#### Attributes
+
+Attribute | Type | Description
+--------- | ---- | -----------
+name | `string` |  Name of the user_group
+position | `integer` | Position of the user_group in the hierachy
+parent_id | `integer` | ID of a user_group that this user_group should be nested underneath. Providing an invalid ID will result in an error.
+image_url | `string` | A url of the user_group image
 
 ### Delete a User Group
 
@@ -211,4 +209,3 @@ Content-Type: application/json
 HTTP/1.1 200 OK
 No content
 ```
-
