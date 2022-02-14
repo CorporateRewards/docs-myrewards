@@ -141,8 +141,6 @@ image_url | `string` | a url of user group image
 This endpoint updates a specific user_group associated to an api keys programme. Please note that attempting to change a `user_group`'s `default`, will
 result in an error.
 
-
-> Request:
 ``` http
 PUT /api/v2/user_groups/{user_group_id} HTTP/1.1
 Authorization: Token token=xxx
@@ -155,7 +153,6 @@ Content-Type: application/json
 
 ```
 
-> Response:
 ``` http
 HTTP/1.1 200 OK
 
