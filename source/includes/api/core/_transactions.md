@@ -128,9 +128,8 @@ A points transaction will also have a variety which will be one of:
 
 Variety | Programme Points affecting? | Permitted Type
 ------- | --------------------------- | --------------
-Programme points | Yes | Credit or debit
+Programme points | Yes | Credit only
 Points Error | Yes | Debit only
-Redemption | No | Debit only
 Person2Person transfer | Yes | Credit or debit (credit and debit must both be carried out for each user)
 Order Cancellation | No | Credit only
 Order Adjustment | No | Credit or debit
