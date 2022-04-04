@@ -9,80 +9,23 @@ POST /api/v2/performance/data HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
-[
-    {
-        "id": 468,
-        "promotion_id": 36,
-        "name": "customer_name",
-        "label": "Customer name",
-        "mandatory": false,
-        "field_type": "list_values",
-        "answers": "Bob\r\nHarry\r\nSuzy",
-        "created_at": "2018-01-10T08:50:50.000+00:00",
-        "updated_at": "2018-01-26T12:51:15.000+00:00",
-        "position": 0
-    },
-    {
-        "id": 464,
-        "promotion_id": 36,
-        "name": "invoice_date",
-        "label": "Invoice date",
-        "mandatory": true,
-        "field_type": "date",
-        "answers": "",
-        "created_at": "2018-01-10T08:43:59.000+00:00",
-        "updated_at": "2018-01-10T08:51:04.000+00:00",
-        "position": 1
-    },
-    {
-        "id": 465,
-        "promotion_id": 36,
-        "name": "product_or_activity_ref",
-        "label": "Product or Activity Ref",
-        "mandatory": true,
-        "field_type": "free_text",
-        "answers": null,
-        "created_at": "2018-01-10T08:43:59.000+00:00",
-        "updated_at": "2018-01-10T08:43:59.000+00:00",
-        "position": 2
-    },
-    {
-        "id": 466,
-        "promotion_id": 36,
-        "name": "quantity",
-        "label": "Quantity",
-        "mandatory": true,
-        "field_type": "numeric",
-        "answers": null,
-        "created_at": "2018-01-10T08:43:59.000+00:00",
-        "updated_at": "2018-01-10T08:43:59.000+00:00",
-        "position": 3
-    },
-    {
-        "id": 567,
-        "promotion_id": 36,
-        "name": "value_of_sale",
-        "label": "Value of sale",
-        "mandatory": true,
-        "field_type": "numeric",
-        "answers": "",
-        "created_at": "2018-01-26T12:52:48.000+00:00",
-        "updated_at": "2018-02-07T15:03:41.000+00:00",
-        "position": 4
-    },
-    {
-        "id": 467,
-        "promotion_id": 36,
-        "name": "username",
-        "label": "Username",
-        "mandatory": true,
-        "field_type": "free_text",
-        "answers": null,
-        "created_at": "2018-01-10T08:43:59.000+00:00",
-        "updated_at": "2018-01-10T08:43:59.000+00:00",
-        "position": 5
-    }
-]
+
+{
+    "data": [
+        {
+            "sale_date": "2022-03-10",
+            "product_or_activity_ref": "TEST-217744",
+            "quantity": 1,
+            "user_id": 170944
+        },
+        {
+            "sale_date": "2022-03-10",
+            "product_or_activity_ref": "TEST-217744",
+            "quantity": 1,
+            "user_id": 170944
+        }
+    ]
+}
 ```
 
 ``` http
