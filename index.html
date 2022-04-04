@@ -3722,80 +3722,23 @@ PATCH /api/v2/performance/performance_product_batches
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
-<span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">468</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer_name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customer name"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_values"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob</span><span class="se">\r\n</span><span class="s2">Harry</span><span class="se">\r\n</span><span class="s2">Suzy"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:50:50.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T12:51:15.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">464</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice_date"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invoice date"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:51:04.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product_or_activity_ref"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product or Activity Ref"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">466</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quantity"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quantity"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">567</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value_of_sale"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Value of sale"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T12:52:48.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-07T15:03:41.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">467</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Username"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-10T08:43:59.000+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST-217744"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">170944</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST-217744"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">170944</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
 </code></pre></div><h4 id='performance-module-sales-data-create-sales-data-http-request'>HTTP Request</h4>
 <p><code>POST /api/v2/performance/promotions/1/data</code></p>
