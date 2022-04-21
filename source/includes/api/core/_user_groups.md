@@ -22,6 +22,7 @@ Content-Type: application/json
   {
     "id" : 1,
     "name" : "dc comics",
+    "description" : "Example Description",
     "parent_id" :  null,
     "default" : "false",
     "position" : 1
@@ -29,6 +30,7 @@ Content-Type: application/json
   {
     "id" : 2,
     "name" : "justice league",
+    "description" : "Another Example Description",
     "parent_id" : 1,
     "default" : "true",
     "position" : 1
@@ -46,6 +48,7 @@ Attribute | Type | Info
 --------- | ---- | ----
 id | integer | user_group id
 name | string | user_group name
+description | string | user_group description
 parent\_id | integer | parent user_group id
 default | boolean | indicates if this user_group is the default group for the programme
 position | integer | position under the parent user_group, used for ordering
@@ -81,6 +84,7 @@ Content-Type: Application/json
 {
     "id": 299,
     "name": "Sales",
+    "description": "Example description",
     "parent_id": 298,
     "default": false,
     "position": 1
@@ -101,6 +105,7 @@ Authorization: Token token=xxx
 
 {
   "name": "Example User Group",
+  "description": "Example Description",
   "position": 1,
   "parent_id": null,
   "image_url": "http://example_website.com/image.png"
@@ -115,6 +120,7 @@ Content-Type: application/json
 {
   "id" : 1,
   "name": "Example User Group",
+  "description": "Example Description",
   "programme": "Demo Central Perks",
   "parent_id": null,
   "position": 1,
@@ -132,6 +138,7 @@ Content-Type: application/json
 Parameters | Type | Info
 ---------- | ---- | ----
 name | `string` | Required - name of the user_group to be created
+description | `string` | description of the user_group, which is visible in the admin area only
 position | `integer` | position of the user_group in the hierachy
 parent_id | `integer` | an optional id field, used if this user group should be nested underneath another
 image_url | `string` | a url of user group image
@@ -164,6 +171,7 @@ Content-Type: application/json
 {
   "id" : 1,
   "name": "Example Updated User Group",
+  "description": "Example Description",
   "programme": "Demo Central Perks",
   "parent_id": null,
   "position": 2,
@@ -181,6 +189,7 @@ Content-Type: application/json
 Attribute | Type | Description
 --------- | ---- | -----------
 name | `string` |  Name of the user_group
+description | `string` | description of the user_group, which is visible in the admin area only
 position | `integer` | Position of the user_group in the hierachy
 parent_id | `integer` | ID of a user_group that this user_group should be nested underneath. Providing an invalid ID will result in an error.
 image_url | `string` | A url of the user_group image
