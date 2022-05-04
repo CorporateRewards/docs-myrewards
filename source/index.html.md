@@ -25,6 +25,7 @@ includes:
 - api/performance/data_fields
 - api/performance/performance_categories
 - api/performance/performance_products
+- api/performance/reward_points
 - api/performance/sales_data
 - api/recognition/0_recognition
 - api/recognition/recognition_wall
