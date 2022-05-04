@@ -471,6 +471,14 @@
             <a href="#recognition-module" class="toc-h1 toc-link" data-title="recognition-module">Recognition Module</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#recognition-module-recognition-wall" class="toc-h2 toc-link" data-title="recognition-wall">Recognition Wall</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#recognition-module-recognition-wall-get-recognition-wall" class="toc-h3 toc-link" data-title="Recognition Module">Get Recognition Wall</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#recognition-module-nominations" class="toc-h2 toc-link" data-title="nominations">Nominations</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -3801,7 +3809,124 @@ PATCH /api/v2/performance/performance_product_batches
 <p>You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing &amp; valid promotion</p>
 
 <p>If one record in a set being uploaded fails to be created either by being invalid or through a programme not having enough points - all records in the request will fail to be created</p>
-<h1 id='recognition-module'>Recognition Module</h1><h2 id='recognition-module-nominations'>Nominations</h2><h3 id='recognition-module-nominations-update-a-nomination-39-s-status'>Update a Nomination&#39;s status</h3>
+<h1 id='recognition-module'>Recognition Module</h1><h2 id='recognition-module-recognition-wall'>Recognition Wall</h2><h3 id='recognition-module-recognition-wall-get-recognition-wall'>Get Recognition Wall</h3>
+<p>This endpoint returns wall posts from the recognition wall on your programme (if activated). Results are paginated at 100 wall posts per page and can be filtered down by the specified query parameters. Results will be returned from newest to oldest.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/recognition/recognition_wall</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"campaign_ids"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1,2,3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"award_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"receiver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">508</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sender_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">510</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2022-01-31</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at_end_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">2022-02-28</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11914</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"award_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4723</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"campaign_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">194</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">508</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"receiver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">508</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">351</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Joe&lt;br /&gt;</span><span class="se">\r\B</span><span class="s2">loggs&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">joe@bloggs.com&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">27/04/2022&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">0&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">27/04/2022&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;a href='https://yourdomainname.com/liquid/recognition/4723/view_submission' target='_blank'&gt;View Submission&lt;/a&gt;&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;a href='https:/yourdomainname.com/pdf/awards/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDcyMywic3ViIjoiQXdhcmQifQ.uMTNhhnGCOJMwNDuOXDyFqdxKJvrf2B0jogdWYZfFQg/export_pdf.pdf' target='_blank'&gt;Click here&lt;/a&gt;&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T10:02:59.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T10:02:59.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11913</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"award_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4722</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"campaign_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">136</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sender_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">511</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"receiver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">508</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">351</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:/yourdomainname.com/s3/W1siZiIsIjIwMjIvMDQvMjcvMDgvNTQvNDkvYzNmMDNlMGItYzU1Ni00YmMxLWI4MzgtODQwYWZmODljOWIyL3N0b2NrLXZlY3Rvci12ZWN0b3ItZGFyay1ibHVlLXNlYW1sZXNzLXBhdHRlcm4td2l0aC1nb2xkLWZvaWwtY29uc3RlbGxhdGlvbnMtc3RhcnMtYW5kLWNsb3Vkcy13YXRlcmNvbG9yLW5pZ2h0LTEzMzE1Njc3OTIuanBnIl1d?sha=809982617de31702"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Thanks&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T09:58:42.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T09:58:42.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">511</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smashing work"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">505</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wow, nice"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='recognition-module-recognition-wall-get-recognition-wall-http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/recognition/recogntion_wall</code></p>
+<h4 id='recognition-module-recognition-wall-get-recognition-wall-query-parameters'>Query Parameters</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>campaign_ids</td>
+<td><code>string</code></td>
+<td>Optional. ID or ID&#39;s of programme campaigns to restrict wall post activity to.</td>
+</tr>
+<tr>
+<td>award_id</td>
+<td><code>integer</code></td>
+<td>Optional. ID of the award the wall post activity relates to.</td>
+</tr>
+<tr>
+<td>receiver_id</td>
+<td><code>integer</code></td>
+<td>Optional. ID of the user the wall post activity relates to.</td>
+</tr>
+<tr>
+<td>sender_id</td>
+<td><code>integer</code></td>
+<td>Optional. ID of the sender the wall post activity relates to.</td>
+</tr>
+<tr>
+<td>created_at_date</td>
+<td><code>date</code></td>
+<td>Optional. A parameter for scoping content that was created from that date onwards. Must be provided in ISO 8601 date format <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr>
+<td>created_at_end_date</td>
+<td><code>date</code></td>
+<td>Optional. A parameter for scoping content that was created on or before the given date. Must be provided in ISO 8601 date format <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr>
+<td>page</td>
+<td><code>integer</code></td>
+<td>Optional. The requested page number. Defaults to page 1 if not supplied.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td><code>string</code></td>
+<td>Optional. Will return the wall post content in the locale provided. If no locale is provided, the default programme locale will be used</td>
+</tr>
+</tbody></table>
+<h2 id='recognition-module-nominations'>Nominations</h2><h3 id='recognition-module-nominations-update-a-nomination-39-s-status'>Update a Nomination&#39;s status</h3>
 <p>An endpoint to update a status of a nomination for a given campaign, by passing
 a status parameter. A valid approver for the nomination must also be provided.
 You will be returned the updated JSON for the given nomination.</p>
