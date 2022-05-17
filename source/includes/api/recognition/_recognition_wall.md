@@ -74,7 +74,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`GET /api/v2/recognition/recogntion_wall`
+`GET /api/v2/recognition/recognition_wall`
 
 #### Query Parameters
 
