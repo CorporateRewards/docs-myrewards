@@ -7,14 +7,9 @@ This endpoint returns reward points for a specified promotion. Results are pagin
 > Request:
 
 ``` http
-GET /api/v2/performance/promotions/:promotion_id/reward_points HTTP/1.1
+GET /api/v2/performance/promotions/:promotion_id/reward_points?page=1 HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
-
-{
-  "page": 1,
-}
-
 ```
 
 
