@@ -458,6 +458,17 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#performance-module-reward-points" class="toc-h2 toc-link" data-title="reward-points">Reward Points</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#performance-module-reward-points-get-reward-points" class="toc-h3 toc-link" data-title="Performance Module">Get Reward Points</a>
+                          </li>
+                          <li>
+                            <a href="#performance-module-reward-points-update-reward-points" class="toc-h3 toc-link" data-title="Performance Module">Update Reward Points</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#performance-module-sales-data" class="toc-h2 toc-link" data-title="sales-data">Sales Data</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -3743,6 +3754,206 @@ PATCH /api/v2/performance/performance_product_batches
 <td>description</td>
 <td><code>text</code></td>
 <td>Some text describing the product. Optional</td>
+</tr>
+</tbody></table>
+<h2 id='performance-module-reward-points'>Reward Points</h2><h3 id='performance-module-reward-points-get-reward-points'>Get Reward Points</h3>
+<p>This endpoint returns reward points for a specified promotion. Results are paginated at 100 reward points per page.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/:promotion_id/reward_points?page=1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"points_per_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-02-01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-31"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">350</span><span class="p">,</span><span class="w">
+            </span><span class="mi">355</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T10:58:31.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T10:58:31.000+01:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6345</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product 2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"points_per_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-18"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-19"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-25T15:12:58.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-25T15:12:58.000+01:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6346</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product 3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"points_per_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-18"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sale_date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-11-19"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-25T15:13:37.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-25T15:13:37.000+01:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='performance-module-reward-points-get-reward-points-http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/performance/promotions/:promotion_id/reward_points?page=1</code></p>
+<h4 id='performance-module-reward-points-get-reward-points-url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>promotion_id</td>
+<td><code>integer</code></td>
+<td>Required. The ID of the promotion to return reward points for.</td>
+</tr>
+</tbody></table>
+<h4 id='performance-module-reward-points-get-reward-points-query-parameters'>Query Parameters</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td><code>integer</code></td>
+<td>Optional. The requested page number. Defaults to page 1 if not supplied.</td>
+</tr>
+</tbody></table>
+<h3 id='performance-module-reward-points-update-reward-points'>Update Reward Points</h3>
+<p>This endpoint updates a single reward point for a specified promotion.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/performance/promotions/:promotion_id/reward_points/:id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"user_group_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">355</span><span class="p">,</span><span class="w"> </span><span class="mi">350</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"points_per_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-28"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"points_per_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sale_date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-02-01"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sale_date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"user_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">350</span><span class="p">,</span><span class="w">
+        </span><span class="mi">355</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T10:58:31.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T10:58:31.000+01:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='performance-module-reward-points-update-reward-points-http-request'>HTTP Request</h4>
+<p><code>PATCH /api/v2/performance/promotions/:promotion_id/reward_points/:id</code></p>
+<h4 id='performance-module-reward-points-update-reward-points-url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>promotion_id</td>
+<td><code>integer</code></td>
+<td>Required. The ID of the promotion the reward point belongs to.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>Required. The ID of the reward point to update.</td>
+</tr>
+</tbody></table>
+<h4 id='performance-module-reward-points-update-reward-points-body-parameters'>Body Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_group_ids</td>
+<td>array</td>
+<td>An array of all of the user groups that should be eligible for the reward point.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>integer</td>
+<td>The quantity that must be claimed to qualify for the reward point.</td>
+</tr>
+<tr>
+<td>points_per_quantity</td>
+<td>integer</td>
+<td>The number of points to award per quantity.</td>
+</tr>
+<tr>
+<td>date_from</td>
+<td>date</td>
+<td>The date the reward point is eligible from.</td>
+</tr>
+<tr>
+<td>date_to</td>
+<td>date</td>
+<td>The date the reward point is eligible to.</td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>The active status of the reward point.</td>
 </tr>
 </tbody></table>
 <h2 id='performance-module-sales-data'>Sales Data</h2><h3 id='performance-module-sales-data-create-sales-data'>Create Sales Data</h3>
