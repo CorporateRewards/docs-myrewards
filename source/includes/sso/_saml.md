@@ -158,3 +158,168 @@ For further information on SAML 2.0 please go to the official SAML 2.0 websites:
 
 - [http://www.oasis-open.org/home/index.php](http://www.oasis-open.org/home/index.php)
 - [http://saml.xml.org](http://saml.xml.org)
+
+
+
+## SAML User Provisioning
+
+If your programme has been configured to allow user provisioning for SAML SSO you may pass additional attributes in your SAMLResponse to be used to create a user if they don't exist or update a user if they do exist. If your programme has not been set up to allow user provisioning, any additional attributes sent will be ignored.
+
+### The SAML AttributeStatement
+
+
+> Example SAML assertion with additional attributes:
+
+```xml
+<samlp:Response ID="_UNIQUE-ID" Version="2.0" IssueInstant="2020-01-01T00:00:00.000000Z" Destination="https://programme-name.com/saml/consume" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
+ <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+  https://www.client-company.com
+ </saml:Issuer>
+ <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo>
+   <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xmlexc-c14n#" />
+   <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsasha1" />
+   <ds:Reference URI="#_UNIQUE-ID">
+    <ds:Transforms>
+     <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+     <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-excc14n#" />
+    </ds:Transforms>
+    <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+    <ds:DigestValue>...digestValue...</ds:DigestValue>
+   </ds:Reference>
+  </ds:SignedInfo>
+  <ds:SignatureValue>...signatureValue...</ds:SignatureValue>
+  <ds:KeyInfo>
+   <ds:X509Data>
+    <ds:X509Certificate>...Certificate...</ds:X509Certificate>
+   </ds:X509Data>
+  </ds:KeyInfo>
+ </ds:Signature>
+
+ <samlp:Status>
+  <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+ </samlp:Status>
+
+ <saml:Assertion Version="2.0" ID="_UNIQUE-ID" IssueInstant="2020-01-01T00:00:00.000000Z" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
+  <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">
+   https://www.client-company.com
+  </saml:Issuer>
+  <saml:Subject>
+   <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent">Principal ID</saml:NameID>
+  </saml:Subject>
+  <saml:Conditions NotBefore="2020-01-01T00:00:00.000000Z" NotOnOrAfter="2020-01-01T02:00:00.000000Z">
+   <saml:AudienceRestriction>
+    <saml:Audience>https://programme-name.com/saml/metadata</saml:Audience>
+   </saml:AudienceRestriction>
+  </saml:Conditions>
+
+  <saml:AuthnStatement AuthnInstant="2020-01-01T00:00:00.000000Z">
+   <saml:AuthnContext>
+    <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef>
+   </saml:AuthnContext>
+  </saml:AuthnStatement>
+
+  <saml:AttributeStatement>
+    <saml:Attribute Name="uid" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">user@client-company.com</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="username" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">username123</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">user@client-company.com</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="firstname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">Jane</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="lastname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">Smith</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="communication_preference" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">sms</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">email</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="registration_question_43" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">An answer</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="registration_question_59" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">01/09/2022</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="registration_question_120" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">149257</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="registration_question_2025" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">Miss</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="registration_question_2067" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">No</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="registration_question_4315" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">Red</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">Yellow</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="chosen_locale" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">fr</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="user_group_id" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">354</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="company" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">My Company</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="company_name" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">My Company</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="company_identifier" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">my_company123</saml:AttributeValue>
+    </saml:Attribute>
+  </saml:AttributeStatement>
+ </saml:Assertion>
+</samlp:Response>
+```
+
+Exactly which attributes we will accept depend upon the configuration of your user fields, however you must still always have a `<saml:Attribute>` with a `Name` specified by the programme configuration (`uid` by default) and expect the value to be one of:
+
+* user's email address - as recorded on MyRewards Programme
+* username - as recorded on MyRewards Programme
+* unique identifier/primary key for the user as recorded in MyRewards Programme
+
+The following standard user fields may be provided as an attributes Name value e.g. `<saml:Attribute Name="firstname">`:
+
+* username
+* email
+* title
+* firstname
+* lastname
+* job_title
+* address_1
+* address_2
+* town
+* postcode
+* county
+* country
+* date_of_birth
+* telephone
+* mobile
+* chosen_locale
+* tsandcs
+* consented
+* marketing_consented
+* user_group_id
+* company (depending on the configuration of your programme - see below)
+
+#### Companies
+
+If your programme uses a free text company question, then you may just send this as "company" as above, however, if your programme has a managed list of companies, then you must provide the users company details differently and we expect both of the below:
+
+* company_name
+* company_identifer
+
+
+#### Custom registration questions
+
+If your programme has custom registration questions, you must send an attribute with a name prefixed with "registration_question_" followed by the id of the custom question to be answered. e.g. `<saml:Attribute Name="registration_question_123">` where 123 is the id of the registration question. Please contact your MyRewards administrator for help with getting your registration question ids if required.
+
+### Further notes
+
+Whichever field has been set up as your user identifier for your integration should be sent as an attribute with the name specified as your identifier field. For example, if your programme has been set up with username as the user identifier, and uid as the identifier field, then you should send the value in `<saml:Attribute Name="uid">` and not `<saml:Attribute Name="username">`. If you do send `<saml:Attribute Name="username">` and that is your user identifier it will be ignored.
