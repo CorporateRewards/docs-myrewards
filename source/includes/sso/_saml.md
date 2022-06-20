@@ -323,7 +323,7 @@ If your programme uses a free text company question, then you may just send this
 
 #### Custom registration questions
 
-If your programme has custom registration questions, you must send an attribute with a name prefixed with "registration_question_" followed by the id of the custom question to be answered. e.g. `<saml:Attribute Name="registration_question_123">` where 123 is the id of the registration question. Please contact your MyRewards administrator for help with getting your registration question ids if required.
+If your programme has custom registration questions, you must send an attribute with a name prefixed with "registration_question_" followed by the id of the custom question to be answered. e.g. `<saml:Attribute Name="registration_question_123">` where 123 is the id of the registration question. See documentation for getting registration question id's [here](#core-registration-questions-get-all-registration-questions) or contact your MyRewards administrator if you need further assistance.
 
 ### Further notes
 
