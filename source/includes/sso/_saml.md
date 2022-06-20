@@ -163,8 +163,13 @@ For further information on SAML 2.0 please go to the official SAML 2.0 websites:
 
 ## SAML User Provisioning
 
-If your programme has been configured to allow user provisioning for SAML SSO you may pass additional attributes in your SAMLResponse to be used to create a user if they don't exist or update a user if they do exist. If your programme has not been set up to allow user provisioning, any additional attributes sent will be ignored.
+If your programme has been configured to allow user provisioning for SAML SSO you may pass additional attributes in your SAMLResponse to be used to create a user if they don't exist (unless your programme is configured with id as the user identifier, in which case we will never attempt to create a user and you must manage user creation in some other way) or update a user if they do exist. If your programme has not been set up to allow user provisioning, any additional attributes sent will be ignored.
 
+| User identifier | Create user | Update user |
+|-----------------|-------------|-------------|
+| id              | No          | Yes         |
+| email           | Yes         | Yes         |
+| username        | Yes         | Yes         |
 ### The SAML AttributeStatement
 
 
