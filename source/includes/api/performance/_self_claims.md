@@ -1,5 +1,92 @@
 ## Self Claims
 
+### Create a Self Claim
+
+Endpoint to create a self claim against a specific self-claim promotion.
+
+#### HTTP Request
+
+`POST /api/v2/performance/promotions/{promotion_id}/self_claims`
+
+> Header:
+
+``` http
+POST /api/v2/performance/promotions/1/self_claims HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
+```
+
+> Body:
+
+```json
+{
+  "user_id": 1,
+  "sale_date": "2022-01-29",
+  "product_or_activity_ref": "p1",
+  "quantity": 150,
+  "dynamic question free text?": "Free text answer",
+  "dynamic question date select": "2017-06-21",
+  "dynamic question scanner": "abcdefg",
+  "dynamic question list": "Choice A, Choice B",
+  "dynamic question file upload": "https://invoicefile/12353.doc"
+}
+```
+
+> Response:
+
+```json
+{
+  "user_id": 1,
+  "sale_date": "2022-01-29",
+  "product_or_activity_ref": "p1",
+  "quantity": 150,
+  "answers": {
+    "1": {
+        "question": "dynamic question free text?",
+        "answer": "Free text answer"
+    },
+    "2": {
+        "question": "dynamic question date select",
+        "answer": "2017-06-21"
+    },
+    "3": {
+        "question": "dynamic question scanner",
+        "answer": "abcdefg"
+    },
+    "4": {
+        "question": "dynamic question list",
+        "answer": "Choice A, Choice B"
+    },
+    "5": {
+        "question": "dynamic question file upload",
+        "answer": "https://invoicefile/12353.doc"
+    }
+  }
+}
+```
+
+#### Request Parameters
+
+##### URL Parameters
+
+Parameter | Type | Description
+--------- | ---- | ----
+user_id | `integer` | The user ID of the user making the claim. Mandatory.
+sale_date | `string` | The date the product was sold. Mandatory
+product_or_activity_ref | `string` | The reference of the product or activity you wish to return claims for. Mandatory.
+quantity | `integer` | The quantity of products sold. Mandatory.
+dynamic question | `string` | Dynamic questions can be of the following types: free text, list of values, date select, file upload, scanner. The dynamic question param should match the question. For example, if the dynamic question is 'Upload copy of invoice' the param should be 'Upload copy of invoice' as the key, and the answer as the value. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
+
+#### Response Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+user_id | `string` | The user ID of the user making the claim.
+sale_date | `string` | The date the product was sold.
+product_or_activity_ref | `string` | The reference of the claimed product or activity.
+quantity | `integer` | The quantity of products sold.
+answers | `object` | An object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question.
+
 ### Get Self Claims
 
 Endpoint to get self claims against a specific self-claim promotion. Claims can be filtered down via passed-in parameters. If no URL parameters are provided then all claims against the requested promotion are returned. Results are paginated at 100 records per page.
