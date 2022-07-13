@@ -561,6 +561,17 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#sso-single-sign-on-saml-user-provisioning" class="toc-h2 toc-link" data-title="saml-user-provisioning">SAML User Provisioning</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#sso-single-sign-on-saml-user-provisioning-the-saml-attributestatement" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">The SAML AttributeStatement</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-saml-user-provisioning-further-notes" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Further notes</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#sso-single-sign-on-openid-connect" class="toc-h2 toc-link" data-title="openid-connect">OpenID Connect</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -4860,6 +4871,186 @@ to include the X.509 Certificate public key in the assertion itself. MyRewards (
 <li><a href="http://www.oasis-open.org/home/index.php">http://www.oasis-open.org/home/index.php</a></li>
 <li><a href="http://saml.xml.org">http://saml.xml.org</a></li>
 </ul>
+<h2 id='sso-single-sign-on-saml-user-provisioning'>SAML User Provisioning</h2>
+<p>If your programme has been configured to allow user provisioning for SAML SSO you may pass additional attributes in your SAMLResponse to be used to create a user if they don&#39;t exist (unless your programme is configured with id as the user identifier, in which case we will never attempt to create a user and you must manage user creation in some other way) or update a user if they do exist. If your programme has not been set up to allow user provisioning, any additional attributes sent will be ignored.</p>
+
+<table><thead>
+<tr>
+<th>User identifier</th>
+<th>Create user</th>
+<th>Update user</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>username</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id='sso-single-sign-on-saml-user-provisioning-the-saml-attributestatement'>The SAML AttributeStatement</h3>
+<blockquote>
+<p>Example SAML assertion with additional attributes:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="nt">&lt;samlp:Response</span> <span class="na">ID=</span><span class="s">"_UNIQUE-ID"</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">IssueInstant=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">Destination=</span><span class="s">"https://programme-name.com/saml/consume"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:protocol"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
+  https://www.client-company.com
+ <span class="nt">&lt;/saml:Issuer&gt;</span>
+ <span class="nt">&lt;ds:Signature</span> <span class="na">xmlns:ds=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ds:SignedInfo&gt;</span>
+   <span class="nt">&lt;ds:CanonicalizationMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xmlexc-c14n#"</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;ds:SignatureMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#rsasha1"</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;ds:Reference</span> <span class="na">URI=</span><span class="s">"#_UNIQUE-ID"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ds:Transforms&gt;</span>
+     <span class="nt">&lt;ds:Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#enveloped-signature"</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;ds:Transform</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2001/10/xml-excc14n#"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ds:Transforms&gt;</span>
+    <span class="nt">&lt;ds:DigestMethod</span> <span class="na">Algorithm=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#sha1"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;ds:DigestValue&gt;</span>...digestValue...<span class="nt">&lt;/ds:DigestValue&gt;</span>
+   <span class="nt">&lt;/ds:Reference&gt;</span>
+  <span class="nt">&lt;/ds:SignedInfo&gt;</span>
+  <span class="nt">&lt;ds:SignatureValue&gt;</span>...signatureValue...<span class="nt">&lt;/ds:SignatureValue&gt;</span>
+  <span class="nt">&lt;ds:KeyInfo&gt;</span>
+   <span class="nt">&lt;ds:X509Data&gt;</span>
+    <span class="nt">&lt;ds:X509Certificate&gt;</span>...Certificate...<span class="nt">&lt;/ds:X509Certificate&gt;</span>
+   <span class="nt">&lt;/ds:X509Data&gt;</span>
+  <span class="nt">&lt;/ds:KeyInfo&gt;</span>
+ <span class="nt">&lt;/ds:Signature&gt;</span>
+
+ <span class="nt">&lt;samlp:Status&gt;</span>
+  <span class="nt">&lt;samlp:StatusCode</span> <span class="na">Value=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:status:Success"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/samlp:Status&gt;</span>
+
+ <span class="nt">&lt;saml:Assertion</span> <span class="na">Version=</span><span class="s">"2.0"</span> <span class="na">ID=</span><span class="s">"_UNIQUE-ID"</span> <span class="na">IssueInstant=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">xmlns=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:assertion"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;saml:Issuer</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:entity"</span><span class="nt">&gt;</span>
+   https://www.client-company.com
+  <span class="nt">&lt;/saml:Issuer&gt;</span>
+  <span class="nt">&lt;saml:Subject&gt;</span>
+   <span class="nt">&lt;saml:NameID</span> <span class="na">Format=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"</span><span class="nt">&gt;</span>Principal ID<span class="nt">&lt;/saml:NameID&gt;</span>
+  <span class="nt">&lt;/saml:Subject&gt;</span>
+  <span class="nt">&lt;saml:Conditions</span> <span class="na">NotBefore=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span> <span class="na">NotOnOrAfter=</span><span class="s">"2020-01-01T02:00:00.000000Z"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;saml:AudienceRestriction&gt;</span>
+    <span class="nt">&lt;saml:Audience&gt;</span>https://programme-name.com/saml/metadata<span class="nt">&lt;/saml:Audience&gt;</span>
+   <span class="nt">&lt;/saml:AudienceRestriction&gt;</span>
+  <span class="nt">&lt;/saml:Conditions&gt;</span>
+
+  <span class="nt">&lt;saml:AuthnStatement</span> <span class="na">AuthnInstant=</span><span class="s">"2020-01-01T00:00:00.000000Z"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;saml:AuthnContext&gt;</span>
+    <span class="nt">&lt;saml:AuthnContextClassRef&gt;</span>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport<span class="nt">&lt;/saml:AuthnContextClassRef&gt;</span>
+   <span class="nt">&lt;/saml:AuthnContext&gt;</span>
+  <span class="nt">&lt;/saml:AuthnStatement&gt;</span>
+
+  <span class="nt">&lt;saml:AttributeStatement&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"uid"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>user@client-company.com<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"username"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>username123<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"email"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>user@client-company.com<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"firstname"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Jane<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"lastname"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Smith<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"communication_preference"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>sms<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>email<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_43"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>An answer<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_59"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>01/09/2022<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_120"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>149257<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_2025"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Miss<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_2067"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>No<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_4315"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"chosen_locale"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>fr<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"user_group_id"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>354<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"company"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>My Company<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"company_name"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>My Company<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"company_identifier"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>my_company123<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;/saml:Attribute&gt;</span>
+  <span class="nt">&lt;/saml:AttributeStatement&gt;</span>
+ <span class="nt">&lt;/saml:Assertion&gt;</span>
+<span class="nt">&lt;/samlp:Response&gt;</span>
+</code></pre></div>
+<p>Exactly which attributes we will accept depend upon the configuration of your user fields, however you must still always have a <code>&lt;saml:Attribute&gt;</code> with a <code>Name</code> specified by the programme configuration (<code>uid</code> by default) and expect the value to be one of:</p>
+
+<ul>
+<li>user&#39;s email address - as recorded on MyRewards Programme</li>
+<li>username - as recorded on MyRewards Programme</li>
+<li>unique identifier/primary key for the user as recorded in MyRewards Programme</li>
+</ul>
+
+<p>The following standard user fields may be provided as an attributes Name value e.g. <code>&lt;saml:Attribute Name=&quot;firstname&quot;&gt;</code>:</p>
+
+<ul>
+<li>username</li>
+<li>email</li>
+<li>title</li>
+<li>firstname</li>
+<li>lastname</li>
+<li>job_title</li>
+<li>address_1</li>
+<li>address_2</li>
+<li>town</li>
+<li>postcode</li>
+<li>county</li>
+<li>country</li>
+<li>date_of_birth</li>
+<li>telephone</li>
+<li>mobile</li>
+<li>chosen_locale</li>
+<li>tsandcs</li>
+<li>consented</li>
+<li>marketing_consented</li>
+<li>user_group_id</li>
+<li>company (depending on the configuration of your programme - see below)</li>
+</ul>
+<h4 id='sso-single-sign-on-saml-user-provisioning-the-saml-attributestatement-companies'>Companies</h4>
+<p>If your programme uses a free text company question, then you may just send this as &quot;company&quot; as above, however, if your programme has a managed list of companies, then you must provide the users company details differently and we expect both of the below:</p>
+
+<ul>
+<li>company_name</li>
+<li>company_identifer</li>
+</ul>
+<h4 id='sso-single-sign-on-saml-user-provisioning-the-saml-attributestatement-custom-registration-questions'> Custom registration questions</h4>
+<p>If your programme has custom registration questions, you must send an attribute with a name prefixed with &quot;registration_question_&quot; followed by the id of the custom question to be answered. e.g. <code>&lt;saml:Attribute Name=&quot;registration_question_123&quot;&gt;</code> where 123 is the id of the registration question. See documentation for getting registration question id&#39;s <a href="#core-registration-questions-get-all-registration-questions">here</a> or contact your MyRewards administrator if you need further assistance.</p>
+<h3 id='sso-single-sign-on-saml-user-provisioning-further-notes'>Further notes</h3>
+<p>Whichever field has been set up as your user identifier for your integration should be sent as an attribute with the name specified as your identifier field. For example, if your programme has been set up with username as the user identifier, and uid as the identifier field, then you should send the value in <code>&lt;saml:Attribute Name=&quot;uid&quot;&gt;</code> and not <code>&lt;saml:Attribute Name=&quot;username&quot;&gt;</code>. If you do send <code>&lt;saml:Attribute Name=&quot;username&quot;&gt;</code> and that is your user identifier it will be ignored.</p>
 <h2 id='sso-single-sign-on-openid-connect'>OpenID Connect</h2>
 <p>MyRewards now supports a limited subset of OpenID Connect for SSO. We currently use the <a href="https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth">&quot;implicit flow&quot;</a>, using the <a href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#id_token">ID token-only response type</a> with the <a href="https://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html"><code>form_post</code> response mode</a>. More features from the OpenID Connect specification may be available in the future - please contact your MyRewards representative.</p>
 <h3 id='sso-single-sign-on-openid-connect-process-flow'>Process flow</h3>
