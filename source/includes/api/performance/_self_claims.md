@@ -24,11 +24,13 @@ Content-Type: application/json
   "sale_date": "2022-01-29",
   "product_or_activity_ref": "p1",
   "quantity": 150,
-  "dynamic question free text?": "Free text answer",
-  "dynamic question date select": "2017-06-21",
-  "dynamic question scanner": "abcdefg",
-  "dynamic question list": "Choice A, Choice B",
-  "dynamic question file upload": "https://invoicefile/12353.doc"
+  "answers": {
+    "1": "Free text answer",
+    "2": "2017-06-21",
+    "3": "abcdefg",
+    "4": "Choice A, Choice B",
+    "5": "https://invoicefile/12353.doc"
+  }
 }
 ```
 
@@ -75,7 +77,7 @@ user_id | `integer` | The user ID of the user making the claim. Mandatory.
 sale_date | `string` | The date the product was sold. Mandatory
 product_or_activity_ref | `string` | The reference of the product or activity you wish to return claims for. Mandatory.
 quantity | `integer` | The quantity of products sold. Mandatory.
-dynamic question | `string` | Dynamic questions can be of the following types: free text, list of values, date select, file upload, scanner. The dynamic question param should match the question. For example, if the dynamic question is 'Upload copy of invoice' the param should be 'Upload copy of invoice' as the key, and the answer as the value. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
+answers | `string` | Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a question_id to answer hash, nested under an answers key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
 
 #### Response Attributes
 
