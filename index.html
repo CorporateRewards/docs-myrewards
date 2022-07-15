@@ -420,6 +420,9 @@
                     <a href="#performance-module-self-claims" class="toc-h2 toc-link" data-title="self-claims">Self Claims</a>
                       <ul class="toc-list-h3">
                           <li>
+                            <a href="#performance-module-self-claims-create-a-self-claim" class="toc-h3 toc-link" data-title="Performance Module">Create a Self Claim</a>
+                          </li>
+                          <li>
                             <a href="#performance-module-self-claims-get-self-claims" class="toc-h3 toc-link" data-title="Performance Module">Get Self Claims</a>
                           </li>
                           <li>
@@ -3043,7 +3046,135 @@ and the { id }.</p>
 <td>A custom answer for this field</td>
 </tr>
 </tbody></table>
-<h2 id='performance-module-self-claims'>Self Claims</h2><h3 id='performance-module-self-claims-get-self-claims'>Get Self Claims</h3>
+<h2 id='performance-module-self-claims'>Self Claims</h2><h3 id='performance-module-self-claims-create-a-self-claim'>Create a Self Claim</h3>
+<p>Endpoint to create a self claim against a specific self-claim promotion.</p>
+<h4 id='performance-module-self-claims-create-a-self-claim-http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/performance/promotions/{promotion_id}/self_claims</code></p>
+
+<blockquote>
+<p>Header:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/1/self_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-29"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free text answer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-21"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdefg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choice A, Choice B"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://invoicefile/12353.doc"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-29"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"p1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamic question free text?"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Free text answer"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamic question date select"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-21"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamic question scanner"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcdefg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamic question list"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choice A, Choice B"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamic question file upload"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://invoicefile/12353.doc"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='performance-module-self-claims-create-a-self-claim-request-parameters'>Request Parameters</h4><h5 id='performance-module-self-claims-create-a-self-claim-request-parameters-url-parameters'>URL Parameters</h5>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>The user ID of the user making the claim. Mandatory.</td>
+</tr>
+<tr>
+<td>sale_date</td>
+<td><code>string</code></td>
+<td>The date the product was sold. Mandatory</td>
+</tr>
+<tr>
+<td>product_or_activity_ref</td>
+<td><code>string</code></td>
+<td>The reference of the product or activity you wish to return claims for. Mandatory.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><code>integer</code></td>
+<td>The quantity of products sold. Mandatory.</td>
+</tr>
+<tr>
+<td>answers</td>
+<td><code>string</code></td>
+<td>Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a question_id to answer hash, nested under an answers key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).</td>
+</tr>
+</tbody></table>
+<h4 id='performance-module-self-claims-create-a-self-claim-response-attributes'>Response Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td><code>string</code></td>
+<td>The user ID of the user making the claim.</td>
+</tr>
+<tr>
+<td>sale_date</td>
+<td><code>string</code></td>
+<td>The date the product was sold.</td>
+</tr>
+<tr>
+<td>product_or_activity_ref</td>
+<td><code>string</code></td>
+<td>The reference of the claimed product or activity.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><code>integer</code></td>
+<td>The quantity of products sold.</td>
+</tr>
+<tr>
+<td>answers</td>
+<td><code>object</code></td>
+<td>An object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question.</td>
+</tr>
+</tbody></table>
+<h3 id='performance-module-self-claims-get-self-claims'>Get Self Claims</h3>
 <p>Endpoint to get self claims against a specific self-claim promotion. Claims can be filtered down via passed-in parameters. If no URL parameters are provided then all claims against the requested promotion are returned. Results are paginated at 100 records per page.</p>
 <h4 id='performance-module-self-claims-get-self-claims-http-request'>HTTP Request</h4>
 <p><code>GET /api/v2/performance/promotions/{promotion_id}/self_claims</code></p>
