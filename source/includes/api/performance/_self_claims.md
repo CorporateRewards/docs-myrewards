@@ -1,5 +1,94 @@
 ## Self Claims
 
+### Create a Self Claim
+
+Endpoint to create a self claim against a specific self-claim promotion.
+
+#### HTTP Request
+
+`POST /api/v2/performance/promotions/{promotion_id}/self_claims`
+
+> Header:
+
+``` http
+POST /api/v2/performance/promotions/1/self_claims HTTP/1.1
+Authorization: Token token=key:secret
+Content-Type: application/json
+```
+
+> Body:
+
+```json
+{
+  "user_id": 1,
+  "sale_date": "2022-01-29",
+  "product_or_activity_ref": "p1",
+  "quantity": 150,
+  "answers": {
+    "1": "Free text answer",
+    "2": "2017-06-21",
+    "3": "abcdefg",
+    "4": "Choice A, Choice B",
+    "5": "https://invoicefile/12353.doc"
+  }
+}
+```
+
+> Response:
+
+```json
+{
+  "user_id": 1,
+  "sale_date": "2022-01-29",
+  "product_or_activity_ref": "p1",
+  "quantity": 150,
+  "answers": {
+    "1": {
+        "question": "dynamic question free text?",
+        "answer": "Free text answer"
+    },
+    "2": {
+        "question": "dynamic question date select",
+        "answer": "2017-06-21"
+    },
+    "3": {
+        "question": "dynamic question scanner",
+        "answer": "abcdefg"
+    },
+    "4": {
+        "question": "dynamic question list",
+        "answer": "Choice A, Choice B"
+    },
+    "5": {
+        "question": "dynamic question file upload",
+        "answer": "https://invoicefile/12353.doc"
+    }
+  }
+}
+```
+
+#### Request Parameters
+
+##### URL Parameters
+
+Parameter | Type | Description
+--------- | ---- | ----
+user_id | `integer` | The user ID of the user making the claim. Mandatory.
+sale_date | `string` | The date the product was sold. Mandatory
+product_or_activity_ref | `string` | The reference of the product or activity you wish to return claims for. Mandatory.
+quantity | `integer` | The quantity of products sold. Mandatory.
+answers | `string` | Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a question_id to answer hash, nested under an answers key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
+
+#### Response Attributes
+
+Attribute | Type | Info
+--------- | ---- | ----
+user_id | `string` | The user ID of the user making the claim.
+sale_date | `string` | The date the product was sold.
+product_or_activity_ref | `string` | The reference of the claimed product or activity.
+quantity | `integer` | The quantity of products sold.
+answers | `object` | An object containing questions identified by their id, along with a child object containing the name of the question, and the answer provided for that question.
+
 ### Get Self Claims
 
 Endpoint to get self claims against a specific self-claim promotion. Claims can be filtered down via passed-in parameters. If no URL parameters are provided then all claims against the requested promotion are returned. Results are paginated at 100 records per page.
