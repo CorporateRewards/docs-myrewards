@@ -154,13 +154,13 @@ promotion_id | `integer` |  Required. The ID of the promotion the reward point b
 
 Parameter | Type | Description
 --------- | ---- | -----------
-reference | string | Ref of the [performance product](#performance-module-performance-products) that the reward point is to be claimed against.
-user_group_ids | array | An array of all of the user groups that should be eligible for the reward point.
-quantity | integer | The quantity that must be claimed to qualify for the reward point.
-points_per_quantity | integer | The number of points to award per quantity.
-date_from | date | The date the reward point is eligible from.
-date_to | date | The date the reward point is eligible to.
-active | boolean | The active status of the reward point.
+reference | string | Required. Ref of the [performance product](#performance-module-performance-products) that the reward point is to be claimed against.
+user_group_ids | array | Optional. An array of all of the user groups that should be eligible for the reward point.
+quantity | integer | Required. The quantity that must be claimed to qualify for the reward point.
+points_per_quantity | integer | Required. The number of points to award per quantity.
+date_from | date | Required. The date the reward point is eligible from.
+date_to | date | Required. The date the reward point is eligible to.
+active | boolean | Optional. The active status of the reward point. Defaults to `false` (not active).
 
 
 ### Update Reward Points
