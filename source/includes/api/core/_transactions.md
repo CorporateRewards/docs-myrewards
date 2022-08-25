@@ -131,8 +131,6 @@ Variety | Programme Points affecting? | Permitted Type
 Programme points | Yes | Credit only
 Points Error | Yes | Debit only
 Person2Person transfer | Yes | Credit or debit (credit and debit must both be carried out for each user)
-Order Cancellation | No | Credit only
-Order Adjustment | No | Credit or debit
 Adjustment | Yes | Credit or Debit
 Account Closure | Programme config dependant | Debit only
 
