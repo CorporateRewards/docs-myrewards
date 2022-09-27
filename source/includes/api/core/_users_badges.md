@@ -12,6 +12,7 @@ Authorization: Token token=xxx
 ``` http
 HTTP/1.1 200 OK
 Content-Type: application/json
+
 [
   {
     "id": 12,
@@ -50,9 +51,11 @@ A endpoint to update a badge for a given user.
 ``` http
 PUT /api/v2/users/:user_id/badges/:badge_id HTTP/1.1
 Authorization: Token token=xxx
+```
 
+```json
 {
-  "badge_won": 'true'
+  "badge_won": "true"
 }
 ```
 
