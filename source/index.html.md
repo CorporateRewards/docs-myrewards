@@ -14,12 +14,12 @@ includes:
 - api/core/user_groups
 - api/core/user_groups_permissions
 - api/core/users
-- api/core/users_badges
 - api/core/users_permissions
 - api/core/companies
 - api/extra_features/0_extra_features
 - api/extra_features/data_widgets
 - api/extra_features/target_trackers
+- api/extra_features/users_badges
 - api/performance/0_performance
 - api/performance/allocated_claims
 - api/performance/self_claims
