@@ -19,7 +19,7 @@ Content-Type: application/json
     "badge_name": "Log In",
     "badge_collection_name": "Apprentice",
     "badge_won": true,
-    "created_at": "2017-07-04T16:41:30.000+01:00",
+    "awarded_at": "2017-07-04T16:41:30.000+01:00",
     "updated_at": "2017-07-04T16:42:13.000+01:00"
   },
   {
@@ -27,7 +27,7 @@ Content-Type: application/json
     "badge_name": "E-Learning Test",
     "badge_collection_name": "Apprentice",
     "badge_won": false,
-    "created_at": "2017-07-04T16:34:34.000+01:00",
+    "awarded_at": "2017-07-04T16:34:34.000+01:00",
     "updated_at": "2017-07-04T17:15:10.000+01:00"
   }
 ]
@@ -68,7 +68,7 @@ Content-Type: application/json
     "badge_name": "E-Learning Test",
     "badge_collection_name": "Apprentice",
     "badge_won": true,
-    "created_at": "2017-07-04T16:34:34.000+01:00",
+    "awarded_at": "2017-07-04T16:34:34.000+01:00",
     "updated_at": "2017-07-04T17:15:10.000+01:00"
   }
 ```
