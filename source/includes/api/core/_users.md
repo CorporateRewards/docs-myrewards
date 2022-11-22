@@ -1,6 +1,6 @@
 ## Users 
 
-In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate user with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore, there will be other fields that have been declared mandatory for your programme and user creation (POST) could fail if these values are not populated or provided.
+In order to identify users, a programme will expect to use either username, email or mobile as a unique key to authenticate users with. As a consumer of this service, it is mandatory to supply a value for this field. Furthermore, there will be other fields that have been declared mandatory for your programme and user creation (POST) could fail if these values are not populated or provided.
 
 Reasons include:
 
