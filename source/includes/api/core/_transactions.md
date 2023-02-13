@@ -23,7 +23,7 @@ The remote_transaction_id is documented in the POST endpoint for creating
 transactions, this value is optional, therefore can be `null`
 
 ``` http
-GET /api/v2/users/123/transactions HTTP/1.1
+GET /api/v2/users/{user_id}/transactions HTTP/1.1
 Authorization: Token token=xxx
 ```
 
@@ -82,7 +82,7 @@ The remote_transaction_id is documented in the POST endpoint for creating
 transactions, this value is optional, therefore can be `null`
 
 ``` http
-GET /api/v2/users/123/transactions/last HTTP/1.1
+GET /api/v2/users/{user_id}/transactions/last HTTP/1.1
 Authorization: Token token=xxx
 ```
 
@@ -137,7 +137,7 @@ Account Closure | Programme config dependant | Debit only
 Example below shows a transaction that will credit 100 points to a user debited from the programme balance. On the user's points statement a reason of 'Employee of the month' will be shown.
 
 ``` http
-POST /api/v1/users/123/transactions HTTP/1.1
+POST /api/v1/users/{user_id}/transactions HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -162,7 +162,7 @@ Content-Type: application/json
 ```
 #### HTTP Request
 
-`POST /api/v1/users/123/transactions`
+`POST /api/v1/users/{user_id}/transactions`
 
 #### Parameters
 

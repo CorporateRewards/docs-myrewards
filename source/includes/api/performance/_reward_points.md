@@ -7,7 +7,7 @@ This endpoint returns reward points for a specified promotion. Results are pagin
 > Request:
 
 ``` http
-GET /api/v2/performance/promotions/:promotion_id/reward_points?page=1 HTTP/1.1
+GET /api/v2/performance/promotions/{promotion_id}/reward_points?page=1 HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
@@ -74,7 +74,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`GET /api/v2/performance/promotions/:promotion_id/reward_points?page=1`
+`GET /api/v2/performance/promotions/{promotion_id}/reward_points?page=1`
 
 #### URL Parameters
 
@@ -96,7 +96,7 @@ This endpoint creates a reward point for a specified promotion.
 > Request:
 
 ``` http
-POST /api/v2/performance/promotions/:promotion_id/reward_points HTTP/1.1
+POST /api/v2/performance/promotions/{promotion_id}/reward_points HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -142,7 +142,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`POST /api/v2/performance/promotions/:promotion_id/reward_points`
+`POST /api/v2/performance/promotions/{promotion_id}/reward_points`
 
 #### URL Parameters
 
@@ -170,7 +170,7 @@ This endpoint updates a single reward point for a specified promotion.
 > Request:
 
 ``` http
-PATCH /api/v2/performance/promotions/:promotion_id/reward_points/:id HTTP/1.1
+PATCH /api/v2/performance/promotions/{promotion_id}/reward_points/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -215,7 +215,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`PATCH /api/v2/performance/promotions/:promotion_id/reward_points/:id`
+`PATCH /api/v2/performance/promotions/{promotion_id}/reward_points/{id}`
 
 #### URL Parameters
 

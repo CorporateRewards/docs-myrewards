@@ -7,7 +7,7 @@ a status parameter. A valid approver for the nomination must also be provided.
 You will be returned the updated JSON for the given nomination.
 
 ``` http
-PATCH /api/v2/campaigns/:campaign_id/nominations/:id HTTP/1.1
+PATCH /api/v2/campaigns/{campaign_id}/nominations/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -28,7 +28,7 @@ Content-Type: application/json
 ```
 
 ``` http
-PATCH /api/v2/campaigns/:campaign_id/nominations/:id HTTP/1.1
+PATCH /api/v2/campaigns/{campaign_id}/nominations/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -52,7 +52,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`PATCH /api/v2/campaigns/:campaign_id/nominations/:id`
+`PATCH /api/v2/campaigns/{campaign_id}/nominations/{id}`
 
 #### URL Parameters
 

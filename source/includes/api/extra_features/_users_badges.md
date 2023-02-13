@@ -49,7 +49,7 @@ user\_id | integer | The ID of the user
 A endpoint to update a badge for a given user.
 
 ``` http
-PUT /api/v2/users/:user_id/badges/:badge_id HTTP/1.1
+PUT /api/v2/users/{user_id}/badges/{badge_id} HTTP/1.1
 Authorization: Token token=xxx
 ```
 

@@ -8,7 +8,7 @@ an array of values with their name and id.
 > Header:
 
 ```http
-GET /api/v2/registration_questions/:registration_question_id/list_of_values HTTP/1.1
+GET /api/v2/registration_questions/{registration_question_id}/list_of_values HTTP/1.1
 Authorization: Token token=key:secret
 ```
 
@@ -29,7 +29,7 @@ Authorization: Token token=key:secret
 
 #### HTTP Request
 
-`GET /api/v2/registration_questions/:registration_question_id/list_of_values`
+`GET /api/v2/registration_questions/{registration_question_id}/list_of_values`
 
 #### Attributes
 
@@ -47,7 +47,7 @@ an array of all values with their name and id.
 > Header:
 
 ```http
-POST /api/v2/registration_questions/:registration_question_id/list_of_values HTTP/1.1
+POST /api/v2/registration_questions/{registration_question_id}/list_of_values HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
@@ -81,7 +81,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`POST /api/v2/registration_questions/:registration_question_id/list_of_values`
+`POST /api/v2/registration_questions/{registration_question_id}/list_of_values`
 
 ##### Body Parameters
 

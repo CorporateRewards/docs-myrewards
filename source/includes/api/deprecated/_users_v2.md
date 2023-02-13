@@ -140,7 +140,7 @@ The update user api is available to update user information. This uses the same
 params as the create user api above.
 
 ``` http
-PUT /api/v2/users/123 HTTP/1.1
+PUT /api/v2/users/{user_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
