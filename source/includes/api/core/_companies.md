@@ -149,7 +149,7 @@ This endpoint updates an existing company associated to an api keys programme.
 > Request:
 
 ``` http
-PATCH /api/v3/companies/{user_group_id} HTTP/1.1
+PATCH /api/v3/companies/{company_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -199,7 +199,7 @@ This endpoint deletes an existing company associated to an api keys programme. Y
 > Request:
 
 ``` http
-DELETE /api/v3/companies/{user_group_id} HTTP/1.1
+DELETE /api/v3/companies/{company_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
