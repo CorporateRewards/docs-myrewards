@@ -19,7 +19,7 @@ If MyRewards has already imported the product from GPS, the points override will
 > Header:
 
 ```http
-PUT /api/v2/points_overrides/1 HTTP/1.1
+PUT /api/v2/points_overrides/{gps_product_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
@@ -76,7 +76,7 @@ and not MyRewards
 > Header:
 
 ```http
-DELETE /api/v2/points_overrides/1 HTTP/1.1
+DELETE /api/v2/points_overrides/{gps_product_id} HTTP/1.1
 Authorization: Token token=xxx
 ```
 

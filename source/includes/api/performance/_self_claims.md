@@ -11,7 +11,7 @@ Endpoint to create a self claim against a specific self-claim promotion.
 > Header:
 
 ``` http
-POST /api/v2/performance/promotions/1/self_claims HTTP/1.1
+POST /api/v2/performance/promotions/{promotion_id}/self_claims HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
@@ -101,7 +101,7 @@ Endpoint to get self claims against a specific self-claim promotion. Claims can 
 > Header:
 
 ``` http
-GET /api/v2/performance/promotions/1/self_claims HTTP/1.1
+GET /api/v2/performance/promotions/{promotion_id}/self_claims HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
@@ -277,7 +277,7 @@ Endpoint to decline a specified claim.
 > Header:
 
 ``` http
-POST /api/v2/performance/promotions/1/self_claims/123/decline HTTP/1.1
+POST /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/decline HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -358,7 +358,7 @@ Endpoint to approve a specified claim.
 > Header:
 
 ``` http
-POST /api/v2/performance/promotions/1/self_claims/123/approve HTTP/1.1
+POST /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/approve HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 

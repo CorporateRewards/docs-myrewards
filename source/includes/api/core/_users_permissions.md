@@ -8,7 +8,7 @@ It will also display whether the permission is active for the given user and the
 be `Same As User Group` or if the permission has been overridden for that user: `Always Allow` or `Always Deny`.
 
 ``` http
-GET /api/v2/users/:user_id/permissions HTTP/1.1
+GET /api/v2/users/{user_id}/permissions HTTP/1.1
 Authorization: Token token=xxx
 ```
 
@@ -38,7 +38,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`GET /api/v2/users/:user_id/permissions`
+`GET /api/v2/users/{user_id}/permissions`
 
 #### Attributes
 
@@ -66,7 +66,7 @@ N.B. When specifying active = true this will set the permission to "Always allow
 setting to false will have the effect of "Always deny"
 
 ``` http
-PATCH /api/v2/users/:user_id/permissions HTTP/1.1
+PATCH /api/v2/users/{user_id}/permissions HTTP/1.1
 Authorization: Token token=xxx
 
 {
@@ -111,7 +111,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`PATCH /api/v2/users/:user_id/permissions`
+`PATCH /api/v2/users/{user_id}/permissions`
 
 #### Attributes
 

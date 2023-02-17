@@ -21,7 +21,7 @@ created_at_end_date | `date` | A parameter in ISO-8601 format for scoping submis
 > Request:
 
 ``` http
-GET /api/v2/campaigns/157/submissions HTTP/1.1
+GET /api/v2/campaigns/{campaign_id}/submissions HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
@@ -140,7 +140,7 @@ campaign_id | `integer` | The ID of the campaign that the submission belongs to
 > Request:
 
 ``` http
-POST /api/v2/campaigns/157/submissions/162561/approve HTTP/1.1
+POST /api/v2/campaigns/{campaign_id}/submissions/{submission_id}/approve HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```

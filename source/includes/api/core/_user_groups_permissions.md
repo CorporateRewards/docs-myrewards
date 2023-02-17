@@ -10,7 +10,7 @@ active for a given user_group.
 
 
 ``` http
-GET /api/v2/user_groups/:user_group_id/permissions HTTP/1.1
+GET /api/v2/user_groups/{user_group_id}/permissions HTTP/1.1
 Authorization: Token token=xxx
 ```
 
@@ -38,7 +38,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`GET /api/v2/user_groups/:user_group_id/permissions`
+`GET /api/v2/user_groups/{user_group_id}/permissions`
 
 #### Attributes
 
@@ -62,7 +62,7 @@ N.B. If updating a permission where the permission_group is not active the
 change will be ignored
 
 ``` http
-PATCH /api/v2/user_groups/:user_group_id/permissions HTTP/1.1
+PATCH /api/v2/user_groups/{user_group_id}/permissions HTTP/1.1
 Authorization: Token token=xxx
 
 {
@@ -107,7 +107,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`PATCH /api/v2/user_groups/:user_group_id/permissions`
+`PATCH /api/v2/user_groups/{user_group_id}/permissions`
 
 #### Attributes
 

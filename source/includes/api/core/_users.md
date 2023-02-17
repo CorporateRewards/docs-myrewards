@@ -194,7 +194,7 @@ user_id | `integer` | The ID of the user you want to return
 > Request:
 
 ``` http
-GET /api/v3/users/681 HTTP/1.1
+GET /api/v3/users/{user_id} HTTP/1.1
 Authorization: Token token={key}:{secret}
 Content-Type: application/json
 ```
@@ -253,7 +253,7 @@ Content-Type: Application/json
 > Request: 
 
 ``` http
-PUT /api/v3/users/123 HTTP/1.1
+PUT /api/v3/users/{user_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 

@@ -55,7 +55,7 @@ cuteness | integer | how cute? (1-10)
 > Header:
 
 ```http
-GET /api/v2/kittens/:id HTTP/1.1
+GET /api/v2/kittens/{id} HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
@@ -141,7 +141,7 @@ Remember — a happy kitten is an authenticated kitten!
 > Header
 
 ```http
-GET /api/v2/kittens/:id HTTP/1.1
+GET /api/v2/kittens/{id} HTTP/1.1
 Authorization: Token token=key:secret
 Content-Type: application/json
 ```
@@ -159,7 +159,7 @@ Deletes the kitten with the given :id
 
 #### HTTP Request
 
-`DELETE /api/v2/kittens/:id`
+`DELETE /api/v2/kittens/{id}`
 
 #### URL Parameters
 

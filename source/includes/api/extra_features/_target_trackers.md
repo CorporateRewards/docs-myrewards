@@ -38,7 +38,7 @@ This endpoint retrieves all target_trackers that belong to a programme (scoped b
 > Header:
 
 ``` http
-GET /api/v2/users/123/target_trackers/456 HTTP/1.1
+GET /api/v2/users/{user_id}/target_trackers/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
@@ -76,7 +76,7 @@ id | integer | The ID of the target_tracker to retrieve
 > Header: 
 
 ``` http
-PUT /api/v2/users/123/target_trackers/456 HTTP/1.1
+PUT /api/v2/users/{user_id}/target_trackers/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```

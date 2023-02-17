@@ -34,7 +34,7 @@ HTTP/1.1 201 CREATED
 
 #### HTTP Request
 
-`POST /api/v2/performance/promotions/1/data`
+`POST /api/v2/performance/promotions/{promotion_id}/data`
 
 #### Attributes
 
