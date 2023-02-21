@@ -179,10 +179,7 @@ marketing_consented | `boolean` | Can be true or false, not required if programm
 
 ### Get a User
 
-This endpoint returns a specific user associated with an api key's programme.<br />
-You have the option to specify either the user's unique MyRewards ID, email address, or the username.<br />
-<br />
-<i><strong>Please note:</strong> you can only specify one of the parameters at a time.</i>
+This endpoint returns a specific user associated with an api key's programme. You have the option to specify either the user's unique MyRewards ID, email address, or the username.
 
 #### Path Parameters
 
@@ -197,14 +194,13 @@ username | `string` | The username of the user to return
 variations of the request that are supported:
 
 - `GET /api/v3/users/{id}`
-- `GET /api/v3/users?id={id}`
-- `GET /api/v3/users?email={email}`
-- `GET /api/v3/users?username={username}`
+- `GET /api/v3/users/email/{email}`
+- `GET /api/v3/users/username/{username}`
 
 > Request:
 
 ``` http
-GET /api/v3/users?id={id} HTTP/1.1
+GET /api/v3/users/{id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```
