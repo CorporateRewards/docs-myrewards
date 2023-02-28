@@ -62,7 +62,7 @@ company_identifier | string | The identifier of the company you want to return
 
 #### HTTP Request
 
-`GET /api/v3/companies/:company_identifier`
+`GET /api/v3/companies/{company_identifier}`
 
 > Request:
 
@@ -144,12 +144,12 @@ earning_type | `string` | Optional. The earning type of the company. Must be one
 This endpoint updates an existing company associated to an api keys programme.
 #### HTTP Request
 
-`PATCH /api/v3/companies/:company_id`
+`PATCH /api/v3/companies/{company_id}`
 
 > Request:
 
 ``` http
-PATCH /api/v3/companies/123 HTTP/1.1
+PATCH /api/v3/companies/{company_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -194,12 +194,12 @@ earning_type | `string` | The earning type of the company. Must be one of 'indiv
 This endpoint deletes an existing company associated to an api keys programme. You can only delete companies that have no associated users, and any attempt to do so will return an error.
 #### HTTP Request
 
-`DELETE /api/v3/companies/:company_id`
+`DELETE /api/v3/companies/{company_id}`
 
 > Request:
 
 ``` http
-DELETE /api/v3/companies/123 HTTP/1.1
+DELETE /api/v3/companies/{company_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 

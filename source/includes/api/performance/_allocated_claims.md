@@ -5,7 +5,7 @@
 Endpoint to view allocated claims against a specific promotion. Claims can be scoped down via passed in parameters. Only 100 records are returned at a time.
 
 ``` http
-GET /api/v2/performance/promotions/1/allocated_claims HTTP/1.1
+GET /api/v2/performance/promotions/{promotion_id}/allocated_claims HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -59,7 +59,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`GET /api/v2/performance/promotions/1/allocated_claims`
+`GET /api/v2/performance/promotions/{promotion_id}/allocated_claims`
 
 #### Attributes
 
@@ -80,7 +80,7 @@ page | `integer` | The requested page number. Defaults to page 1 if not supplied
 Endpoint to decline a given allocated claim.
 
 ``` http
-POST /api/v2/performance/promotions/1/allocated_claims/1/decline HTTP/1.1
+POST /api/v2/performance/promotions/{promotion_id}/allocated_claims/{claim_id}/decline HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -96,7 +96,7 @@ Content-Type: application/json
 ```
 #### HTTP Request
 
-`POST /api/v2/performance/promotions/1/allocated_claims/1/decline`
+`POST /api/v2/performance/promotions/{promotion_id}/allocated_claims/{claim_id}/decline`
 
 #### Attributes
 
@@ -110,7 +110,7 @@ reason\_for\_decline\_text | `string` | A text string for a decline reason, can 
 Endpoint to create allocated claims against specific promotion. Claims are created by using the `data_field` names from above as key/value pairs. Your request must include exactly one of `user_group_id` or `company_id` or `company_identifier` depending on the promotion configuration.
 
 ``` http
-POST /api/v2/performance/promotions/1/allocated_claims HTTP/1.1
+POST /api/v2/performance/promotions/{promotion_id}/allocated_claims HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 
@@ -175,7 +175,7 @@ Content-Type: application/json
 
 #### HTTP Request
 
-`POST /api/v2/performance/promotions/1/allocated_claims`
+`POST /api/v2/performance/promotions/{promotion_id}/allocated_claims`
 
 #### Attributes
 

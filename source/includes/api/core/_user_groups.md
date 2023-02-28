@@ -70,7 +70,7 @@ user_group_id | `integer` | The ID of the user group you want to return
 > Request:
 
 ``` http
-GET /api/v2/user_groups/299 HTTP/1.1
+GET /api/v2/user_groups/{user_group_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 ```

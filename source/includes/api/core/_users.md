@@ -259,7 +259,7 @@ Content-Type: Application/json
 > Request: 
 
 ``` http
-PUT /api/v3/users/123 HTTP/1.1
+PUT /api/v3/users/{user_id} HTTP/1.1
 Authorization: Token token=xxx
 Content-Type: application/json
 

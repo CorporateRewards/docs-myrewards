@@ -6,7 +6,7 @@ A simple endpoint to fetch a list of the data fields for a performance module
 enabled programme scoped to a Promotion. Returns an array of data fields as a flat list.
 
 ``` http
-GET /api/v2/performance/promotions/1/data_fields HTTP/1.1
+GET /api/v2/performance/promotions/{promotion_id}/data_fields HTTP/1.1
 Authorization: Token token=xxx
 ```
 
@@ -45,7 +45,7 @@ Content-Type: application/json
 #### HTTP Request
 
 ```http
-GET /api/v2/performance/promotions/1/data_fields HTTP/1.1
+GET /api/v2/performance/promotions/{promotion_id}/data_fields HTTP/1.1
 Authorization: Token token=xxx
 ```
 
