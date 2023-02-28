@@ -2006,7 +2006,7 @@ an example of the response when the company is a managed list.</p>
 </tr>
 </tbody></table>
 <h3 id='core-users-get-a-user'>Get a User</h3>
-<p>This endpoint returns a specific user associated to an api keys programme.</p>
+<p>This endpoint returns a specific user associated with an api key&#39;s programme. You have the option to specify either the user&#39;s unique MyRewards ID, email address, or the username.</p>
 <h4 id='core-users-get-a-user-path-parameters'>Path Parameters</h4>
 <table><thead>
 <tr>
@@ -2016,19 +2016,35 @@ an example of the response when the company is a managed list.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>user_id</td>
+<td>id</td>
 <td><code>integer</code></td>
-<td>The ID of the user you want to return</td>
+<td>The unique MyRewards ID of the user to return</td>
+</tr>
+<tr>
+<td>email</td>
+<td><code>string</code></td>
+<td>The email address of the user to return</td>
+</tr>
+<tr>
+<td>username</td>
+<td><code>string</code></td>
+<td>The username of the user to return</td>
 </tr>
 </tbody></table>
 <h4 id='core-users-get-a-user-http-request'>HTTP Request</h4>
-<p><code>GET /api/v3/users/{user_id}</code></p>
+<p>variations of the request that are supported:</p>
+
+<ul>
+<li><code>GET /api/v3/users/{id}</code></li>
+<li><code>GET /api/v3/users/email/{email}</code></li>
+<li><code>GET /api/v3/users/username/{username}</code></li>
+</ul>
 
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v3/users/{user_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={key}:{secret}</span>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v3/users/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
