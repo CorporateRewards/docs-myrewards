@@ -38,6 +38,7 @@ Content-Type: application/json
 
 ```json
 {
+  "id": 1234,
   "user_id": 1,
   "sale_date": "2022-01-29",
   "product_or_activity_ref": "p1",
@@ -83,6 +84,7 @@ answers | `string` | Expected answers depend on their question, which come in th
 
 Attribute | Type | Info
 --------- | ---- | ----
+id | `integer` | the id of the claim
 user_id | `string` | The user ID of the user making the claim.
 sale_date | `string` | The date the product was sold.
 product_or_activity_ref | `string` | The reference of the claimed product or activity.
@@ -348,6 +350,7 @@ answers | `string` | Expected answers depend on their question, which come in th
 
 Attribute | Type | Info
 --------- | ---- | ----
+id | `integer` | the id of the claim
 user_id | `string` | The user ID of the user making the claim.
 sale_date | `string` | The date the product was sold.
 product_or_activity_ref | `string` | The reference of the claimed product or activity.
