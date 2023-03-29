@@ -78,7 +78,7 @@ user_id | `integer` | The user ID of the user making the claim. Mandatory.
 sale_date | `string` | The date the product was sold. Mandatory
 product_or_activity_ref | `string` | The reference of the product or activity you wish to return claims for. Mandatory.
 quantity | `integer` | The quantity of products sold. Mandatory.
-answers | `string` | Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a question_id to answer hash, nested under an answers key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
+answers | `string` | Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a `question_id` to answer hash, nested under an `answers` key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
 
 #### Response Attributes
 
@@ -245,8 +245,8 @@ product_or_activity_ref | `integer` | The reference of the product or activity y
 user_id | `integer` | ID of a user that claims were made by. Optional
 created_at_start_date | `string` | A parameter for scoping claims that were created from that date onwards. Optional.
 created_at_end_date | `string` | A parameter for scoping claims that were created on or before the given date. Optional.
-date_of_sale_start_date | `string` | A parameter for scoping claims with a date_of_sale from the given date onwards. Optional.
-date_of_sale_end_date | `string` | A parameter for scoping claims with a date_of_sale on or before the given date. Optional.
+date_of_sale_start_date | `string` | A parameter for scoping claims with a `sale_date` from the given date onwards. Optional.
+date_of_sale_end_date | `string` | A parameter for scoping claims with a `sale_date` on or before the given date. Optional.
 page | `integer` | The requested page number. Defaults to page 1 if not supplied. Optional.
 
 
@@ -344,7 +344,7 @@ sale_date | `string` | The date the product was sold. Mandatory
 product_or_activity_ref | `string` | The reference of the product or activity you wish to return claims for. Mandatory.
 quantity | `integer` | The quantity of products sold. Mandatory.
 points | `integer` | Explicitly set the value of points that the claim is worth. Optional, calculated from the product/activity, quantity and sale date otherwise.
-answers | `string` | Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a question_id to answer hash, nested under an answers key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
+answers | `string` | Expected answers depend on their question, which come in the following types: free text, list of values, date select, file upload, scanner. Please provide your answers to dynamic questions as a `question_id` to answer hash, nested under an `answers` key. If the question allows multiple answers, add a comma between each answer. Dynamic questions are sometimes mandatory (if the programme administrator has set them to be).
 
 #### Response Attributes
 
