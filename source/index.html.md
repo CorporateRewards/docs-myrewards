@@ -48,16 +48,15 @@ search: true
 # Introduction
 Welcome to the MyRewards API documentation.
 
-The first thing you will have to find out is the correct API endpoint to use for
-the right environment.
+Your 360insights project manager / customer success manager will share the API authentication details for your production site.
 
-- **Staging:** [https://staging.my-rewards.co.uk](https://staging.my-rewards.co.uk)
-- For production access please ask your MyRewards contact
+If you require a separate instance for testing and development purposes, please discuss this requirement with your 360insights project manager / customer success manager.
+
+Access to the development build of MyRewards for upcoming features will only be granted on a discretionary basis.
 
 A programme can have one or more API keys, each of which will be granted
 permission to access different functionality from the API. As a standard, we use
-RESTful json endpoints that will accept either HTML/HTTP form data or json data,
-HTML/HTTP is preferred.
+RESTful json endpoints that will accept either HTML/HTTP form data or json data.
 
 # Authentication
 
