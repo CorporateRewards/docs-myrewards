@@ -36,13 +36,6 @@ jobs:
           command: bundle exec middleman build --clean
 
       - run:
-          name: Perserve config files
-          command: |
-            cd build
-            git checkout CNAME
-            git checkout .circleci/config.yml
-
-      - run:
           name: Git commit new build
           command: |
             export LAST_GIT_MESSAGE=$(git log -1 --pretty=%B)
