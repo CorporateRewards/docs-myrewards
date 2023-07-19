@@ -3,10 +3,10 @@
 version: 2
 jobs:
   build:
-    working_directory: /apidocs
+    working_directory: /srv/slate
 
     docker:
-      - image: createkio/slate:latest
+      - image: createkio/docs-myrewards:latest
 
     steps:
       - checkout
