@@ -2,9 +2,9 @@
 version: '3'
 services:
   slate:
-    image: createkio/slate:latest
+    image: createkio/docs-myrewards:latest
     volumes:
-      - .:/apidocs
+      - .:/srv/slate
     ports:
       - 4567:4567
     command: sh -c '
