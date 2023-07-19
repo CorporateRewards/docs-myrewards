@@ -39,96 +39,10 @@ git checkout HEAD -- \
   'source/index.html.md' \
   'source/images/logo.png'
 
-say "  Adding stylesheet customisations"
-if ! grep -q "@import 'custom';" source/stylesheets/screen.css.scss; then
-  printf "\n@import 'custom';\n" >> source/stylesheets/screen.css.scss
-fi
-
-say "  Updating Middleman config"
-git apply - <<EOF
-diff --git a/config.rb b/config.rb
---- a/config.rb
-+++ b/config.rb
-@@ -1,5 +1,5 @@
- # Unique header generation
--require './lib/unique_head.rb'
-+require './lib/nesting_unique_head.rb'
-
- # Markdown
- set :markdown_engine, :redcarpet
-@@ -11,7 +11,7 @@ set :markdown,
-     tables: true,
-     with_toc_data: true,
-     no_intra_emphasis: true,
--    renderer: UniqueHeadCounter
-+    renderer: NestingUniqueHeadCounter
-
- # Assets
- set :css_dir, 'stylesheets'
-EOF
-
-say "  Tweaking syntax highlighting styles"
-git apply - <<EOF
-diff --git a/lib/monokai_sublime_slate.rb b/lib/monokai_sublime_slate.rb
---- a/lib/monokai_sublime_slate.rb
-+++ b/lib/monokai_sublime_slate.rb
-@@ -83,7 +83,7 @@ module Rouge
-               Text::Whitespace,
-               Text,
-               Name,                             :fg => :white
--        style Name::Label,                      :fg => :bright_pink
-+        style Name::Label,                      :fg => :soft_yellow
-         style Operator::Word,
-               Name::Tag,
-               Keyword,
-EOF
-
-say "  Enabling 3rd-level nav for TOC"
-git apply - <<'EOF'
-diff --git a/source/javascripts/all_nosearch.js b/source/javascripts/all_nosearch.js
---- a/source/javascripts/all_nosearch.js
-+++ b/source/javascripts/all_nosearch.js
-@@ -9,7 +9,7 @@ function adjustLanguageSelectorWidth() {
- }
-
- $(function() {
--  loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
-+  loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3', 10);
-   setupLanguages($('body').data('languages'));
-   $('.content').imagesLoaded( function() {
-     window.recacheHeights();
-EOF
-
-say "  Adding favicon and 3rd-level TOC to layout"
-git apply - <<EOF
-diff --git a/source/layouts/layout.erb b/source/layouts/layout.erb
---- a/source/layouts/layout.erb
-+++ b/source/layouts/layout.erb
-@@ -56,6 +56,7 @@ under the License.
-     <% else %>
-       <%= javascript_include_tag  "all_nosearch" %>
-     <% end %>
-+    <%= favicon_tag 'favicon.png' %>
-
-     <% if current_page.data.code_clipboard %>
-     <script>
-@@ -99,6 +100,15 @@ under the License.
-                 <% h1[:children].each do |h2| %>
-                   <li>
-                     <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><%= h2[:content] %></a>
-+                    <% if h2[:children].any? %>
-+                      <ul class="toc-list-h3">
-+                        <% h2[:children].each do |h3| %>
-+                          <li>
-+                            <a href="#<%= h3[:id] %>" class="toc-h3 toc-link" data-title="<%= h1[:content] %>"><%= h3[:content] %></a>
-+                          </li>
-+                        <% end %>
-+                      </ul>
-+                    <% end %>
-                   </li>
-                 <% end %>
-               </ul>
-EOF
+for patch in patches/*.patch; do
+  say "  Applying patch: $patch"
+  git apply "$patch"
+done
 
 say "Staging changes..."
 git add .
