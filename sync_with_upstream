@@ -33,8 +33,10 @@ git rm -qf \
 
 say "Re-applying our changes..."
 
-say "  Re-overwriting README, index file and logo"
+say "  Re-overwriting README, Gemfile, index file and logo"
 git checkout HEAD -- \
+  'Gemfile' \
+  'Gemfile.lock' \
   'README.md' \
   'source/index.html.md' \
   'source/images/logo.png'
