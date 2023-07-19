@@ -1,0 +1,11 @@
+diff --git a/source/layouts/layout.erb b/source/layouts/layout.erb
+--- a/source/layouts/layout.erb
++++ b/source/layouts/layout.erb
+@@ -56,6 +56,7 @@ under the License.
+     <% else %>
+       <%= javascript_include_tag  "all_nosearch" %>
+     <% end %>
++    <%= favicon_tag 'favicon.png' %>
+
+     <% if current_page.data.code_clipboard %>
+     <script>

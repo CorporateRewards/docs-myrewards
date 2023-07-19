@@ -1,0 +1,12 @@
+diff --git a/lib/monokai_sublime_slate.rb b/lib/monokai_sublime_slate.rb
+--- a/lib/monokai_sublime_slate.rb
++++ b/lib/monokai_sublime_slate.rb
+@@ -83,7 +83,7 @@ module Rouge
+               Text::Whitespace,
+               Text,
+               Name,                             :fg => :white
+-        style Name::Label,                      :fg => :bright_pink
++        style Name::Label,                      :fg => :soft_yellow
+         style Operator::Word,
+               Name::Tag,
+               Keyword,
