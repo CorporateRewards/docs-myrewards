@@ -3,7 +3,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /srv/slate
+    working_directory: /apidocs
 
     docker:
       - image: createkio/docs-myrewards:latest
@@ -17,7 +17,7 @@ jobs:
             --jobs 20 \
             --retry 2
       - run:
-          name: Congifure git
+          name: Configure git
           command: |
             git config --global user.email 'ci@createk.io'
             git config --global user.name 'CreatekCI'
