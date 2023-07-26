@@ -1,13 +1,25 @@
-FROM ruby:2.6-rc-alpine
+FROM ruby:3.0-slim
 
-MAINTAINER CreatekIO
+WORKDIR /srv/slate
 
-WORKDIR /apidocs
+EXPOSE 4567
 
-COPY . ./
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        git \
+        nodejs \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN apk add --no-cache coreutils git make g++ nodejs openssh && \
-      rm -rf /var/cache/apk/* && \
-      bundle install
+COPY Gemfile .
+COPY Gemfile.lock .
 
+RUN bundle install
 
+COPY . /srv/slate
+
+RUN chmod +x /srv/slate/slate.sh
+
+ENTRYPOINT ["/srv/slate/slate.sh"]
+CMD ["build"]

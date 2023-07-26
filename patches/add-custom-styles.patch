@@ -1,0 +1,9 @@
+diff --git a/source/stylesheets/screen.css.scss b/source/stylesheets/screen.css.scss
+--- a/source/stylesheets/screen.css.scss
++++ b/source/stylesheets/screen.css.scss
+@@ -635,3 +635,5 @@ html, body {
+ .copy-clipboard:hover {
+   opacity: 0.8;
+ }
++
++@import 'custom';

@@ -3,10 +3,10 @@
 version: 2
 jobs:
   build:
-    working_directory: /apidocs
+    working_directory: /srv/slate
 
     docker:
-      - image: createkio/slate:latest
+      - image: createkio/docs-myrewards:latest
 
     steps:
       - checkout
@@ -34,13 +34,6 @@ jobs:
       - run:
           name: Build docs
           command: bundle exec middleman build --clean
-
-      - run:
-          name: Perserve config files
-          command: |
-            cd build
-            git checkout CNAME
-            git checkout .circleci/config.yml
 
       - run:
           name: Git commit new build

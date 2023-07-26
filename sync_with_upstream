@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -eEuo pipefail
+
+say() {
+  printf "\e[36m%s\e[0m\n" "$1" >&2
+}
+
+trap 'printf "\e[33mScript has errored!\nNote: cleanup with git merge --abort and/or git reset --hard HEAD\n\e[0m"' ERR
+
+cd "$(git rev-parse --show-toplevel)" # ensure we're at the root of the repo
+
+if ! git remote -v | grep -q 'slatedocs/slate'; then
+  say "Adding upstream remote..."
+  git remote add upstream git@github.com:slatedocs/slate.git
+fi
+
+say "Fetching upstream..."
+git fetch upstream
+
+say "Applying updates from upstream..."
+git merge --no-commit --allow-unrelated-histories \
+  --squash \
+  -X theirs upstream/main
+
+# Files we don't want
+say "Removing unwanted files..."
+git rm -qf \
+  'CHANGELOG.md' \
+  'Vagrantfile' \
+  '.github/ISSUE_TEMPLATE/*' \
+  '.github/PULL_REQUEST_TEMPLATE.md' \
+  '.github/dependabot.yml' \
+  '.github/workflows/*'
+
+say "Re-applying our changes..."
+
+say "  Re-overwriting README, Gemfile, index file and logo"
+git checkout HEAD -- \
+  'Gemfile' \
+  'Gemfile.lock' \
+  'README.md' \
+  'source/index.html.md' \
+  'source/images/logo.png'
+
+for patch in patches/*.patch; do
+  say "  Applying patch: $patch"
+  git apply "$patch"
+done
+
+say "Staging changes..."
+git add .
+
+git --no-pager diff --cached --stat
+
+# Overwrite Git's default message, which is a concatenation of
+# all the commit messages merged from the upstream branch
+cat <<EOF > .git/SQUASH_MSG
+Merge changes from slatedocs/slate upstream
+
+Changes taken from main@$(git rev-parse upstream/main)
+EOF
+
+printf "\e[32mSync with upstream complete. Now review and commit the changes\e[0m\n" >&2
