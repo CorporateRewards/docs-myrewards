@@ -19,22 +19,30 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 [
-  {
-    "id" : 1,
-    "name" : "dc comics",
-    "description" : "Example Description",
-    "parent_id" :  null,
-    "default" : "false",
-    "position" : 1
-  },
-  {
-    "id" : 2,
-    "name" : "justice league",
-    "description" : "Another Example Description",
-    "parent_id" : 1,
-    "default" : "true",
-    "position" : 1
-  }
+    {
+        "id": 1,
+        "name": "Admin",
+        "description": "Example Description",
+        "parent_id": null,
+        "default": "false",
+        "position": 1
+    },
+    {
+        "id": 5,
+        "name": "Full-Time",
+        "description": "Example Description",
+        "parent_id": 1,
+        "default": "true",
+        "position": 2
+    },
+    {
+        "id": 10,
+        "name": "Part-Time",
+        "description": "Another Example Description",
+        "parent_id": 1,
+        "default": "false",
+        "position": 3
+    }
 ]
 ```
 
@@ -82,12 +90,12 @@ HTTP/1.1 200 OK
 Content-Type: Application/json
 
 {
-    "id": 299,
-    "name": "Sales",
-    "description": "Example description",
-    "parent_id": 298,
-    "default": false,
-    "position": 1
+    "id": 10,
+    "name": "Part-Time",
+    "description": "Another Example Description",
+    "parent_id": 1,
+    "default": "false",
+    "position": 3
 }
 ```
 
@@ -104,11 +112,11 @@ POST /api/v2/user_groups HTTP/1.1
 Authorization: Token token={APIKEY}:{SECRETKEY}
 
 {
-  "name": "Example User Group",
-  "description": "Example Description",
-  "position": 1,
-  "parent_id": null,
-  "image_url": "http://example_website.com/image.png"
+    "name": "Contractors",
+    "description": "Another Example Description",
+    "parent_id": 1,
+    "position": 4,
+    "image_url": "http://example_website.com/image.png"
 }
 ```
 
@@ -118,14 +126,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id" : 1,
-  "name": "Example User Group",
-  "description": "Example Description",
-  "programme": "Demo Central Perks",
-  "parent_id": null,
-  "position": 1,
-  "default": false,
-  "image_url": "http://example_hosted_image_url.com/image.png"
+    "id": "20",
+    "name": "Contractors",
+    "description": "Another Example Description",
+    "programme": "Demo Programme",
+    "parent_id": 1,
+    "position": 4,
+    "image_url": "http://example_website.com/image.png"
 }
 
 ```
@@ -156,8 +163,8 @@ Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
-  "name": "Example Updated User Group",
-  "position": 2
+    "name": "Sub-Contractors",
+    "position": 5
 }
 
 ```
@@ -169,14 +176,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "id" : 1,
-  "name": "Example Updated User Group",
-  "description": "Example Description",
-  "programme": "Demo Central Perks",
-  "parent_id": null,
-  "position": 2,
-  "default": false,
-  "image_url": "http://example_hosted_image_url.com/image.png"
+    "id": "20",
+    "name": "Sub-Contractors",
+    "description": "Another Example Description",
+    "programme": "Demo Programme",
+    "parent_id": 1,
+    "position": 5,
+    "image_url": "http://example_website.com/image.png"
 }
 ```
 
