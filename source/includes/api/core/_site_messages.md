@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ```json
 {
-    "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details."
+    "content": "Hello John. You have <strong>won a prize</strong>. Please visit the points area for more details."
 }
 ```
 
@@ -29,8 +29,8 @@ Content-Type: application/json
 ```json
 {
   "id": 2,
-  "user_id": 68,
-  "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details.",
+  "user_id": 123,
+  "content": "Hello John. You have <strong>won a prize</strong>. Please visit the points area for more details.",
   "created_at": "2016-03-18T02:20:02.000+00:00"
 }
 ```
@@ -73,8 +73,8 @@ Content-Type: application/json
 ```json
 {
   "id": 2,
-  "user_id": 68,
-  "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details.",
+  "user_id": 123,
+  "content": "Hello John. You have <strong>won a prize</strong>. Please visit the points area for more details.",
   "created_at": "2016-03-18T02:20:02.000+00:00"
 }
 ```
@@ -110,13 +110,13 @@ Content-Type: application/json
 [
   {
     "id": 1,
-    "user_id": 68,
-    "content": "Hello Fred. You have <strong>won a prize</strong>. Please visit the points area for more details.",
+    "user_id": 123,
+    "content": "Hello John. You have <strong>won a prize</strong>. Please visit the points area for more details.",
     "created_at": "2016-03-18T02:20:02.000+00:00"
   },
   {
     "id": 2,
-    "user_id": 69,
+    "user_id": 123,
     "content": "Your Order is on it's way",
     "created_at": "2017-08-16T07:58:03.000+01:00"
   }

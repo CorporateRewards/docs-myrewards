@@ -81,7 +81,7 @@ The client platform is acting as an Identity Provider (IdP)
   <saml:AttributeStatement>
    <saml:Attribute Name="uid" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
     <saml:AttributeValue xmlns:q1="http://www.w3.org/2001/XMLSchema" p6:type="q1:string" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance">
-     user@client-company.com
+     john.doe@email.null
     </saml:AttributeValue>
    </saml:Attribute>
   </saml:AttributeStatement>
@@ -226,57 +226,46 @@ If your programme has been configured to allow user provisioning for SAML SSO yo
 
   <saml:AttributeStatement>
     <saml:Attribute Name="uid" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">user@client-company.com</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">john.doe@email.null</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="username" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">username123</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">john.doe</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">user@client-company.com</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">john.doe@email.null</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="firstname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">Jane</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">John</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="lastname" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">Smith</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">Doe</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="communication_preference" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
       <saml:AttributeValue xsi:type="xs:string">sms</saml:AttributeValue>
       <saml:AttributeValue xsi:type="xs:string">email</saml:AttributeValue>
     </saml:Attribute>
-    <saml:Attribute Name="registration_question_43" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">An answer</saml:AttributeValue>
+    <saml:Attribute Name="registration_question_2" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">Working From Home</saml:AttributeValue>
     </saml:Attribute>
-    <saml:Attribute Name="registration_question_59" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">01/09/2022</saml:AttributeValue>
-    </saml:Attribute>
-    <saml:Attribute Name="registration_question_120" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">149257</saml:AttributeValue>
-    </saml:Attribute>
-    <saml:Attribute Name="registration_question_2025" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">Miss</saml:AttributeValue>
-    </saml:Attribute>
-    <saml:Attribute Name="registration_question_2067" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">No</saml:AttributeValue>
-    </saml:Attribute>
-    <saml:Attribute Name="registration_question_4315" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">Red</saml:AttributeValue>
-      <saml:AttributeValue xsi:type="xs:string">Yellow</saml:AttributeValue>
+    <saml:Attribute Name="registration_question_16" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+      <saml:AttributeValue xsi:type="xs:string">Monday</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">Wednesday</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">Friday</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="chosen_locale" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">fr</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">en</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="user_group_id" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">354</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">10</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="company" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">My Company</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">Org Inc</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="company_name" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">My Company</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">Org Inc</saml:AttributeValue>
     </saml:Attribute>
     <saml:Attribute Name="company_identifier" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
-      <saml:AttributeValue xsi:type="xs:string">my_company123</saml:AttributeValue>
+      <saml:AttributeValue xsi:type="xs:string">org-inc-01</saml:AttributeValue>
     </saml:Attribute>
   </saml:AttributeStatement>
  </saml:Assertion>

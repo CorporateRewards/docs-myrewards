@@ -61,7 +61,7 @@ Content-Type: application/json
       "product_or_activity_ref": "PRE",
       "quantity": 2,
       "value_of_sale": 100.35,
-      "username": "john.doe@noemail.com"
+      "username": "john.doe@email.null"
     }
   ]
 }

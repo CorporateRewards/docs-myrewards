@@ -17,7 +17,7 @@ Content-Type: application/json
     "value": 1000,
     "description": "Competition winner.",
     "expiry_date": "2025-12-31",
-    "send_email": "john.doe@noemail.com"
+    "send_email": "john.doe@email.null"
 }
 ```
 
@@ -29,7 +29,7 @@ Content-Type: application/json
     "value" : 1000,
     "description" : "Competition winner.",
     "expiry_date" : "2025-12-31",
-    "send_email" : "john.doe@noemail.com",
+    "send_email" : "john.doe@email.null",
     "code_value" : "XXXX-YYYY-ZZZZ",
     "batch_reference" : "SSSS",
     "state" : "active",
@@ -74,7 +74,7 @@ Content-Type: application/json
     "value" : 1000,
     "description" : "Competition winner.",
     "expiry_date" : "2025-12-31",
-    "send_email" : "john.doe@noemail.com",
+    "send_email" : "john.doe@email.null",
     "code_value" : "XXXX-YYYY-ZZZZ",
     "batch_reference" : "SSSS",
     "state" : "active",
