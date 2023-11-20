@@ -63,6 +63,7 @@ HTTP/1.1 201 CREATED
 Content-Type: Application/json
 
 {
+    "id": 123,
     "title": "Dr",
     "firstname": "John",
     "lastname": "Doe",
@@ -227,6 +228,7 @@ HTTP/1.1 200 OK
 Content-Type: Application/json
 
 {
+    "id": 123,
     "title": "Dr",
     "firstname": "John",
     "lastname": "Doe",
@@ -310,6 +312,7 @@ HTTP/1.1 200 OK
 Content-Type: Application/json
 
 {
+    "id": 123,
     "title": "Dr",
     "firstname": "John",
     "lastname": "Doe",

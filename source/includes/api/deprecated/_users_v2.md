@@ -32,36 +32,41 @@ Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
-  "username" : "bwayne",
-  "email" : "bruce@wayneinc.com",
-  "title" : "Mr",
-  "firstname" : "Bruce",
-  "lastname" : "Wayne",
-  "company" : "Wayne Inc",
-  "job_title" : "CEO",
-  "address_1" : "Wayne Manor",
-  "address_2" : "1007 Mountain Drive",
-  "town" : "Gotham",
-  "postcode" : "G1 1BM",
-  "county" : "New Jersey",
-  "country" : "United States",
-  "date_of_birth" : "1980-02-19",
-  "telephone" : "+447876543210",
-  "mobile" : "+447765432101",
-  "tsandcs" : "true",
-  "consented" : "false",
-  "marketing_consented" : "true",
-  "user_group_id" : "10",
-  "registration_answers_attributes" : [
-    {
-      "registration_question_id" : "2",
-      "answer" : "Because I'm Batman"
-    },
-    {
-      "registration_question_id" : "16",
-      "answer" : [ "Alfred", "Bruce" ]
-    }
-  ]
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
+    "country": "UK",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
+    "chosen_locale": "en",
+    "user_group_id": "10",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "answer": "Working From Home"
+        },
+        {
+            "registration_question_id": "16",
+            "answer": [
+                "Monday",
+                "Wednesday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
@@ -70,37 +75,42 @@ HTTP/1.1 201 CREATED
 Content-Type: Application/json
 
 {
-  "id": 123,
-  "username" : "bwayne",
-  "email" : "bruce@wayneinc.com",
-  "title" : "Mr",
-  "firstname" : "Bruce",
-  "lastname" : "Wayne",
-  "company" : "Wayne Inc",
-  "job_title" : "CEO",
-  "address_1" : "Wayne Manor",
-  "address_2" : "1007 Mountain Drive",
-  "town" : "Gotham",
-  "postcode" : "G1 1BM",
-  "county" : "New Jersey",
-  "country" : "United States",
-  "date_of_birth" : "1980-02-19",
-  "telephone" : "+447876543210",
-  "mobile" : "+447765432101",
-  "tsandcs" : "true",
-  "consented" : "false",
-  "marketing_consented" : "true",
-  "user_group_id" : "10",
-  "registration_answers_attributes" : [
-    {
-      "registration_question_id" : "2",
-      "answer" : "Because I'm Batman"
-    },
-    {
-      "registration_question_id" : "16",
-      "answer" : "Alfred"
-    }
-  ]
+    "id": 123,
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
+    "country": "UK",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
+    "chosen_locale": "en",
+    "user_group_id": "10",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "answer": "Working From Home"
+        },
+        {
+            "registration_question_id": "16",
+            "answer": [
+                "Monday",
+                "Wednesday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
@@ -145,8 +155,23 @@ Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
-  "firstname" : "Joker",
-  "lastname" : "Hahaha"
+    "user_group_id": "5",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "answer": "Office"
+        },
+        {
+            "registration_question_id": "16",
+            "answer": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
@@ -155,35 +180,44 @@ HTTP/1.1 200 OK
 Content-Type: Application/json
 
 {
-  "id": 123,
-  "username" : "bwayne",
-  "email" : "bruce@wayneinc.com",
-  "title" : "Mr",
-  "firstname" : "Joker",
-  "lastname" : "Hahaha",
-  "company" : "Wayne Inc",
-  "job_title" : "CEO",
-  "address_1" : "Wayne Manor",
-  "address_2" : "1007 Mountain Drive",
-  "town" : "Gotham",
-  "postcode" : "G1 1BM",
-  "county" : "New Jersey",
-  "country" : "United States",
-  "date_of_birth" : "1980-02-19",
-  "telephone" : "+447876543210",
-  "mobile" : "+447765432101",
-  "tsandcs" : "true",
-  "user_group_id" : "10",
-  "registration_answers_attributes" : [
-    {
-      "registration_question_id" : "2",
-      "answer" : "Because I'm Batman"
-    },
-    {
-      "registration_question_id" : "16",
-      "answer" : "Alfred"
-    }
-  ]
+    "id": 123,
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
+    "country": "UK",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
+    "chosen_locale": "en",
+    "user_group_id": "5",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "answer": "Office"
+        },
+        {
+            "registration_question_id": "16",
+            "answer": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
