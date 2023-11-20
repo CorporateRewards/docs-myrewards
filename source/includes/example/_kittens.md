@@ -8,7 +8,7 @@ Explain what a Kitten is and why you would want to create / delete them.
 
 ```http
 POST /api/v2/kittens/ HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -56,7 +56,7 @@ cuteness | integer | how cute? (1-10)
 
 ```http
 GET /api/v2/kittens/{id} HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -92,7 +92,7 @@ id | integer | The ID of the kitten to retrieve
 
 ```http
 GET /api/v2/kittens HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -142,7 +142,7 @@ Remember — a happy kitten is an authenticated kitten!
 
 ```http
 GET /api/v2/kittens/{id} HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

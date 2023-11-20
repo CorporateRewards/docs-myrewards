@@ -28,7 +28,7 @@ answers, then the value for `answer` should be an array, as show in the example 
 
 ``` http
 POST /api/v2/users HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -141,7 +141,7 @@ params as the create user api above.
 
 ``` http
 PUT /api/v2/users/{user_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

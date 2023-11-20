@@ -22,7 +22,7 @@ created_at_end_date | `date` | A parameter in ISO-8601 format for scoping submis
 
 ``` http
 GET /api/v2/campaigns/{campaign_id}/submissions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -141,7 +141,7 @@ campaign_id | `integer` | The ID of the campaign that the submission belongs to
 
 ``` http
 POST /api/v2/campaigns/{campaign_id}/submissions/{submission_id}/approve HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -195,7 +195,7 @@ Endpoint to decline a given submission.
 
 ``` http
 POST /api/v2/campaigns/{campaign_id}/submissions/{id}/decline HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

@@ -8,7 +8,7 @@ This endpoint returns wall posts from the recognition wall on your programme (if
 
 ``` http
 GET /api/v2/recognition/recognition_wall HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

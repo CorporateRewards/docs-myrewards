@@ -12,7 +12,7 @@ Endpoint to create a self claim against a specific self-claim promotion.
 
 ``` http
 POST /api/v2/performance/promotions/{promotion_id}/self_claims HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -104,7 +104,7 @@ Endpoint to get self claims against a specific self-claim promotion. Claims can 
 
 ``` http
 GET /api/v2/performance/promotions/{promotion_id}/self_claims HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -278,7 +278,7 @@ Endpoint to update a pending self claim against a specific self-claim promotion.
 
 ``` http
 PATCH /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id} HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -372,7 +372,7 @@ Endpoint to decline a specified claim.
 
 ``` http
 POST /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/decline HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -453,7 +453,7 @@ Endpoint to approve a specified claim.
 
 ``` http
 POST /api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/approve HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

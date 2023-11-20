@@ -6,7 +6,7 @@
 
 ```http
 POST /api/v2/reward/codes HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -62,7 +62,7 @@ send\_email | string | Optional, valid email address to which the code will be s
 
 ```http
 GET /api/v2/reward/codes/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

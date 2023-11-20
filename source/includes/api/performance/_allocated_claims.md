@@ -6,7 +6,7 @@ Endpoint to view allocated claims against a specific promotion. Claims can be sc
 
 ``` http
 GET /api/v2/performance/promotions/{promotion_id}/allocated_claims HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -81,7 +81,7 @@ Endpoint to decline a given allocated claim.
 
 ``` http
 POST /api/v2/performance/promotions/{promotion_id}/allocated_claims/{claim_id}/decline HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -111,7 +111,7 @@ Endpoint to create allocated claims against specific promotion. Claims are creat
 
 ``` http
 POST /api/v2/performance/promotions/{promotion_id}/allocated_claims HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

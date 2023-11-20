@@ -8,7 +8,7 @@ You will be returned the updated JSON for the given nomination.
 
 ``` http
 PATCH /api/v2/campaigns/{campaign_id}/nominations/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 ``` http
 PATCH /api/v2/campaigns/{campaign_id}/nominations/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

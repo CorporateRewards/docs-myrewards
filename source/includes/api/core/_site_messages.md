@@ -11,7 +11,7 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 
 ```http
 GET /api/v2/user/{user_id}/site_messages/{id} HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -64,7 +64,7 @@ content | string | the content of message
 
 ```http
 GET /api/v2/user/{user_id}/site_messages/{id} HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -100,7 +100,7 @@ id | integer | The ID of the site message to retrieve
 
 ```http
 GET /api/v2/user/{user_id}/site_messages HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

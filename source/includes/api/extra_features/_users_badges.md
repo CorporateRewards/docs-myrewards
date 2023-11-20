@@ -6,7 +6,7 @@ An endpoint to fetch a list of badges for a given user.
 
 ``` http
 GET /api/v2/users/{user_id}/badges HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -50,7 +50,7 @@ A endpoint to update a badge for a given user.
 
 ``` http
 PUT /api/v2/users/{user_id}/badges/{badge_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ```json

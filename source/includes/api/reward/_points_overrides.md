@@ -20,7 +20,7 @@ If MyRewards has already imported the product from GPS, the points override will
 
 ```http
 PUT /api/v2/points_overrides/{gps_product_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -77,7 +77,7 @@ and not MyRewards
 
 ```http
 DELETE /api/v2/points_overrides/{gps_product_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 > Response (override found for product id):

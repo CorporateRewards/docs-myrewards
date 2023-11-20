@@ -7,7 +7,7 @@ enabled programme scoped to a Promotion. Returns an array of data fields as a fl
 
 ``` http
 GET /api/v2/performance/promotions/{promotion_id}/data_fields HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -46,7 +46,7 @@ Content-Type: application/json
 
 ```http
 GET /api/v2/performance/promotions/{promotion_id}/data_fields HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ```http

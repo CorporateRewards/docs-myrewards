@@ -11,7 +11,7 @@ with a tier being a vertical 'slice' down the hierarchy
 
 ``` http
 GET /api/v2/user_groups HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -71,7 +71,7 @@ user_group_id | `integer` | The ID of the user group you want to return
 
 ``` http
 GET /api/v2/user_groups/{user_group_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -101,7 +101,7 @@ no position is passed then it will default to the bottom of the hierachy.
 
 ``` http
 POST /api/v2/user_groups HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 
 {
   "name": "Example User Group",
@@ -152,7 +152,7 @@ result in an error.
 
 ``` http
 PUT /api/v2/user_groups/{user_group_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -212,7 +212,7 @@ user_group_id | `integer` | The ID of the user group you want to delete
 
 ``` http
 DELETE /api/v2/user_groups/{user_group_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
