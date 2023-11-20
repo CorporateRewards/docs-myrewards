@@ -14,41 +14,45 @@ Reasons include:
 
 ``` http
 POST /api/v3/users HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
-  "username" : "bwayne",
-  "email" : "bruce@wayneinc.com",
-  "title" : "Mr",
-  "firstname" : "Bruce",
-  "lastname" : "Wayne",
-  "company" : "Wayne Inc",
-  "job_title" : "CEO",
-  "address_1" : "Wayne Manor",
-  "address_2" : "1007 Mountain Drive",
-  "town" : "Gotham",
-  "postcode" : "G1 1BM",
-  "county" : "New Jersey",
-  "country" : "United States",
-  "date_of_birth" : "1980-02-19",
-  "telephone" : "+447876543210",
-  "mobile" : "+447765432101",
-  "chosen_locale": "en",
-  "tsandcs" : "true",
-  "consented" : "false",
-  "marketing_consented" : "true",
-  "user_group_id" : "10",
-  "registration_answers_attributes" : [
-    {
-      "registration_question_id" : "2",
-      "answer" : "Because I'm Batman"
-    },
-    {
-      "registration_question_id" : "16",
-      "answer" : [ "Alfred", "Bruce" ]
-    }
-  ]
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
+    "country": "UK",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
+    "chosen_locale": "en",
+    "user_group_id": "10",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "answer": "Working From Home"
+        },
+        {
+            "registration_question_id": "16",
+            "answer": [
+                "Monday",
+                "Wednesday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
@@ -59,38 +63,49 @@ HTTP/1.1 201 CREATED
 Content-Type: Application/json
 
 {
-  "id": 123,
-  "username" : "bwayne",
-  "email" : "bruce@wayneinc.com",
-  "title" : "Mr",
-  "firstname" : "Bruce",
-  "lastname" : "Wayne",
-  "company" : "Wayne Inc",
-  "job_title" : "CEO",
-  "address_1" : "Wayne Manor",
-  "address_2" : "1007 Mountain Drive",
-  "town" : "Gotham",
-  "postcode" : "G1 1BM",
-  "county" : "New Jersey",
-  "country" : "United States",
-  "date_of_birth" : "1980-02-19",
-  "telephone" : "+447876543210",
-  "mobile" : "+447765432101",
-  "chosen_locale": "en",
-  "tsandcs" : "true",
-  "consented" : "false",
-  "marketing_consented" : "true",
-  "user_group_id" : "10",
-  "registration_answers_attributes" : [
-    {
-      "registration_question_id" : "2",
-      "answer" : "Because I'm Batman"
-    },
-    {
-      "registration_question_id" : "16",
-      "answer" : "Alfred"
-    }
-  ]
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
+    "country": "UK",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
+    "chosen_locale": "en",
+    "user_group_id": "10",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "question": {
+                "user_locale": "Workplace",
+                "stack_locale": "Workplace"
+            },
+            "answer": "Working From Home"
+        },
+        {
+            "registration_question_id": "16",
+            "question": {
+                "user_locale": "Work Days",
+                "stack_locale": "Work Days"
+            },
+            "answer": [
+                "Monday",
+                "Wednesday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
@@ -133,7 +148,7 @@ programme is using a managed list of companies, the value must be an object cont
 
 ##### Example 2: Company as a manage list:
 
-`"company": { "name": "Luther Corp", "identifier": "lth-18" }`
+`"company": { "name": "Org Inc", "identifier": "org-inc-01" }`
 
 If the company can not be found, it will be created. Existing companies will have their `name` 
 updated if different.
@@ -201,7 +216,7 @@ variations of the request that are supported:
 
 ``` http
 GET /api/v3/users/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -210,45 +225,49 @@ Content-Type: application/json
 ``` http
 HTTP/1.1 200 OK
 Content-Type: Application/json
+
 {
-    "id": 681,
-    "username": "",
-    "email": "bruce@wayne.com",
-    "title": "Mr",
-    "firstname": "Bruce ",
-    "lastname": "Wayne",
-    "company": "",
-    "job_title": "",
-    "address_1": "",
-    "address_2": "",
-    "town": "",
-    "postcode": "",
-    "county": "",
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
     "country": "UK",
-    "date_of_birth": "1900-02-19",
-    "telephone": "",
-    "mobile": "",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
     "chosen_locale": "en",
-    "tsandcs": true,
-    "consented": true,
-    "marketing_consented": null,
-    "user_group_id": 295,
+    "user_group_id": "10",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
     "registration_answers_attributes": [
         {
-            "registration_question_id": 44,
+            "registration_question_id": "2",
             "question": {
-                "user_locale": "start date",
-                "stack_locale": "start date"
+                "user_locale": "Workplace",
+                "stack_locale": "Workplace"
             },
-            "answer": "1800-03-11"
+            "answer": "Working From Home"
         },
         {
-            "registration_question_id": 1713,
+            "registration_question_id": "16",
             "question": {
-                "user_locale": "Social media preference",
-                "stack_locale": "Social media preference"
+                "user_locale": "Work Days",
+                "stack_locale": "Work Days"
             },
-            "answer": "Twitter"
+            "answer": [
+                "Monday",
+                "Wednesday",
+                "Friday"
+            ]
         }
     ]
 }
@@ -260,16 +279,27 @@ Content-Type: Application/json
 
 ``` http
 PUT /api/v3/users/{user_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
-  "firstname": "Joker",
-  "lastname": "Hahaha",
-  "company": {
-    "name": "Wayne Inc",
-    "identifier": "wayne-18"
-  }
+    "user_group_id": "5",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "answer": "Office"
+        },
+        {
+            "registration_question_id": "16",
+            "answer": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
@@ -280,40 +310,51 @@ HTTP/1.1 200 OK
 Content-Type: Application/json
 
 {
-  "id": 123,
-  "username" : "bwayne",
-  "email" : "bruce@wayneinc.com",
-  "title" : "Mr",
-  "firstname" : "Joker",
-  "lastname" : "Hahaha",
-  "company": {
-    "id": 4454,
-    "name": "Wayne Inc",
-    "identifier": "wayne-18"
-  },
-  "job_title" : "CEO",
-  "address_1" : "Wayne Manor",
-  "address_2" : "1007 Mountain Drive",
-  "town" : "Gotham",
-  "postcode" : "G1 1BM",
-  "county" : "New Jersey",
-  "country" : "United States",
-  "date_of_birth" : "1980-02-19",
-  "telephone" : "+447876543210",
-  "mobile" : "+447765432101",
-  "chosen_locale": "en",
-  "tsandcs" : "true",
-  "user_group_id" : "10",
-  "registration_answers_attributes" : [
-    {
-      "registration_question_id" : "2",
-      "answer" : "Because I'm Batman"
-    },
-    {
-      "registration_question_id" : "16",
-      "answer" : "Alfred"
-    }
-  ]
+    "title": "Dr",
+    "firstname": "John",
+    "lastname": "Doe",
+    "username": "john.doe",
+    "email": "john.doe@email.null",
+    "company": "Org Inc",
+    "job_title": "Demo User",
+    "address_1": "No 1 The Place",
+    "address_2": "The Street",
+    "town": "The Town",
+    "county": "The County",
+    "postcode": "TH3 P057",
+    "country": "UK",
+    "date_of_birth": "1970-01-01",
+    "telephone": "+440000000000",
+    "mobile": "+440000000000",
+    "chosen_locale": "en",
+    "user_group_id": "5",
+    "tsandcs": "true",
+    "consented": "false",
+    "marketing_consented": "true",
+    "registration_answers_attributes": [
+        {
+            "registration_question_id": "2",
+            "question": {
+                "user_locale": "Workplace",
+                "stack_locale": "Workplace"
+            },
+            "answer": "Office"
+        },
+        {
+            "registration_question_id": "16",
+            "question": {
+                "user_locale": "Work Days",
+                "stack_locale": "Work Days"
+            },
+            "answer": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ]
+        }
+    ]
 }
 ```
 
