@@ -1,7 +1,7 @@
 diff --git a/Dockerfile b/Dockerfile
 --- a/Dockerfile
 +++ b/Dockerfile
-@@ -1,23 +1,22 @@
+@@ -1,23 +1,23 @@
 -FROM ruby:2.6-slim
 +FROM ruby:3.0-slim
 
@@ -20,6 +20,7 @@ diff --git a/Dockerfile b/Dockerfile
 -    && gem install bundler \
 -    && bundle install \
 -    && apt-get remove -y build-essential git \
++        openssh-client \
      && apt-get autoremove -y \
      && rm -rf /var/lib/apt/lists/*
 
