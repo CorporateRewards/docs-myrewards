@@ -737,7 +737,7 @@ RESTful json endpoints that will accept either HTML/HTTP form data or json data.
 <p>In order to use our API endpoints, you will need to have an API key created and
 for this key to be granted the relevant permissions. To authenticate requests we
 require you to pass us this key in the form of an HTTP header called
-<code>Authorization</code> with the value set as <code>Token token=APIKEY</code> or <code>Token token=APIKEY:SECRETKEY</code>.</p>
+<code>Authorization</code> with the value set as <code>Token token={APIKEY}</code> or <code>Token token={APIKEY}:{SECRETKEY}</code>.</p>
 <h2 id='authentication-authentication'>Authentication</h2>
 <p>An API key now requires permissions to be assigned in order make any requests to the API. The issuer of your key will set permissions for endpoints you expect to access. If you need to access more of the API or you believe your permissions are not correct (unexpected 403 responses) then contact your key issuer.</p>
 
@@ -753,7 +753,7 @@ require you to pass us this key in the form of an HTTP header called
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -811,7 +811,7 @@ require you to pass us this key in the form of an HTTP header called
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/registration_questions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div>
 <blockquote>
 <p>Response:</p>
@@ -888,7 +888,7 @@ an array of values with their name and id.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/registration_questions/{registration_question_id}/list_of_values</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div>
 <blockquote>
 <p>Response:</p>
@@ -932,7 +932,7 @@ an array of all values with their name and id.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/registration_questions/{registration_question_id}/list_of_values</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -983,14 +983,14 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user/{user_id}/site_messages/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
 <p>Body: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="w">
+    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello John. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -998,8 +998,8 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello John. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T02:20:02.000+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1039,7 +1039,7 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 <p>Header: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user/{user_id}/site_messages/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -1047,8 +1047,8 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello John. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T02:20:02.000+00:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1079,7 +1079,7 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 <p>Header: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user/{user_id}/site_messages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -1088,13 +1088,13 @@ logs in they are notified of any unread messages via a pop-up (usually in the bo
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello Fred. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello John. You have &lt;strong&gt;won a prize&lt;/strong&gt;. Please visit the points area for more details."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T02:20:02.000+00:00"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
     </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Order is on it's way"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-16T07:58:03.000+01:00"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1140,7 +1140,7 @@ MyRewards Programme.</p>
 <p>The remote_transaction_id is documented in the POST endpoint for creating
 transactions, this value is optional, therefore can be <code>null</code></p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/{user_id}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -1227,7 +1227,7 @@ MyRewards Programme.</p>
 <p>The remote_transaction_id is documented in the POST endpoint for creating
 transactions, this value is optional, therefore can be <code>null</code></p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/{user_id}/transactions/last</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -1334,7 +1334,7 @@ A points transaction will also have a variety which will be one of:</p>
 
 <p>Example below shows a transaction that will credit 100 points to a user debited from the programme balance. On the user&#39;s points statement a reason of &#39;Employee of the month&#39; will be shown.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v1/users/{user_id}/transactions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -1430,27 +1430,35 @@ enabling the client end of the API to re-construct the user group hierarchy. Thi
 would be required if a registration_question is linked to a tier of user_groups
 with a tier being a vertical &#39;slice&#39; down the hierarchy</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_groups</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"dc comics"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Description"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"parent_id"</span><span class="w"> </span><span class="p">:</span><span class="w">  </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"position"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"justice league"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Example Description"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"parent_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"position"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Description"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full-Time"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Description"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Part-Time"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Example Description"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='core-user-groups-get-all-user-groups-http-request'>HTTP Request</h4>
 <p><code>GET /api/v2/user_groups</code></p>
@@ -1516,7 +1524,7 @@ with a tier being a vertical &#39;slice&#39; down the hierarchy</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_groups/{user_group_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -1526,12 +1534,12 @@ with a tier being a vertical &#39;slice&#39; down the hierarchy</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
 
 <span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">299</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example description"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">298</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Part-Time"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Example Description"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='core-user-groups-create-user-groups'>Create User Groups</h3>
 <p>An endpoint to create a user group for this programme. Only accessible if the key
@@ -1540,27 +1548,26 @@ This usergroup can be nested underneath another user group by passing the parent
 user group id. Images can be uploaded to the user group by passing a publicly accessible image url. If
 no position is passed then it will default to the bottom of the hierachy.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/user_groups</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 
 {
-  "name": "Example User Group",
-  "description": "Example Description",
-  "position": 1,
-  "parent_id": null,
-  "image_url": "http://example_website.com/image.png"
+    "name": "Contractors",
+    "description": "Another Example Description",
+    "parent_id": 1,
+    "position": 4,
+    "image_url": "http://example_website.com/image.png"
 }
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example User Group"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Description"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"programme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo Central Perks"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example_hosted_image_url.com/image.png"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contractors"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Example Description"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"programme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo Programme"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example_website.com/image.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h4 id='core-user-groups-create-user-groups-http-request'>HTTP Request</h4>
@@ -1607,12 +1614,12 @@ result in an error.</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/user_groups/{user_group_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Updated User Group"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub-Contractors"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
@@ -1623,14 +1630,13 @@ result in an error.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Updated User Group"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example Description"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"programme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo Central Perks"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"default"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example_hosted_image_url.com/image.png"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sub-Contractors"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Another Example Description"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"programme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo Programme"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"parent_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example_website.com/image.png"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='core-user-groups-update-a-user-group-http-request'>HTTP Request</h4>
 <p><code>PUT /api/v2/user_groups/{user_group_id}</code></p>
@@ -1691,7 +1697,7 @@ result in an error.</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/user_groups/{user_group_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -1706,7 +1712,7 @@ group name. This is to help identify different permissions when names are
 the same across separate groups. It will also display whether the permission is
 active for a given user_group.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_groups/{user_group_id}/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -1767,7 +1773,7 @@ to the given user_group</p>
 <p>N.B. If updating a permission where the permission_group is not active the
 change will be ignored</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/user_groups/{user_group_id}/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 
 {
   "permissions" : [
@@ -1850,41 +1856,45 @@ change will be ignored</p>
 <p>Request: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v3/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"marketing_consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="w"> </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working From Home"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -1894,38 +1904,50 @@ change will be ignored</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"marketing_consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"user_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workplace"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stack_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workplace"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working From Home"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"user_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Days"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stack_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Days"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>In order to create a user account on the MyRewards 2.0 platform there is often
@@ -1959,7 +1981,7 @@ programme is using a managed list of companies, the value must be an object cont
 <h5 id='core-users-create-a-user-company-example-1-company-as-a-free-text-field'>Example 1: Company as a free-text field:</h5>
 <p><code>&quot;company&quot;: &quot;Luther Corp&quot;</code> </p>
 <h5 id='core-users-create-a-user-company-example-2-company-as-a-manage-list'>Example 2: Company as a manage list:</h5>
-<p><code>&quot;company&quot;: { &quot;name&quot;: &quot;Luther Corp&quot;, &quot;identifier&quot;: &quot;lth-18&quot; }</code></p>
+<p><code>&quot;company&quot;: { &quot;name&quot;: &quot;Org Inc&quot;, &quot;identifier&quot;: &quot;org-inc-01&quot; }</code></p>
 
 <p>If the company can not be found, it will be created. Existing companies will have their <code>name</code> 
 updated if different.</p>
@@ -2131,7 +2153,7 @@ an example of the response when the company is a managed list.</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v3/users/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2139,63 +2161,79 @@ an example of the response when the company is a managed list.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
-<span class="s">{</span>
-<span class="s">    "id": 681,</span>
-<span class="s">    "username": "",</span>
-<span class="s">    "email": "bruce@wayne.com",</span>
-<span class="s">    "title": "Mr",</span>
-<span class="s">    "firstname": "Bruce ",</span>
-<span class="s">    "lastname": "Wayne",</span>
-<span class="s">    "company": "",</span>
-<span class="s">    "job_title": "",</span>
-<span class="s">    "address_1": "",</span>
-<span class="s">    "address_2": "",</span>
-<span class="s">    "town": "",</span>
-<span class="s">    "postcode": "",</span>
-<span class="s">    "county": "",</span>
-<span class="s">    "country": "UK",</span>
-<span class="s">    "date_of_birth": "1900-02-19",</span>
-<span class="s">    "telephone": "",</span>
-<span class="s">    "mobile": "",</span>
-<span class="s">    "chosen_locale": "en",</span>
-<span class="s">    "tsandcs": true,</span>
-<span class="s">    "consented": true,</span>
-<span class="s">    "marketing_consented": null,</span>
-<span class="s">    "user_group_id": 295,</span>
-<span class="s">    "registration_answers_attributes": [</span>
-<span class="s">        {</span>
-<span class="s">            "registration_question_id": 44,</span>
-<span class="s">            "question": {</span>
-<span class="s">                "user_locale": "start date",</span>
-<span class="s">                "stack_locale": "start date"</span>
-<span class="s">            },</span>
-<span class="s">            "answer": "1800-03-11"</span>
-<span class="s">        },</span>
-<span class="s">        {</span>
-<span class="s">            "registration_question_id": 1713,</span>
-<span class="s">            "question": {</span>
-<span class="s">                "user_locale": "Social media preference",</span>
-<span class="s">                "stack_locale": "Social media preference"</span>
-<span class="s">            },</span>
-<span class="s">            "answer": "Twitter"</span>
-<span class="s">        }</span>
-<span class="s">    ]</span>
-<span class="s">}</span>
-</code></pre></div><h3 id='core-users-update-a-user'>Update a User</h3>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"user_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workplace"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stack_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workplace"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working From Home"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"user_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Days"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stack_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Days"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='core-users-update-a-user'>Update a User</h3>
 <blockquote>
 <p>Request: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v3/users/{user_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joker"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hahaha"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wayne-18"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Tuesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -2205,40 +2243,52 @@ an example of the response when the company is a managed list.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Joker"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hahaha"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4454</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wayne-18"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"user_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workplace"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stack_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workplace"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"user_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Days"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"stack_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Work Days"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Tuesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>The update user api is available to update user information. This uses the same
@@ -2253,7 +2303,7 @@ permissions group name. This is to help identify different permissions when name
 It will also display whether the permission is active for the given user and the state of the permission which can
 be <code>Same As User Group</code> or if the permission has been overridden for that user: <code>Always Allow</code> or <code>Always Deny</code>.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/{user_id}/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -2324,7 +2374,7 @@ or delete much of the <code>GET</code> request response.</p>
 <p>N.B. When specifying active = true this will set the permission to &quot;Always allow&quot;
 setting to false will have the effect of &quot;Always deny&quot;</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/users/{user_id}/permissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 
 {
   "permissions" : [
@@ -2415,7 +2465,7 @@ setting to false will have the effect of &quot;Always deny&quot;</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v3/companies?page=1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2467,7 +2517,7 @@ setting to false will have the effect of &quot;Always deny&quot;</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v3/companies/company-b-identifier</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2494,7 +2544,7 @@ setting to false will have the effect of &quot;Always deny&quot;</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v3/companies</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -2557,7 +2607,7 @@ setting to false will have the effect of &quot;Always deny&quot;</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v3/companies/{company_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -2621,7 +2671,7 @@ setting to false will have the effect of &quot;Always deny&quot;</p>
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v3/companies/{company_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 </code></pre></div>
@@ -2650,7 +2700,7 @@ the data widgets area. </p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/data_widgets</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2675,7 +2725,7 @@ the data widgets area. </p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/{user_id}/data_widgets/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2718,7 +2768,7 @@ the data widgets area. </p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/users/{user_id}/data_widgets/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2775,7 +2825,7 @@ and the { id } specified.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/target_trackers</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -2798,7 +2848,7 @@ and the { id } specified.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/{user_id}/target_trackers/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2842,7 +2892,7 @@ and the { id } specified.</p>
 <p>Header: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/users/{user_id}/target_trackers/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -2902,7 +2952,7 @@ and the { id }.</p>
 <h2 id='extra-features-badges'>Badges</h2><h3 id='extra-features-badges-get-user-badges'>GET User Badges</h3>
 <p>An endpoint to fetch a list of badges for a given user.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/users/{user_id}/badges</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
@@ -2943,7 +2993,7 @@ and the { id }.</p>
 <h3 id='extra-features-badges-put-user-badge'>PUT User Badge</h3>
 <p>A endpoint to update a badge for a given user.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/users/{user_id}/badges/{badge_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"badge_won"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2996,7 +3046,7 @@ and the { id }.</p>
 <h1 id='performance-module'>Performance Module</h1><h2 id='performance-module-allocated-claims'>Allocated Claims</h2><h3 id='performance-module-allocated-claims-view-allocated-claims'>View Allocated Claims</h3>
 <p>Endpoint to view allocated claims against a specific promotion. Claims can be scoped down via passed in parameters. Only 100 records are returned at a time.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/allocated_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -3101,7 +3151,7 @@ and the { id }.</p>
 <h3 id='performance-module-allocated-claims-decline-allocated-claims'>Decline Allocated Claims</h3>
 <p>Endpoint to decline a given allocated claim.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/allocated_claims/{claim_id}/decline</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -3134,7 +3184,7 @@ and the { id }.</p>
 <h3 id='performance-module-allocated-claims-create-allocated-claims'>Create Allocated Claims</h3>
 <p>Endpoint to create allocated claims against specific promotion. Claims are created by using the <code>data_field</code> names from above as key/value pairs. Your request must include exactly one of <code>user_group_id</code> or <code>company_id</code> or <code>company_identifier</code> depending on the promotion configuration.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/allocated_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -3264,7 +3314,7 @@ and the { id }.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/self_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -3398,7 +3448,7 @@ and the { id }.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/self_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -3647,7 +3697,7 @@ and the { id }.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -3786,7 +3836,7 @@ and the { id }.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/decline</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -3869,7 +3919,7 @@ and the { id }.</p>
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/self_claims/{claim_id}/approve</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -3939,50 +3989,50 @@ and the { id }.</p>
 <p>A simple endpoint to fetch a list of the data fields for a performance module
 enabled programme scoped to a Promotion. Returns an array of data fields as a flat list.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/data_fields</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superpower"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Superpower"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_values"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Super-strength</span><span class="se">\r\n</span><span class="s2">Flight</span><span class="se">\r\n</span><span class="s2">Other"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:34:03.000+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:34:03.000+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hero_name"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hero name"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:35:03.000+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:35:03.000+01:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">196</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"size"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"list_values"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"answers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small</span><span class="se">\r\n</span><span class="s2">Medium</span><span class="se">\r\n</span><span class="s2">Large"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:34:03.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:34:03.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"promotion_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serial_number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serial Number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mandatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"field_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"free_text"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"answers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:35:03.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-14T13:35:03.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h4 id='performance-module-data-fields-list-all-data-fields-http-request'>HTTP Request</h4><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/data_fields</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"invoice_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-01"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRE"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nl">"value_of_sale"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.35</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4048,7 +4098,7 @@ enabled programme scoped to a Promotion. Returns an array of data fields as a fl
 <h2 id='performance-module-performance-categories'>Performance Categories</h2><h3 id='performance-module-performance-categories-list-performance-categories'>List Performance Categories</h3>
 <p>Endpoint to fetch a list of the performance categories for a performance module enabled programme</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/performance_categories</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="s">[</span>
@@ -4085,7 +4135,7 @@ enabled programme scoped to a Promotion. Returns an array of data fields as a fl
 <h2 id='performance-module-performance-products'>Performance Products</h2><h3 id='performance-module-performance-products-creating-a-product'>Creating a Product</h3>
 <p>Endpoint to create performance products for a programme with the performance module enabled.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/performance_product_batches</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4176,7 +4226,7 @@ enabled programme scoped to a Promotion. Returns an array of data fields as a fl
 <p>Endpoint to update performance products for a programme with the performance module enabled.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/performance/performance_product_batches</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="s">PATCH /api/v2/performance/performance_product_batches HTTP/1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4259,7 +4309,7 @@ PATCH /api/v2/performance/performance_product_batches
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/reward_points?page=1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -4355,7 +4405,7 @@ PATCH /api/v2/performance/performance_product_batches
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/reward_points</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4460,7 +4510,7 @@ PATCH /api/v2/performance/performance_product_batches
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/performance/promotions/{promotion_id}/reward_points/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4560,7 +4610,7 @@ PATCH /api/v2/performance/performance_product_batches
 <h2 id='performance-module-sales-data'>Sales Data</h2><h3 id='performance-module-sales-data-create-sales-data'>Create Sales Data</h3>
 <p>Endpoint to create claims against specific promotion. Claims are created by using the data_field names from above as key/value pairs.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/data</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="w">
@@ -4628,7 +4678,7 @@ PATCH /api/v2/performance/performance_product_batches
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/recognition/recognition_wall</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4657,7 +4707,7 @@ PATCH /api/v2/performance/performance_product_batches
         </span><span class="nl">"receiver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">508</span><span class="p">,</span><span class="w">
         </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">351</span><span class="p">,</span><span class="w">
         </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Joe&lt;br /&gt;</span><span class="se">\r\B</span><span class="s2">loggs&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">joe@bloggs.com&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">27/04/2022&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">0&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">27/04/2022&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;a href='https://yourdomainname.com/liquid/recognition/4723/view_submission' target='_blank'&gt;View Submission&lt;/a&gt;&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;a href='https:/yourdomainname.com/pdf/awards/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDcyMywic3ViIjoiQXdhcmQifQ.uMTNhhnGCOJMwNDuOXDyFqdxKJvrf2B0jogdWYZfFQg/export_pdf.pdf' target='_blank'&gt;Click here&lt;/a&gt;&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;John&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">Doe&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">john.doe@email.null&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">27/04/2022&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">0&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">27/04/2022&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">-&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;a href='https://yourdomainname.com/liquid/recognition/4723/view_submission' target='_blank'&gt;View Submission&lt;/a&gt;&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;a href='https:/yourdomainname.com/pdf/awards/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDcyMywic3ViIjoiQXdhcmQifQ.uMTNhhnGCOJMwNDuOXDyFqdxKJvrf2B0jogdWYZfFQg/export_pdf.pdf' target='_blank'&gt;Click here&lt;/a&gt;&lt;br /&gt;</span><span class="se">\r\n</span><span class="s2">&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T10:02:59.000+01:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T10:02:59.000+01:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -4670,7 +4720,7 @@ PATCH /api/v2/performance/performance_product_batches
         </span><span class="nl">"sender_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">511</span><span class="p">,</span><span class="w">
         </span><span class="nl">"receiver_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">508</span><span class="p">,</span><span class="w">
         </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">351</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:/yourdomainname.com/s3/W1siZiIsIjIwMjIvMDQvMjcvMDgvNTQvNDkvYzNmMDNlMGItYzU1Ni00YmMxLWI4MzgtODQwYWZmODljOWIyL3N0b2NrLXZlY3Rvci12ZWN0b3ItZGFyay1ibHVlLXNlYW1sZXNzLXBhdHRlcm4td2l0aC1nb2xkLWZvaWwtY29uc3RlbGxhdGlvbnMtc3RhcnMtYW5kLWNsb3Vkcy13YXRlcmNvbG9yLW5pZ2h0LTEzMzE1Njc3OTIuanBnIl1d?sha=809982617de31702"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yourdomainname.com/s3/W1siZiIsIjIwMjIvMDQvMjcvMDgvNTQvNDkvYzNmMDNlMGItYzU1Ni00YmMxLWI4MzgtODQwYWZmODljOWIyL3N0b2NrLXZlY3Rvci12ZWN0b3ItZGFyay1ibHVlLXNlYW1sZXNzLXBhdHRlcm4td2l0aC1nb2xkLWZvaWwtY29uc3RlbGxhdGlvbnMtc3RhcnMtYW5kLWNsb3Vkcy13YXRlcmNvbG9yLW5pZ2h0LTEzMzE1Njc3OTIuanBnIl1d?sha=809982617de31702"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;Thanks&lt;/p&gt;</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T09:58:42.000+01:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-04-27T09:58:42.000+01:00"</span><span class="p">,</span><span class="w">
@@ -4743,7 +4793,7 @@ PATCH /api/v2/performance/performance_product_batches
 a status parameter. A valid approver for the nomination must also be provided.
 You will be returned the updated JSON for the given nomination.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/campaigns/{campaign_id}/nominations/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4758,7 +4808,7 @@ You will be returned the updated JSON for the given nomination.</p>
   </span><span class="nl">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"approved_l1"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">/api/v2/campaigns/{campaign_id}/nominations/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -4871,7 +4921,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/campaigns/{campaign_id}/submissions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -4994,7 +5044,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <p>Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/campaigns/{campaign_id}/submissions/{submission_id}/approve</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=key:secret</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -5015,7 +5065,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
         </span><span class="nl">"questions_answers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"355"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please enter your unique reference number:"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sdsdfsfdsfs"</span><span class="w">
+                </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref-001"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"points_approved"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -5042,7 +5092,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 </span></code></pre></div><h3 id='recognition-module-submissions-decline-submission'>Decline Submission</h3>
 <p>Endpoint to decline a given submission.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/campaigns/{campaign_id}/submissions/{id}/decline</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
@@ -5114,7 +5164,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/reward/codes</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -5124,7 +5174,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Competition winner."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-31"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"send_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="w">
+    </span><span class="nl">"send_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -5135,7 +5185,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
     </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Competition winner."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiry_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-31"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"send_email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"send_email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code_value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-YYYY-ZZZZ"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"batch_reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SSSS"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
@@ -5181,7 +5231,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
 <p>Header: </p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/reward/codes/{id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -5192,7 +5242,7 @@ state. For example an award with state &#39;pending_l1&#39; can transition to
     </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Competition winner."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiry_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-12-31"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"send_email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@noemail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"send_email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code_value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXX-YYYY-ZZZZ"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"batch_reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SSSS"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
@@ -5221,7 +5271,7 @@ and not MyRewards
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/points_overrides/{gps_product_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 </code></pre></div>
 <blockquote>
@@ -5285,7 +5335,7 @@ and not MyRewards
 <p>Header:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">/api/v2/points_overrides/{gps_product_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 </code></pre></div>
 <blockquote>
 <p>Response (override found for product id):</p>
@@ -5394,7 +5444,7 @@ and not MyRewards
   <span class="nt">&lt;saml:AttributeStatement&gt;</span>
    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"uid"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xmlns:q1=</span><span class="s">"http://www.w3.org/2001/XMLSchema"</span> <span class="na">p6:type=</span><span class="s">"q1:string"</span> <span class="na">xmlns:p6=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span><span class="nt">&gt;</span>
-     user@client-company.com
+     john.doe@email.null
     <span class="nt">&lt;/saml:AttributeValue&gt;</span>
    <span class="nt">&lt;/saml:Attribute&gt;</span>
   <span class="nt">&lt;/saml:AttributeStatement&gt;</span>
@@ -5541,57 +5591,46 @@ to include the X.509 Certificate public key in the assertion itself. MyRewards (
 
   <span class="nt">&lt;saml:AttributeStatement&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"uid"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>user@client-company.com<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>john.doe@email.null<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"username"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>username123<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>john.doe<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"email"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>user@client-company.com<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>john.doe@email.null<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"firstname"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Jane<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>John<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"lastname"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Smith<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Doe<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"communication_preference"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>sms<span class="nt">&lt;/saml:AttributeValue&gt;</span>
       <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>email<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
-    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_43"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>An answer<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_2"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Working From Home<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
-    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_59"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>01/09/2022<span class="nt">&lt;/saml:AttributeValue&gt;</span>
-    <span class="nt">&lt;/saml:Attribute&gt;</span>
-    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_120"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>149257<span class="nt">&lt;/saml:AttributeValue&gt;</span>
-    <span class="nt">&lt;/saml:Attribute&gt;</span>
-    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_2025"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Miss<span class="nt">&lt;/saml:AttributeValue&gt;</span>
-    <span class="nt">&lt;/saml:Attribute&gt;</span>
-    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_2067"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>No<span class="nt">&lt;/saml:AttributeValue&gt;</span>
-    <span class="nt">&lt;/saml:Attribute&gt;</span>
-    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_4315"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/saml:AttributeValue&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+    <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"registration_question_16"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Monday<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Wednesday<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Friday<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"chosen_locale"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>fr<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>en<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"user_group_id"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>354<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>10<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"company"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>My Company<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Org Inc<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"company_name"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>My Company<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>Org Inc<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
     <span class="nt">&lt;saml:Attribute</span> <span class="na">Name=</span><span class="s">"company_identifier"</span> <span class="na">NameFormat=</span><span class="s">"urn:oasis:names:tc:SAML:2.0:attrname-format:basic"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>my_company123<span class="nt">&lt;/saml:AttributeValue&gt;</span>
+      <span class="nt">&lt;saml:AttributeValue</span> <span class="na">xsi:type=</span><span class="s">"xs:string"</span><span class="nt">&gt;</span>org-inc-01<span class="nt">&lt;/saml:AttributeValue&gt;</span>
     <span class="nt">&lt;/saml:Attribute&gt;</span>
   <span class="nt">&lt;/saml:AttributeStatement&gt;</span>
  <span class="nt">&lt;/saml:Assertion&gt;</span>
@@ -5710,7 +5749,7 @@ id_token=jwt.appears.here
     </span><span class="nl">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"another-random-value-from-myrewards"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1311281970</span><span class="p">,</span><span class="w">
     </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1311280970</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='sso-single-sign-on-openid-connect-implementation-notes'>Implementation notes</h3><h4 id='sso-single-sign-on-openid-connect-implementation-notes-configuration-discovery'>Configuration discovery</h4>
 <p>For ease of configuration, and to aid in dynamic configuration changes from the OpenID Connect provider, MyRewards relies on discovery to find most of the configuration values for the provider. To that end, you will need to configure your programme with a &quot;discovery URL&quot;, which should be a <a href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig">domain (or domain with a path)</a> that has the path <code>/.well-known/openid-configuration</code>, from which MyRewards will attempt to load the configuration of your OpenID implementation.</p>
@@ -5772,76 +5811,86 @@ under the key <code>registration_answers_attributes</code>. The nested objects t
 have the keys <code>registration_question_id</code> and <code>answer</code>. If the question allows multiple
 answers, then the value for <code>answer</code> should be an array, as show in the example below.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"marketing_consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="w"> </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working From Home"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bruce"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"marketing_consented"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working From Home"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='deprecated-end-points-users-v2-create-a-user-http-request'>HTTP Request</h4>
 <p><code>POST /api/v2/users</code></p>
@@ -5963,46 +6012,70 @@ answers, then the value for <code>answer</code> should be an array, as show in t
 <p>The update user api is available to update user information. This uses the same
 params as the create user api above.</p>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">PUT</span> <span class="nn">/api/v2/users/{user_id}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token=xxx</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Joker"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hahaha"</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Tuesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
 
 <span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bwayne"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bruce@wayneinc.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Joker"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Hahaha"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Inc"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"job_title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Wayne Manor"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1007 Mountain Drive"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"town"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Gotham"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postcode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"G1 1BM"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"county"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"New Jersey"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date_of_birth"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1980-02-19"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"telephone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447876543210"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"+447765432101"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tsandcs"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"user_group_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"registration_answers_attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Because I'm Batman"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"registration_question_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"answer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Alfred"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Org Inc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No 1 The Place"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Street"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"town"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Town"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The County"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TH3 P057"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+440000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"chosen_locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tsandcs"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"marketing_consented"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"registration_answers_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"registration_question_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"Monday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Tuesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Wednesday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Thursday"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"Friday"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='deprecated-end-points-users-v2-update-a-user-http-request'>HTTP Request</h4>
 <p><code>PUT /api/v2/users/{user_id}</code></p>
