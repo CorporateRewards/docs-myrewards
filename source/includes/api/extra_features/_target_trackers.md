@@ -8,7 +8,7 @@ A target tracker is used to display a target value to a user and their achieveme
 
 ``` http
 GET /api/v2/target_trackers HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -39,7 +39,7 @@ This endpoint retrieves all target_trackers that belong to a programme (scoped b
 
 ``` http
 GET /api/v2/users/{user_id}/target_trackers/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -77,7 +77,7 @@ id | integer | The ID of the target_tracker to retrieve
 
 ``` http
 PUT /api/v2/users/{user_id}/target_trackers/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

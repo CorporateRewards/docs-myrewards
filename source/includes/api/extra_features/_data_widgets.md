@@ -9,7 +9,7 @@ the data widgets area.
 
 ``` http
 GET /api/v2/data_widgets HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 > Response:
@@ -40,7 +40,7 @@ This endpoint retrieves all data_widgets that belong to a programme (scoped by a
 
 ``` http
 GET /api/v2/users/{user_id}/data_widgets/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -77,7 +77,7 @@ id | integer | The ID of the data_widget to retrieve
 
 ``` http
 PUT /api/v2/users/{user_id}/data_widgets/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

@@ -24,7 +24,7 @@ transactions, this value is optional, therefore can be `null`
 
 ``` http
 GET /api/v2/users/{user_id}/transactions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -83,7 +83,7 @@ transactions, this value is optional, therefore can be `null`
 
 ``` http
 GET /api/v2/users/{user_id}/transactions/last HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -138,7 +138,7 @@ Example below shows a transaction that will credit 100 points to a user debited 
 
 ``` http
 POST /api/v1/users/{user_id}/transactions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

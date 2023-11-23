@@ -9,7 +9,7 @@ an array of values with their name and id.
 
 ```http
 GET /api/v2/registration_questions/{registration_question_id}/list_of_values HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 > Response:
@@ -48,7 +48,7 @@ an array of all values with their name and id.
 
 ```http
 POST /api/v2/registration_questions/{registration_question_id}/list_of_values HTTP/1.1
-Authorization: Token token=key:secret
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

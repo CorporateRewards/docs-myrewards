@@ -11,7 +11,7 @@ active for a given user_group.
 
 ``` http
 GET /api/v2/user_groups/{user_group_id}/permissions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -63,7 +63,7 @@ change will be ignored
 
 ``` http
 PATCH /api/v2/user_groups/{user_group_id}/permissions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 
 {
   "permissions" : [

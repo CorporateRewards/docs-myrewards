@@ -8,7 +8,7 @@ Permissions are used to grant access to administrative and reporting areas of th
 
 ``` http
 GET /api/v2/permissions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 

@@ -8,7 +8,7 @@ This endpoint returns reward points for a specified promotion. Results are pagin
 
 ``` http
 GET /api/v2/performance/promotions/{promotion_id}/reward_points?page=1 HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -97,7 +97,7 @@ This endpoint creates a reward point for a specified promotion.
 
 ``` http
 POST /api/v2/performance/promotions/{promotion_id}/reward_points HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -171,7 +171,7 @@ This endpoint updates a single reward point for a specified promotion.
 
 ``` http
 PATCH /api/v2/performance/promotions/{promotion_id}/reward_points/{id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

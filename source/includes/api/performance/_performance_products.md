@@ -6,7 +6,7 @@ Endpoint to create performance products for a programme with the performance mod
 
 ``` http
 POST /api/v2/performance/performance_product_batches HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -80,7 +80,7 @@ Endpoint to update performance products for a programme with the performance mod
 ``` http
 PUT /api/v2/performance/performance_product_batches HTTP/1.1
 PATCH /api/v2/performance/performance_product_batches HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {

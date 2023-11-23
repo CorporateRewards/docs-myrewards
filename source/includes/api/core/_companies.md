@@ -18,7 +18,7 @@ page | integer | The page number that you wish to view
 
 ``` http
 GET /api/v3/companies?page=1 HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -68,7 +68,7 @@ company_identifier | string | The identifier of the company you want to return
 
 ``` http
 GET /api/v3/companies/company-b-identifier HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 ```
 
@@ -101,7 +101,7 @@ This endpoint creates a new company associated to an api keys programme.
 
 ``` http
 POST /api/v3/companies HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -150,7 +150,7 @@ This endpoint updates an existing company associated to an api keys programme.
 
 ``` http
 PATCH /api/v3/companies/{company_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 {
@@ -200,7 +200,7 @@ This endpoint deletes an existing company associated to an api keys programme. Y
 
 ``` http
 DELETE /api/v3/companies/{company_id} HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 ```

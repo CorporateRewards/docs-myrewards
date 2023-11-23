@@ -6,7 +6,7 @@ Endpoint to fetch a list of the performance categories for a performance module 
 
 ``` http
 GET /api/v2/performance/performance_categories HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http

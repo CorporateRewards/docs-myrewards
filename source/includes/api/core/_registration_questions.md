@@ -6,7 +6,7 @@
 
 ```http
 GET /api/v2/registration_questions HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 > Response:

@@ -77,7 +77,7 @@ id_token=jwt.appears.here
     "nonce": "another-random-value-from-myrewards",
     "exp": 1311281970,
     "iat": 1311280970,
-    "email": "user@example.com"
+    "email": "john.doe@email.null"
 }
 ```
 

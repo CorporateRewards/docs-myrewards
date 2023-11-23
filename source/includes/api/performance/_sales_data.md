@@ -6,7 +6,7 @@ Endpoint to create claims against specific promotion. Claims are created by usin
 
 ``` http
 POST /api/v2/performance/data HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 Content-Type: application/json
 
 

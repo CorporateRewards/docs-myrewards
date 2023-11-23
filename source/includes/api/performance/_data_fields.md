@@ -7,7 +7,7 @@ enabled programme scoped to a Promotion. Returns an array of data fields as a fl
 
 ``` http
 GET /api/v2/performance/promotions/{promotion_id}/data_fields HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ``` http
@@ -15,30 +15,30 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 [
-  {
-    "id": 196,
-    "promotion_id": 1,
-    "name": "superpower",
-    "label": "Superpower",
-    "mandatory": true,
-    "field_type": "list_values",
-    "answers": "Super-strength\r\nFlight\r\nOther",
-    "created_at": "2016-04-14T13:34:03.000+01:00",
-    "updated_at": "2016-04-14T13:34:03.000+01:00",
-    "position": 1
-  },
-  {
-    "id": 197,
-    "promotion_id": 1,
-    "name": "hero_name",
-    "label": "Hero name",
-    "mandatory": true,
-    "field_type": "free_text",
-    "answers": null,
-    "created_at": "2016-04-14T13:35:03.000+01:00",
-    "updated_at": "2016-04-14T13:35:03.000+01:00",
-    "position": 2
-  }
+    {
+        "id": 196,
+        "promotion_id": 1,
+        "name": "size",
+        "label": "Size",
+        "mandatory": true,
+        "field_type": "list_values",
+        "answers": "Small\r\nMedium\r\nLarge",
+        "created_at": "2016-04-14T13:34:03.000+01:00",
+        "updated_at": "2016-04-14T13:34:03.000+01:00",
+        "position": 1
+    },
+    {
+        "id": 197,
+        "promotion_id": 1,
+        "name": "serial_number",
+        "label": "Serial Number",
+        "mandatory": true,
+        "field_type": "free_text",
+        "answers": null,
+        "created_at": "2016-04-14T13:35:03.000+01:00",
+        "updated_at": "2016-04-14T13:35:03.000+01:00",
+        "position": 2
+    }
 ]
 ```
 
@@ -46,7 +46,7 @@ Content-Type: application/json
 
 ```http
 GET /api/v2/performance/promotions/{promotion_id}/data_fields HTTP/1.1
-Authorization: Token token=xxx
+Authorization: Token token={APIKEY}:{SECRETKEY}
 ```
 
 ```http
@@ -56,12 +56,12 @@ Content-Type: application/json
 {
   "data": [
     {
-      "customer_name": "Bob",
+      "customer_name": "John",
       "invoice_date": "2018-01-01",
       "product_or_activity_ref": "PRE",
       "quantity": 2,
       "value_of_sale": 100.35,
-      "username": "john.doe@noemail.com"
+      "username": "john.doe@email.null"
     }
   ]
 }
