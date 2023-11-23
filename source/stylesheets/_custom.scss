@@ -5,6 +5,12 @@
 }
 
 .toc-wrapper {
+  .logo {
+    margin-top: $logo-margin * 2;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .toc-list-h3 {
     display: none;
     background-color: $nav-subitem-bg;
