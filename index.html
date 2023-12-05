@@ -4609,12 +4609,15 @@ PATCH /api/v2/performance/performance_product_batches
 </tbody></table>
 <h2 id='performance-module-sales-data'>Sales Data</h2><h3 id='performance-module-sales-data-create-sales-data'>Create Sales Data</h3>
 <p>Endpoint to create claims against specific promotion. Claims are created by using the data_field names from above as key/value pairs.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
 <div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v2/performance/data</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 
-<span class="w">
-</span><span class="p">{</span><span class="w">
+<span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"sale_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-10"</span><span class="p">,</span><span class="w">
@@ -4630,8 +4633,119 @@ PATCH /api/v2/performance/performance_product_batches
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
-</code></pre></div><h4 id='performance-module-sales-data-create-sales-data-http-request'>HTTP Request</h4>
+</span></code></pre></div>
+<blockquote>
+<p>Success response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">48992</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">48993</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">48994</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"No reward points found"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"No reward points found"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"Product not found"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">48995</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"claim"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"No reward points found"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"User not found"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Error response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">UNPROCESSABLE ENTITY</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"A free text question: Please complete this field"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"index_of_failed_data"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='performance-module-sales-data-create-sales-data-http-request'>HTTP Request</h4>
 <p><code>POST /api/v2/performance/promotions/{promotion_id}/data</code></p>
 <h4 id='performance-module-sales-data-create-sales-data-attributes'>Attributes</h4>
 <table><thead>
@@ -4654,7 +4768,7 @@ PATCH /api/v2/performance/performance_product_batches
 <tr>
 <td>quantity</td>
 <td><code>integer</code></td>
-<td>The quantity of products sold</td>
+<td>The quantity of products sold. See note on quantity below.</td>
 </tr>
 <tr>
 <td>username</td>
@@ -4670,7 +4784,11 @@ PATCH /api/v2/performance/performance_product_batches
 
 <p>You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing &amp; valid promotion</p>
 
-<p>If one record in a set being uploaded fails to be created either by being invalid or through a programme not having enough points - all records in the request will fail to be created</p>
+<p>If one record in a set being uploaded fails to be created either by being invalid (see note on validity below) or through a programme not having enough points - all records in the request will fail to be created and you will receive a 422 unprocessable entity response along with error details and the zero based index of the record that caused the failure.</p>
+
+<p>Validity - A record is considered invalid if there is something wrong with the claim that would be created as a result. For example if a required answer has not been provided. A record will <strong>not</strong> be considered invalid if we cannot find the user, we cannot find the product, or we cannot find an appropriate reward to assign as without these key pieces of information we can&#39;t attempt to create a claim, instead we will continue with the remainder of the request and create the claims that we can. This is done so that if you are sending multiple requests and one of them fails because of a problem with the user or product/reward which is highly likely to happen with batches, we do not fail the entire batch for this one reason. You will still receive a 201 created response if not all of the records resulted in a valid claim, but you will receive a response object detailing what claims if any were created for each record, and what errors prevented a claim from being created where appropriate. This means that even if no claims are created, you will still receive a 201 created response, and you must use the response data to determine if any claims were created.</p>
+
+<p>Quantity - With data upload promotions, if your reward point requires a quantity of 2 or more to be sold before earning points, then we accumulate sales until the necessary quantity is reached. Therefore, if you have a minimum quantity of 2 and you send data for 1, we will still create a claim for 1 unit, but it will be assigned 0 points. If you then send another request for 1 unit, thus bringing your total quantity sold to 2, then we will create a claim with the appropriate points.</p>
 <h1 id='recognition-module'>Recognition Module</h1><h2 id='recognition-module-recognition-wall'>Recognition Wall</h2><h3 id='recognition-module-recognition-wall-get-recognition-wall'>Get Recognition Wall</h3>
 <p>This endpoint returns wall posts from the recognition wall on your programme (if activated). Results are paginated at 100 wall posts per page and can be filtered down by the specified query parameters. Results will be returned from newest to oldest.</p>
 
