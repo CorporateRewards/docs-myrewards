@@ -307,7 +307,7 @@ The following standard user fields may be provided as an attributes Name value e
 If your programme uses a free text company question, then you may just send this as "company" as above, however, if your programme has a managed list of companies, then you must provide the users company details differently and we expect both of the below:
 
 * company_name
-* company_identifer
+* company_identifier
 
 
 #### Custom registration questions
