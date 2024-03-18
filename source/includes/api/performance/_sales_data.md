@@ -153,7 +153,7 @@ Attribute | Type | Info
 --------- | ---- | ----
 sale\_date | `date` | The date when this piece of data was created
 product\_or\_activity\_ref | `string` | The SKU for the performance product to claim against
-returns\_identifier | `string` | The returns\_identifier to be assigned to the given claim. (Only required if returns are enabled on the given promotion. )
+returns\_identifier | `string` | The returns\_identifier to be assigned to the given claim. ( Only required if returns are enabled on the given promotion. Uniqueness for the combination of this field, product ref and the user is required. )
 quantity | `integer` | The quantity of products sold. See note on quantity below.
 username | `string` | The username or email for the user to assign points to ( Either this or the `user_id` field needs to be supplied. )
 user\_id | `user_id` | The MyRewards user ID for the user to assign points to ( Either this or the `username` field needs to be supplied. )
