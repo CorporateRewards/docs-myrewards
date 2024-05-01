@@ -583,6 +583,14 @@
                           </li>
                       </ul>
                   </li>
+                  <li>
+                    <a href="#performance-module-returned-claims" class="toc-h2 toc-link" data-title="Returned Claims">Returned Claims</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#performance-module-returned-claims-create-returned-claims" class="toc-h3 toc-link" data-title="Performance Module">Create Returned Claims</a>
+                          </li>
+                      </ul>
+                  </li>
               </ul>
           </li>
           <li>
@@ -4794,6 +4802,121 @@ PATCH /api/v2/performance/performance_product_batches
 <p>Validity - A record is considered invalid if there is something wrong with the claim that would be created as a result. For example if a required answer has not been provided. A record will <strong>not</strong> be considered invalid if we cannot find the user, we cannot find the product, or we cannot find an appropriate reward to assign as without these key pieces of information we can&#39;t attempt to create a claim, instead we will continue with the remainder of the request and create the claims that we can. This is done so that if you are sending multiple requests and one of them fails because of a problem with the user or product/reward which is highly likely to happen with batches, we do not fail the entire batch for this one reason. You will still receive a 201 created response if not all of the records resulted in a valid claim, but you will receive a response object detailing what claims if any were created for each record, and what errors prevented a claim from being created where appropriate. This means that even if no claims are created, you will still receive a 201 created response, and you must use the response data to determine if any claims were created.</p>
 
 <p>Quantity - With data upload promotions, if your reward point requires a quantity of 2 or more to be sold before earning points, then we accumulate sales until the necessary quantity is reached. Therefore, if you have a minimum quantity of 2 and you send data for 1, we will still create a claim for 1 unit, but it will be assigned 0 points. If you then send another request for 1 unit, thus bringing your total quantity sold to 2, then we will create a claim with the appropriate points.</p>
+<h2 id='performance-module-returned-claims'>Returned Claims</h2><h3 id='performance-module-returned-claims-create-returned-claims'>Create Returned Claims</h3>
+<p>Endpoint to create returned claims against specific claim. Returned claims are created by specifiying identifiers (key/value pairs) for a specific claim.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/api/v3/performance/promotions/{promotion_id}/returned_claims</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"returns_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">170944</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"returns_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"identifier_001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST-217744"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"returns_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"identifier_002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"product_or_activity_ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST-115647"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Success response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">CREATED</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+</code></pre></div>
+<blockquote>
+<p>Error response(s):</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">BAD REQUEST</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"please supply valid product_or_activity_ref value(s), for 1st entry"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"please supply valid returns_identifier, product_or_activity_ref, quantity, user_id value(s), for 2nd entry"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">BAD REQUEST</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Number of return entries provided is above the max allowed of 50"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">BAD REQUEST</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"No returns data was provided"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">BAD REQUEST</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Returns are not enabled on this promotion"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">Application/json</span>
+
+<span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Promotion not found"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='performance-module-returned-claims-create-returned-claims-http-request'>HTTP Request</h4>
+<p><code>POST /api/v2/performance/promotions/{promotion_id}/returned_claims</code></p>
+<h4 id='performance-module-returned-claims-create-returned-claims-attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_or_activity_ref</td>
+<td><code>string</code></td>
+<td>The SKU for the performance product the original claim was assigned.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><code>integer</code></td>
+<td>The quantity to return against the claim.</td>
+</tr>
+<tr>
+<td>returns_identifier</td>
+<td><code>string</code></td>
+<td>The returns_identifier that is assigned to the given claim.</td>
+</tr>
+<tr>
+<td>username</td>
+<td><code>string</code></td>
+<td>The username or email for the user the original claim was created against, this will be the user points are deducted from. ( Either this or the <code>user_id</code> field needs to be supplied. )</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td><code>integer</code></td>
+<td>The MyRewards user ID for the user the original claim was created against, this will be the user points are deducted from. ( Either this or the <code>username</code> field needs to be supplied. )</td>
+</tr>
+</tbody></table>
+
+<p>If one record in a set being uploaded fails to be created then all requested records will not be created and an error object will be given back. This object will contain the errors that need to be addressed before proceededing again with the request.</p>
 <h1 id='recognition-module'>Recognition Module</h1><h2 id='recognition-module-recognition-wall'>Recognition Wall</h2><h3 id='recognition-module-recognition-wall-get-recognition-wall'>Get Recognition Wall</h3>
 <p>This endpoint returns wall posts from the recognition wall on your programme (if activated). Results are paginated at 100 wall posts per page and can be filtered down by the specified query parameters. Results will be returned from newest to oldest.</p>
 
