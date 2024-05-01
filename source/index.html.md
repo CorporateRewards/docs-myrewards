@@ -28,6 +28,7 @@ includes:
 - api/performance/performance_products
 - api/performance/reward_points
 - api/performance/sales_data
+- api/performance/returned_claims
 - api/recognition/0_recognition
 - api/recognition/recognition_wall
 - api/recognition/nominations
