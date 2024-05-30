@@ -1,0 +1,22 @@
+name: GitHub Security Alerts for Jira
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  syncSecurityAlerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Sync security alerts to Jira issues"
+        uses: reload/github-security-jira@v1.5.0
+        env:
+          GH_SECURITY_TOKEN: ${{ secrets.ORG_GITHUBSECURITYTOKEN }}
+          JIRA_TOKEN: ${{ secrets.ORG_JIRA_TOKEN }}
+          JIRA_HOST: https://360insights.atlassian.net/
+          JIRA_USER: ${{secrets.ORG_JIRA_USERNAME}}
+          JIRA_PROJECT: SB
+          JIRA_ISSUE_TYPE: Security Code Analysis
+          JIRA_ISSUE_LABELS: MYREWARDS_SECURITY_ALERT
+          JIRA_RESTRICTED_COMMENT_ROLE: Developer
