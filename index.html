@@ -1958,6 +1958,8 @@ change will be ignored</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<aside class="warning">WARNING: If your programme uses SAML SSO with JIT (just in time) user provisioning, you must ensure that any relevant user profile changes are also be made in the IDP’s data source, to prevent data from being changed on next login.</aside>
+
 <p>In order to create a user account on the MyRewards 2.0 platform there is often
 some information about the user we are creating that needs to be known before
 the account can be successfully created.</p>
@@ -2299,6 +2301,8 @@ an example of the response when the company is a managed list.</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
+<aside class="warning">WARNING: If your programme uses SAML SSO with JIT (just in time) user provisioning, you must ensure that any relevant user profile changes are also be made in the IDP’s data source, to prevent data from being changed on next login.</aside>
+
 <p>The update user api is available to update user information. This uses the same
 params as the create user api above.</p>
 <h4 id='core-users-update-a-user-http-request'>HTTP Request</h4>
@@ -5759,6 +5763,8 @@ to include the X.509 Certificate public key in the assertion itself. MyRewards (
 </ul>
 <h2 id='sso-single-sign-on-saml-user-provisioning'>SAML User Provisioning</h2>
 <p>If your programme has been configured to allow user provisioning for SAML SSO you may pass additional attributes in your SAMLResponse to be used to create a user if they don&#39;t exist (unless your programme is configured with id as the user identifier, in which case we will never attempt to create a user and you must manage user creation in some other way) or update a user if they do exist. If your programme has not been set up to allow user provisioning, any additional attributes sent will be ignored.</p>
+
+<aside class="warning">WARNING: If your programme uses SAML SSO with JIT (just in time) user provisioning, you must ensure that any relevant user profile changes are made in the IDP’s data source, to prevent data from being changed on next login.</aside>
 
 <table><thead>
 <tr>
