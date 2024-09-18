@@ -110,6 +110,8 @@ Content-Type: Application/json
 }
 ```
 
+<aside class="warning">WARNING: If your programme uses SAML SSO with JIT (just in time) user provisioning, you must ensure that any relevant user profile changes are also be made in the IDP’s data source, to prevent data from being changed on next login.</aside>
+
 In order to create a user account on the MyRewards 2.0 platform there is often
 some information about the user we are creating that needs to be known before
 the account can be successfully created.
@@ -360,6 +362,8 @@ Content-Type: Application/json
     ]
 }
 ```
+
+<aside class="warning">WARNING: If your programme uses SAML SSO with JIT (just in time) user provisioning, you must ensure that any relevant user profile changes are also be made in the IDP’s data source, to prevent data from being changed on next login.</aside>
 
 The update user api is available to update user information. This uses the same
 params as the create user api above.

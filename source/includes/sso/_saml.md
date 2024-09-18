@@ -165,6 +165,9 @@ For further information on SAML 2.0 please go to the official SAML 2.0 websites:
 
 If your programme has been configured to allow user provisioning for SAML SSO you may pass additional attributes in your SAMLResponse to be used to create a user if they don't exist (unless your programme is configured with id as the user identifier, in which case we will never attempt to create a user and you must manage user creation in some other way) or update a user if they do exist. If your programme has not been set up to allow user provisioning, any additional attributes sent will be ignored.
 
+<aside class="warning">WARNING: If your programme uses SAML SSO with JIT (just in time) user provisioning, you must ensure that any relevant user profile changes are made in the IDP’s data source, to prevent data from being changed on next login.</aside>
+
+
 | User identifier | Create user | Update user |
 |-----------------|-------------|-------------|
 | id              | No          | Yes         |
