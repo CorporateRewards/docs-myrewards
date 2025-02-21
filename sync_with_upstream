@@ -31,7 +31,8 @@ git rm -qf \
   '.github/PULL_REQUEST_TEMPLATE.md' \
   '.github/dependabot.yml' \
   '.github/workflows/*' \
-  ':!.github/workflows/build.yml'
+  ':!.github/workflows/build.yml' \
+  ':!.github/workflows/codeql.yml'
 
 say "Re-applying our changes..."
 
