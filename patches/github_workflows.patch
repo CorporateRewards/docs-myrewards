@@ -1,7 +1,7 @@
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
 --- a/.github/workflows/build.yml
 +++ b/.github/workflows/build.yml
-@@ -1,38 +1,31 @@
+@@ -1,32 +1,29 @@
  name: Build
 
 -on:
@@ -26,7 +26,7 @@ diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
 +      ruby-version: 3.0
 
      steps:
--    - uses: actions/checkout@v2
+-    - uses: actions/checkout@v3
 +    - uses: actions/checkout@v4
      - name: Set up Ruby
        uses: ruby/setup-ruby@v1
@@ -34,8 +34,7 @@ diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
 -        ruby-version: ${{ matrix.ruby-version }}
 +        ruby-version: ${{ env.ruby-version }}
 
--    - uses: actions/cache@v2
-+    - uses: actions/cache@v3
+     - uses: actions/cache@v3
        with:
          path: vendor/bundle
 -        key: gems-${{ runner.os }}-${{ matrix.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
@@ -45,14 +44,8 @@ diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
 +          gems-${{ runner.os }}-${{ env.ruby-version }}-
            gems-${{ runner.os }}-
 
--    # necessary to get ruby 2.3 to work nicely with bundler vendor/bundle cache
--    # can remove once ruby 2.3 is no longer supported
--    - run: gem update --system
--
      - run: bundle config set deployment 'true'
-     - name: bundle install
-       run: |
-@@ -40,3 +33,11 @@ jobs:
+@@ -36,3 +33,11 @@ jobs:
          bundle install --jobs 4 --retry 3
 
      - run: bundle exec middleman build
