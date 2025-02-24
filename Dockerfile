@@ -1,4 +1,4 @@
-FROM ruby:3.0-slim
+FROM ruby:3.3-slim
 
 WORKDIR /srv/slate
 

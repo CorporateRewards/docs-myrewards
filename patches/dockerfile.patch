@@ -3,7 +3,7 @@ diff --git a/Dockerfile b/Dockerfile
 +++ b/Dockerfile
 @@ -1,23 +1,23 @@
 -FROM ruby:2.6-slim
-+FROM ruby:3.0-slim
++FROM ruby:3.3-slim
 
  WORKDIR /srv/slate
 
