@@ -320,3 +320,9 @@ If your programme has custom registration questions, you must send an attribute 
 ### Further notes
 
 Whichever field has been set up as your user identifier for your integration should be sent as an attribute with the name specified as your identifier field. For example, if your programme has been set up with username as the user identifier, and uid as the identifier field, then you should send the value in `<saml:Attribute Name="uid">` and not `<saml:Attribute Name="username">`. If you do send `<saml:Attribute Name="username">` and that is your user identifier it will be ignored.
+
+### SAML SSO Limitations and Declarations
+- Only IdP-initiated SSO is supported.
+- Updates to x509 certificates are managed manually by the MyRewards team.
+- Attribute names are case-sensitive.
+- The `saml:NameID` must be set to `persistent` format.
