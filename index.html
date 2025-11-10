@@ -659,6 +659,9 @@
             <a href="#sso-single-sign-on" class="toc-h1 toc-link" data-title="SSO (Single Sign On)">SSO (Single Sign On)</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#sso-single-sign-on-limitations-and-declarations" class="toc-h2 toc-link" data-title="Limitations and Declarations">Limitations and Declarations</a>
+                  </li>
+                  <li>
                     <a href="#sso-single-sign-on-saml" class="toc-h2 toc-link" data-title="SAML">SAML</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -683,6 +686,9 @@
                           </li>
                           <li>
                             <a href="#sso-single-sign-on-saml-user-provisioning-further-notes" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">Further notes</a>
+                          </li>
+                          <li>
+                            <a href="#sso-single-sign-on-saml-user-provisioning-saml-sso-limitations-and-declarations" class="toc-h3 toc-link" data-title="SSO (Single Sign On)">SAML SSO Limitations and Declarations</a>
                           </li>
                       </ul>
                   </li>
@@ -5615,7 +5621,16 @@ and not MyRewards
 <td>The product ID (<strong>from GPS</strong>) whose points you want to override</td>
 </tr>
 </tbody></table>
-<h1 id='sso-single-sign-on'>SSO (Single Sign On)</h1><p><a name="simple-single-sign-on" class="legacy-link"></a></p>
+<h1 id='sso-single-sign-on'>SSO (Single Sign On)</h1>
+<p>The MyRewards platform supports Single Sign On (SSO) through SAML and OIDC protocols. This allows users to authenticate using their existing credentials from an identity provider, streamlining the login process and enhancing security.</p>
+<h2 id='sso-single-sign-on-limitations-and-declarations'>Limitations and Declarations</h2>
+<ul>
+<li>Single Sign On (SSO) experience is only available for end-users; backend administrators are authenticated via dedicated credentials.</li>
+<li>Only one SSO provider can be configured per programme / site.</li>
+</ul>
+
+<p>Please also see the <a href="#saml-sso-limitations-and-declarations">SAML SSO Limitations and Declarations</a>.</p>
+<p><a name="simple-single-sign-on" class="legacy-link"></a></p>
 <h2 id='sso-single-sign-on-saml'>SAML</h2>
 <p>Our SSO can use <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML 2.0</a> to facilitate IdP-initiated Single Sign On to a MyRewards Programme</p>
 
@@ -5932,6 +5947,13 @@ to include the X.509 Certificate public key in the assertion itself. MyRewards (
 <p>If your programme has custom registration questions, you must send an attribute with a name prefixed with &quot;registration_question_&quot; followed by the id of the custom question to be answered. e.g. <code>&lt;saml:Attribute Name=&quot;registration_question_123&quot;&gt;</code> where 123 is the id of the registration question. See documentation for getting registration question id&#39;s <a href="#core-registration-questions-get-all-registration-questions">here</a> or contact your MyRewards administrator if you need further assistance.</p>
 <h3 id='sso-single-sign-on-saml-user-provisioning-further-notes'>Further notes</h3>
 <p>Whichever field has been set up as your user identifier for your integration should be sent as an attribute with the name specified as your identifier field. For example, if your programme has been set up with username as the user identifier, and uid as the identifier field, then you should send the value in <code>&lt;saml:Attribute Name=&quot;uid&quot;&gt;</code> and not <code>&lt;saml:Attribute Name=&quot;username&quot;&gt;</code>. If you do send <code>&lt;saml:Attribute Name=&quot;username&quot;&gt;</code> and that is your user identifier it will be ignored.</p>
+<h3 id='sso-single-sign-on-saml-user-provisioning-saml-sso-limitations-and-declarations'>SAML SSO Limitations and Declarations</h3>
+<ul>
+<li>Only IdP-initiated SSO is supported.</li>
+<li>Updates to x509 certificates are managed manually by the MyRewards team.</li>
+<li>Attribute names are case-sensitive.</li>
+<li>The <code>saml:NameID</code> must be set to <code>persistent</code> format.</li>
+</ul>
 <h2 id='sso-single-sign-on-openid-connect'>OpenID Connect</h2>
 <p>MyRewards now supports a limited subset of OpenID Connect for SSO. We currently use the <a href="https://openid.net/specs/openid-connect-core-1_0.html#ImplicitFlowAuth">&quot;implicit flow&quot;</a>, using the <a href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#id_token">ID token-only response type</a> with the <a href="https://openid.net/specs/oauth-v2-form-post-response-mode-1_0.html"><code>form_post</code> response mode</a>. More features from the OpenID Connect specification may be available in the future - please contact your MyRewards representative.</p>
 <h3 id='sso-single-sign-on-openid-connect-process-flow'>Process flow</h3>
