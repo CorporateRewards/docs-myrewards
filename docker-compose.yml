@@ -1,19 +1,16 @@
----
-version: '3'
 services:
+
   slate:
     build:
-      context: .
+      context: ./
     volumes:
-      - .:/srv/slate
+      - ./:/srv/slate/
     ports:
-      - 4567:4567
-    command: sh -c '
-      bundle install &&
-      if [ "$BYEBUG" -eq "1" ];
-        then echo "sleeping";
-        sleep 100d;
-      else
-        bundle exec middleman server;
-      fi
-      '
+      - 80:4567
+    entrypoint: >-
+      /usr/bin/env bash -e -c
+    command:
+      - >-
+        bundle install &&
+        /srv/slate/slate.sh build &&
+        /srv/slate/slate.sh serve;
