@@ -33,5 +33,18 @@ Each section should contain the following elements in this order:
   - H5 (#####) URL Parameters
   - H5 (#####) Body Parameters
 - H4 (####) Response Parameters
- 
 
+## Testing Locally
+
+### Requirements
+- Git
+- Docker with compose
+
+### Steps
+1. Clone the repo.
+2. Run `docker compose build` at least once to build the images.
+3. Run `docker compose up` to start the slate instance container.
+4. Visit `http://localhost/` in your browser.
+5. Make changes to the markdown files in the `source` folder.
+6. Refresh the browser to see the changes.
+7. When done, run `docker compose down` to stop the container.
