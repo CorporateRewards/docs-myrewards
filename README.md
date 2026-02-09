@@ -2,7 +2,7 @@
 
 ## Adding an end-point
 - create a file in `/includes/api/{module}`
-- use the structure, language and style from `/includes/example/_kittens.md` 
+- use the structure, language and style from `/includes/example/_kittens.md`
 - add the file to `includes:` section of `index.html.md` (alphabetically)
 
 Once the changes have been made, create a PR to master. When the PR is merged, GitHub Actions will pickup the changes and deploy.
@@ -24,14 +24,27 @@ Each section should contain the following elements in this order:
 
 - `> Header:`
 - `> Body:` (POST only)
-- `> Response:` 
+- `> Response:`
 - Description of the end point
 - H4 (####) HTTP Request
 - GET/POST/DELETE
-- H4 (####) Request Parameters 
+- H4 (####) Request Parameters
   - _if there are URL and Body params, then create two more sections:_
-  - H5 (#####) URL Parameters 
+  - H5 (#####) URL Parameters
   - H5 (#####) Body Parameters
 - H4 (####) Response Parameters
- 
 
+## Testing Locally
+
+### Requirements
+- Git
+- Docker with compose
+
+### Steps
+1. Clone the repo.
+2. Run `docker compose build` at least once to build the images.
+3. Run `docker compose up` to start the slate instance container.
+4. Visit `http://localhost/` in your browser.
+5. Make changes to the markdown files in the `source` folder.
+6. Refresh the browser to see the changes.
+7. When done, run `docker compose down` to stop the container.
