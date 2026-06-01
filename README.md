@@ -1,7 +1,7 @@
 # MyRewards Documentation
 
 ## Adding an end-point
-- create a file in `/includes/api/{module}`
+- create a file in `source/includes/api/{module}`
 - use the structure, language and style from `/includes/example/_kittens.md`
 - add the file to `includes:` section of `index.html.md` (alphabetically)
 
