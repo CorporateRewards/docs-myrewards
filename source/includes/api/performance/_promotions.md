@@ -53,8 +53,8 @@ Attribute | Type      | Info
 --------- |-----------| ----
 id | `integer` | Promotion ID
 name | `string`  | Promotion name
-start_date | `string` | Promotion start date
-end_date  | `string` | Promotion end date
-close_date | `string` | Promotion close date
+start_date | `string` | Promotion start date; can be `null` if no start date is set
+end_date  | `string` | Promotion end date; can be `null` if no end date is set
+close_date | `string` | Promotion close date; can be `null` if no close date is set
 status | `string` | Promotion status (one of: 'not_active', 'active', 'archived')
 promotion_type | `string` | Promotion type (one of: 'self_claim', 'data_upload', 'allocated_claims')

@@ -2,7 +2,7 @@
 
 ## Adding an end-point
 - create a file in `source/includes/api/{module}`
-- use the structure, language and style from `/includes/example/_kittens.md`
+- use the structure, language and style from `source/includes/example/_kittens.md`
 - add the file to `includes:` section of `index.html.md` (alphabetically)
 
 Once the changes have been made, create a PR to master. When the PR is merged, GitHub Actions will pickup the changes and deploy.
