@@ -562,6 +562,14 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#performance-module-promotions" class="toc-h2 toc-link" data-title="Promotions">Promotions</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#performance-module-promotions-list-all-programme-promotions" class="toc-h3 toc-link" data-title="Performance Module">List all programme promotions</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#performance-module-reward-points" class="toc-h2 toc-link" data-title="Reward Points">Reward Points</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -4318,6 +4326,87 @@ PATCH /api/v2/performance/performance_product_batches
 <td>description</td>
 <td><code>text</code></td>
 <td>Some text describing the product. Optional</td>
+</tr>
+</tbody></table>
+<h2 id='performance-module-promotions'>Promotions</h2><h3 id='performance-module-promotions-list-all-programme-promotions'>List all programme promotions</h3>
+<p>Endpoint to fetch a list of the performance promotions</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/performance/promotions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="s">[</span>
+<span class="s">  {</span>
+<span class="s">    "id": 1,</span>
+<span class="s">    "name": "Promotion A",</span>
+<span class="s">    "start_date": "2025-04-01",</span>
+<span class="s">    "end_date": null,</span>
+<span class="s">    "close_date": null,</span>
+<span class="s">    "status": "active",</span>
+<span class="s">    "promotion_type": "self_claim"</span>
+<span class="s">  },</span>
+<span class="s">  {</span>
+<span class="s">    "id": 2,</span>
+<span class="s">    "name": "Promotion B",</span>
+<span class="s">    "start_date": "2026-01-01",</span>
+<span class="s">    "end_date": "2026-02-01",</span>
+<span class="s">    "close_date": null,</span>
+<span class="s">    "status": "active",</span>
+<span class="s">    "promotion_type": "data_upload"</span>
+<span class="s">  },</span>
+<span class="s">  {</span>
+<span class="s">    "id": 3,</span>
+<span class="s">    "name": "Promotion C",</span>
+<span class="s">    "start_date": "2025-12-01",</span>
+<span class="s">    "end_date": "2025-12-31",</span>
+<span class="s">    "close_date": null,</span>
+<span class="s">    "status": "active",</span>
+<span class="s">    "promotion_type": "self_claim"</span>
+<span class="s">  }</span>
+<span class="s">]</span>
+</code></pre></div><h4 id='performance-module-promotions-list-all-programme-promotions-http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/performance/promotions</code></p>
+<h4 id='performance-module-promotions-list-all-programme-promotions-attributes'>Attributes</h4>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>integer</code></td>
+<td>Promotion ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Promotion name</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td><code>string</code></td>
+<td>Promotion start date; can be <code>null</code> if no start date is set</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td><code>string</code></td>
+<td>Promotion end date; can be <code>null</code> if no end date is set</td>
+</tr>
+<tr>
+<td>close_date</td>
+<td><code>string</code></td>
+<td>Promotion close date; can be <code>null</code> if no close date is set</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>Promotion status (one of: &#39;not_active&#39;, &#39;active&#39;, &#39;archived&#39;)</td>
+</tr>
+<tr>
+<td>promotion_type</td>
+<td><code>string</code></td>
+<td>Promotion type (one of: &#39;self_claim&#39;, &#39;data_upload&#39;, &#39;allocated_claims&#39;)</td>
 </tr>
 </tbody></table>
 <h2 id='performance-module-reward-points'>Reward Points</h2><h3 id='performance-module-reward-points-get-reward-points'>Get Reward Points</h3>
