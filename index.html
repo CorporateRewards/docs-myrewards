@@ -1916,7 +1916,8 @@ change will be ignored</p>
                 </span><span class="s2">"Friday"</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"send_notifications"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -2136,6 +2137,11 @@ an example of the response when the company is a managed list.</p>
 <td>marketing_consented</td>
 <td><code>boolean</code></td>
 <td>Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn&#39;t have an active privacy policy.</td>
+</tr>
+<tr>
+<td>send_notifications:</td>
+<td><code>boolean</code></td>
+<td>Optional. Indicates whether login reminder notifications should be sent to the user.</td>
 </tr>
 </tbody></table>
 <h3 id='core-users-get-a-user'>Get a User</h3>
