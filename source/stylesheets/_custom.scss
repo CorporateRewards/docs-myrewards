@@ -31,3 +31,9 @@
     font-size: 13px;
   }
 }
+
+.content code {
+  // prevent word and line breaking in code blocks
+  word-break: keep-all !important;
+  white-space: pre !important;
+}
