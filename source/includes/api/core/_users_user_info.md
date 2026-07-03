@@ -4,21 +4,23 @@ An endpoint to fetch user information for every user on the programme.
 
 The fields returned are **fully configurable per programme**. Please choose which fields to expose under _User Info API Settings_ in the admin area,
 the response will then contain exactly those fields. The order of the fields in each user object reflects the order the administrator has arranged them
-in, so re-ordering the settings changes the order of the keys in the response.
+in, so re-ordering the settings changes the order of the keys in the response. The server emits keys in the configured order, but clients should not rely on JSON object key ordering.
 
 Because the field list is programme-specific, the example below is illustrative only — your programme's response
 will contain the fields configured for it.
 
-The current fixed fields you can choose from are `id`, `created_at`, `updated_at`, `last_sign_in_at`, `current_sign_in_at`, `consented_at`, `user_identifier`, `points`, `fullname`, `programme_name`, `last_login`, `user_group_id`, `user_group_name`
+The current fixed fields you can choose from are `id`, `firstname`, `lastname`, `email`, `created_at`, `updated_at`, `last_sign_in_at`, `current_sign_in_at`, `consented_at`, `user_identifier`, `points`, `fullname`, `programme_name`, `last_login`, `user_group_id`, `user_group_name`
 
 You can also then choose from a selection of Static and Dynamic registration question fields.
 
 <aside class="notice">
-This endpoint requires the API key to have the <code>UserInfo/Read</code> permission. Without it the request
+This endpoint requires the API key to have the <code>UserInfo/Read</code> permission. Without it, the request
 returns <code>403 Forbidden</code>.
 </aside>
 
 ### GET User info
+
+`GET /api/v2/user_info`
 
 ``` http
 GET /api/v2/user_info HTTP/1.1
@@ -57,13 +59,13 @@ Content-Type: application/json
 
 #### HTTP Request
 
+`GET /api/v2/user_info`
+
 #### Parameters
 
 Parameters | Type | Info
 ---------- | ---- | ----
 page | `integer` | Results are paginated 100 users per page. Pass a `page` query parameter to request a specific page; when omitted, the first page is returned.
-
-`GET /api/v2/user_info`
 
 #### Configurable fields
 
