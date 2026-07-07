@@ -53,7 +53,7 @@ state | string | Required indicates whether the permission is granted or denied 
 
 ### PATCH User permissions
 
-A endpoint to update a list of permissions for a given user. Returns an array of permissions displaying it's parent
+An endpoint to update a list of permissions for a given user. Returns an array of permissions displaying the parent
 permissions group name. This is to help identify different permissions when names are the same across separate groups.
 It will also display whether the permission is active for the given user and the state of the permission which can
 be `Same As User Group` or if the permission has been overridden for that user: `Always Allow` or `Always Deny`.
