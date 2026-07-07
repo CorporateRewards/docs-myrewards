@@ -32,8 +32,8 @@
   }
 }
 
-.content code {
-  // prevent word and line breaking in code blocks
+.content :not(.highlight) code {
+  // prevent word and line breaking in code blocks for descriptions
   word-break: keep-all !important;
   white-space: pre !important;
 }
