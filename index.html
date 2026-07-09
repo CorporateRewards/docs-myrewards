@@ -421,6 +421,14 @@
                       </ul>
                   </li>
                   <li>
+                    <a href="#core-user-info" class="toc-h2 toc-link" data-title="User Info">User Info</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#core-user-info-get-user-info" class="toc-h3 toc-link" data-title="Core">GET User info</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li>
                     <a href="#core-user-gt-permissions" class="toc-h2 toc-link" data-title="User &gt; Permissions">User &gt; Permissions</a>
                       <ul class="toc-list-h3">
                           <li>
@@ -2329,7 +2337,105 @@ params as the create user api above.</p>
 <p><code>PUT /api/v3/users/{user_id}</code></p>
 
 <p><code>PATCH /api/v3/users/{user_id}</code></p>
-<h2 id='core-user-gt-permissions'>User &gt; Permissions</h2><h3 id='core-user-gt-permissions-get-user-permissions'>GET User permissions</h3>
+<h2 id='core-user-info'>User Info</h2>
+<p>An endpoint to fetch user information for every user on the programme.</p>
+
+<p>The fields returned are <strong>fully configurable per programme</strong>. Please choose which fields to expose under <em>User Info API Settings</em> in the admin area,
+the response will then contain exactly those fields. The order of the fields in each user object reflects the order the administrator has arranged them
+in, so re-ordering the settings changes the order of the keys in the response. The server emits keys in the configured order, but clients should not rely on JSON object key ordering.</p>
+
+<p>Because the field list is programme-specific, the example below is illustrative only — your programme&#39;s response
+will contain the fields configured for it.</p>
+
+<p>The current fixed fields you can choose from are <code>id</code>, <code>firstname</code>, <code>lastname</code>, <code>email</code>, <code>created_at</code>, <code>updated_at</code>, <code>last_sign_in_at</code>, <code>current_sign_in_at</code>, <code>consented_at</code>, <code>user_identifier</code>, <code>points</code>, <code>fullname</code>, <code>programme_name</code>, <code>last_login</code>, <code>user_group_id</code>, <code>user_group_name</code></p>
+
+<p>You can also then choose from a selection of Static and Dynamic registration question fields.</p>
+
+<aside class="notice">
+This endpoint requires the API key to have the <code>UserInfo/Read</code> permission. Without it, the request
+returns <code>403 Forbidden</code>.
+</aside>
+<h3 id='core-user-info-get-user-info'>GET User info</h3>
+<p><code>GET /api/v2/user_info</code></p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/api/v2/user_info</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Token token={APIKEY}:{SECRETKEY}</span>
+</code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-01T09:30:00+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favourite_colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"t_shirt_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Large"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12346</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.smith@email.null"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"points"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_group_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marketing"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-06-14T16:05:41+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"favourite_colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Green"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"t_shirt_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medium"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h4 id='core-user-info-get-user-info-http-request'>HTTP Request</h4>
+<p><code>GET /api/v2/user_info</code></p>
+<h4 id='core-user-info-get-user-info-parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td><code>integer</code></td>
+<td>Results are paginated 100 users per page. Pass a <code>page</code> query parameter to request a specific page; when omitted, the first page is returned.</td>
+</tr>
+</tbody></table>
+<h4 id='core-user-info-get-user-info-configurable-fields'>Configurable fields</h4>
+<p>The keys in each user object depend entirely on the settings configured for the programme. A setting can expose one
+of the following, and the key used in the response is derived as shown:</p>
+
+<table><thead>
+<tr>
+<th>Field type</th>
+<th>Example keys</th>
+<th>How the key is derived</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User attribute</td>
+<td><code>id</code>, <code>firstname</code>, <code>lastname</code>, <code>email</code>, <code>created_at</code>, <code>updated_at</code>, <code>last_sign_in_at</code>, <code>current_sign_in_at</code>, <code>consented_at</code>, <code>user_identifier</code>, <code>points</code>, <code>fullname</code>, <code>programme_name</code>, <code>last_login</code></td>
+<td>The attribute name</td>
+</tr>
+<tr>
+<td>User group</td>
+<td><code>user_group_id</code>, <code>user_group_name</code></td>
+<td>The user group attribute, prefixed with <code>user_group_</code></td>
+</tr>
+<tr>
+<td>Registration question</td>
+<td>e.g. <code>favourite_colour</code>, <code>t_shirt_size</code>, <code>company</code>, <code>job_title</code></td>
+<td>The registration question&#39;s field name</td>
+</tr>
+</tbody></table>
+
+<p>Values are typed to match the underlying data. Timestamps are returned as ISO&nbsp;8601 strings (e.g.
+<code>2026-07-01T09:30:00+01:00</code>). A field with no value for a given user is returned as <code>null</code>.</p>
+<h4 id='core-user-info-get-user-info-no-configured-fields'>No configured fields</h4>
+<p>If the programme has no User Info API settings configured, the endpoint returns <code>204 No Content</code> with an empty body.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre></div><h2 id='core-user-gt-permissions'>User &gt; Permissions</h2><h3 id='core-user-gt-permissions-get-user-permissions'>GET User permissions</h3>
 <p>An endpoint to fetch a list of permissions for a given user. Returns an array of permissions displaying it&#39;s parent
 permissions group name. This is to help identify different permissions when names are the same across separate groups.
 It will also display whether the permission is active for the given user and the state of the permission which can
