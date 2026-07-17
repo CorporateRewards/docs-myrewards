@@ -145,10 +145,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  middleman (~> 4.4)
+  middleman (~> 4.5)
   middleman-autoprefixer (~> 3.0)
   middleman-sprockets (~> 4.1)
-  middleman-syntax (~> 3.2)
+  middleman-syntax (~> 3.6)
   nokogiri (~> 1.18.9)
   redcarpet (~> 3.6.0)
   rouge (~> 3.21)
