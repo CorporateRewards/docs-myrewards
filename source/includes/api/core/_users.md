@@ -195,7 +195,7 @@ user_group_id | `integer` | optional, will default to programme's default user_g
 registration_answers_attributes | `array` | array of hashes that contain a registration_question_id and an answer. Some or all of the registration questions may require answers. See registration_questions endpoint documentation
 consented | `boolean` | Not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
 marketing_consented | `boolean` | Can be true or false, not required if programme access type is pre_registration with additional details, or SSO or if the programme doesn't have an active privacy policy.
-send_notifications: | `boolean` | Optional. Indicates whether login reminder notifications should be sent to the user.  
+send_notifications | `boolean` | Optional. Indicates whether login reminder notifications should be sent to the user.  
 ### Get a User
 
 This endpoint returns a specific user associated with an api key's programme. You have the option to specify either the user's unique MyRewards ID, email address, or the username.
