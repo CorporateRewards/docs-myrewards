@@ -17,13 +17,15 @@ Content-Type: application/json
             "sale_date": "2022-03-10",
             "product_or_activity_ref": "TEST-217744",
             "quantity": 1,
-            "user_id": 170944
+            "user_id": 170944,
+            "external_identifier": "order-1001"
         },
         {
             "sale_date": "2022-03-10",
             "product_or_activity_ref": "TEST-217744",
             "quantity": 1,
-            "user_id": 170944
+            "user_id": 170944,
+            "external_identifier": "order-1002"
         }
     ]
 }
@@ -124,11 +126,24 @@ Content-Type: Application/json
                     ]
                 }
             ]
+        },
+        {
+            "claims": [
+                {
+                    "claim": {
+                        "id": null,
+                        "state": null,
+                        "points": null
+                    },
+                    "errors": [
+                        "Duplicate claim detected"
+                    ]
+                }
+            ]
         }
     ]
 }
 ```
-
 
 > Error response:
 
@@ -143,6 +158,21 @@ Content-Type: Application/json
     "index_of_failed_data": 5
 }
 ```
+
+> Error response when a mandatory external identifier is missing:
+
+``` http
+HTTP/1.1 422 UNPROCESSABLE ENTITY
+Content-Type: Application/json
+
+{
+    "errors": [
+        "External identifier: Please complete this field"
+    ],
+    "index_of_failed_data": 2
+}
+```
+
 #### HTTP Request
 
 `POST /api/v2/performance/promotions/{promotion_id}/data`
@@ -157,6 +187,7 @@ returns\_identifier | `string` | The returns\_identifier to be assigned to the g
 quantity | `integer` | The quantity of products sold. See note on quantity below.
 username | `string` | The username or email for the user to assign points to ( Either this or the `user_id` field needs to be supplied. )
 user\_id | `user_id` | The MyRewards user ID for the user to assign points to ( Either this or the `username` field needs to be supplied. )
+external\_identifier | `string` | Optional unless the promotion's External identifier data field has been made mandatory. An identifier from your own system, unique within the promotion. Maximum 255 characters. See note on external identifier below. ( Only available when the feature is enabled for the programme. )
 
 You will also need to provide any custom data fields as extra keys for each piece of claim data in snake case format which is provided in the name field for the GET List Data Fields for a Promotion. The Promotion ID will need to correspond to an existing & valid promotion
 
@@ -166,4 +197,8 @@ Validity - A record is considered invalid if there is something wrong with the c
 
 Quantity - With data upload promotions, if your reward point requires a quantity of 2 or more to be sold before earning points, then we accumulate sales until the necessary quantity is reached. Therefore, if you have a minimum quantity of 2 and you send data for 1, we will still create a claim for 1 unit, but it will be assigned 0 points. If you then send another request for 1 unit, thus bringing your total quantity sold to 2, then we will create a claim with the appropriate points.
 
+External identifier - Each record can optionally include an `external_identifier`. It must be unique within the promotion. If a record uses an `external_identifier` that has already been used on another claim in the promotion, no claim is created for that record, `Duplicate claim detected` is returned as its only error, and the remainder of the request is still processed. Blank values are treated as not provided. Values are trimmed and stored in lowercase, so `ORDER-1` and `order-1` are the same identifier. Separators and leading zeros are kept. A value longer than 255 characters fails the whole request with a 422.
 
+The external identifier is only available to programmes that have the External identifier feature enabled. For other programmes `external_identifier` is ignored and not stored. For programmes that have it enabled, data upload promotions have an `External identifier` data field, which is shown by the GET List Data Fields for a Promotion endpoint. It is optional unless it has been made mandatory for the promotion. If it is mandatory and any record is missing a value (or has an empty or whitespace-only value), all records in the request fail to be created and you will receive a 422 response with a message like `External identifier: Please complete this field`. If the field has been renamed, the new label is used in the message and the key you send is still `external_identifier`.
+
+On promotions with returns enabled, sending a record that has already been processed (the same `returns_identifier`, user and reward) is treated as invalid, so the request fails with a 422 and no records are created, whether or not an `external_identifier` is supplied.
